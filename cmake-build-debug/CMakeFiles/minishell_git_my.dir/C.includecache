@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../libft/libft.h
+stdlib.h
+-
+unistd.h
+-
+stdio.h
+-
+
+/Users/jheat/minishell_git_my/main.c
+minishell.h
+/Users/jheat/minishell_git_my/minishell.h
+
+/Users/jheat/minishell_git_my/minishell.h
+unistd.h
+-
+stdio.h
+-
+sys/types.h
+-
+sys/wait.h
+-
+errno.h
+-
+stdlib.h
+-
+fcntl.h
+-
+./libft/libft.h
+-
+
