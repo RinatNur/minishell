@@ -51,4 +51,4 @@ add_executable(minishell_git_my
         ft_pwd.c
         main.c
         minishell.h
-        utils.c)
+        utils.c ft_error.c)

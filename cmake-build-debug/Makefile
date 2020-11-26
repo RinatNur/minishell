@@ -170,6 +170,33 @@ ft_env.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_env.c.s
 .PHONY : ft_env.c.s
 
+ft_error.o: ft_error.c.o
+
+.PHONY : ft_error.o
+
+# target to build an object file
+ft_error.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_error.c.o
+.PHONY : ft_error.c.o
+
+ft_error.i: ft_error.c.i
+
+.PHONY : ft_error.i
+
+# target to preprocess a source file
+ft_error.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_error.c.i
+.PHONY : ft_error.c.i
+
+ft_error.s: ft_error.c.s
+
+.PHONY : ft_error.s
+
+# target to generate assembly for a file
+ft_error.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_error.c.s
+.PHONY : ft_error.c.s
+
 ft_pwd.o: ft_pwd.c.o
 
 .PHONY : ft_pwd.o
@@ -1316,6 +1343,9 @@ help:
 	@echo "... ft_env.o"
 	@echo "... ft_env.i"
 	@echo "... ft_env.s"
+	@echo "... ft_error.o"
+	@echo "... ft_error.i"
+	@echo "... ft_error.s"
 	@echo "... ft_pwd.o"
 	@echo "... ft_pwd.i"
 	@echo "... ft_pwd.s"
