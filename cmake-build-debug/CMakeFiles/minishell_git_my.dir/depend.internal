@@ -5,6 +5,8 @@ CMakeFiles/minishell_git_my.dir/ft_env.c.o
  ../libft/libft.h
  /Users/jheat/minishell_git_my/ft_env.c
  /Users/jheat/minishell_git_my/minishell.h
+CMakeFiles/minishell_git_my.dir/ft_error.c.o
+ /Users/jheat/minishell_git_my/ft_error.c
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o
  ../libft/libft.h
  /Users/jheat/minishell_git_my/ft_pwd.c

@@ -48,7 +48,8 @@ add_executable(minishell_git_my
         libft/ft_toupper.c
         libft/libft.h
         ft_env.c
+        ft_error.c
         ft_pwd.c
         main.c
         minishell.h
-        utils.c ft_error.c)
+        utils.c)

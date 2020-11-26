@@ -5,6 +5,8 @@ CMakeFiles/minishell_git_my.dir/ft_env.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/ft_env.c.o: ../ft_env.c
 CMakeFiles/minishell_git_my.dir/ft_env.c.o: ../minishell.h
 
+CMakeFiles/minishell_git_my.dir/ft_error.c.o: ../ft_error.c
+
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../ft_pwd.c
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../minishell.h
