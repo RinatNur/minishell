@@ -7,6 +7,10 @@ CMakeFiles/minishell_git_my.dir/ft_env.c.o
  /Users/jheat/minishell_git_my/minishell.h
 CMakeFiles/minishell_git_my.dir/ft_error.c.o
  /Users/jheat/minishell_git_my/ft_error.c
+CMakeFiles/minishell_git_my.dir/ft_find_path.c.o
+ ../libft/libft.h
+ /Users/jheat/minishell_git_my/ft_find_path.c
+ /Users/jheat/minishell_git_my/minishell.h
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o
  ../libft/libft.h
  /Users/jheat/minishell_git_my/ft_pwd.c
@@ -128,9 +132,17 @@ CMakeFiles/minishell_git_my.dir/libft/ft_tolower.c.o
 CMakeFiles/minishell_git_my.dir/libft/ft_toupper.c.o
  /Users/jheat/minishell_git_my/libft/ft_toupper.c
  /Users/jheat/minishell_git_my/libft/libft.h
+CMakeFiles/minishell_git_my.dir/lists_func.c.o
+ ../libft/libft.h
+ /Users/jheat/minishell_git_my/lists_func.c
+ /Users/jheat/minishell_git_my/minishell.h
 CMakeFiles/minishell_git_my.dir/main.c.o
  ../libft/libft.h
  /Users/jheat/minishell_git_my/main.c
+ /Users/jheat/minishell_git_my/minishell.h
+CMakeFiles/minishell_git_my.dir/make_env_list.c.o
+ ../libft/libft.h
+ /Users/jheat/minishell_git_my/make_env_list.c
  /Users/jheat/minishell_git_my/minishell.h
 CMakeFiles/minishell_git_my.dir/utils.c.o
  ../libft/libft.h

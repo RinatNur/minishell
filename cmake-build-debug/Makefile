@@ -197,6 +197,33 @@ ft_error.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_error.c.s
 .PHONY : ft_error.c.s
 
+ft_find_path.o: ft_find_path.c.o
+
+.PHONY : ft_find_path.o
+
+# target to build an object file
+ft_find_path.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_find_path.c.o
+.PHONY : ft_find_path.c.o
+
+ft_find_path.i: ft_find_path.c.i
+
+.PHONY : ft_find_path.i
+
+# target to preprocess a source file
+ft_find_path.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_find_path.c.i
+.PHONY : ft_find_path.c.i
+
+ft_find_path.s: ft_find_path.c.s
+
+.PHONY : ft_find_path.s
+
+# target to generate assembly for a file
+ft_find_path.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_find_path.c.s
+.PHONY : ft_find_path.c.s
+
 ft_pwd.o: ft_pwd.c.o
 
 .PHONY : ft_pwd.o
@@ -1277,6 +1304,33 @@ libft/ft_toupper.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/libft/ft_toupper.c.s
 .PHONY : libft/ft_toupper.c.s
 
+lists_func.o: lists_func.c.o
+
+.PHONY : lists_func.o
+
+# target to build an object file
+lists_func.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/lists_func.c.o
+.PHONY : lists_func.c.o
+
+lists_func.i: lists_func.c.i
+
+.PHONY : lists_func.i
+
+# target to preprocess a source file
+lists_func.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/lists_func.c.i
+.PHONY : lists_func.c.i
+
+lists_func.s: lists_func.c.s
+
+.PHONY : lists_func.s
+
+# target to generate assembly for a file
+lists_func.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/lists_func.c.s
+.PHONY : lists_func.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -1303,6 +1357,33 @@ main.s: main.c.s
 main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/main.c.s
 .PHONY : main.c.s
+
+make_env_list.o: make_env_list.c.o
+
+.PHONY : make_env_list.o
+
+# target to build an object file
+make_env_list.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/make_env_list.c.o
+.PHONY : make_env_list.c.o
+
+make_env_list.i: make_env_list.c.i
+
+.PHONY : make_env_list.i
+
+# target to preprocess a source file
+make_env_list.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/make_env_list.c.i
+.PHONY : make_env_list.c.i
+
+make_env_list.s: make_env_list.c.s
+
+.PHONY : make_env_list.s
+
+# target to generate assembly for a file
+make_env_list.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/make_env_list.c.s
+.PHONY : make_env_list.c.s
 
 utils.o: utils.c.o
 
@@ -1346,6 +1427,9 @@ help:
 	@echo "... ft_error.o"
 	@echo "... ft_error.i"
 	@echo "... ft_error.s"
+	@echo "... ft_find_path.o"
+	@echo "... ft_find_path.i"
+	@echo "... ft_find_path.s"
 	@echo "... ft_pwd.o"
 	@echo "... ft_pwd.i"
 	@echo "... ft_pwd.s"
@@ -1466,9 +1550,15 @@ help:
 	@echo "... libft/ft_toupper.o"
 	@echo "... libft/ft_toupper.i"
 	@echo "... libft/ft_toupper.s"
+	@echo "... lists_func.o"
+	@echo "... lists_func.i"
+	@echo "... lists_func.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... make_env_list.o"
+	@echo "... make_env_list.i"
+	@echo "... make_env_list.s"
 	@echo "... utils.o"
 	@echo "... utils.i"
 	@echo "... utils.s"

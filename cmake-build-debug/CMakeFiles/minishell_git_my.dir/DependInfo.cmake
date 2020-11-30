@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/jheat/minishell_git_my/ft_env.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_env.c.o"
   "/Users/jheat/minishell_git_my/ft_error.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_error.c.o"
+  "/Users/jheat/minishell_git_my/ft_find_path.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_find_path.c.o"
   "/Users/jheat/minishell_git_my/ft_pwd.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_pwd.c.o"
   "/Users/jheat/minishell_git_my/libft/ft_atoi.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/libft/ft_atoi.c.o"
   "/Users/jheat/minishell_git_my/libft/ft_bzero.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/libft/ft_bzero.c.o"
@@ -46,7 +47,9 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/jheat/minishell_git_my/libft/ft_substr.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/libft/ft_substr.c.o"
   "/Users/jheat/minishell_git_my/libft/ft_tolower.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/libft/ft_tolower.c.o"
   "/Users/jheat/minishell_git_my/libft/ft_toupper.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/libft/ft_toupper.c.o"
+  "/Users/jheat/minishell_git_my/lists_func.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/lists_func.c.o"
   "/Users/jheat/minishell_git_my/main.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/main.c.o"
+  "/Users/jheat/minishell_git_my/make_env_list.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/make_env_list.c.o"
   "/Users/jheat/minishell_git_my/utils.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/utils.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")

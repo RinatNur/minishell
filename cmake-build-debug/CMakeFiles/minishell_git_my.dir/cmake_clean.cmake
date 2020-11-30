@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/minishell_git_my.dir/ft_env.c.o"
   "CMakeFiles/minishell_git_my.dir/ft_error.c.o"
+  "CMakeFiles/minishell_git_my.dir/ft_find_path.c.o"
   "CMakeFiles/minishell_git_my.dir/ft_pwd.c.o"
   "CMakeFiles/minishell_git_my.dir/libft/ft_atoi.c.o"
   "CMakeFiles/minishell_git_my.dir/libft/ft_bzero.c.o"
@@ -41,7 +42,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/minishell_git_my.dir/libft/ft_substr.c.o"
   "CMakeFiles/minishell_git_my.dir/libft/ft_tolower.c.o"
   "CMakeFiles/minishell_git_my.dir/libft/ft_toupper.c.o"
+  "CMakeFiles/minishell_git_my.dir/lists_func.c.o"
   "CMakeFiles/minishell_git_my.dir/main.c.o"
+  "CMakeFiles/minishell_git_my.dir/make_env_list.c.o"
   "CMakeFiles/minishell_git_my.dir/utils.c.o"
   "minishell_git_my"
   "minishell_git_my.pdb"

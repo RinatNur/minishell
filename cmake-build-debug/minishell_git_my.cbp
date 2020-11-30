@@ -88,6 +88,9 @@
 		<Unit filename="/Users/jheat/minishell_git_my/ft_error.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
+		<Unit filename="/Users/jheat/minishell_git_my/ft_find_path.c">
+			<Option target="minishell_git_my"/>
+		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/ft_pwd.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
@@ -211,7 +214,13 @@
 		<Unit filename="/Users/jheat/minishell_git_my/libft/libft.h">
 			<Option target="minishell_git_my"/>
 		</Unit>
+		<Unit filename="/Users/jheat/minishell_git_my/lists_func.c">
+			<Option target="minishell_git_my"/>
+		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/main.c">
+			<Option target="minishell_git_my"/>
+		</Unit>
+		<Unit filename="/Users/jheat/minishell_git_my/make_env_list.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/minishell.h">

@@ -7,6 +7,10 @@ CMakeFiles/minishell_git_my.dir/ft_env.c.o: ../minishell.h
 
 CMakeFiles/minishell_git_my.dir/ft_error.c.o: ../ft_error.c
 
+CMakeFiles/minishell_git_my.dir/ft_find_path.c.o: ../libft/libft.h
+CMakeFiles/minishell_git_my.dir/ft_find_path.c.o: ../ft_find_path.c
+CMakeFiles/minishell_git_my.dir/ft_find_path.c.o: ../minishell.h
+
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../ft_pwd.c
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../minishell.h
@@ -128,9 +132,17 @@ CMakeFiles/minishell_git_my.dir/libft/ft_tolower.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/libft/ft_toupper.c.o: ../libft/ft_toupper.c
 CMakeFiles/minishell_git_my.dir/libft/ft_toupper.c.o: ../libft/libft.h
 
+CMakeFiles/minishell_git_my.dir/lists_func.c.o: ../libft/libft.h
+CMakeFiles/minishell_git_my.dir/lists_func.c.o: ../lists_func.c
+CMakeFiles/minishell_git_my.dir/lists_func.c.o: ../minishell.h
+
 CMakeFiles/minishell_git_my.dir/main.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/main.c.o: ../main.c
 CMakeFiles/minishell_git_my.dir/main.c.o: ../minishell.h
+
+CMakeFiles/minishell_git_my.dir/make_env_list.c.o: ../libft/libft.h
+CMakeFiles/minishell_git_my.dir/make_env_list.c.o: ../make_env_list.c
+CMakeFiles/minishell_git_my.dir/make_env_list.c.o: ../minishell.h
 
 CMakeFiles/minishell_git_my.dir/utils.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/utils.c.o: ../minishell.h

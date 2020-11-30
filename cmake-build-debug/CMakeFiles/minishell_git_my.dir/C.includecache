@@ -23,16 +23,18 @@ unistd.h
 -
 stdio.h
 -
+stdlib.h
+-
 sys/types.h
 -
 sys/wait.h
 -
 errno.h
 -
-stdlib.h
--
 fcntl.h
 -
 ./libft/libft.h
+-
+dirent.h
 -
 
