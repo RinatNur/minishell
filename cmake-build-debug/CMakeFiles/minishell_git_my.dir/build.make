@@ -688,6 +688,32 @@ CMakeFiles/minishell_git_my.dir/make_env_list.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell_git_my.dir/make_env_list.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jheat/minishell_git_my/make_env_list.c -o CMakeFiles/minishell_git_my.dir/make_env_list.c.s
 
+CMakeFiles/minishell_git_my.dir/ft_exec.c.o: CMakeFiles/minishell_git_my.dir/flags.make
+CMakeFiles/minishell_git_my.dir/ft_exec.c.o: ../ft_exec.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/minishell_git_my.dir/ft_exec.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell_git_my.dir/ft_exec.c.o   -c /Users/jheat/minishell_git_my/ft_exec.c
+
+CMakeFiles/minishell_git_my.dir/ft_exec.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/minishell_git_my.dir/ft_exec.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jheat/minishell_git_my/ft_exec.c > CMakeFiles/minishell_git_my.dir/ft_exec.c.i
+
+CMakeFiles/minishell_git_my.dir/ft_exec.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell_git_my.dir/ft_exec.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jheat/minishell_git_my/ft_exec.c -o CMakeFiles/minishell_git_my.dir/ft_exec.c.s
+
+CMakeFiles/minishell_git_my.dir/ft_write.c.o: CMakeFiles/minishell_git_my.dir/flags.make
+CMakeFiles/minishell_git_my.dir/ft_write.c.o: ../ft_write.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/minishell_git_my.dir/ft_write.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell_git_my.dir/ft_write.c.o   -c /Users/jheat/minishell_git_my/ft_write.c
+
+CMakeFiles/minishell_git_my.dir/ft_write.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/minishell_git_my.dir/ft_write.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jheat/minishell_git_my/ft_write.c > CMakeFiles/minishell_git_my.dir/ft_write.c.i
+
+CMakeFiles/minishell_git_my.dir/ft_write.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell_git_my.dir/ft_write.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jheat/minishell_git_my/ft_write.c -o CMakeFiles/minishell_git_my.dir/ft_write.c.s
+
 # Object files for target minishell_git_my
 minishell_git_my_OBJECTS = \
 "CMakeFiles/minishell_git_my.dir/libft/ft_atoi.c.o" \
@@ -736,7 +762,9 @@ minishell_git_my_OBJECTS = \
 "CMakeFiles/minishell_git_my.dir/utils.c.o" \
 "CMakeFiles/minishell_git_my.dir/ft_find_path.c.o" \
 "CMakeFiles/minishell_git_my.dir/lists_func.c.o" \
-"CMakeFiles/minishell_git_my.dir/make_env_list.c.o"
+"CMakeFiles/minishell_git_my.dir/make_env_list.c.o" \
+"CMakeFiles/minishell_git_my.dir/ft_exec.c.o" \
+"CMakeFiles/minishell_git_my.dir/ft_write.c.o"
 
 # External object files for target minishell_git_my
 minishell_git_my_EXTERNAL_OBJECTS =
@@ -788,9 +816,11 @@ minishell_git_my: CMakeFiles/minishell_git_my.dir/utils.c.o
 minishell_git_my: CMakeFiles/minishell_git_my.dir/ft_find_path.c.o
 minishell_git_my: CMakeFiles/minishell_git_my.dir/lists_func.c.o
 minishell_git_my: CMakeFiles/minishell_git_my.dir/make_env_list.c.o
+minishell_git_my: CMakeFiles/minishell_git_my.dir/ft_exec.c.o
+minishell_git_my: CMakeFiles/minishell_git_my.dir/ft_write.c.o
 minishell_git_my: CMakeFiles/minishell_git_my.dir/build.make
 minishell_git_my: CMakeFiles/minishell_git_my.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Linking C executable minishell_git_my"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Linking C executable minishell_git_my"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/minishell_git_my.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

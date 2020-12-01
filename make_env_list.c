@@ -1,13 +1,13 @@
 #include "minishell.h"
 
-char      **env_copy(const char **envp)
+char      **env_copy(t_data *data, const char **envp)
 {
     char    **env;
-    int     i = 0, size_of_env;
+    int     i = 0;
 
     while (envp[i])
         i++;
-    size_of_env = i;
+    data->env_len = i;
     env = (char **)malloc((i + 1) * sizeof(char **));
     i = 0;
     while (envp[i])
@@ -16,6 +16,7 @@ char      **env_copy(const char **envp)
         i++;
     }
     env[i] = NULL;
+    data->env = env;
     return (env);
 }
 
@@ -24,6 +25,7 @@ t_env_list      *make_env_list(t_data *data, const char **env)
     t_env_list      *list;
     char    **env_split;
     int     i = 0;
+
     list = NULL;
     while (env[i])
     {

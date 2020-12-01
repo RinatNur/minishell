@@ -6,8 +6,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/jheat/minishell_git_my/ft_env.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_env.c.o"
   "/Users/jheat/minishell_git_my/ft_error.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_error.c.o"
+  "/Users/jheat/minishell_git_my/ft_exec.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_exec.c.o"
   "/Users/jheat/minishell_git_my/ft_find_path.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_find_path.c.o"
   "/Users/jheat/minishell_git_my/ft_pwd.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_pwd.c.o"
+  "/Users/jheat/minishell_git_my/ft_write.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_write.c.o"
   "/Users/jheat/minishell_git_my/libft/ft_atoi.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/libft/ft_atoi.c.o"
   "/Users/jheat/minishell_git_my/libft/ft_bzero.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/libft/ft_bzero.c.o"
   "/Users/jheat/minishell_git_my/libft/ft_calloc.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/libft/ft_calloc.c.o"

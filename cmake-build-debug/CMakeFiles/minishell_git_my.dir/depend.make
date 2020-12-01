@@ -5,7 +5,13 @@ CMakeFiles/minishell_git_my.dir/ft_env.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/ft_env.c.o: ../ft_env.c
 CMakeFiles/minishell_git_my.dir/ft_env.c.o: ../minishell.h
 
+CMakeFiles/minishell_git_my.dir/ft_error.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/ft_error.c.o: ../ft_error.c
+CMakeFiles/minishell_git_my.dir/ft_error.c.o: ../minishell.h
+
+CMakeFiles/minishell_git_my.dir/ft_exec.c.o: ../libft/libft.h
+CMakeFiles/minishell_git_my.dir/ft_exec.c.o: ../ft_exec.c
+CMakeFiles/minishell_git_my.dir/ft_exec.c.o: ../minishell.h
 
 CMakeFiles/minishell_git_my.dir/ft_find_path.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/ft_find_path.c.o: ../ft_find_path.c
@@ -14,6 +20,10 @@ CMakeFiles/minishell_git_my.dir/ft_find_path.c.o: ../minishell.h
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../ft_pwd.c
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../minishell.h
+
+CMakeFiles/minishell_git_my.dir/ft_write.c.o: ../libft/libft.h
+CMakeFiles/minishell_git_my.dir/ft_write.c.o: ../ft_write.c
+CMakeFiles/minishell_git_my.dir/ft_write.c.o: ../minishell.h
 
 CMakeFiles/minishell_git_my.dir/libft/ft_atoi.c.o: ../libft/ft_atoi.c
 CMakeFiles/minishell_git_my.dir/libft/ft_atoi.c.o: ../libft/libft.h

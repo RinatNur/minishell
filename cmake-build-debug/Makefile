@@ -197,6 +197,33 @@ ft_error.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_error.c.s
 .PHONY : ft_error.c.s
 
+ft_exec.o: ft_exec.c.o
+
+.PHONY : ft_exec.o
+
+# target to build an object file
+ft_exec.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_exec.c.o
+.PHONY : ft_exec.c.o
+
+ft_exec.i: ft_exec.c.i
+
+.PHONY : ft_exec.i
+
+# target to preprocess a source file
+ft_exec.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_exec.c.i
+.PHONY : ft_exec.c.i
+
+ft_exec.s: ft_exec.c.s
+
+.PHONY : ft_exec.s
+
+# target to generate assembly for a file
+ft_exec.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_exec.c.s
+.PHONY : ft_exec.c.s
+
 ft_find_path.o: ft_find_path.c.o
 
 .PHONY : ft_find_path.o
@@ -250,6 +277,33 @@ ft_pwd.s: ft_pwd.c.s
 ft_pwd.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_pwd.c.s
 .PHONY : ft_pwd.c.s
+
+ft_write.o: ft_write.c.o
+
+.PHONY : ft_write.o
+
+# target to build an object file
+ft_write.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_write.c.o
+.PHONY : ft_write.c.o
+
+ft_write.i: ft_write.c.i
+
+.PHONY : ft_write.i
+
+# target to preprocess a source file
+ft_write.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_write.c.i
+.PHONY : ft_write.c.i
+
+ft_write.s: ft_write.c.s
+
+.PHONY : ft_write.s
+
+# target to generate assembly for a file
+ft_write.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_write.c.s
+.PHONY : ft_write.c.s
 
 libft/ft_atoi.o: libft/ft_atoi.c.o
 
@@ -1427,12 +1481,18 @@ help:
 	@echo "... ft_error.o"
 	@echo "... ft_error.i"
 	@echo "... ft_error.s"
+	@echo "... ft_exec.o"
+	@echo "... ft_exec.i"
+	@echo "... ft_exec.s"
 	@echo "... ft_find_path.o"
 	@echo "... ft_find_path.i"
 	@echo "... ft_find_path.s"
 	@echo "... ft_pwd.o"
 	@echo "... ft_pwd.i"
 	@echo "... ft_pwd.s"
+	@echo "... ft_write.o"
+	@echo "... ft_write.i"
+	@echo "... ft_write.s"
 	@echo "... libft/ft_atoi.o"
 	@echo "... libft/ft_atoi.i"
 	@echo "... libft/ft_atoi.s"

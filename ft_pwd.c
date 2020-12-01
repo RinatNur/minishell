@@ -7,7 +7,7 @@ char        *ft_pwd()
     dir = NULL;
     dir = getcwd(dir, 0);
     if (!dir)
-        return (1);
+        return (NULL);
     return (dir);
 //    int i = 0, len, j;
 
