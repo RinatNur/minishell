@@ -20,7 +20,7 @@ char      **env_copy(t_data *data, const char **envp)
     return (env);
 }
 
-t_env_list      *make_env_list(t_data *data, const char **env)
+void        make_env_list(t_data *data, const char **env)
 {
     t_env_list      *list;
     char    **env_split;
@@ -31,13 +31,10 @@ t_env_list      *make_env_list(t_data *data, const char **env)
     {
         env_split = ft_split(env[i], '=');
         ft_lstadd_back_dbl(&list, ft_lstnew_dbl(env_split[0], env_split[1]));
-        if (!ft_strncmp("PATH", env_split[0], 4))
-            data->env_path = env_split[1];
-        if (!ft_strncmp("PWD", env_split[0], 3))
-            data->env_pwd = env_split[1];
         free(env_split);
         i++;
     }
-    return (list);
+    data->env_list = list;
+//    return (list);
 }
 

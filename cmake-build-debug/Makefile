@@ -143,6 +143,33 @@ minishell_git_my/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/build
 .PHONY : minishell_git_my/fast
 
+ft_echo.o: ft_echo.c.o
+
+.PHONY : ft_echo.o
+
+# target to build an object file
+ft_echo.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_echo.c.o
+.PHONY : ft_echo.c.o
+
+ft_echo.i: ft_echo.c.i
+
+.PHONY : ft_echo.i
+
+# target to preprocess a source file
+ft_echo.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_echo.c.i
+.PHONY : ft_echo.c.i
+
+ft_echo.s: ft_echo.c.s
+
+.PHONY : ft_echo.s
+
+# target to generate assembly for a file
+ft_echo.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_echo.c.s
+.PHONY : ft_echo.c.s
+
 ft_env.o: ft_env.c.o
 
 .PHONY : ft_env.o
@@ -224,6 +251,33 @@ ft_exec.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_exec.c.s
 .PHONY : ft_exec.c.s
 
+ft_export.o: ft_export.c.o
+
+.PHONY : ft_export.o
+
+# target to build an object file
+ft_export.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_export.c.o
+.PHONY : ft_export.c.o
+
+ft_export.i: ft_export.c.i
+
+.PHONY : ft_export.i
+
+# target to preprocess a source file
+ft_export.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_export.c.i
+.PHONY : ft_export.c.i
+
+ft_export.s: ft_export.c.s
+
+.PHONY : ft_export.s
+
+# target to generate assembly for a file
+ft_export.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_export.c.s
+.PHONY : ft_export.c.s
+
 ft_find_path.o: ft_find_path.c.o
 
 .PHONY : ft_find_path.o
@@ -304,6 +358,33 @@ ft_write.s: ft_write.c.s
 ft_write.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_write.c.s
 .PHONY : ft_write.c.s
+
+get_value_from_env.o: get_value_from_env.c.o
+
+.PHONY : get_value_from_env.o
+
+# target to build an object file
+get_value_from_env.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/get_value_from_env.c.o
+.PHONY : get_value_from_env.c.o
+
+get_value_from_env.i: get_value_from_env.c.i
+
+.PHONY : get_value_from_env.i
+
+# target to preprocess a source file
+get_value_from_env.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/get_value_from_env.c.i
+.PHONY : get_value_from_env.c.i
+
+get_value_from_env.s: get_value_from_env.c.s
+
+.PHONY : get_value_from_env.s
+
+# target to generate assembly for a file
+get_value_from_env.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/get_value_from_env.c.s
+.PHONY : get_value_from_env.c.s
 
 libft/ft_atoi.o: libft/ft_atoi.c.o
 
@@ -1475,6 +1556,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... minishell_git_my"
+	@echo "... ft_echo.o"
+	@echo "... ft_echo.i"
+	@echo "... ft_echo.s"
 	@echo "... ft_env.o"
 	@echo "... ft_env.i"
 	@echo "... ft_env.s"
@@ -1484,6 +1568,9 @@ help:
 	@echo "... ft_exec.o"
 	@echo "... ft_exec.i"
 	@echo "... ft_exec.s"
+	@echo "... ft_export.o"
+	@echo "... ft_export.i"
+	@echo "... ft_export.s"
 	@echo "... ft_find_path.o"
 	@echo "... ft_find_path.i"
 	@echo "... ft_find_path.s"
@@ -1493,6 +1580,9 @@ help:
 	@echo "... ft_write.o"
 	@echo "... ft_write.i"
 	@echo "... ft_write.s"
+	@echo "... get_value_from_env.o"
+	@echo "... get_value_from_env.i"
+	@echo "... get_value_from_env.s"
 	@echo "... libft/ft_atoi.o"
 	@echo "... libft/ft_atoi.i"
 	@echo "... libft/ft_atoi.s"

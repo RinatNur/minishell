@@ -82,7 +82,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/jheat/minishell_git_my/ft_echo.cpp">
+		<Unit filename="/Users/jheat/minishell_git_my/ft_echo.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/ft_env.c">
@@ -94,6 +94,9 @@
 		<Unit filename="/Users/jheat/minishell_git_my/ft_exec.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
+		<Unit filename="/Users/jheat/minishell_git_my/ft_export.c">
+			<Option target="minishell_git_my"/>
+		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/ft_find_path.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
@@ -101,6 +104,9 @@
 			<Option target="minishell_git_my"/>
 		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/ft_write.c">
+			<Option target="minishell_git_my"/>
+		</Unit>
+		<Unit filename="/Users/jheat/minishell_git_my/get_value_from_env.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/libft/ft_atoi.c">

@@ -9,7 +9,7 @@ char    *ft_find_path(t_data *data, char *command)
     int     i = 0;
     int     flag = 0;
 
-    path_arr = ft_split(data->env_path, ':');
+    path_arr = ft_split(get_value_from_env(data, "PATH"), ':');
     while (path_arr[i])
     {
         dir = opendir(path_arr[i]);

@@ -4,9 +4,9 @@ void        check_command(t_data *data, char *command, char *path, char **arr, c
 {
     char    *output = NULL;
     if (!ft_strncmp("pwd", command, 4))
-        output = ft_pwd();
-//    else if (!ft_strncmp("echo", command, 5))
-//        output = ft_pwd();
+        ft_pwd();
+    else if (!ft_strncmp("echo", command, 5))
+        ft_echo(data);
 //    else if (!ft_strncmp("cd", command, 3))
 //        output = ft_pwd();
 //    else if (!ft_strncmp("export", command, 7))
@@ -19,7 +19,7 @@ void        check_command(t_data *data, char *command, char *path, char **arr, c
 //        output = ft_pwd();
     else
         ft_exec(data, path, arr, env);
-    printf("pwd = %s", output);
+//    printf("pwd = %s", output);
 }
 
 int    ft_exec(t_data *data, char *path, char **arr, char **env)

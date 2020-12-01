@@ -7,7 +7,7 @@ t_env_list        *ft_lstnew_dbl(void *key, void *content)
     if ((new_el = malloc(sizeof(t_env_list))))
     {
         new_el->key = key;
-        new_el->content = content;
+        new_el->value = content;
         new_el->next = NULL;
         new_el->prev = NULL;
         return (new_el);
@@ -46,10 +46,10 @@ void        print_list_from_front(t_env_list *list)
 {
     while (NULL != list->next)
     {
-        printf("key = %s  cont = %s\n", (char *)list->key, (char *)list->content);
+        printf("key = %s  cont = %s\n", (char *)list->key, (char *)list->value);
         list = list->next;
         if(NULL == list->next)
-            printf("key = %s  cont = %s\n", (char *)list->key, (char *)list->content);
+            printf("key = %s  cont = %s\n", (char *)list->key, (char *)list->value);
     }
 }
 
@@ -59,9 +59,9 @@ void            print_list_from_back(t_env_list *list)
         list = list->next;
     while (NULL != list->prev)
     {
-        printf("key = %s  cont = %s\n", (char *)list->key, (char *)list->content);
+        printf("key = %s  cont = %s\n", (char *)list->key, (char *)list->value);
         list = list->prev;
         if(NULL == list->prev)
-            printf("key = %s  cont = %s\n", (char *)list->key, (char *)list->content);
+            printf("key = %s  cont = %s\n", (char *)list->key, (char *)list->value);
     }
 }
