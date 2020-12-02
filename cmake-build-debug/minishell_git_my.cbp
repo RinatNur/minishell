@@ -103,6 +103,9 @@
 		<Unit filename="/Users/jheat/minishell_git_my/ft_pwd.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
+		<Unit filename="/Users/jheat/minishell_git_my/ft_unset.c">
+			<Option target="minishell_git_my"/>
+		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/ft_write.c">
 			<Option target="minishell_git_my"/>
 		</Unit>

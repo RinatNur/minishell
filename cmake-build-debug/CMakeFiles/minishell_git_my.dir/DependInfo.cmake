@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/jheat/minishell_git_my/ft_export.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_export.c.o"
   "/Users/jheat/minishell_git_my/ft_find_path.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_find_path.c.o"
   "/Users/jheat/minishell_git_my/ft_pwd.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_pwd.c.o"
+  "/Users/jheat/minishell_git_my/ft_unset.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_unset.c.o"
   "/Users/jheat/minishell_git_my/ft_write.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_write.c.o"
   "/Users/jheat/minishell_git_my/get_value_from_env.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/get_value_from_env.c.o"
   "/Users/jheat/minishell_git_my/libft/ft_atoi.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/libft/ft_atoi.c.o"

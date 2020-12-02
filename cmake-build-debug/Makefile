@@ -332,6 +332,33 @@ ft_pwd.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_pwd.c.s
 .PHONY : ft_pwd.c.s
 
+ft_unset.o: ft_unset.c.o
+
+.PHONY : ft_unset.o
+
+# target to build an object file
+ft_unset.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_unset.c.o
+.PHONY : ft_unset.c.o
+
+ft_unset.i: ft_unset.c.i
+
+.PHONY : ft_unset.i
+
+# target to preprocess a source file
+ft_unset.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_unset.c.i
+.PHONY : ft_unset.c.i
+
+ft_unset.s: ft_unset.c.s
+
+.PHONY : ft_unset.s
+
+# target to generate assembly for a file
+ft_unset.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_unset.c.s
+.PHONY : ft_unset.c.s
+
 ft_write.o: ft_write.c.o
 
 .PHONY : ft_write.o
@@ -1577,6 +1604,9 @@ help:
 	@echo "... ft_pwd.o"
 	@echo "... ft_pwd.i"
 	@echo "... ft_pwd.s"
+	@echo "... ft_unset.o"
+	@echo "... ft_unset.i"
+	@echo "... ft_unset.s"
 	@echo "... ft_write.o"
 	@echo "... ft_write.i"
 	@echo "... ft_write.s"

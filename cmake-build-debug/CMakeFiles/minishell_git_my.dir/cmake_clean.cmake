@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/minishell_git_my.dir/ft_export.c.o"
   "CMakeFiles/minishell_git_my.dir/ft_find_path.c.o"
   "CMakeFiles/minishell_git_my.dir/ft_pwd.c.o"
+  "CMakeFiles/minishell_git_my.dir/ft_unset.c.o"
   "CMakeFiles/minishell_git_my.dir/ft_write.c.o"
   "CMakeFiles/minishell_git_my.dir/get_value_from_env.c.o"
   "CMakeFiles/minishell_git_my.dir/libft/ft_atoi.c.o"

@@ -4,18 +4,21 @@ char      **env_copy(t_data *data, const char **envp)
 {
     char    **env;
     int     i = 0;
-
+    int     len_str;
     while (envp[i])
         i++;
     data->env_len = i;
-    env = (char **)malloc((i + 1) * sizeof(char **));
+    env = malloc((i + 1) * sizeof(char *));
+    env[i] = NULL;
     i = 0;
     while (envp[i])
     {
-        env[i] = envp[i];
+        len_str = ft_strlen(envp[i]);
+        env[i] = malloc(len_str + 1);
+        env[i][len_str] = '\0';
+        env[i] = (char *)envp[i];
         i++;
     }
-    env[i] = NULL;
     data->env = env;
     return (env);
 }
