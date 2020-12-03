@@ -143,6 +143,33 @@ minishell_git_my/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/build
 .PHONY : minishell_git_my/fast
 
+ft_cd.o: ft_cd.c.o
+
+.PHONY : ft_cd.o
+
+# target to build an object file
+ft_cd.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_cd.c.o
+.PHONY : ft_cd.c.o
+
+ft_cd.i: ft_cd.c.i
+
+.PHONY : ft_cd.i
+
+# target to preprocess a source file
+ft_cd.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_cd.c.i
+.PHONY : ft_cd.c.i
+
+ft_cd.s: ft_cd.c.s
+
+.PHONY : ft_cd.s
+
+# target to generate assembly for a file
+ft_cd.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_cd.c.s
+.PHONY : ft_cd.c.s
+
 ft_echo.o: ft_echo.c.o
 
 .PHONY : ft_echo.o
@@ -1583,6 +1610,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... minishell_git_my"
+	@echo "... ft_cd.o"
+	@echo "... ft_cd.i"
+	@echo "... ft_cd.s"
 	@echo "... ft_echo.o"
 	@echo "... ft_echo.i"
 	@echo "... ft_echo.s"

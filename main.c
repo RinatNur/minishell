@@ -3,17 +3,19 @@
 
 int     main(int ac, char **av, char **envp) {
     t_data      data;
-    t_env_list  *list;
-    t_env_list  *sort_l;
-    t_sort_env  sort_env;
-    char        *pwd;
-    int         pid;
-    int         size_of_env;
-    char        **env;
-    int         i = 0, j;
-    char        *path;
-    char        *command = "export";
-    char*        arr[] = { command, "test", "ok",  NULL };
+	t_env_list  *list;
+	t_env_list  *sort_l;
+	t_sort_env  sort_env;
+	char		*pwd;
+	int			pid;
+	int			size_of_env;
+	char		**env;
+	int			i = 0, j;
+	char		*path;
+	char		*command = "export";
+	char*		arr[] = { command, "test", "ok",  NULL };
+
+
 
     list = NULL;
     data.ar = arr;

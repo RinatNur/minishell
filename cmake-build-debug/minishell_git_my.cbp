@@ -82,6 +82,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/jheat/minishell_git_my/ft_cd.c">
+			<Option target="minishell_git_my"/>
+		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/ft_echo.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
