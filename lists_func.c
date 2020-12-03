@@ -61,52 +61,50 @@ t_env_list      *cut_list(t_data *data)
     t_env_list      *tmp;
 
     list = data->env_list;
+    size_t len = ft_strlen(data->cmd) + 1;
     while (list->next)
     {
-        if (!ft_strncmp(data->cmd, list->key, (ft_strlen(data->cmd) + 1)))
+        if (!ft_strncmp(data->cmd, list->key, len))
         {
-            if (list->next == NULL)
-            {
-                list = list->prev;
-                list->next = NULL;
-            }
-            else if (list->prev == NULL)
+            if (list->prev == NULL)
             {
                 list = list->next;
                 list->prev = NULL;
             }
-            else
+            else if (list->next != NULL)
             {
                 tmp = list->prev;
                 list = list->next;
                 list->prev = tmp;
+                tmp->next = list;
             }
         }
+
         list = list->next;
     }
+    if (!ft_strncmp(data->cmd, list->key, len))
+        if (list->next == NULL)
+        {
+            list = list->prev;
+            list->next = NULL;
+        }
+//    list = list->prev;
+//    printf("%s\t%s", list->key, list->value);
 //    print_list_from_back(list);
     return (list);
 }
 
-void        print_list_from_front(t_env_list *list)
+void            print_list(t_env_list *list)
 {
     int     i = 0;
+
+    if (list && list->next == NULL)
+        while (list->prev)
+            list = list->prev;
+
     while (NULL != list)
     {
         printf("%d. %s=%s\n", i++, (char *)list->key, (char *)list->value);
         list = list->next;
-//        i++;
-    }
-}
-
-void            print_list_from_back(t_env_list *list)
-{
-    if (list->prev == NULL)
-        while (NULL != list)
-            list = list->next;
-    while (NULL != list)
-    {
-        printf("key = %s  cont = %s\n", (char *)list->key, (char *)list->value);
-        list = list->prev;
     }
 }

@@ -29,6 +29,10 @@ CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../ft_pwd.c
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../minishell.h
 
+CMakeFiles/minishell_git_my.dir/ft_unset.c.o: ../libft/libft.h
+CMakeFiles/minishell_git_my.dir/ft_unset.c.o: ../ft_unset.c
+CMakeFiles/minishell_git_my.dir/ft_unset.c.o: ../minishell.h
+
 CMakeFiles/minishell_git_my.dir/ft_write.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/ft_write.c.o: ../ft_write.c
 CMakeFiles/minishell_git_my.dir/ft_write.c.o: ../minishell.h

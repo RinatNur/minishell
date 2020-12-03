@@ -43,8 +43,7 @@ void            ft_env(t_data *data);
 char            *ft_find_path(t_data *data, char *command);
 t_env_list      *ft_lstnew_dbl(void *key, void *content);
 void            ft_lstadd_back_dbl(t_env_list **lst, t_env_list *new);
-void            print_list_from_front(t_env_list *list);
-void            print_list_from_back(t_env_list *list);
+void            print_list(t_env_list *list);
 
 void            make_env_list(t_data *data, const char **env);
 char            **env_copy(t_data *data, const char **envp);
