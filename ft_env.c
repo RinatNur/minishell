@@ -3,14 +3,19 @@
 void    ft_env(t_data *data)
 {
     int i = 0;
-    char    **env = data->env;
+    t_env_list      *env = data->env_list;
 
-    while (i < data->env_len)
+    while (env)
     {
-        write(1, env[i], ft_strlen(env[i]));
-        if (i < (data->env_len - 1))
+        if(env->value)
+        {
+            ft_write(1, env->key);
+            ft_write(1, "=");
+            ft_write(1, env->value);
+        }
+        if (env->next)
             write(1, "\n", 1);
-        i++;
+        env = env->next;
     }
 }
 

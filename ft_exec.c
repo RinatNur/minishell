@@ -1,24 +1,24 @@
 #include "minishell.h"
 
-void        check_command(t_data *data, char *command,  char **env)
+void        check_command(t_data *data, char *ar,  char **env)
 {
     char    *output = NULL;
-    if (!ft_strncmp("pwd", command, 4))
+    if (!ft_strncmp("pwd", data->ar[0], 4))
         ft_pwd();
-    else if (!ft_strncmp("echo", command, 5))
+    else if (!ft_strncmp("echo", data->ar[0], 5))
         ft_echo(data);
-//    else if (!ft_strncmp("cd", command, 3))
+//    else if (!ft_strncmp("cd", data->ar[0], 3))
 //        output = ft_pwd();
-    else if (!ft_strncmp("export", command, 7))
+    else if (!ft_strncmp("export", data->ar[0], 7))
         ft_export(data);
-//    else if (!ft_strncmp("unset", command, 6))
-//        output = ft_pwd();
-    else if (!ft_strncmp("env", command, 4))
+    else if (!ft_strncmp("unset", data->ar[0], 6))
+        ft_unset(data, ar);
+    else if (!ft_strncmp("env", data->ar[0], 4))
         ft_env(data);
-//    else if (!ft_strncmp("exit", command, 5))
+//    else if (!ft_strncmp("exit", data->ar[0], 5))
 //        output = ft_pwd();
 //    else
-//        ft_exec(data, path, arr, env);
+//        ft_exec(data, path, data->ar[0]r, env);
 //    printf("pwd = %s", output);
 }
 

@@ -56,6 +56,6 @@ char            *get_value_from_env(t_data *data, char *key);
 t_env_list		*sort_env_list(t_sort_env *data);
 void            ft_export(t_data *data);
 t_env_list      *copy_list(t_env_list *list);
-void            ft_unset(t_data *data);
-t_env_list      *cut_list(t_data *data);
+void    ft_unset(t_data *data, char *ar);
+t_env_list      *cut_list(t_data *data, char *ar);
 #endif

@@ -55,16 +55,16 @@ t_env_list      *copy_list(t_env_list *list)
     return (tmp);
 }
 
-t_env_list      *cut_list(t_data *data)
+t_env_list      *cut_list(t_data *data, char *ar)
 {
     t_env_list      *list;
     t_env_list      *tmp;
 
     list = data->env_list;
-    size_t len = ft_strlen(data->cmd) + 1;
+    size_t len = ft_strlen(ar) + 1;
     while (list->next)
     {
-        if (!ft_strncmp(data->cmd, list->key, len))
+        if (!ft_strncmp(ar, list->key, len))
         {
             if (list->prev == NULL)
             {
@@ -82,7 +82,7 @@ t_env_list      *cut_list(t_data *data)
 
         list = list->next;
     }
-    if (!ft_strncmp(data->cmd, list->key, len))
+    if (!ft_strncmp(ar, list->key, len))
         if (list->next == NULL)
         {
             list = list->prev;
