@@ -30,10 +30,7 @@ typedef struct            s_sort_env {
 
 typedef struct      s_data {
     t_env_list          *env_list;
-    char                **env;
     char                **ar;
-    char                *cmd;
-    int                 env_len;
 }                   t_data;
 
 
@@ -47,8 +44,8 @@ void            print_list(t_env_list *list);
 
 void            make_env_list(t_data *data, const char **env);
 char            **env_copy(t_data *data, const char **envp);
-int             ft_exec(t_data *data, char *path, char **arr, char **env);
-void            check_command(t_data *data, char *command,  char **env);
+int				ft_exec(t_data *data);
+void            check_command(t_data *data);
 void            ft_error(char *str, int code);
 ssize_t         ft_write(int fd, const void *buf);
 void            ft_echo(t_data *data);
@@ -58,4 +55,8 @@ void            ft_export(t_data *data);
 t_env_list      *copy_list(t_env_list *list);
 void    ft_unset(t_data *data, char *ar);
 t_env_list      *cut_list(t_data *data, char *ar);
+void			ft_cd(t_data *data);
+void			ft_exit();
+int 			ft_lstsize_dbl(t_env_list *lst);
+char			**list_to_mas_ref(t_data *data);
 #endif

@@ -32,14 +32,17 @@ void        ft_lstadd_back_dbl(t_env_list **lst, t_env_list *new)
     }
 }
 
-void		ft_lstadd_front_dbl(t_list **lst, t_list *new)
+int 			ft_lstsize_dbl(t_env_list *lst)
 {
-//    if (lst && new)
-//    {
-//        new->next = *lst;
-//        *lst = new;
-//        *lst->prev = new;
-//    }
+	int		n;
+
+	n = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		n++;
+	}
+	return (n);
 }
 
 t_env_list      *copy_list(t_env_list *list)

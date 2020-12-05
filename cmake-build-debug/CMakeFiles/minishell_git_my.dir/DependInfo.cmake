@@ -4,10 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/Users/jheat/minishell_git_my/ft_cd.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_cd.c.o"
   "/Users/jheat/minishell_git_my/ft_echo.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_echo.c.o"
   "/Users/jheat/minishell_git_my/ft_env.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_env.c.o"
   "/Users/jheat/minishell_git_my/ft_error.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_error.c.o"
   "/Users/jheat/minishell_git_my/ft_exec.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_exec.c.o"
+  "/Users/jheat/minishell_git_my/ft_exit.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_exit.c.o"
   "/Users/jheat/minishell_git_my/ft_export.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_export.c.o"
   "/Users/jheat/minishell_git_my/ft_find_path.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_find_path.c.o"
   "/Users/jheat/minishell_git_my/ft_pwd.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_pwd.c.o"

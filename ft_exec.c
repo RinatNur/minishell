@@ -1,44 +1,56 @@
 #include "minishell.h"
 
-void        check_command(t_data *data, char *ar,  char **env)
+void        check_command(t_data *data)
 {
     char    *output = NULL;
     if (!ft_strncmp("pwd", data->ar[0], 4))
         ft_pwd();
     else if (!ft_strncmp("echo", data->ar[0], 5))
         ft_echo(data);
-//    else if (!ft_strncmp("cd", data->ar[0], 3))
-//        output = ft_pwd();
+    else if (!ft_strncmp("cd", data->ar[0], 3))
+        ft_cd(data);
     else if (!ft_strncmp("export", data->ar[0], 7))
         ft_export(data);
     else if (!ft_strncmp("unset", data->ar[0], 6))
-        ft_unset(data, ar);
+        ft_unset(data, data->ar);
     else if (!ft_strncmp("env", data->ar[0], 4))
         ft_env(data);
-//    else if (!ft_strncmp("exit", data->ar[0], 5))
-//        output = ft_pwd();
-//    else
-//        ft_exec(data, path, data->ar[0]r, env);
-//    printf("pwd = %s", output);
+    else if (!ft_strncmp("exit", data->ar[0], 5))
+        ft_exit(data);
+    else
+        ft_exec(data);
 }
 
-int    ft_exec(t_data *data, char *path, char **arr, char **env)
+char 	**list_to_mas_ref(t_data *data)
+{
+	t_env_list		*list;
+	char 			**env;
+	int 			i = 0;
+
+	list = data->env_list;
+	env = malloc(sizeof(char *) * (ft_lstsize_dbl(list) + 1));
+	while (list)
+	{
+		env[i] = ft_strjoin(list->key, ft_strjoin("=", list->value));
+		i++;
+		list = list->next;
+	}
+	return (env);
+}
+
+int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 {
     int     pid, err;
+    char 	**env;
 
+    env = list_to_mas_ref(data);
     pid = fork();
     if (pid == -1)
         return (1);
-
-//    int file = open("../test.c", O_WRONLY | O_CREAT, 0777);
-//    dup2(file, STDOUT_FILENO);
-//    printf("%s", pwd);
-//    ft_env(env_copy, size_of_env);
-
-//    execve in child process test
     if(pid == 0)
     {
-        err = execve(path, arr, env);
+//    	write(1, "hello", 5);
+        err = execve(ft_find_path(data, data->ar[0]), data->ar, env);
         if (err == -1)
         {
             printf("FAILURE\n");
@@ -46,18 +58,18 @@ int    ft_exec(t_data *data, char *path, char **arr, char **env)
         }
 
     }
-    else
-    {
-        int     wait_status = 0;
-        wait (&wait_status);
-        if (WIFEXITED(wait_status))
-        {
-            int status_code = WEXITSTATUS(wait_status);
-            if (status_code == 0)
-                printf("sucess");
-            else
-                printf("failure with the status code %d\n", status_code);
-        }
-     }
+//    else
+//    {
+//        int     wait_status = 0;
+//        wait (&wait_status);
+//        if (WIFEXITED(wait_status))
+//        {
+//            int status_code = WEXITSTATUS(wait_status);
+//            if (status_code == 0)
+//                printf("sucess");
+//            else
+//                printf("failure with the status code %d\n", status_code);
+//        }
+//     }
     return (0);
 }

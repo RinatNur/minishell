@@ -7,7 +7,6 @@ char      **env_copy(t_data *data, const char **envp)
     int     len_str;
     while (envp[i])
         i++;
-    data->env_len = i;
     env = malloc((i + 1) * sizeof(char *));
     env[i] = NULL;
     i = 0;
@@ -19,7 +18,7 @@ char      **env_copy(t_data *data, const char **envp)
         env[i] = (char *)envp[i];
         i++;
     }
-    data->env = env;
+//    data->env = env;
     return (env);
 }
 

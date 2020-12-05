@@ -278,6 +278,33 @@ ft_exec.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_exec.c.s
 .PHONY : ft_exec.c.s
 
+ft_exit.o: ft_exit.c.o
+
+.PHONY : ft_exit.o
+
+# target to build an object file
+ft_exit.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_exit.c.o
+.PHONY : ft_exit.c.o
+
+ft_exit.i: ft_exit.c.i
+
+.PHONY : ft_exit.i
+
+# target to preprocess a source file
+ft_exit.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_exit.c.i
+.PHONY : ft_exit.c.i
+
+ft_exit.s: ft_exit.c.s
+
+.PHONY : ft_exit.s
+
+# target to generate assembly for a file
+ft_exit.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_exit.c.s
+.PHONY : ft_exit.c.s
+
 ft_export.o: ft_export.c.o
 
 .PHONY : ft_export.o
@@ -1625,6 +1652,9 @@ help:
 	@echo "... ft_exec.o"
 	@echo "... ft_exec.i"
 	@echo "... ft_exec.s"
+	@echo "... ft_exit.o"
+	@echo "... ft_exit.i"
+	@echo "... ft_exit.s"
 	@echo "... ft_export.o"
 	@echo "... ft_export.i"
 	@echo "... ft_export.s"

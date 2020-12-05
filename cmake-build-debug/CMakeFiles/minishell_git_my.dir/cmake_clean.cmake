@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/minishell_git_my.dir/ft_cd.c.o"
   "CMakeFiles/minishell_git_my.dir/ft_echo.c.o"
   "CMakeFiles/minishell_git_my.dir/ft_env.c.o"
   "CMakeFiles/minishell_git_my.dir/ft_error.c.o"
   "CMakeFiles/minishell_git_my.dir/ft_exec.c.o"
+  "CMakeFiles/minishell_git_my.dir/ft_exit.c.o"
   "CMakeFiles/minishell_git_my.dir/ft_export.c.o"
   "CMakeFiles/minishell_git_my.dir/ft_find_path.c.o"
   "CMakeFiles/minishell_git_my.dir/ft_pwd.c.o"

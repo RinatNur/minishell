@@ -97,6 +97,9 @@
 		<Unit filename="/Users/jheat/minishell_git_my/ft_exec.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
+		<Unit filename="/Users/jheat/minishell_git_my/ft_exit.c">
+			<Option target="minishell_git_my"/>
+		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/ft_export.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
