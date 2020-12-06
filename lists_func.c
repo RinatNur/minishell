@@ -1,67 +1,22 @@
 #include "minishell.h"
 
-t_env_list        *ft_lstnew_dbl(void *key, void *content)
+t_list      *copy_list(t_list *list)
 {
-    t_env_list    *new_el;
-
-    if ((new_el = malloc(sizeof(t_env_list))))
-    {
-        new_el->key = key;
-        new_el->value = content;
-        new_el->next = NULL;
-        new_el->prev = NULL;
-        return (new_el);
-    }
-    return (NULL);
-}
-
-void        ft_lstadd_back_dbl(t_env_list **lst, t_env_list *new)
-{
-    t_env_list        *last;
-
-    last = *lst;
-    if (!last)
-        *lst = new;
-    else if (*lst && new)
-    {
-        while (last->next != NULL)
-            last = last->next;
-        last->next = new;
-        new->prev = last;
-        new->next = NULL;
-    }
-}
-
-int 			ft_lstsize_dbl(t_env_list *lst)
-{
-	int		n;
-
-	n = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		n++;
-	}
-	return (n);
-}
-
-t_env_list      *copy_list(t_env_list *list)
-{
-    t_env_list      *tmp;
+    t_list      *tmp;
 
     tmp = NULL;
     while (list)
     {
-        ft_lstadd_back_dbl(&tmp, ft_lstnew_dbl(list->key, list->value));
+        ft_lstadd_back(&tmp, ft_lstnew(list->key, list->value));
         list = list->next;
     }
     return (tmp);
 }
 
-t_env_list      *cut_list(t_data *data, char *ar)
+t_list      *cut_list(t_data *data, char *ar)
 {
-    t_env_list      *list;
-    t_env_list      *tmp;
+    t_list      *list;
+    t_list      *tmp;
 
     list = data->env_list;
     size_t len = ft_strlen(ar) + 1;
@@ -80,9 +35,9 @@ t_env_list      *cut_list(t_data *data, char *ar)
                 list = list->next;
                 list->prev = tmp;
                 tmp->next = list;
+				break ;
             }
         }
-
         list = list->next;
     }
     if (!ft_strncmp(ar, list->key, len))
@@ -91,13 +46,10 @@ t_env_list      *cut_list(t_data *data, char *ar)
             list = list->prev;
             list->next = NULL;
         }
-//    list = list->prev;
-//    printf("%s\t%s", list->key, list->value);
-//    print_list_from_back(list);
     return (list);
 }
 
-void            print_list(t_env_list *list)
+void            print_list(t_list *list)
 {
     int     i = 0;
 

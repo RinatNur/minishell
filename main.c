@@ -3,8 +3,8 @@
 
 int     main(int ac, char **av, char **envp) {
     t_data      data;
-	t_env_list  *list;
-	t_env_list  *sort_l;
+	t_list  	*list;
+	t_list  	*sort_l;
 	t_sort_env  sort_env;
 	char		*pwd;
 	int			pid;
@@ -14,7 +14,7 @@ int     main(int ac, char **av, char **envp) {
 	int			i = 0, j;
 	char		*path;
 	char		*command = "export";
-	char*		arr[] = { command, "a", "123", NULL };
+	char*		arr[] = { command, "a", "123", "b", "456", NULL };
 
 
 
@@ -42,11 +42,14 @@ int     main(int ac, char **av, char **envp) {
 //    data.ar[1] = NULL;
 //    check_command(&data);
 //
-//    command = "unset";
-//    data.ar[0] = command;
-//    data.ar[1] = "test";
-//    data.ar[2] = NULL;
-//    check_command(&data, data.ar[1], env);
+    command = "unset";
+    data.ar[0] = command;
+    data.ar[1] = "a";
+    data.ar[2] = "b";
+    data.ar[3] = NULL;
+    check_command(&data);
+	print_list(data.env_list);
+
 //
 //    write(1, "\n\n\n", 3);
 //    command = "export";

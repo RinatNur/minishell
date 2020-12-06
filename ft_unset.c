@@ -1,21 +1,25 @@
 #include "minishell.h"
 
-void    ft_unset(t_data *data, char *ar)
+void    ft_unset(t_data *data)
 {
-    t_env_list      *list;
-    int             i = 0;
+    t_list      *list;
+    int             i = 1;
     size_t          len;
 
     list = data->env_list;
-    len = ft_strlen(ar) + 1;
-    while (list)
-    {
-        if (!ft_strncmp(ar, list->key, len))
-        {
-            cut_list(data, ar);
-            break ;
-        }
-        list = list->next;
-    }
+    while(data->ar[i])
+	{
+    	len = ft_strlen(data->ar[i]) + 1;
+		while (list)
+		{
+			if (!ft_strncmp(data->ar[i], list->key, len))
+			{
+				cut_list(data, data->ar[i]);
+				break ;
+			}
+			list = list->next;
+		}
+		i++;
+	}
 }
 

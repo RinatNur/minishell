@@ -24,7 +24,7 @@ char      **env_copy(t_data *data, const char **envp)
 
 void        make_env_list(t_data *data, const char **env)
 {
-    t_env_list      *list;
+    t_list      *list;
     char    **env_split;
     int     i = 0;
 
@@ -32,7 +32,7 @@ void        make_env_list(t_data *data, const char **env)
     while (env[i])
     {
         env_split = ft_split(env[i], '=');
-        ft_lstadd_back_dbl(&list, ft_lstnew_dbl(env_split[0], env_split[1]));
+        ft_lstadd_back(&list, ft_lstnew(env_split[0], env_split[1]));
         free(env_split);
         i++;
     }

@@ -1,8 +1,8 @@
 #include "minishell.h"
 
-t_env_list		*sort_env_list(t_sort_env *data)
+t_list		*sort_env_list(t_sort_env *data)
 {
-//    t_env_list *ph = th;
+//    t_list *ph = th;
     data->out = NULL;
     while (data->ph)
     {
@@ -33,7 +33,7 @@ t_env_list		*sort_env_list(t_sort_env *data)
 void    ft_export(t_data *data)
 {
     t_sort_env  sort_env;
-    t_env_list  *sort_l;
+    t_list  *sort_l;
     char        *ar_key;
     char        *ar_val;
     int         i = 1;
@@ -63,9 +63,9 @@ void    ft_export(t_data *data)
         while (data->ar[i])
         {
             if ((i % 2) != 0 && (!ft_strncmp("0", data->ar[i], 1))) //if odd value of arr = 0 -> key = NULL
-                ft_lstadd_back_dbl(&data->env_list, ft_lstnew_dbl(data->ar[i + 1], NULL));
+                ft_lstadd_back(&data->env_list, ft_lstnew(data->ar[i + 1], NULL));
             else
-                ft_lstadd_back_dbl(&data->env_list, ft_lstnew_dbl(data->ar[i], data->ar[i + 1]));
+                ft_lstadd_back(&data->env_list, ft_lstnew(data->ar[i], data->ar[i + 1]));
             i += 2;
         }
     }

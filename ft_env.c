@@ -3,7 +3,7 @@
 void    ft_env(t_data *data)
 {
     int i = 0;
-    t_env_list      *env = data->env_list;
+    t_list      *env = data->env_list;
 
     while (env)
     {
