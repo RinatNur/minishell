@@ -53,6 +53,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/minishell_git_my.dir/lists_func.c.o"
   "CMakeFiles/minishell_git_my.dir/main.c.o"
   "CMakeFiles/minishell_git_my.dir/make_env_list.c.o"
+  "CMakeFiles/minishell_git_my.dir/pipe.c.o"
   "CMakeFiles/minishell_git_my.dir/utils.c.o"
   "minishell_git_my"
   "minishell_git_my.pdb"

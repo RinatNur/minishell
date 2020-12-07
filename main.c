@@ -5,23 +5,49 @@ int     main(int ac, char **av, char **envp) {
     t_data      data;
 	t_list  	*list;
 	t_list  	*sort_l;
-	t_sort_env  sort_env;
-	char		*pwd;
-	int			pid;
-	int			size_of_env;
-	char		**env_start;
-	char		**env = NULL;
-	int			i = 0, j;
-	char		*path;
-	char		*command = "export";
-	char*		arr[] = { command, "a", "123", "b", "456", NULL };
+	char		*command = "ls";
+	char*		arr[] = { command, NULL, NULL };
 
-
+//	data.conv = ft_ls
 
     list = NULL;
     data.ar = arr;
-//    env_start = env_copy(&data, (const char **)envp);
     make_env_list(&data, (const char **)envp);
+//    check_command(&data);
+
+    int		fd[2];
+    int		pid1, pid2;
+
+    pipe(fd);
+    pid1 = fork();
+
+    if (pid1 == 0)
+	{
+    	dup2(fd[1], STDOUT_FILENO);
+    	close(fd[0]);
+    	close(fd[1]);
+		check_command(&data);
+	}
+
+    pid2 = fork();
+    write (1, "hello", 5);
+	if (pid2 == 0)
+	{
+		command = "cat";
+		data.ar[0] = command;
+		data.ar[1] = "-e";
+		dup2(fd[0], STDIN_FILENO);
+		close(fd[1]);
+		close(fd[0]);
+		check_command(&data);
+	}
+////
+//    waitpid(pid1, NULL, 0);
+//    waitpid(pid2, NULL, 0);
+//	close(fd[0]);
+//	close(fd[1]);
+
+
 //    print_list(data.env_list);
 //    while (env[i])
 //	{
@@ -34,21 +60,21 @@ int     main(int ac, char **av, char **envp) {
 //    	write(1, "\n", 1);
 //    	i++;
 //	}
-    check_command(&data);
-	print_list(data.env_list);
+//	print_list(data.env_list);
 
-//    command = "pwd";
+//    command = "export";
 //    data.ar[0] = command;
 //    data.ar[1] = NULL;
 //    check_command(&data);
-//
-    command = "unset";
-    data.ar[0] = command;
-    data.ar[1] = "a";
-    data.ar[2] = "b";
-    data.ar[3] = NULL;
-    check_command(&data);
-	print_list(data.env_list);
+//	write(1, "\n", 1);
+////
+//    command = "unset";
+//    data.ar[0] = command;
+//    data.ar[1] = "a";
+//    data.ar[2] = "b";
+//    data.ar[3] = NULL;
+//    check_command(&data);
+//	print_list(data.env_list);
 
 //
 //    write(1, "\n\n\n", 3);

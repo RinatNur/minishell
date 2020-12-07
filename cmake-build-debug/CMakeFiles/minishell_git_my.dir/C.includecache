@@ -14,7 +14,7 @@ unistd.h
 stdio.h
 -
 
-/Users/jheat/minishell_git_my/lists_func.c
+/Users/jheat/minishell_git_my/main.c
 minishell.h
 /Users/jheat/minishell_git_my/minishell.h
 

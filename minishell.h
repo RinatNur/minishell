@@ -21,9 +21,17 @@ typedef struct            s_sort_env {
     t_list              *q;
 }                         t_sort_env;
 
+typedef struct			s_conv {
+	int					type;
+	char				**ar;
+	struct s_conv		*next;
+	struct s_conv		*prev;
+}						t_conv;
+
 typedef struct      s_data {
-    t_list          *env_list;
-    char                **ar;
+    t_list			*env_list;
+    t_conv			conv;
+    char			**ar;
 }                   t_data;
 
 

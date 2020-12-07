@@ -250,6 +250,9 @@
 		<Unit filename="/Users/jheat/minishell_git_my/minishell.h">
 			<Option target="minishell_git_my"/>
 		</Unit>
+		<Unit filename="/Users/jheat/minishell_git_my/pipe.c">
+			<Option target="minishell_git_my"/>
+		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/utils.c">
 			<Option target="minishell_git_my"/>
 		</Unit>

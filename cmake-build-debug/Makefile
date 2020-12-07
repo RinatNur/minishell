@@ -1601,6 +1601,33 @@ make_env_list.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/make_env_list.c.s
 .PHONY : make_env_list.c.s
 
+pipe.o: pipe.c.o
+
+.PHONY : pipe.o
+
+# target to build an object file
+pipe.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/pipe.c.o
+.PHONY : pipe.c.o
+
+pipe.i: pipe.c.i
+
+.PHONY : pipe.i
+
+# target to preprocess a source file
+pipe.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/pipe.c.i
+.PHONY : pipe.c.i
+
+pipe.s: pipe.c.s
+
+.PHONY : pipe.s
+
+# target to generate assembly for a file
+pipe.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/pipe.c.s
+.PHONY : pipe.c.s
+
 utils.o: utils.c.o
 
 .PHONY : utils.o
@@ -1799,6 +1826,9 @@ help:
 	@echo "... make_env_list.o"
 	@echo "... make_env_list.i"
 	@echo "... make_env_list.s"
+	@echo "... pipe.o"
+	@echo "... pipe.i"
+	@echo "... pipe.s"
 	@echo "... utils.o"
 	@echo "... utils.i"
 	@echo "... utils.s"
