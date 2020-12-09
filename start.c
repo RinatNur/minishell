@@ -3,44 +3,53 @@
 
 int     main(int ac, char **av, char **envp) {
     t_data      data;
-	t_list  	*list;
+	char  	*list;
 	t_list  	*sort_l;
-	char		*command = "ls";
+	char		*command = "env";
 	char*		arr[] = { command, NULL, NULL };
+
+//TODO try to change PATH. Check how opendir will works
+    data.ar = arr;
+    make_env_list(&data, (const char **)envp);
+    list = ft_find_path(&data, "ls");
+//	!(list = get_value_from_env(&data, "PATHf")) ? ft_error("No environment variable found", 6) : 0;
+	ft_write(1, list);
+    printf("\n");
+	print_list(data.env_list);
+	printf("\n");
+	check_command(&data);
 
 //	data.conv = ft_ls
 
-    list = NULL;
-    data.ar = arr;
-    make_env_list(&data, (const char **)envp);
-//    check_command(&data);
-
-    int		fd[2];
-    int		pid1, pid2;
-
-    pipe(fd);
-    pid1 = fork();
-
-    if (pid1 == 0)
-	{
-    	dup2(fd[1], STDOUT_FILENO);
-    	close(fd[0]);
-    	close(fd[1]);
-		check_command(&data);
-	}
-
-    pid2 = fork();
-    write (1, "hello", 5);
-	if (pid2 == 0)
-	{
-		command = "cat";
-		data.ar[0] = command;
-		data.ar[1] = "-e";
-		dup2(fd[0], STDIN_FILENO);
-		close(fd[1]);
-		close(fd[0]);
-		check_command(&data);
-	}
+//    list = NULL;
+////    check_command(&data);
+//
+//    int		fd[2];
+//    int		pid1, pid2;
+//
+//    pipe(fd);
+//    pid1 = fork();
+//
+//    if (pid1 == 0)
+//	{
+//    	dup2(fd[1], STDOUT_FILENO);
+//    	close(fd[0]);
+//    	close(fd[1]);
+//		check_command(&data);
+//	}
+//
+//    pid2 = fork();
+//    write (1, "hello", 5);
+//	if (pid2 == 0)
+//	{
+//		command = "cat";
+//		data.ar[0] = command;
+//		data.ar[1] = "-e";
+//		dup2(fd[0], STDIN_FILENO);
+//		close(fd[1]);
+//		close(fd[0]);
+//		check_command(&data);
+//	}
 ////
 //    waitpid(pid1, NULL, 0);
 //    waitpid(pid2, NULL, 0);

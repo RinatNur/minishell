@@ -9,7 +9,7 @@ char    *ft_find_path(t_data *data, char *command)
     int     i = 0;
     int     flag = 0;
 
-    path_arr = ft_split(get_value_from_env(data, "PATH"), ':');
+	!(path_arr = ft_split(get_value_from_env(data, "PATH"), ':')) ? ft_error("Environment variable PATH is not found", 6) : 0;
     while (path_arr[i])
     {
         dir = opendir(path_arr[i]);
@@ -25,8 +25,8 @@ char    *ft_find_path(t_data *data, char *command)
                 }
 
             }
-//            if (flag == 1)
-//                break ;
+            if (flag == 1)
+                break ;
             i++;
         }
         else

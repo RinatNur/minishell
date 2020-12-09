@@ -623,18 +623,18 @@ CMakeFiles/minishell_git_my.dir/ft_pwd.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell_git_my.dir/ft_pwd.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jheat/minishell_git_my/ft_pwd.c -o CMakeFiles/minishell_git_my.dir/ft_pwd.c.s
 
-CMakeFiles/minishell_git_my.dir/main.c.o: CMakeFiles/minishell_git_my.dir/flags.make
-CMakeFiles/minishell_git_my.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/minishell_git_my.dir/main.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell_git_my.dir/main.c.o   -c /Users/jheat/minishell_git_my/main.c
+CMakeFiles/minishell_git_my.dir/start.c.o: CMakeFiles/minishell_git_my.dir/flags.make
+CMakeFiles/minishell_git_my.dir/start.c.o: ../start.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/minishell_git_my.dir/start.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell_git_my.dir/start.c.o   -c /Users/jheat/minishell_git_my/start.c
 
-CMakeFiles/minishell_git_my.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/minishell_git_my.dir/main.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jheat/minishell_git_my/main.c > CMakeFiles/minishell_git_my.dir/main.c.i
+CMakeFiles/minishell_git_my.dir/start.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/minishell_git_my.dir/start.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jheat/minishell_git_my/start.c > CMakeFiles/minishell_git_my.dir/start.c.i
 
-CMakeFiles/minishell_git_my.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell_git_my.dir/main.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jheat/minishell_git_my/main.c -o CMakeFiles/minishell_git_my.dir/main.c.s
+CMakeFiles/minishell_git_my.dir/start.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell_git_my.dir/start.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jheat/minishell_git_my/start.c -o CMakeFiles/minishell_git_my.dir/start.c.s
 
 CMakeFiles/minishell_git_my.dir/utils.c.o: CMakeFiles/minishell_git_my.dir/flags.make
 CMakeFiles/minishell_git_my.dir/utils.c.o: ../utils.c
@@ -862,7 +862,7 @@ minishell_git_my_OBJECTS = \
 "CMakeFiles/minishell_git_my.dir/ft_env.c.o" \
 "CMakeFiles/minishell_git_my.dir/ft_error.c.o" \
 "CMakeFiles/minishell_git_my.dir/ft_pwd.c.o" \
-"CMakeFiles/minishell_git_my.dir/main.c.o" \
+"CMakeFiles/minishell_git_my.dir/start.c.o" \
 "CMakeFiles/minishell_git_my.dir/utils.c.o" \
 "CMakeFiles/minishell_git_my.dir/ft_find_path.c.o" \
 "CMakeFiles/minishell_git_my.dir/lists_func.c.o" \
@@ -923,7 +923,7 @@ minishell_git_my: CMakeFiles/minishell_git_my.dir/libft/ft_toupper.c.o
 minishell_git_my: CMakeFiles/minishell_git_my.dir/ft_env.c.o
 minishell_git_my: CMakeFiles/minishell_git_my.dir/ft_error.c.o
 minishell_git_my: CMakeFiles/minishell_git_my.dir/ft_pwd.c.o
-minishell_git_my: CMakeFiles/minishell_git_my.dir/main.c.o
+minishell_git_my: CMakeFiles/minishell_git_my.dir/start.c.o
 minishell_git_my: CMakeFiles/minishell_git_my.dir/utils.c.o
 minishell_git_my: CMakeFiles/minishell_git_my.dir/ft_find_path.c.o
 minishell_git_my: CMakeFiles/minishell_git_my.dir/lists_func.c.o

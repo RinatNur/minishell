@@ -2,11 +2,20 @@
 
 char    *get_value_from_env(t_data *data, char *key)
 {
-    while (data->env_list->next)
+	t_list		*head;
+
+	head = data->env_list;
+    while (head)
     {
-        if (!ft_strncmp(data->env_list->key, key, (ft_strlen(data->env_list->key) + 1)))
-            return (data->env_list->value);
-        data->env_list = data->env_list->next;
+        if (!ft_strncmp(head->key, key, (ft_strlen(head->key) + 1)))
+		{
+//        	ft_write(1, head->value);
+//        	write(1, "\n", 1);
+//			head = head;
+            return (head->value);
+		}
+        head = head->next;
     }
+//    head = head;
     return (0);
 }

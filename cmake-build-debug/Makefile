@@ -1574,33 +1574,6 @@ lists_func.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/lists_func.c.s
 .PHONY : lists_func.c.s
 
-main.o: main.c.o
-
-.PHONY : main.o
-
-# target to build an object file
-main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/main.c.o
-.PHONY : main.c.o
-
-main.i: main.c.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/main.c.i
-.PHONY : main.c.i
-
-main.s: main.c.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/main.c.s
-.PHONY : main.c.s
-
 make_env_list.o: make_env_list.c.o
 
 .PHONY : make_env_list.o
@@ -1654,6 +1627,33 @@ pipe.s: pipe.c.s
 pipe.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/pipe.c.s
 .PHONY : pipe.c.s
+
+start.o: start.c.o
+
+.PHONY : start.o
+
+# target to build an object file
+start.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/start.c.o
+.PHONY : start.c.o
+
+start.i: start.c.i
+
+.PHONY : start.i
+
+# target to preprocess a source file
+start.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/start.c.i
+.PHONY : start.c.i
+
+start.s: start.c.s
+
+.PHONY : start.s
+
+# target to generate assembly for a file
+start.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/start.c.s
+.PHONY : start.c.s
 
 utils.o: utils.c.o
 
@@ -1850,15 +1850,15 @@ help:
 	@echo "... lists_func.o"
 	@echo "... lists_func.i"
 	@echo "... lists_func.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 	@echo "... make_env_list.o"
 	@echo "... make_env_list.i"
 	@echo "... make_env_list.s"
 	@echo "... pipe.o"
 	@echo "... pipe.i"
 	@echo "... pipe.s"
+	@echo "... start.o"
+	@echo "... start.i"
+	@echo "... start.s"
 	@echo "... utils.o"
 	@echo "... utils.i"
 	@echo "... utils.s"
