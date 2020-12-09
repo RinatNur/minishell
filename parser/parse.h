@@ -15,7 +15,9 @@ typedef struct		s_word
 t_word				*word_constructor(char *word);
 void 				word_destructor(t_word *word);
 
-
+/*
+** command
+*/
 typedef enum		e_flag
 {
 	false,
@@ -30,17 +32,6 @@ typedef enum		e_type
 	into_file_with_rewrite
 }					t_type;
 
-typedef enum		e_name
-{
-	_echo,
-	_cd,
-	_pwd,
-	_export,
-	_unset,
-	_env,
-	_exit
-}					t_name;
-
 typedef struct		s_redirect
 {
 	t_type			redirect_type;
@@ -49,10 +40,9 @@ typedef struct		s_redirect
 
 typedef struct		s_command
 {
-
-	char 	*argument;
-	char 	flag;
-	t_list	*redirect_list;
+	char			**arguments;
+	t_flag			flag;
+	t_list			*redirect_list;
 }					t_command;
 
 t_list				*parse(char *command_line);

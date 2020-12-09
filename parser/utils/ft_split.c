@@ -6,7 +6,7 @@
 /*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 14:58:22 by wrudy             #+#    #+#             */
-/*   Updated: 2020/12/09 17:50:48 by wrudy            ###   ########.fr       */
+/*   Updated: 2020/12/09 20:12:19 by wrudy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void		*arr_free(char **arr)
 
 char			**ft_split(char const *s, char c) //TODO В случае ошибки памяти вызывать exit()
 {
-	char	**arr; //FIXME sdofgkdj
+	char	**arr; //FIXME учитывать что символ может быть в ковычках
 	size_t	i;
 	size_t	j;
 	size_t	k;
