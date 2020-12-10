@@ -1,10 +1,12 @@
 #include "minishell.h"
 
+//Function is not used
 char      **env_copy(t_data *data, const char **envp)
 {
     char    **env;
     int     i = 0;
     int     len_str;
+
     while (envp[i])
         i++;
     env = malloc((i + 1) * sizeof(char *));

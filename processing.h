@@ -53,5 +53,6 @@ t_list			*cut_list(t_data *data, char *ar);
 void			ft_cd(t_data *data);
 void			ft_exit();
 char			**list_to_mas_ref(t_data *data);
+void			ft_pipe(t_data *data);
 
 #endif //MINISHELL_GIT_MY_PROCESSING_H

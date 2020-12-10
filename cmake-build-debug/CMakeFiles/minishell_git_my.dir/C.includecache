@@ -14,10 +14,6 @@ unistd.h
 stdio.h
 -
 
-/Users/jheat/minishell_git_my/ft_find_path.c
-minishell.h
-/Users/jheat/minishell_git_my/minishell.h
-
 /Users/jheat/minishell_git_my/minishell.h
 unistd.h
 -
@@ -45,4 +41,8 @@ parser.h
 /Users/jheat/minishell_git_my/parser.h
 
 /Users/jheat/minishell_git_my/processing.h
+
+/Users/jheat/minishell_git_my/start.c
+minishell.h
+/Users/jheat/minishell_git_my/minishell.h
 

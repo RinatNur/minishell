@@ -39,8 +39,10 @@ char 	**list_to_mas_ref(t_data *data)
 
 int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 {
-    int     pid, err;
+    int     err;
+    pid_t 	pid;
     char 	**env;
+    int 	status;
 
     env = list_to_mas_ref(data);
     pid = fork();
@@ -57,10 +59,10 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
         }
 
     }
-//    else
-//    {
+    else
+    {
 //        int     wait_status = 0;
-//        wait (&wait_status);
+		waitpid(pid, NULL, 0);
 //        if (WIFEXITED(wait_status))
 //        {
 //            int status_code = WEXITSTATUS(wait_status);
@@ -69,6 +71,6 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 //            else
 //                printf("failure with the status code %d\n", status_code);
 //        }
-//     }
+     }
     return (0);
 }

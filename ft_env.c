@@ -17,5 +17,6 @@ void    ft_env(t_data *data)
             write(1, "\n", 1);
         env = env->next;
     }
+    write(1, "\n", 1); //TODO ask if it nesessary \n at the end of output
 }
 
