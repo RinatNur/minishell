@@ -1,18 +1,18 @@
 
 #include "utils.h"
 
-char get_flag(unsigned char *flag, char symbol, char control)
+char mask_elem(unsigned char *flag, char symbol, char quote)
 {
-	if (symbol == control)
+	if (symbol == quote)
 	{
 		*flag = ~(*flag);
 		if (*flag == 1)
-			return 0;
+			return quote;
 	}
 	if (*flag == 1)
-		return 1;
-	else
 		return 0;
+	else
+		return quote;
 }
 
 char	*get_mask(char *line)
@@ -20,7 +20,7 @@ char	*get_mask(char *line)
 	int				i;
 	char			*result;
 	unsigned char	flag;
-	char 			control_symbol;
+	char 			quote;
 
 	i = 0;
 	flag = 1;
@@ -29,8 +29,8 @@ char	*get_mask(char *line)
 	while (line[i] != '\0')
 	{
 		if (flag == 1 && (line[i] == '\'' || line[i] == '\"'))
-			control_symbol = line[i];
-		result[i] = get_flag(&flag, line[i], control_symbol);
+			quote = line[i];
+		result[i] = mask_elem(&flag, line[i], quote);
 		i++;
 	}
 	return result;

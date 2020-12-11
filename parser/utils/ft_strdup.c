@@ -31,7 +31,7 @@ char		*ft_strdup(const char *s)
 	char *duplicate;
 
 	if ((duplicate = malloc((ft_strlen(s) + 1) * sizeof(char))) == NULL)
-		return (NULL);
+		exit(EXIT_FAILURE);
 	ft_strcpy(duplicate, s);
 	return (duplicate);
 }

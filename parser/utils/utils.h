@@ -24,7 +24,9 @@ int					ft_lstsize(t_list *lst);
 
 int					ft_strlen(const char *str);
 char				*ft_strdup(const char *s);
-char				**ft_split(char const *s, char c);
+char				**ft_split(char const *s, char c, const char *mask);
 char				*get_mask(char *line);
+void				free_2d_array(void **array);
+
 
 #endif //MINISHELL_UTILS_H

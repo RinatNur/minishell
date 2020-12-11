@@ -23,6 +23,6 @@ int main()
 	//	printf("\n");
 	//	pipeline = pipeline->next;
 	//}
-	parse("dsa '|ji' dsbg|ds \"ahjvh;f'sa||djhf|uhd|uos;;fdh|\"fd;df|sjdsij;s|'jif\"dbjsjbod'njfn\"odhfdi");
+	parse(" abc \"dsjn;;;fdd;sf;;;fddf\" ; cbd ; qwe ';;fdsfd;;;;;;;;;;;;;' ; avc");
 	return 0;
 }
