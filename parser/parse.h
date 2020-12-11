@@ -3,18 +3,6 @@
 #include "utils/utils.h"
 #include "stdio.h"
 
-
-/*
-** list of words
-*/
-typedef struct		s_word
-{
-	char			*word;
-	int 			len;
-}					t_word;
-t_word				*word_constructor(char *word);
-void 				word_destructor(t_word *word);
-
 /*
 ** command
 */
@@ -40,12 +28,12 @@ typedef struct		s_redirect
 
 typedef struct		s_command
 {
-	char			**arguments;
-	t_flag			flag;
-	t_list			*redirect_list;
+	char			**command_with_arguments;
+	char 			*tmp; 										//FIXME сделать список редиректов полноценным списком
+	//t_list			*redirect_list;
 }					t_command;
 
 t_list				*parse(char *command_line);
-t_command			*parse_command(char *command_str);
+t_command			*parse_command(const char *command_str);
 
 #endif //MINISHELL_PARSE_H
