@@ -88,6 +88,9 @@
 		<Unit filename="/Users/jheat/minishell_git_my/ft_cd.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
+		<Unit filename="/Users/jheat/minishell_git_my/ft_check_redirects.c">
+			<Option target="minishell_git_my"/>
+		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/ft_echo.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
@@ -109,7 +112,13 @@
 		<Unit filename="/Users/jheat/minishell_git_my/ft_find_path.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
+		<Unit filename="/Users/jheat/minishell_git_my/ft_pipe.c">
+			<Option target="minishell_git_my"/>
+		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/ft_pwd.c">
+			<Option target="minishell_git_my"/>
+		</Unit>
+		<Unit filename="/Users/jheat/minishell_git_my/ft_redirect.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/ft_unset.c">
@@ -251,9 +260,6 @@
 			<Option target="minishell_git_my"/>
 		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/parser.h">
-			<Option target="minishell_git_my"/>
-		</Unit>
-		<Unit filename="/Users/jheat/minishell_git_my/pipe.c">
 			<Option target="minishell_git_my"/>
 		</Unit>
 		<Unit filename="/Users/jheat/minishell_git_my/processing.h">

@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/jheat/minishell_git_my/fill_list.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/fill_list.c.o"
   "/Users/jheat/minishell_git_my/ft_cd.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_cd.c.o"
+  "/Users/jheat/minishell_git_my/ft_check_redirects.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_check_redirects.c.o"
   "/Users/jheat/minishell_git_my/ft_echo.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_echo.c.o"
   "/Users/jheat/minishell_git_my/ft_env.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_env.c.o"
   "/Users/jheat/minishell_git_my/ft_error.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_error.c.o"
@@ -13,7 +14,9 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/jheat/minishell_git_my/ft_exit.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_exit.c.o"
   "/Users/jheat/minishell_git_my/ft_export.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_export.c.o"
   "/Users/jheat/minishell_git_my/ft_find_path.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_find_path.c.o"
+  "/Users/jheat/minishell_git_my/ft_pipe.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_pipe.c.o"
   "/Users/jheat/minishell_git_my/ft_pwd.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_pwd.c.o"
+  "/Users/jheat/minishell_git_my/ft_redirect.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_redirect.c.o"
   "/Users/jheat/minishell_git_my/ft_unset.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_unset.c.o"
   "/Users/jheat/minishell_git_my/ft_write.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/ft_write.c.o"
   "/Users/jheat/minishell_git_my/get_value_from_env.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/get_value_from_env.c.o"
@@ -58,7 +61,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/jheat/minishell_git_my/libft/ft_toupper.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/libft/ft_toupper.c.o"
   "/Users/jheat/minishell_git_my/lists_func.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/lists_func.c.o"
   "/Users/jheat/minishell_git_my/make_env_list.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/make_env_list.c.o"
-  "/Users/jheat/minishell_git_my/pipe.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/pipe.c.o"
   "/Users/jheat/minishell_git_my/start.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/start.c.o"
   "/Users/jheat/minishell_git_my/utils.c" "/Users/jheat/minishell_git_my/cmake-build-debug/CMakeFiles/minishell_git_my.dir/utils.c.o"
   )

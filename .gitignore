@@ -4,3 +4,4 @@ start
 .DS_Store
 .vscode
 a.out
+/cmake-build-debug/

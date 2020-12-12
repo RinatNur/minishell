@@ -22,17 +22,7 @@ void 	ft_pipe(t_data *data)
 		dup2(fd[0], 0);
 		close(fd[1]);
 		close(fd[0]);
-//		command = "cat";
 		waitpid(pid, &status, WUNTRACED);
-//		check_command(data);
-//		exit(0);
+		exit(0);
 	}
-//		data->ar[0] = "cat";
-//		data->ar[1] = "-e";
-//		data->ar[1] = NULL;
-//		check_command(data);
-//
-//	waitpid(pid2, NULL, 0);
-//	close(fd[0]);
-//	close(fd[1]);
 }

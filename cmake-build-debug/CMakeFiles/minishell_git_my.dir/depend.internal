@@ -51,9 +51,21 @@ CMakeFiles/minishell_git_my.dir/ft_find_path.c.o
  /Users/jheat/minishell_git_my/minishell.h
  /Users/jheat/minishell_git_my/parser.h
  /Users/jheat/minishell_git_my/processing.h
+CMakeFiles/minishell_git_my.dir/ft_pipe.c.o
+ ../libft/libft.h
+ ../minishell.h
+ ../parser.h
+ ../processing.h
+ /Users/jheat/minishell_git_my/ft_pipe.c
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o
  ../libft/libft.h
  /Users/jheat/minishell_git_my/ft_pwd.c
+ /Users/jheat/minishell_git_my/minishell.h
+ /Users/jheat/minishell_git_my/parser.h
+ /Users/jheat/minishell_git_my/processing.h
+CMakeFiles/minishell_git_my.dir/ft_redirect.c.o
+ ../libft/libft.h
+ /Users/jheat/minishell_git_my/ft_redirect.c
  /Users/jheat/minishell_git_my/minishell.h
  /Users/jheat/minishell_git_my/parser.h
  /Users/jheat/minishell_git_my/processing.h
@@ -204,12 +216,6 @@ CMakeFiles/minishell_git_my.dir/make_env_list.c.o
  /Users/jheat/minishell_git_my/minishell.h
  /Users/jheat/minishell_git_my/parser.h
  /Users/jheat/minishell_git_my/processing.h
-CMakeFiles/minishell_git_my.dir/pipe.c.o
- ../libft/libft.h
- ../minishell.h
- ../parser.h
- ../processing.h
- /Users/jheat/minishell_git_my/pipe.c
 CMakeFiles/minishell_git_my.dir/start.c.o
  ../libft/libft.h
  /Users/jheat/minishell_git_my/minishell.h

@@ -6,30 +6,31 @@ int     main(int ac, char **av, char **envp) {
     t_data      data;
 	char  	list[1000];
 	t_list  	*sort_l;
-	char		*command = "export";
-	char*		arr[] = { command, NULL, NULL };
+	char		*command = "echo";
+	char*		arr[] = { command, "New new new", NULL };
+	int 		file;
 
-//TODO try to change PATH. Check how opendir will works
-
+	//TODO try to send conv to the pipe;
     data.ar = arr;
     make_env_list(&data, (const char **)envp);
 //    list = get_value_from_env(&data, "PATH");
-	ft_pipe(&data);
+	ft_redirect(&data);
+//	file = open("test.txt", O_WRONLY | O_CREAT, 0777);
 //	ft_pipe(&data);
 
 //	check_command(&data);
 //	write(1, "sgasg", 9);
 //	list[999] = '\0';
-	command = "cat";
-    data.ar[0] = command;
-    data.ar[1] = "-e";
-    data.ar[2] = NULL;
+//	command = "grep";
+//    data.ar[0] = command;
+//    data.ar[1] = "test.txt";
+//    data.ar[2] = NULL;
 
-	ft_pipe(&data);
-	ft_pipe(&data);
-	ft_pipe(&data);
-	ft_pipe(&data);
-	check_command(&data);
+//	ft_pipe(&data);
+//	ft_pipe(&data);
+//	ft_pipe(&data);
+//	ft_pipe(&data);
+//	check_command(&data);
 //    list = ft_find_path(&data, "ls");
 //	!(list = get_value_from_env(&data, "PATHf")) ? ft_error("No environment variable found", 6) : 0;
 //	ft_write(1, list);

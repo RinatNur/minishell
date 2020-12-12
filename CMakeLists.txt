@@ -52,4 +52,4 @@ add_executable(minishell_git_my
         ft_pwd.c
         minishell.h
         start.c
-        utils.c ft_find_path.c lists_func.c make_env_list.c ft_exec.c ft_write.c ft_echo.c get_value_from_env.c ft_export.c ft_unset.c ft_cd.c ft_exit.c pipe.c fill_list.c processing.h parser.h)
+        utils.c ft_find_path.c lists_func.c make_env_list.c ft_exec.c ft_write.c ft_echo.c get_value_from_env.c ft_export.c ft_unset.c ft_cd.c ft_exit.c ft_pipe.c fill_list.c processing.h parser.h ft_redirect.c ft_check_redirects.c)

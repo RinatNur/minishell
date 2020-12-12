@@ -197,6 +197,33 @@ ft_cd.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_cd.c.s
 .PHONY : ft_cd.c.s
 
+ft_check_redirects.o: ft_check_redirects.c.o
+
+.PHONY : ft_check_redirects.o
+
+# target to build an object file
+ft_check_redirects.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_check_redirects.c.o
+.PHONY : ft_check_redirects.c.o
+
+ft_check_redirects.i: ft_check_redirects.c.i
+
+.PHONY : ft_check_redirects.i
+
+# target to preprocess a source file
+ft_check_redirects.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_check_redirects.c.i
+.PHONY : ft_check_redirects.c.i
+
+ft_check_redirects.s: ft_check_redirects.c.s
+
+.PHONY : ft_check_redirects.s
+
+# target to generate assembly for a file
+ft_check_redirects.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_check_redirects.c.s
+.PHONY : ft_check_redirects.c.s
+
 ft_echo.o: ft_echo.c.o
 
 .PHONY : ft_echo.o
@@ -386,6 +413,33 @@ ft_find_path.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_find_path.c.s
 .PHONY : ft_find_path.c.s
 
+ft_pipe.o: ft_pipe.c.o
+
+.PHONY : ft_pipe.o
+
+# target to build an object file
+ft_pipe.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_pipe.c.o
+.PHONY : ft_pipe.c.o
+
+ft_pipe.i: ft_pipe.c.i
+
+.PHONY : ft_pipe.i
+
+# target to preprocess a source file
+ft_pipe.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_pipe.c.i
+.PHONY : ft_pipe.c.i
+
+ft_pipe.s: ft_pipe.c.s
+
+.PHONY : ft_pipe.s
+
+# target to generate assembly for a file
+ft_pipe.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_pipe.c.s
+.PHONY : ft_pipe.c.s
+
 ft_pwd.o: ft_pwd.c.o
 
 .PHONY : ft_pwd.o
@@ -412,6 +466,33 @@ ft_pwd.s: ft_pwd.c.s
 ft_pwd.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_pwd.c.s
 .PHONY : ft_pwd.c.s
+
+ft_redirect.o: ft_redirect.c.o
+
+.PHONY : ft_redirect.o
+
+# target to build an object file
+ft_redirect.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_redirect.c.o
+.PHONY : ft_redirect.c.o
+
+ft_redirect.i: ft_redirect.c.i
+
+.PHONY : ft_redirect.i
+
+# target to preprocess a source file
+ft_redirect.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_redirect.c.i
+.PHONY : ft_redirect.c.i
+
+ft_redirect.s: ft_redirect.c.s
+
+.PHONY : ft_redirect.s
+
+# target to generate assembly for a file
+ft_redirect.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/ft_redirect.c.s
+.PHONY : ft_redirect.c.s
 
 ft_unset.o: ft_unset.c.o
 
@@ -1601,33 +1682,6 @@ make_env_list.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/make_env_list.c.s
 .PHONY : make_env_list.c.s
 
-pipe.o: pipe.c.o
-
-.PHONY : pipe.o
-
-# target to build an object file
-pipe.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/pipe.c.o
-.PHONY : pipe.c.o
-
-pipe.i: pipe.c.i
-
-.PHONY : pipe.i
-
-# target to preprocess a source file
-pipe.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/pipe.c.i
-.PHONY : pipe.c.i
-
-pipe.s: pipe.c.s
-
-.PHONY : pipe.s
-
-# target to generate assembly for a file
-pipe.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_git_my.dir/build.make CMakeFiles/minishell_git_my.dir/pipe.c.s
-.PHONY : pipe.c.s
-
 start.o: start.c.o
 
 .PHONY : start.o
@@ -1697,6 +1751,9 @@ help:
 	@echo "... ft_cd.o"
 	@echo "... ft_cd.i"
 	@echo "... ft_cd.s"
+	@echo "... ft_check_redirects.o"
+	@echo "... ft_check_redirects.i"
+	@echo "... ft_check_redirects.s"
 	@echo "... ft_echo.o"
 	@echo "... ft_echo.i"
 	@echo "... ft_echo.s"
@@ -1718,9 +1775,15 @@ help:
 	@echo "... ft_find_path.o"
 	@echo "... ft_find_path.i"
 	@echo "... ft_find_path.s"
+	@echo "... ft_pipe.o"
+	@echo "... ft_pipe.i"
+	@echo "... ft_pipe.s"
 	@echo "... ft_pwd.o"
 	@echo "... ft_pwd.i"
 	@echo "... ft_pwd.s"
+	@echo "... ft_redirect.o"
+	@echo "... ft_redirect.i"
+	@echo "... ft_redirect.s"
 	@echo "... ft_unset.o"
 	@echo "... ft_unset.i"
 	@echo "... ft_unset.s"
@@ -1853,9 +1916,6 @@ help:
 	@echo "... make_env_list.o"
 	@echo "... make_env_list.i"
 	@echo "... make_env_list.s"
-	@echo "... pipe.o"
-	@echo "... pipe.i"
-	@echo "... pipe.s"
 	@echo "... start.o"
 	@echo "... start.i"
 	@echo "... start.s"

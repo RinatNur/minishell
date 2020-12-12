@@ -13,5 +13,25 @@
 #include "processing.h"
 #include "parser.h"
 
+typedef enum		e_flag
+{
+	false,
+	true
+}					t_flag;
+
+
+typedef enum		e_type
+{
+	from_file,
+	into_file,
+	into_file_with_rewrite
+}					t_type;
+
+typedef struct		s_redirect
+{
+	t_type			redirect_type;
+	char			*filename;
+}					t_redirect;
+
 
 #endif

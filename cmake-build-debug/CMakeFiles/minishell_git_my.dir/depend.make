@@ -51,11 +51,23 @@ CMakeFiles/minishell_git_my.dir/ft_find_path.c.o: ../minishell.h
 CMakeFiles/minishell_git_my.dir/ft_find_path.c.o: ../parser.h
 CMakeFiles/minishell_git_my.dir/ft_find_path.c.o: ../processing.h
 
+CMakeFiles/minishell_git_my.dir/ft_pipe.c.o: ../libft/libft.h
+CMakeFiles/minishell_git_my.dir/ft_pipe.c.o: ../minishell.h
+CMakeFiles/minishell_git_my.dir/ft_pipe.c.o: ../parser.h
+CMakeFiles/minishell_git_my.dir/ft_pipe.c.o: ../processing.h
+CMakeFiles/minishell_git_my.dir/ft_pipe.c.o: ../ft_pipe.c
+
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../ft_pwd.c
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../minishell.h
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../parser.h
 CMakeFiles/minishell_git_my.dir/ft_pwd.c.o: ../processing.h
+
+CMakeFiles/minishell_git_my.dir/ft_redirect.c.o: ../libft/libft.h
+CMakeFiles/minishell_git_my.dir/ft_redirect.c.o: ../ft_redirect.c
+CMakeFiles/minishell_git_my.dir/ft_redirect.c.o: ../minishell.h
+CMakeFiles/minishell_git_my.dir/ft_redirect.c.o: ../parser.h
+CMakeFiles/minishell_git_my.dir/ft_redirect.c.o: ../processing.h
 
 CMakeFiles/minishell_git_my.dir/ft_unset.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/ft_unset.c.o: ../ft_unset.c
@@ -203,12 +215,6 @@ CMakeFiles/minishell_git_my.dir/make_env_list.c.o: ../make_env_list.c
 CMakeFiles/minishell_git_my.dir/make_env_list.c.o: ../minishell.h
 CMakeFiles/minishell_git_my.dir/make_env_list.c.o: ../parser.h
 CMakeFiles/minishell_git_my.dir/make_env_list.c.o: ../processing.h
-
-CMakeFiles/minishell_git_my.dir/pipe.c.o: ../libft/libft.h
-CMakeFiles/minishell_git_my.dir/pipe.c.o: ../minishell.h
-CMakeFiles/minishell_git_my.dir/pipe.c.o: ../parser.h
-CMakeFiles/minishell_git_my.dir/pipe.c.o: ../processing.h
-CMakeFiles/minishell_git_my.dir/pipe.c.o: ../pipe.c
 
 CMakeFiles/minishell_git_my.dir/start.c.o: ../libft/libft.h
 CMakeFiles/minishell_git_my.dir/start.c.o: ../minishell.h
