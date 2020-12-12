@@ -34,6 +34,5 @@ int main()
 		}
 		pipeline = pipeline->next;
 	}
-
 	return 0;
 }

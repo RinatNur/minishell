@@ -6,23 +6,23 @@ t_command *test(char **command_with_arguments, char *redirect_part)
 	t_command *com;
 	int i;
 
-	i = 0;
-	while (command_with_arguments[i] != NULL)
-	{
-		printf("%s\n", command_with_arguments[i]);
-		i++;
-	}
+	//i = 0;
+	//while (command_with_arguments[i] != NULL)
+	//{
+	//	printf("%s\n", command_with_arguments[i]);
+	//	i++;
+	//}
 
 
 	com = malloc(sizeof(t_command));
 	com->command_with_arguments = command_with_arguments;
 
-	i = 0;
-	while (com->command_with_arguments[i] != NULL)
-	{
-		printf("%s\n", com->command_with_arguments[i]);
-		i++;
-	}
+	//i = 0;
+	//while (com->command_with_arguments[i] != NULL)
+	//{
+	//	printf("%s\n", com->command_with_arguments[i]);
+	//	i++;
+	//}
 
 	com->tmp = redirect_part;
 	return (com);
@@ -53,7 +53,10 @@ t_command *parse_command(const char *command_str)
 	char *mask;
 	char **command_with_arguments;
 
+
+
 	mask = get_mask(command_part);
+
 	command_with_arguments = ft_split(command_part, ' ', mask);
 
 	t_command *com;

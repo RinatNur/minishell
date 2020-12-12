@@ -6,21 +6,7 @@
 /*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 14:58:22 by wrudy             #+#    #+#             */
-/*   Updated: 2020/12/11 21:33:11 by wrudy            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "utils.h"
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/24 14:58:22 by wrudy             #+#    #+#             */
-/*   Updated: 2020/12/09 20:12:19 by wrudy            ###   ########.fr       */
+/*   Updated: 2020/12/12 19:07:34 by wrudy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +21,7 @@ static size_t	ft_countwords(char const *s, char c, const char *mask)
 	i = 0;
 	while (s[i] != '\0')
 	{
-		if ((s[i] != c && (s[i + 1] == c && mask[i + 1] == 0)) ||
+		if ((s[i] != c && (s[i + 1] == c && mask[i + 1] == '0')) ||
 			(s[i] != c && s[i + 1] == '\0'))
 			count++;
 		i++;
@@ -50,9 +36,9 @@ static size_t	ft_len(char const *s, char c, const char *mask)
 
 	len = 0;
 	i = 0;
-	while (s[i] == c && mask[i] == 0)
+	while (s[i] == c && mask[i] == '0')
 		i++;
-	while (s[i] != '\0' && !(s[i] == c && mask[i] == 0))
+	while (s[i] != '\0' && !(s[i] == c && mask[i] == '0'))
 	{
 		len++;
 		i++;
@@ -88,12 +74,12 @@ char			**ft_split(char const *s, char c, const char *mask) //TODO В случа�
 		exit(EXIT_FAILURE);
 	while (i < ft_countwords(s, c, mask))
 	{
-		if (!(arr[i] = (char*)malloc(sizeof(char) * (ft_len(s + k, c, mask) + 1))))
+		if (!(arr[i] = (char*)malloc(sizeof(char) * (ft_len(s + k, c, mask + k) + 1))))
 			exit(EXIT_FAILURE);
 		j = 0;
-		while (s[k] == c && mask[k] == 0)
+		while (s[k] == c && mask[k] == '0')
 			k++;
-		while (s[k] != '\0' && !(s[k] == c && mask[k] == 0))
+		while (s[k] != '\0' && !(s[k] == c && mask[k] == '0'))
 			arr[i][j++] = s[k++];
 		arr[i][j] = '\0';
 		i++;

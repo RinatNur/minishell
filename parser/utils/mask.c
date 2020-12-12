@@ -10,7 +10,7 @@ char mask_elem(unsigned char *flag, char symbol, char quote)
 			return quote;
 	}
 	if (*flag == 1)
-		return 0;
+		return '0';
 	else
 		return quote;
 }
@@ -24,7 +24,7 @@ char	*get_mask(char *line)
 
 	i = 0;
 	flag = 1;
-	if (!(result = malloc(sizeof(char) * ft_strlen(line))))
+	if (!(result = malloc(sizeof(char) * ft_strlen(line) + 1)))
 		exit(EXIT_FAILURE);
 	while (line[i] != '\0')
 	{
@@ -33,5 +33,6 @@ char	*get_mask(char *line)
 		result[i] = mask_elem(&flag, line[i], quote);
 		i++;
 	}
+	result[i] = 0;
 	return result;
 }
