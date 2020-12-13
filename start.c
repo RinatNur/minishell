@@ -6,15 +6,34 @@ int     main(int ac, char **av, char **envp) {
     t_data      data;
 	char  	list[1000];
 	t_list  	*sort_l;
-	char		*command = "echo";
-	char*		arr[] = { command, "New new new", NULL };
+	char		*command = "cat";
+	char*		arr[] = { command, NULL };
 	int 		file;
+	enum e_type	type;
+//	t_list_new 		*list_new = NULL;
+//    redirect_list = list_new;
+//	t_list_new		*redirect_list = NULL;
 
+	data.redirect_list = NULL;
 	//TODO try to send conv to the pipe;
     data.ar = arr;
     make_env_list(&data, (const char **)envp);
+    fill_t_redirect(&data.redirect_list);
+	ft_check_redirects(&data);
+//	ft_redirect_read(&data);
+//    while (data.redirect_list)
+//	{
+//    	printf("%s", ((t_redirect *)(data.redirect_list->cont))->filename);
+////		unsigned test;
+////		test = (((t_redirect *)(redirect_list->cont))->redirect_type) + '0';
+////		write(1, &test, 1);
+//		data.redirect_list = data.redirect_list->next;
+//		if (data.redirect_list)
+//			printf("\n");
+//	}
+
 //    list = get_value_from_env(&data, "PATH");
-	ft_redirect(&data);
+//	ft_redirect_write(&data);
 //	file = open("test.txt", O_WRONLY | O_CREAT, 0777);
 //	ft_pipe(&data);
 
@@ -60,12 +79,12 @@ int     main(int ac, char **av, char **envp) {
 //	{
 //		command = "cat";
 //		data.ar[0] = command;
-//		data.ar[1] = "-e";
-//		dup2(fd[0], STDIN_FILENO);
-//		close(fd[1]);
-//		close(fd[0]);
+//		data.ar[1] = data.wr_file_name;
+////		dup2(fd[0], STDIN_FILENO);
+////		close(fd[1]);
+////		close(fd[0]);
 //		check_command(&data);
-//	}
+////	}
 //
 //    waitpid(pid1, NULL, 0);
 //    waitpid(pid2, NULL, 0);

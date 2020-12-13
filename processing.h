@@ -2,6 +2,7 @@
 #define PROCESSING_H
 
 #define ERR1 No such file or directory
+# define REDIR ((t_redirect *)(data->redirect_list->cont))
 
 //typedef struct			s_env {
 //	void				*key;
@@ -26,9 +27,12 @@ typedef struct			s_conv {
 }						t_conv;
 
 typedef struct      s_data {
+	t_list_new		*redirect_list;
 	t_list			*env_list;
-	t_conv			conv;
-	char			**ar;
+	char 			**ar;//TODO delete after ending parser
+	char 			*wr_file_name;
+	int 			wr_type_redir;
+	char 			*rd_file_name;
 }                   t_data;
 
 
@@ -54,6 +58,11 @@ void			ft_cd(t_data *data);
 void			ft_exit();
 char			**list_to_mas_ref(t_data *data);
 void			ft_pipe(t_data *data);
-void			ft_redirect(t_data *data);
+void			ft_redirect_write(t_data *data);
+void			ft_redirect_read(t_data *data);
+void			ft_redirect_read(t_data *data);
+int 			ft_check_redirects(t_data *data);
+
+void			fill_t_redirect(t_list_new **list);
 
 #endif //MINISHELL_GIT_MY_PROCESSING_H

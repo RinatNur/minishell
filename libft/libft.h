@@ -18,12 +18,13 @@
 # include <unistd.h>
 # include <stdio.h>
 
-//typedef struct			s_list {
-//	void                 *cont;
-//	struct s_list        *next;
-//}						t_list;
+typedef struct			s_list_new {
+	void                 *cont;
+	struct s_list_new    *next;
+}						t_list_new;
 
 typedef struct			s_list {
+	void 				*cont;
 	void                     *key;
 	void                     *value;
 	struct s_list        *next;
