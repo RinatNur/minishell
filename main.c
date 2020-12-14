@@ -135,7 +135,7 @@ int main()
 	pipeline = pipeline_list;
 	while (pipeline != NULL)
 	{
-		printf("\n======================== new command ========================\n\n");
+		printf("\n======================== new pipeline ========================\n\n");
 		command_list = pipeline->content;
 		command = command_list;
 		while (command != NULL)
