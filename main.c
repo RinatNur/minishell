@@ -135,7 +135,7 @@ int main()
 	pipeline = pipeline_list;
 	while (pipeline != NULL)
 	{
-		printf("==========================================\n");
+		printf("\n======================== new command ========================\n\n");
 		command_list = pipeline->content;
 		command = command_list;
 		while (command != NULL)
@@ -163,7 +163,8 @@ int main()
 					printf("filename: %s\n", redir->filename);
 				redirect = redirect->next;
 			}
-			printf("---\n");
+			if (command->next != NULL)
+				printf("\n-------- pipe -------\n\n");
 			command = command->next;
 		}
 		pipeline = pipeline->next;
