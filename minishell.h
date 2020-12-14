@@ -33,5 +33,12 @@ typedef struct		s_redirect
 	char			*filename;
 }					t_redirect;
 
+typedef struct		s_command
+{
+	char         **command_with_arguments;
+	t_list       *redirect_list;
+	t_list       *option_list;
+}					t_command;
+
 
 #endif

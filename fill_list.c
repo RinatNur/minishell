@@ -45,11 +45,10 @@ void 	fill_t_redirect(t_list_new **list)
 	t_redirect		*redir;
 
 	int 			i = 0;
-	redir = redirect_constructor(into_file, "aaa");
+	redir = redirect_constructor(into_file, "a");
 	ft_lstadd_back_new(list, ft_lstnew_new(redir));
-	redir = redirect_constructor(into_file, "bbb");
-	ft_lstadd_back_new(list, ft_lstnew_new(redir));
-	redir = redirect_constructor(from_file, "ccc");
+//	redir = redirect_constructor(into_file, "c");
+//	ft_lstadd_back_new(list, ft_lstnew_new(redir));
+	redir = redirect_constructor(from_file, "test");
 	ft_lstadd_back_new(list, ft_lstnew_new(redir));
 }
-
