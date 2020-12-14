@@ -13,7 +13,7 @@ static int get_filename(const char *command, const char *mask, char **filename)
 		i++;
 	len = 0;
 	while ((command[i + len] != ' ' || mask[i + len] != '0') && command[i + len] != '\0'
-		   && command[i + len] != '>' && command[i + len] != '<')
+		   && !(command[i + len] == '>' && mask[i + len] == '0') && !(command[i + len] == '<' && mask[i + len] == '0'))
 		len++;
 	if (!(fname = malloc(sizeof(char) * len + 1)))
 		exit(EXIT_FAILURE);
@@ -45,7 +45,7 @@ static t_list		*parse_redirects(char **command)
 		exit(EXIT_FAILURE);
 	while (i < command_len)
 	{
-		clear_command[i] = 'r';
+		clear_command[i] = ' ';
 		i++;
 	}
 	clear_command[i] = 0;
@@ -80,32 +80,32 @@ static t_list		*parse_redirects(char **command)
 			clear_command[i] = (*command)[i];
 		i++;
 	}
-	//free(*command);
+	free(*command);
 	*command = clear_command;
 	return (result);
 }
 
-static t_list		*parse_flags(char **command_without_redirects)
+static t_command	*parse_clear_command(char *clear_command, t_list *redirects)
 {
+	t_command *result;
+	char **command_with_args;
+	char *mask;
 
-}
-
-static t_command	*parse_clear_command(char *clear_command)
-{
-
+	mask = get_mask(clear_command);
+	command_with_args = ft_split(clear_command, ' ', mask);
+	result = command_constructor(command_with_args, redirects);
+	return (result);
 }
 
 t_command			*parse_command(const char *command_str)
 {
 	t_command	*command;
 	t_list		*redirect_list;
-	t_list		*flag_list;
 	char 		*clear_command_str;
 
 	clear_command_str = ft_strdup(command_str);
 	redirect_list = parse_redirects(&clear_command_str);
-	flag_list = parse_flags(&clear_command_str);
-	command = parse_clear_command(clear_command_str);
+	command = parse_clear_command(clear_command_str, redirect_list);
 	free(clear_command_str);
 	return (command);
 }

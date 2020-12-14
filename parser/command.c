@@ -1,7 +1,7 @@
 
 #include "parse.h"
 
-t_command			*command_constructor(char **command_with_arguments, t_list *redirect_list, t_list *option_list)
+t_command			*command_constructor(char **command_with_arguments, t_list *redirect_list)
 {
 	t_command *result;
 
@@ -9,7 +9,6 @@ t_command			*command_constructor(char **command_with_arguments, t_list *redirect
 		exit(EXIT_FAILURE);
 	result->command_with_arguments = command_with_arguments;
 	result->redirect_list = redirect_list;
-	result->option_list = option_list;
 	return (result);
 }
 
@@ -25,7 +24,6 @@ void 				command_destructor(t_command *command)
 	}
 	free(command->command_with_arguments);
 	ft_lstclear(&(command->redirect_list), (void (*)(void *))redirect_destructor);
-	ft_lstclear(&(command->option_list), free);
 	free(command);
 }
 

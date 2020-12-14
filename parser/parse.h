@@ -33,10 +33,9 @@ typedef struct		s_command
 {
 	char			**command_with_arguments;
 	t_list			*redirect_list;
-	t_list			*option_list;
 }					t_command;
 
-t_command			*command_constructor(char **command_with_arguments, t_list *redirect_list, t_list *option_list);
+t_command			*command_constructor(char **command_with_arguments, t_list *redirect_list);
 void 				command_destructor(t_command *command);
 
 

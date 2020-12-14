@@ -119,8 +119,10 @@ int main()
 	t_list *pipeline;
 	t_list *command_list;
 	t_list *command;
+	t_list *redirect;
 
 	t_command *com;
+	t_redirect *redir;
 	int i;
 
 	pipeline_list = parse("export>a|grep>b<a USER Dfasdfasdfasdfasdfasasd ; echo $?;"
@@ -133,7 +135,7 @@ int main()
 	pipeline = pipeline_list;
 	while (pipeline != NULL)
 	{
-		printf("--------------------------------\n");
+		printf("==========================================\n");
 		command_list = pipeline->content;
 		command = command_list;
 		while (command != NULL)
@@ -148,8 +150,20 @@ int main()
 					printf("argument: %s\n", com->command_with_arguments[i]);
 				i++;
 			}
-			printf("redirects: %s\n\n", com->tmp);
-			//printf("____%s", (char *)(command->content));
+			redirect = com->redirect_list;
+			while (redirect != NULL)
+			{
+				redir = (t_redirect *)(redirect->content);
+					if (redir->redirect_type == 0)
+						printf("redirect type:  %s  ", "<");
+					else if (redir->redirect_type == 1)
+						printf("redirect type:  %s  ", ">");
+					else
+						printf("redirect type:  %s  ", ">>");
+					printf("filename: %s\n", redir->filename);
+				redirect = redirect->next;
+			}
+			printf("---\n");
 			command = command->next;
 		}
 		pipeline = pipeline->next;
