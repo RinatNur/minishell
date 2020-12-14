@@ -6,7 +6,7 @@
 /*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 14:58:22 by wrudy             #+#    #+#             */
-/*   Updated: 2020/12/12 19:07:34 by wrudy            ###   ########.fr       */
+/*   Updated: 2020/12/12 19:08:14 by wrudy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void 			free_2d_array(void **array)
 	free(array);
 }
 
-char			**ft_split(char const *s, char c, const char *mask) //TODO В случае ошибки памяти вызывать exit()
+char			**ft_split(char const *s, char c, const char *mask)
 {
-	char	**arr; //FIXME учитывать что символ может быть в ковычках
+	char	**arr;
 	size_t	i;
 	size_t	j;
 	size_t	k;
