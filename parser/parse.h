@@ -38,7 +38,7 @@ typedef struct		s_command
 t_command			*command_constructor(char **command_with_arguments, t_list *redirect_list);
 void 				command_destructor(t_command *command);
 
-
+void				free_pipeline_list(t_list *pipeline_list);
 
 
 

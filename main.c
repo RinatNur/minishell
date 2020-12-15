@@ -59,5 +59,6 @@ int main()
 		}
 		pipeline = pipeline->next;
 	}
+	free_pipeline_list(pipeline_list);
 	return 0;
 }

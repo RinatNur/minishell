@@ -55,3 +55,18 @@ t_list	*parse(char *command_line)
 
 	return (pipeline_list);
 }
+
+void		free_pipeline_list(t_list *pipeline_list)
+{
+	t_list *pipeline;
+	t_list *command_list;
+
+	pipeline = pipeline_list;
+	while (pipeline != NULL)
+	{
+		command_list = pipeline->content;
+		ft_lstclear(&command_list, (void (*)(void *))command_destructor);
+		pipeline = pipeline->next;
+	}
+	empty_lst_clear(&pipeline_list);
+}

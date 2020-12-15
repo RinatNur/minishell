@@ -81,6 +81,7 @@ static t_list		*parse_redirects(char **command)
 		i++;
 	}
 	free(*command);
+	free(quote_mask);
 	*command = clear_command;
 	return (result);
 }
@@ -93,6 +94,7 @@ static t_command	*parse_clear_command(char *clear_command, t_list *redirects)
 
 	mask = get_mask(clear_command);
 	command_with_args = ft_split(clear_command, ' ', mask);
+	free(mask);
 	result = command_constructor(command_with_args, redirects);
 	return (result);
 }
