@@ -25,7 +25,7 @@ static int get_filename(const char *command, const char *mask, char **filename)
 	return (result - 1);
 }
 
-t_redirect *get_redirect(int *i, char *command, char *quote_mask)
+static t_redirect *get_redirect(int *i, char *command, char *quote_mask)
 {
 	t_redirect *redirect;
 
