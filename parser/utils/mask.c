@@ -22,10 +22,11 @@ char	*get_mask(char *line)
 	unsigned char	flag;
 	char 			quote;
 
-	i = 0;
-	flag = 1;
 	if (!(result = malloc(sizeof(char) * ft_strlen(line) + 1)))
 		exit(EXIT_FAILURE);
+	i = 0;
+	flag = 1;
+	quote = '\0';
 	while (line[i] != '\0')
 	{
 		if (flag == 1 && (line[i] == '\'' || line[i] == '\"'))
