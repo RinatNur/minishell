@@ -18,64 +18,56 @@ static int get_filename(const char *command, const char *mask, char **filename)
 	if (!(fname = malloc(sizeof(char) * len + 1)))
 		exit(EXIT_FAILURE);
 	result = i + len;
-
 	fname[len] = '\0';
-
 	while (len--)
 		fname[len] = command[i + len];
 	*filename = fname;
 	return (result - 1);
 }
 
+t_redirect *get_redirect(int *i, char *command, char *quote_mask)
+{
+	t_redirect *redirect;
+
+	redirect = redirect_constructor(0, NULL);
+	if (command[*i] == '>')
+	{
+		if (command[*(i) + 1] == '>')
+		{
+			(*i)++;
+			redirect->redirect_type = into_file_with_rewrite;
+			(*i) = (*i) + get_filename(command + (*i), quote_mask + (*i), &redirect->filename);
+		}
+		else
+		{
+			redirect->redirect_type = into_file;
+			(*i) = (*i) + get_filename(command + (*i), quote_mask + (*i), &redirect->filename);
+		}
+	}
+	if (command[(*i)] == '<')
+	{
+		redirect->redirect_type = from_file;
+		(*i) = (*i) + get_filename(command + (*i), quote_mask + (*i), &redirect->filename);
+	}
+	return (redirect);
+}
+
 static t_list		*parse_redirects(char **command)
 {
 	int i;
 	char *quote_mask;
-	t_redirect *redirect;
 	t_list	*result;
 	char *clear_command;
-	size_t command_len;
-
 
 	quote_mask = get_mask(*command);
 	i = 0;
 	result = NULL;
-	command_len = ft_strlen(*command);
-	if (!(clear_command = malloc(sizeof(char) * command_len + 1)))
-		exit(EXIT_FAILURE);
-	while (i < command_len)
-	{
-		clear_command[i] = ' ';
-		i++;
-	}
-	clear_command[i] = 0;
+	clear_command = empty_str(' ', ft_strlen(*command));
 	i = 0;
 	while ((*command)[i] != '\0')
 	{
 		if (quote_mask[i] == '0' && ((*command)[i] == '>' || (*command)[i] == '<'))
-		{
-			redirect = redirect_constructor(0, NULL);
-			if ((*command)[i] == '>')
-			{
-				if ((*command)[i + 1] == '>')
-				{
-					i++;
-					redirect->redirect_type = into_file_with_rewrite;
-					i = i + get_filename((*command) + i, quote_mask + i, &redirect->filename);
-				}
-				else
-				{
-					redirect->redirect_type = into_file;
-					i = i + get_filename((*command) + i, quote_mask + i, &redirect->filename);
-				}
-			}
-			if ((*command)[i] == '<')
-			{
-				redirect->redirect_type = from_file;
-				i = i + get_filename((*command) + i, quote_mask + i, &redirect->filename);
-			}
-			ft_lstadd_back(&result, ft_lstnew(redirect));
-		}
+			ft_lstadd_back(&result, ft_lstnew(get_redirect(&i, *command, quote_mask)));
 		else
 			clear_command[i] = (*command)[i];
 		i++;

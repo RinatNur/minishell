@@ -4,7 +4,6 @@
 
 int main()
 {
-
 	t_list *pipeline_list;
 	t_list *pipeline;
 	t_list *command_list;

@@ -28,6 +28,7 @@ char				**ft_split(char const *s, char c, const char *mask);
 char				*get_mask(char *line);
 void				free_2d_array(void **array);
 void				empty_lst_clear(t_list **lst);
+char				*empty_str(char c, int len);
 
 
 #endif //MINISHELL_UTILS_H
