@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_list		*ft_lstlast(t_list *lst)
+t_env		*ft_lstlast(t_env *lst)
 {
 	if (lst)
 	{

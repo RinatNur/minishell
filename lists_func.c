@@ -1,22 +1,22 @@
 #include "minishell.h"
 
-t_list      *copy_list(t_list *list)
+t_env      *copy_list(t_env *list)
 {
-    t_list      *tmp;
+    t_env      *tmp;
 
     tmp = NULL;
     while (list)
     {
-        ft_lstadd_back(&tmp, ft_lstnew(list->key, list->value));
+		ft_lstadd_back_env(&tmp, ft_lstnew_env(list->key, list->value));
         list = list->next;
     }
     return (tmp);
 }
 
-t_list      *cut_list(t_data *data, char *ar)
+t_env      *cut_list(t_data *data, char *ar)
 {
-    t_list      *list;
-    t_list      *tmp;
+    t_env      *list;
+    t_env      *tmp;
 
     list = data->env_list;
     size_t len = ft_strlen(ar) + 1;
@@ -49,7 +49,7 @@ t_list      *cut_list(t_data *data, char *ar)
     return (list);
 }
 
-void            print_list(t_list *list)
+void            print_list(t_env *list)
 {
     int     i = 0;
 

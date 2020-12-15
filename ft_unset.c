@@ -2,7 +2,7 @@
 
 void    ft_unset(t_data *data)
 {
-    t_list      *list;
+    t_env      *list;
     int             i = 1;
     size_t          len;
 

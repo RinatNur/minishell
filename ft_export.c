@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-t_list		*sort_env_list(t_sort_env *data)
+t_env		*sort_env_list(t_sort_env *data)
 {
     data->out = NULL;
     while (data->ph)
@@ -32,7 +32,7 @@ t_list		*sort_env_list(t_sort_env *data)
 void    ft_export(t_data *data)
 {
     t_sort_env  sort_env;
-    t_list		*sort_l;
+    t_env		*sort_l;
     int         i;
     int 		flag;
 
@@ -63,7 +63,7 @@ void    ft_export(t_data *data)
         while (data->ar[i])
         {
         	if ((i % 2) != 0 && (!ft_strncmp("0", data->ar[i], 1))) //if odd value of arr = 0 -> key = NULL
-        		ft_lstadd_back(&data->env_list, ft_lstnew(data->ar[i + 1], NULL));
+				ft_lstadd_back_env(&data->env_list, ft_lstnew_env(data->ar[i + 1], NULL));
         	else
 			{
         		while(sort_l)
@@ -78,7 +78,7 @@ void    ft_export(t_data *data)
         			sort_l = sort_l->next;
         		}
         		if (!flag)
-        			ft_lstadd_back(&data->env_list, ft_lstnew(data->ar[i], data->ar[i + 1]));
+					ft_lstadd_back_env(&data->env_list, ft_lstnew_env(data->ar[i], data->ar[i + 1]));
 			}
             i += 2;
         }

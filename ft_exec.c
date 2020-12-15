@@ -4,8 +4,8 @@ void        check_command(t_data *data)
 {
     if (!ft_strncmp("pwd", data->ar[0], 4))
         ft_pwd();
-    else if (!ft_strncmp("echo", data->ar[0], 5))
-        ft_echo(data);
+//    else if (!ft_strncmp("echo", data->ar[0], 5))
+//        ft_echo(data);
     else if (!ft_strncmp("cd", data->ar[0], 3))
         ft_cd(data);
     else if (!ft_strncmp("export", data->ar[0], 7))
@@ -22,12 +22,12 @@ void        check_command(t_data *data)
 
 char 	**list_to_mas_ref(t_data *data)
 {
-	t_list		*list;
+	t_env		*list;
 	char 			**env;
 	int 			i = 0;
 
 	list = data->env_list;
-	env = malloc(sizeof(char *) * (ft_lstsize(list) + 1));
+	env = malloc(sizeof(char *) * (ft_lstsize_env(list) + 1));
 	while (list)
 	{
 		env[i] = ft_strjoin(list->key, ft_strjoin("=", list->value));

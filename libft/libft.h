@@ -18,17 +18,9 @@
 # include <unistd.h>
 # include <stdio.h>
 
-typedef struct			s_list_new {
-	void                 *cont;
-	struct s_list_new    *next;
-}						t_list_new;
-
 typedef struct			s_list {
-	void 				*cont;
-	void                     *key;
-	void                     *value;
-	struct s_list        *next;
-	struct s_list        *prev;
+	void                 *cont;
+	struct s_list    	*next;
 }						t_list;
 
 void					*ft_memset(void *s, int c, size_t n);
@@ -70,9 +62,11 @@ void					ft_putstr_fd(char *s, int fd);
 void					ft_putendl_fd(char *s, int fd);
 void					ft_putnbr_fd(int n, int fd);
 void					ft_lstadd_back(t_list **lst, t_list *new);
-void					ft_lstadd_front(t_list **lst, t_list *new);
-t_list					*ft_lstlast(t_list *lst);
-t_list					*ft_lstnew(void *key, void *value);
-int						ft_lstsize(t_list *lst);
+//void					ft_lstadd_front(t_env **lst, t_env *new);
+//t_env					*ft_lstlast(t_env *lst);
+t_list					*ft_lstnew(void *cont);
+//int						ft_lstsize(t_env *lst);
+
+
 
 #endif

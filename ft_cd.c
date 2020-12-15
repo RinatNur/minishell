@@ -2,8 +2,8 @@
 
 void    ft_cd(t_data *data)
 {
-    t_list      *list;
-	t_list      *list2;
+    t_env      *list;
+	t_env      *list2;
     char            *tmp;
     int             flag = 0;
 
@@ -30,7 +30,7 @@ void    ft_cd(t_data *data)
         }
         if (!flag && !list->next)
 		{
-            ft_lstadd_back(&data->env_list, ft_lstnew("OLDPWD", tmp));
+			ft_lstadd_back_env(&data->env_list, ft_lstnew_env("OLDPWD", tmp));
         	break ;
 		}
         list = list->next;

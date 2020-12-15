@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,16 +12,14 @@
 
 #include "libft.h"
 
-t_list		*ft_lstnew(void *key, void *value)
+t_list		*ft_lstnew(void *cont)
 {
 	t_list    *new_el;
 
 	if ((new_el = malloc(sizeof(t_list))))
 	{
-		new_el->key = key;
-		new_el->value = value;
+		new_el->cont = cont;
 		new_el->next = NULL;
-		new_el->prev = NULL;
 		return (new_el);
 	}
 	return (NULL);

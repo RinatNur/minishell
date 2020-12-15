@@ -36,8 +36,8 @@ typedef struct		s_redirect
 typedef struct		s_command
 {
 	char         **command_with_arguments;
-	t_list       *redirect_list;
-	t_list       *option_list;
+	t_env       *redirect_list;
+	t_env       *option_list;
 }					t_command;
 
 

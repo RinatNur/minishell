@@ -1,8 +1,8 @@
 #include <minishell.h>
 
-void		ft_lstadd_back_new(t_list_new **lst, t_list_new *new)
+void		ft_lstadd_back_new(t_list **lst, t_list *new)
 {
-	t_list_new        *last;
+	t_list        *last;
 
 	last = *lst;
 	if (!last)
@@ -16,11 +16,11 @@ void		ft_lstadd_back_new(t_list_new **lst, t_list_new *new)
 	}
 }
 
-t_list_new		*ft_lstnew_new(void *cont)
+t_list		*ft_lstnew_new(void *cont)
 {
-	t_list_new    *new_el;
+	t_list    *new_el;
 
-	if ((new_el = malloc(sizeof(t_list_new))))
+	if ((new_el = malloc(sizeof(t_list))))
 	{
 		new_el->cont = cont;
 		new_el->next = NULL;
@@ -40,15 +40,15 @@ t_redirect		*redirect_constructor(t_type type, char *file)
 	return (redir);
 }
 
-void 	fill_t_redirect(t_list_new **list)
+void 	fill_t_redirect(t_list **list)
 {
 	t_redirect		*redir;
 
 	int 			i = 0;
 	redir = redirect_constructor(into_file, "a");
 	ft_lstadd_back_new(list, ft_lstnew_new(redir));
-//	redir = redirect_constructor(into_file, "c");
-//	ft_lstadd_back_new(list, ft_lstnew_new(redir));
-	redir = redirect_constructor(from_file, "test");
+	redir = redirect_constructor(into_file, "b");
+	ft_lstadd_back_new(list, ft_lstnew_new(redir));
+	redir = redirect_constructor(from_file, "test1");
 	ft_lstadd_back_new(list, ft_lstnew_new(redir));
 }

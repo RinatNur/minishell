@@ -2,7 +2,7 @@
 
 char    *get_value_from_env(t_data *data, char *key)
 {
-	t_list		*list;
+	t_env		*list;
 
 	list = data->env_list;
     while (list)
