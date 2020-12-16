@@ -3,10 +3,6 @@
 #include "../utils/utils.h"
 #include "stdio.h"
 
-/*
-** command
-*/
-
 typedef enum		e_rtype
 {
 	from_file,
@@ -34,4 +30,4 @@ t_command			*parse_command(const char *command_str);
 t_list				*parse_pipeline_list(char *command_line);
 void				free_pipeline_list(t_list *pipeline_list);
 
-#endif //MINISHELL_PARSE_H
+#endif
