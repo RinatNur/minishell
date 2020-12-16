@@ -11,10 +11,11 @@ int main()
 	t_list *pipeline;
 	t_list *command_list;
 	t_list *command;
-	t_list *redirect;
+	t_list *redirect_list;
 
-	t_command *com;
-	t_redirect *redir;
+	char **command_with_arguments;
+	t_redirect *redirect;
+
 	int i;
 
 	pipeline_list = parse_pipeline_list("export>a|grep>b<a USER Dfasdfasdfasdfasdfasasd ; echo $?;"
@@ -28,33 +29,37 @@ int main()
 	while (pipeline != NULL)
 	{
 		printf("\n======================== new pipeline ========================\n\n");
+
 		command_list = pipeline->content;
 		command = command_list;
 		while (command != NULL)
 		{
+			command_with_arguments = ((t_command *)(command->content))->command_with_arguments;
+			redirect_list = ((t_command *)(command->content))->redirect_list;
+
 			i = 0;
-			com = ((t_command *)(command->content));
-			while (com->command_with_arguments[i] != NULL)
+			while (command_with_arguments[i] != NULL)
 			{
 				if (i == 0)
-					printf("command: %s\n", com->command_with_arguments[i]);
+					printf("command: %s\n", command_with_arguments[i]);
 				else
-					printf("argument: %s\n", com->command_with_arguments[i]);
+					printf("argument: %s\n", command_with_arguments[i]);
 				i++;
 			}
-			redirect = com->redirect_list;
-			while (redirect != NULL)
+
+			while (redirect_list != NULL)
 			{
-				redir = (t_redirect *)(redirect->content);
-					if (redir->redirect_type == from_file)
-						printf("redirect type:  %s  ", "<");
-					else if (redir->redirect_type == into_file)
-						printf("redirect type:  %s  ", ">");
+				redirect = (t_redirect *)(redirect_list->content);
+					if (redirect->redirect_type == from_file)
+						printf("redirect_list type:  %s  ", "<");
+					else if (redirect->redirect_type == into_file)
+						printf("redirect_list type:  %s  ", ">");
 					else
-						printf("redirect type:  %s  ", ">>");
-					printf("filename: %s\n", redir->filename);
-				redirect = redirect->next;
+						printf("redirect_list type:  %s  ", ">>");
+					printf("filename: %s\n", redirect->filename);
+				redirect_list = redirect_list->next;
 			}
+
 			if (command->next != NULL)
 				printf("\n-------- pipe -------\n\n");
 			command = command->next;
