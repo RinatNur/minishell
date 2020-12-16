@@ -4,6 +4,9 @@
 
 int main()
 {
+	//TODO Заменять где нужно переменные окружения на их значения
+	//TODO Убирать из аргументов команд и редиректов кавычки
+	//TODO Привести к норме
 	t_list *pipeline_list;
 	t_list *pipeline;
 	t_list *command_list;
@@ -14,12 +17,12 @@ int main()
 	t_redirect *redir;
 	int i;
 
-	pipeline_list = parse("export>a|grep>b<a USER Dfasdfasdfasdfasdfasasd ; echo $?;"
-						  "export>\">\"|grep>\"|\"<\">\" USER;"
-						  "ls > a > b -la;"
-						  "> a ls > b -la;"
-						  "ls > a ; chmod 111 a ; ls > a | cat -e;"
-						  "cat < a | cat -e");
+	pipeline_list = parse_pipeline_list("export>a|grep>b<a USER Dfasdfasdfasdfasdfasasd ; echo $?;"
+										"export>\">\"|grep>\"|\"<\">\" USER;"
+										"ls > a > b -la;"
+										"> a ls > b -la;"
+										"ls > a ; chmod 111 a ; ls > a | cat -e;"
+										"cat < a | cat -e");
 
 	pipeline = pipeline_list;
 	while (pipeline != NULL)
@@ -43,9 +46,9 @@ int main()
 			while (redirect != NULL)
 			{
 				redir = (t_redirect *)(redirect->content);
-					if (redir->redirect_type == 0)
+					if (redir->redirect_type == from_file)
 						printf("redirect type:  %s  ", "<");
-					else if (redir->redirect_type == 1)
+					else if (redir->redirect_type == into_file)
 						printf("redirect type:  %s  ", ">");
 					else
 						printf("redirect type:  %s  ", ">>");

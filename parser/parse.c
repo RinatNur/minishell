@@ -38,7 +38,7 @@ static void	fill_pipeline_list(t_list **pipeline_list, char **pipeline_lines)
 	}
 }
 
-t_list	*parse(char *command_line)
+t_list	*parse_pipeline_list(char *command_line)
 {
 	t_list	*pipeline_list;
 	char	**pipeline_lines;
