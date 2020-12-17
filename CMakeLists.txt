@@ -6,7 +6,7 @@ set(CMAKE_C_STANDARD 11)
 include_directories(.)
 include_directories(libft)
 
-add_executable(minishell_git_my
+add_executable(rinat_minishell
         libft/ft_atoi.c
         libft/ft_bzero.c
         libft/ft_calloc.c
@@ -47,9 +47,46 @@ add_executable(minishell_git_my
         libft/ft_tolower.c
         libft/ft_toupper.c
         libft/libft.h
-        ft_env.c
-        ft_error.c
-        ft_pwd.c
+        functional/ft_env.c
+        functional/ft_error.c
+        functional/ft_pwd.c
+        functional/utils.c
+        functional/ft_find_path.c
+        functional/lists_func.c
+        functional/make_env_list.c
+        functional/ft_exec.c
+        functional/ft_write.c
+        functional/ft_echo.c
+        functional/get_value_from_env.c
+        functional/ft_export.c
+        functional/ft_unset.c
+        functional/ft_cd.c
+        functional/ft_exit.c
+        functional/ft_pipe.c
+        functional/fill_list.c
+        functional/ft_redirect.c
+        functional/ft_check_redirects.c
+        functional/processing.h
+#        functional/start.c
+        main.c
         minishell.h
-        start.c
-        utils.c ft_find_path.c lists_func.c make_env_list.c ft_exec.c ft_write.c ft_echo.c get_value_from_env.c ft_export.c ft_unset.c ft_cd.c ft_exit.c ft_pipe.c fill_list.c processing.h parser.h ft_redirect.c ft_check_redirects.c)
+        parser/parse.h
+        utils/ft_strlen.c
+        utils/ft_lstadd_back.c
+        utils/ft_lstadd_front.c
+        utils/ft_lstclear.c
+        utils/ft_lstdelone.c
+        utils/ft_lstiter.c
+        utils/ft_lstlast.c
+        utils/ft_lstnew.c
+        utils/ft_lstsize.c
+        utils/utils.h
+        utils/ft_strdup.c
+        parser/parse.c
+        utils/ft_split.c
+        parser/parse_command.c
+        utils/mask.c
+        parser/command.c
+        utils/clear_empty_list.c
+        utils/empty_str.c
+        minishell.h)

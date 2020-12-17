@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_env.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/02 19:14:09 by jheat             #+#    #+#             */
-/*   Updated: 2020/06/02 19:29:13 by jheat            ###   ########.fr       */
+/*   Created: 2020/05/29 16:04:40 by wrudy             #+#    #+#             */
+/*   Updated: 2020/05/29 16:04:42 by wrudy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "utils.h"
 
-t_list		*ft_lstnew(void *content)
+void	ft_lstiter(t_list *lst, void (*f)(void*))
 {
-	t_list    *new_el;
-
-	if ((new_el = malloc(sizeof(t_list))))
+	if (!f)
+		return ;
+	while (lst)
 	{
-		new_el->content = content;
-		new_el->next = NULL;
-		return (new_el);
+		(*f)(lst->content);
+		lst = lst->next;
 	}
-	return (NULL);
 }

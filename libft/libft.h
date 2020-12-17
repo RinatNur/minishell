@@ -14,14 +14,12 @@
 # define LIBFT_H
 # define INT_MIN -2147483648
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
+# include "minishell.h"
 
-typedef struct			s_list {
-	void                 *cont;
-	struct s_list    	*next;
-}						t_list;
+//typedef struct			s_list {
+//	void                *content;
+//	struct s_list    	*next;
+//}						t_list;
 
 void					*ft_memset(void *s, int c, size_t n);
 void					ft_bzero(void *s, size_t n);
@@ -64,8 +62,26 @@ void					ft_putnbr_fd(int n, int fd);
 void					ft_lstadd_back(t_list **lst, t_list *new);
 //void					ft_lstadd_front(t_env **lst, t_env *new);
 //t_env					*ft_lstlast(t_env *lst);
-t_list					*ft_lstnew(void *cont);
+t_list					*ft_lstnew(void *content);
 //int						ft_lstsize(t_env *lst);
+
+t_list				*ft_lstnew(void *content);
+void				ft_lstadd_back(t_list **lst, t_list *new);
+
+void				ft_lstadd_front(t_list **lst, t_list *new);
+void				ft_lstclear(t_list **lst, void (*del)(void*));
+void				ft_lstdelone(t_list *lst, void (*del)(void*));
+void				ft_lstiter(t_list *lst, void (*f)(void*));
+t_list				*ft_lstlast(t_list *lst);
+int					ft_lstsize(t_list *lst);
+
+int					ft_strlen_pars(const char *str);
+char				*ft_strdup_pars(const char *s);
+char				**ft_split_mask(char const *s, char c, const char *mask);
+char				*get_mask(char *line);
+void				free_2d_array(void **array);
+void				empty_lst_clear(t_list **lst);
+char				*empty_str(char c, int len);
 
 
 

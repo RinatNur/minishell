@@ -5,3 +5,5 @@ start
 .vscode
 a.out
 /cmake-build-debug/
+parser
+utils

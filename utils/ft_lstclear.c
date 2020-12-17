@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_env.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/02 19:14:09 by jheat             #+#    #+#             */
-/*   Updated: 2020/06/02 19:29:13 by jheat            ###   ########.fr       */
+/*   Created: 2020/05/29 15:59:14 by wrudy             #+#    #+#             */
+/*   Updated: 2020/05/29 15:59:17 by wrudy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "utils.h"
 
-t_list		*ft_lstnew(void *content)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list    *new_el;
+	t_list	*tmp;
 
-	if ((new_el = malloc(sizeof(t_list))))
+	if (!del || !lst || !*lst)
+		return ;
+	while (lst && *lst)
 	{
-		new_el->content = content;
-		new_el->next = NULL;
-		return (new_el);
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
 	}
-	return (NULL);
 }

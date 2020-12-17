@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_env.c                                        :+:      :+:    :+:   */
+/*   ft_strlen_pars.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/02 19:14:09 by jheat             #+#    #+#             */
-/*   Updated: 2020/06/02 19:29:13 by jheat            ###   ########.fr       */
+/*   Created: 2020/05/01 19:10:54 by wrudy             #+#    #+#             */
+/*   Updated: 2020/05/28 03:56:40 by wrudy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-t_list		*ft_lstnew(void *content)
+int	ft_strlen_pars(const char *str)
 {
-	t_list    *new_el;
+	int i;
 
-	if ((new_el = malloc(sizeof(t_list))))
-	{
-		new_el->content = content;
-		new_el->next = NULL;
-		return (new_el);
-	}
-	return (NULL);
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

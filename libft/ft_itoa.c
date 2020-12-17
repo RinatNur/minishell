@@ -51,7 +51,7 @@ char				*ft_itoa(int n)
 	str[i] = '\0';
 	while (i-- > sign)
 	{
-		str[i] = (n % 10 + '0');
+		str[i] = (char)(n % 10 + '0');
 		n = n / 10;
 	}
 	if (f == 1)
