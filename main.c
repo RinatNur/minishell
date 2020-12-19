@@ -71,7 +71,7 @@ void loop()
 
 	while (1)
 	{
-		write(1, ">>> ", 4);
+		write(1, "minishell #> ", 13);
 		get_next_line(0, &line);
 		process_command(line);
 		free(line);
