@@ -1,8 +1,9 @@
 #include "parser/parse.h"
 #include <stdio.h>
+#include <unistd.h>
+#include "gnl/get_next_line.h"
 
-
-int main()
+void process_command(char *command_line)
 {
 	//TODO Заменять где нужно переменные окружения на их значения
 	//TODO Убирать из аргументов команд и редиректов кавычки
@@ -18,12 +19,7 @@ int main()
 
 	int i;
 
-	pipeline_list = parse_pipeline_list("export>a|grep>b<a USER Dfasdfasdfasdfasdfasasd ; echo $?;"
-										"export>\">\"|grep>\"|\"<\">\" USER;"
-										"ls > a > b -la;"
-										"> a ls > b -la;"
-										"ls > a ; chmod 111 a ; ls > a | cat -e;"
-										"cat < a | cat -e");
+	pipeline_list = parse_pipeline_list(command_line);
 
 	pipeline = pipeline_list;
 	while (pipeline != NULL)
@@ -50,13 +46,13 @@ int main()
 			while (redirect_list != NULL)
 			{
 				redirect = (t_redirect *)(redirect_list->content);
-					if (redirect->redirect_type == from_file)
-						printf("redirect_list type:  %s  ", "<");
-					else if (redirect->redirect_type == into_file)
-						printf("redirect_list type:  %s  ", ">");
-					else
-						printf("redirect_list type:  %s  ", ">>");
-					printf("filename: %s\n", redirect->filename);
+				if (redirect->redirect_type == from_file)
+					printf("redirect_list type:  %s  ", "<");
+				else if (redirect->redirect_type == into_file)
+					printf("redirect_list type:  %s  ", ">");
+				else
+					printf("redirect_list type:  %s  ", ">>");
+				printf("filename: %s\n", redirect->filename);
 				redirect_list = redirect_list->next;
 			}
 
@@ -67,5 +63,23 @@ int main()
 		pipeline = pipeline->next;
 	}
 	free_pipeline_list(pipeline_list);
+}
+
+void loop()
+{
+	char *line;
+
+	while (1)
+	{
+		write(1, ">>> ", 4);
+		get_next_line(0, &line);
+		process_command(line);
+		free(line);
+	}
+}
+
+int main()
+{
+	loop();
 	return 0;
 }
