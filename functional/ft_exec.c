@@ -13,8 +13,8 @@ void        check_command(t_data *data)
         ft_echo(data);
     else if (!ft_strncmp("cd", com, 3))
         ft_cd(data);
-    else if (!ft_strncmp("export", com, 7))
-        ft_export(data);
+//    else if (!ft_strncmp("export", com, 7))
+//        ft_export(data);
     else if (!ft_strncmp("unset", com, 6))
         ft_unset(data);
     else if (!ft_strncmp("env", com, 4))
@@ -53,10 +53,11 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
     pid = fork();
     if (pid == -1)
         return (1);
-    if(pid != 0)
+    if(pid == 0)
     {
 //    	write(1, "hello", 5);
         err = execve(ft_find_path(data, data->ar[0]), data->ar, env);
+//        g_err = errno;
         if (err == -1)
         {
             printf("FAILURE\n");
@@ -66,18 +67,21 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
     }
     else
     {
-        int     wait_status = 0;
+        int     wait_status;
         int 	test;
 		wait(&wait_status);
+		test = WIFEXITED(wait_status);
 
-        if ((test = WIFEXITED(wait_status)))
-        {
-            int status_code = WEXITSTATUS(wait_status);
-            if (status_code == 0)
-                printf("sucess");
-            else
-                printf("failure with the status code %d\n", status_code);
-        }
+		char *str = strerror(wait_status);
+		int i = 0;
+//        if ((test = WIFEXITED(wait_status)))
+//        {
+//            int status_code = WEXITSTATUS(wait_status);
+//            if (status_code == 0)
+//                printf("sucess");
+//            else
+//                printf("failure with the status code %d\n", status_code);
+//        }
      }
     return (0);
 }

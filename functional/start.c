@@ -3,8 +3,8 @@
 
 int     main(int ac, char **av, char **envp) {
     t_data      data;
-	char		*command = "srgwerg";
-	char*		arr[] = { command, NULL };
+	char		*command = "export";
+	char*		arr[] = { command, "0", "a", "b", "456", NULL };
 	int 		file;
 //	t_list 		*list_new = NULL;
 //    redirect_list = list_new;
@@ -17,13 +17,14 @@ int     main(int ac, char **av, char **envp) {
 //    print_list(data.env_list);
 //	ft_pipe(&data);
 
-//	command = "grep";
-//    data.ar[0] = command;
-//    data.ar[1] = "USER";
-////    data.ar[2] = NULL;
 	check_command(&data);
+//	command = "";
+//    data.ar[0] = command;
+    data.ar[1] = NULL;
+	check_command(&data);
+////    data.ar[2] = NULL;
 
-	execve(ft_find_path(&data, data.ar[0]), data.ar, envp);
+//	execve(ft_find_path(&data, data.ar[0]), data.ar, envp);
 //    fill_t_redirect(&data.redirect_list);
 //	ft_check_redirects(&data);
 

@@ -82,6 +82,8 @@ add_executable(rinat_minishell
         utils/ft_lstsize.c
         utils/utils.h
         utils/ft_strdup.c
+        gnl/get_next_line.c
+        gnl/get_next_line_utils.c
         parser/parse.c
         utils/ft_split.c
         parser/parse_command.c

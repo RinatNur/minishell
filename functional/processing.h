@@ -5,6 +5,7 @@
 #include "../minishell.h"
 
 #define ERR1 No such file or directory
+# define MSHELL "-minishell"
 # define REDIR ((t_redirect *)(data->redirect_list->content))
 
 typedef struct            s_sort_env {
@@ -45,5 +46,6 @@ void			ft_lstadd_back_env(t_env **lst, t_env *new);
 t_env			*ft_lstnew_env(void *key, void *value);
 int				ft_lstsize_env(t_env *lst);
 void			fill_t_redirect(t_list **list);
+void			ft_error_print(char *minishell, char *command, char *filename, char *message);
 
 #endif //MINISHELL_GIT_MY_PROCESSING_H

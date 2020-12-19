@@ -4,7 +4,7 @@ void    ft_env(t_data *data)
 {
     int i = 0;
     t_env      *env = data->env_list;
-
+	if (data)
     while (env)
     {
         if(env->value)
