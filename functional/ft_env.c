@@ -4,7 +4,11 @@ void    ft_env(t_data *data)
 {
     int i = 0;
     t_env      *env = data->env_list;
+<<<<<<< HEAD
 	if (data)
+=======
+
+>>>>>>> origin/master
     while (env)
     {
         if(env->value)

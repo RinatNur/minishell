@@ -1,5 +1,6 @@
 #include "processing.h"
 
+<<<<<<< HEAD
 void 		ft_error_print(char *minishell, char *command, char *filename, char *message)
 {
 	if (minishell)
@@ -25,5 +26,10 @@ void    ft_error(char *str, int code)
 {
     ft_write (1, str);
     write (1, "\n", 1);
+=======
+void    ft_error(char *str, int code)
+{
+    write (1, str, ft_strlen((str)));
+>>>>>>> origin/master
     exit (code);
 }

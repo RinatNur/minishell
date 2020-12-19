@@ -3,8 +3,13 @@
 
 int     main(int ac, char **av, char **envp) {
     t_data      data;
+<<<<<<< HEAD
 	char		*command = "export";
 	char*		arr[] = { command, "0", "a", "b", "456", NULL };
+=======
+	char		*command = "env";
+	char*		arr[] = { command, NULL, NULL };
+>>>>>>> origin/master
 	int 		file;
 //	t_list 		*list_new = NULL;
 //    redirect_list = list_new;
@@ -15,6 +20,7 @@ int     main(int ac, char **av, char **envp) {
     data.ar = arr;
     make_env_list(&data, (const char **)envp);
 //    print_list(data.env_list);
+<<<<<<< HEAD
 //	ft_pipe(&data);
 
 	check_command(&data);
@@ -23,6 +29,15 @@ int     main(int ac, char **av, char **envp) {
     data.ar[1] = NULL;
 	check_command(&data);
 ////    data.ar[2] = NULL;
+=======
+	ft_pipe(&data);
+
+	command = "grep";
+    data.ar[0] = command;
+    data.ar[1] = "USER";
+//    data.ar[2] = NULL;
+	check_command(&data);
+>>>>>>> origin/master
 
 //	execve(ft_find_path(&data, data.ar[0]), data.ar, envp);
 //    fill_t_redirect(&data.redirect_list);

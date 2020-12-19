@@ -50,6 +50,10 @@ add_executable(rinat_minishell
         functional/ft_env.c
         functional/ft_error.c
         functional/ft_pwd.c
+<<<<<<< HEAD
+=======
+#        functional/start.c
+>>>>>>> origin/master
         functional/utils.c
         functional/ft_find_path.c
         functional/lists_func.c
@@ -67,9 +71,16 @@ add_executable(rinat_minishell
         functional/ft_redirect.c
         functional/ft_check_redirects.c
         functional/processing.h
+<<<<<<< HEAD
 #        functional/start.c
         main.c
         minishell.h
+=======
+        minishell.h
+        main.c
+        parser
+        main.c
+>>>>>>> origin/master
         parser/parse.h
         utils/ft_strlen.c
         utils/ft_lstadd_back.c
@@ -82,8 +93,11 @@ add_executable(rinat_minishell
         utils/ft_lstsize.c
         utils/utils.h
         utils/ft_strdup.c
+<<<<<<< HEAD
         gnl/get_next_line.c
         gnl/get_next_line_utils.c
+=======
+>>>>>>> origin/master
         parser/parse.c
         utils/ft_split.c
         parser/parse_command.c

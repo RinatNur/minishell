@@ -13,8 +13,13 @@ void        check_command(t_data *data)
         ft_echo(data);
     else if (!ft_strncmp("cd", com, 3))
         ft_cd(data);
+<<<<<<< HEAD
 //    else if (!ft_strncmp("export", com, 7))
 //        ft_export(data);
+=======
+    else if (!ft_strncmp("export", com, 7))
+        ft_export(data);
+>>>>>>> origin/master
     else if (!ft_strncmp("unset", com, 6))
         ft_unset(data);
     else if (!ft_strncmp("env", com, 4))
@@ -57,16 +62,24 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
     {
 //    	write(1, "hello", 5);
         err = execve(ft_find_path(data, data->ar[0]), data->ar, env);
+<<<<<<< HEAD
 //        g_err = errno;
         if (err == -1)
         {
             printf("FAILURE\n");
             return (errno);
+=======
+        if (err == -1)
+        {
+            printf("FAILURE\n");
+            return (err);
+>>>>>>> origin/master
         }
 
     }
     else
     {
+<<<<<<< HEAD
         int     wait_status;
         int 	test;
 		wait(&wait_status);
@@ -75,6 +88,11 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 		char *str = strerror(wait_status);
 		int i = 0;
 //        if ((test = WIFEXITED(wait_status)))
+=======
+//        int     wait_status = 0;
+		waitpid(pid, NULL, 0);
+//        if (WIFEXITED(wait_status))
+>>>>>>> origin/master
 //        {
 //            int status_code = WEXITSTATUS(wait_status);
 //            if (status_code == 0)
