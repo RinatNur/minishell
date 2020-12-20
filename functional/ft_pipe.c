@@ -11,7 +11,7 @@ void 	ft_pipe(t_data *data)
 
 	if (pid == 0)
 	{
-		write(1,"", 1);
+		ft_write(1,"");
 		dup2(fd[1], 1);
 		close(fd[0]);
 		close(fd[1]);
@@ -21,8 +21,10 @@ void 	ft_pipe(t_data *data)
 	else
 	{
 		dup2(fd[0], 0);
-		close(fd[1]);
-		close(fd[0]);
+//		close(fd[1]);
+//		close(fd[0]);
+		dup2(1,2);
+		dup2(0, 1);
 		waitpid(pid, &status, WUNTRACED);
 	}
 }

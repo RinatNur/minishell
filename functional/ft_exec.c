@@ -60,8 +60,8 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 //        g_err = errno;
         if (err == -1)
         {
-            printf("FAILURE\n");
-            return (errno);
+            ft_write(1, "EXECVE return -1");
+            exit(errno);
         }
 
     }
