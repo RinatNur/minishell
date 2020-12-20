@@ -2,6 +2,7 @@
 
 void    ft_cd(t_data *data)
 {
+	//TODO check "CD dffdgs" with execve
     t_env      *list;
 	t_env      *list2;
     char            *tmp;
@@ -11,6 +12,8 @@ void    ft_cd(t_data *data)
 
     list = data->env_list;
     list2 = data->env_list;
+    if (!ft_strncmp("CD", data->ar[0], 3))
+    	return;
     if (data->ar[1])
         (chdir(data->ar[1]) == -1) ? ft_error_print(MSHELL, data->ar[0], data->ar[1], strerror(errno)) : 0;
     while (list)

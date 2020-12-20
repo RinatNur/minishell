@@ -17,12 +17,6 @@ static void process_command(char *command_line, char **envp)
 	g_err = 0;
 	make_env_list(&data, (const char **)envp);
 	pipeline_list = parse_pipeline_list(command_line);
-//						  "export>\">\"|grep>\"|\"<\">\" USER;"
-//						  "ls > a > b -la;"
-//						  "> a ls > b -la;"
-//						  "ls > a ; chmod 111 a ; ls > a | cat -e;"
-//						  "cat < a | cat -e");
-
 	pipeline = pipeline_list;
 	while (pipeline != NULL)
 	{
@@ -56,15 +50,10 @@ static void process_command(char *command_line, char **envp)
 				check_command(&data);
 			command = command->next;
 		}
+		dup2(1, 0);
 		pipeline = pipeline->next;
 	}
 	free_pipeline_list(pipeline_list);
-//	ft_write(1, ft_itoa(g_err));
-//	write(1, "\n", 1);
-//		sleep(1200);
-//	dup2(1,2);
-//	dup2(0, 1);
-//	dup2()
 }
 void loop(char **envp)
 {
