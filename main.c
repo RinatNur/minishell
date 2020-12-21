@@ -1,7 +1,23 @@
 #include "parser/parse.h"
 #include "functional/processing.h"
 
-int main(int ac, char **av, char **envp)
+//TODO grep make < a | cat -e
+//TODO ls >a | cat -e
+//TODO ls full space in the enf of file
+//
+void		ft_pipe_eof(void)
+{
+	int mas[2];
+
+	pipe(mas);
+	write(mas[1], "", 0);
+	dup2(mas[0], 0);
+//	dup2(mas[1], 1);
+//	close(mas[0]);
+	close(mas[1]);
+}
+
+static void process_command(char *command_line, char **envp)
 {
 	t_data data;
 	t_list *pipeline_list;
@@ -15,14 +31,11 @@ int main(int ac, char **av, char **envp)
 	int i;
 
 	g_err = 0;
+	data.redir_flag = 0;
+	data.fd_start[0] = dup(0);
+	data.fd_start[1] = dup(1);
 	make_env_list(&data, (const char **)envp);
-	pipeline_list = parse_pipeline_list("echo sdf sdf sfa awf af $?? | cat -e");
-//						  "export>\">\"|grep>\"|\"<\">\" USER;"
-//						  "ls > a > b -la;"
-//						  "> a ls > b -la;"
-//						  "ls > a ; chmod 111 a ; ls > a | cat -e;"
-//						  "cat < a | cat -e");
-
+	pipeline_list = parse_pipeline_list(command_line);
 	pipeline = pipeline_list;
 	while (pipeline != NULL)
 	{
@@ -31,33 +44,51 @@ int main(int ac, char **av, char **envp)
 		command = command_list;
 		while (command != NULL)
 		{
-			i = 0;
 			com = ((t_command *)(command->content));
 			data.redirect_list = com->redirect_list;
+
+			process_envs((com->command_with_arguments), &data);
+
 			data.ar = com->command_with_arguments;
 			if (data.redirect_list && !command->next)
 				ft_check_redirects(&data);
 			else if (!data.redirect_list && command->next)
-			{
 				ft_pipe(&data);
-				com = ((t_command *)(command->content));
-				data.redirect_list = com->redirect_list;
-				data.ar = com->command_with_arguments;
-			}
 			else if (data.redirect_list && command->next)
 			{
 				ft_check_redirects(&data);
 				ft_pipe(&data);
-				com = ((t_command *)(command->content));
-				data.redirect_list = com->redirect_list;
-				data.ar = com->command_with_arguments;
 			}
 			else
+			{
+				if (data.redir_flag) {
+					ft_pipe_eof();
+				}
 				check_command(&data);
+			}
 			command = command->next;
 		}
+		dup2(1, 0);//to return fd 0 back;
+//		dup2(data.fd_start[1], 1);//to return fd 0 back;
 		pipeline = pipeline->next;
 	}
-	free_pipeline_list(pipeline_list);
+//	free_pipeline_list(pipeline_list);
+}
+void loop(char **envp)
+{
+	char *line;
+	int flag;
+	flag = 1;
+	while (flag > 0)
+	{
+		write(1, "minishell #> ", 13);
+		flag = get_next_line(0, &line);
+		process_command(line, envp);
+//		free(line);
+	}
+}
+int main(int ac, char **av, char **envp)
+{
+	loop(envp);
 	return 0;
 }

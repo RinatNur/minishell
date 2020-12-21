@@ -7,11 +7,11 @@ void        check_command(t_data *data)
 	com = data->ar[0];
 	if (!com)
 		return;
-    if (!ft_strncmp("pwd", com, 4))
+    if (!ft_strncmp("pwd", com, 4) || !ft_strncmp("PWD", com, 4))
         ft_pwd();
     else if (!ft_strncmp("echo", com, 5) || !ft_strncmp("ECHO", com, 5))
         ft_echo(data);
-    else if (!ft_strncmp("cd", com, 3))
+    else if (!ft_strncmp("cd", com, 3) || !ft_strncmp("CD", com, 3))
         ft_cd(data);
     else if (!ft_strncmp("export", com, 7))
         ft_export(data);
@@ -57,25 +57,44 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
     {
 //    	write(1, "hello", 5);
         err = execve(ft_find_path(data, data->ar[0]), data->ar, env);
+
+//        g_err = errno;
         if (err == -1)
-        {
-            printf("FAILURE\n");
-            return (err);
-        }
+        	exit(WEXITSTATUS(err));
+//        {
+//            ft_write(1, "EXECVE return -1");
+//            ft_write(1, "\n");
+//			return (errno);
+//        }
 
     }
     else
     {
-//        int     wait_status = 0;
-		waitpid(pid, NULL, 0);
+        int     wait_status;
+        int 	test;
+		wait(&wait_status);
+//		test = WEXITSTATUS(wait_status);
+		int i = 0;
+//		char *str = strerror(test);
+//		while (i < 200)
+//		{
+//			ft_error_print(MSHELL, ft_itoa(i), NULL, str );
+//			i++;
+//		}
+//		int i = 0;
+//            int status_code = WEXITSTATUS(wait_status);
 //        if (WIFEXITED(wait_status))
 //        {
-//            int status_code = WEXITSTATUS(wait_status);
+            int status_code = WEXITSTATUS(wait_status);
 //            if (status_code == 0)
-//                printf("sucess");
+//                ft_write(1, "sucess");
 //            else
+//			{
+//            	ft_write(2, "sdfgfdg");
 //                printf("failure with the status code %d\n", status_code);
+
+//			}
 //        }
-     }
+    }
     return (0);
 }

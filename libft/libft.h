@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/26 12:45:25 by jheat             #+#    #+#             */
-/*   Updated: 2020/12/17 20:30:17 by wrudy            ###   ########.fr       */
+/*   Updated: 2020/10/19 17:45:16 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int					ft_strlen_pars(const char *str);
 char				*ft_strdup_pars(const char *s);
 char				**ft_split_mask(char const *s, char c, const char *mask);
 char				*get_mask(char *line);
-void				free_2d_array(void **array);
+void				free_2d_array(char **array);
 void				empty_lst_clear(t_list **lst);
 char				*empty_str(char c, int len);
 

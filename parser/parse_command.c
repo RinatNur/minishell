@@ -62,7 +62,7 @@ static t_list		*parse_redirects(char **command)
 	quote_mask = get_mask(*command);
 	i = 0;
 	result = NULL;
-	clear_command = empty_str(' ', ft_strlen_pars(*command));
+	clear_command = empty_str(' ', u_strlen(*command));
 	i = 0;
 	while ((*command)[i] != '\0')
 	{
@@ -85,7 +85,7 @@ static t_command	*parse_clear_command(char *clear_command, t_list *redirects)
 	char *mask;
 
 	mask = get_mask(clear_command);
-	command_with_args = ft_split_mask(clear_command, ' ', mask);
+	command_with_args = u_split(clear_command, ' ', mask);
 	free(mask);
 	result = command_constructor(command_with_args, redirects);
 	return (result);
@@ -97,7 +97,7 @@ t_command			*parse_command(const char *command_str)
 	t_list		*redirect_list;
 	char 		*clear_command_str;
 
-	clear_command_str = ft_strdup_pars(command_str);
+	clear_command_str = u_strdup(command_str);
 	redirect_list = parse_redirects(&clear_command_str);
 	command = parse_clear_command(clear_command_str, redirect_list);
 	free(clear_command_str);

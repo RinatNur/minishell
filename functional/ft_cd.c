@@ -2,15 +2,20 @@
 
 void    ft_cd(t_data *data)
 {
+	//TODO check "CD dffdgs" with execve
     t_env      *list;
 	t_env      *list2;
     char            *tmp;
     int             flag = 0;
+    int 			err;
+    char 			*err_text;
 
     list = data->env_list;
     list2 = data->env_list;
+    if (!ft_strncmp("CD", data->ar[0], 3))
+    	return;
     if (data->ar[1])
-        (chdir(data->ar[1]) == -1) ? ft_error("Chdir can't change the directory", 5) : 0;
+        (chdir(data->ar[1]) == -1) ? ft_error_print(MSHELL, data->ar[0], data->ar[1], strerror(errno)) : 0;
     while (list)
     {
         if ((!ft_strncmp("PWD", list->key, 4)))
@@ -35,6 +40,6 @@ void    ft_cd(t_data *data)
 		}
         list = list->next;
     }
-    print_list(data->env_list);
+//    print_list(data->env_list);
 }
 

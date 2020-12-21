@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_mask.c                                         :+:      :+:    :+:   */
+/*   u_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/24 14:58:22 by wrudy             #+#    #+#           /*   Updated: 2020/12/17 20:30:17 by wrudy            ###   ########.fr       */
-  */
+/*   Created: 2020/05/24 14:58:22 by wrudy             #+#    #+#             */
+/*   Updated: 2020/12/12 19:08:14 by wrudy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static size_t	ft_len(char const *s, char c, const char *mask)
 	return (len);
 }
 
-void 			free_2d_array(void **array)
+void 			free_2d_array(char **array)
 {
 	int i;
 
@@ -59,7 +59,7 @@ void 			free_2d_array(void **array)
 	free(array);
 }
 
-char			**ft_split_mask(char const *s, char c, const char *mask)
+char			**u_split(char const *s, char c, const char *mask)
 {
 	char	**arr;
 	size_t	i;

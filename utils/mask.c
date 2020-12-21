@@ -15,6 +15,26 @@ char mask_elem(unsigned char *flag, char symbol, char quote)
 		return quote;
 }
 
+static char *correct_mask(char *mask)
+{
+	int i;
+	char *result;
+
+	result = u_strdup(mask);
+	if (mask[0] == '\'' || mask[0] == '\"')
+		result[0] = '0';
+	i = 1;
+	while (mask[i] != 0)
+	{
+		if ((mask[i - 1] == '0' || (mask[i + 1] == '0' || mask[i + 1] == '\0'))
+			&& (mask[i] == '\'' || mask[i] == '\"'))
+			result[i] = '0';
+		i++;
+	}
+	free(mask);
+	return (result);
+}
+
 char	*get_mask(char *line)
 {
 	int				i;
@@ -22,7 +42,7 @@ char	*get_mask(char *line)
 	unsigned char	flag;
 	char 			quote;
 
-	if (!(result = malloc(sizeof(char) * ft_strlen_pars(line) + 1)))
+	if (!(result = malloc(sizeof(char) * u_strlen(line) + 1)))
 		exit(EXIT_FAILURE);
 	i = 0;
 	flag = 1;
@@ -35,5 +55,6 @@ char	*get_mask(char *line)
 		i++;
 	}
 	result[i] = 0;
+	result = correct_mask(result);
 	return result;
 }
