@@ -32,6 +32,8 @@ static void process_command(char *command_line, char **envp)
 
 	g_err = 0;
 	data.redir_flag = 0;
+	data.fd_start[0] = dup(0);
+	data.fd_start[1] = dup(1);
 	make_env_list(&data, (const char **)envp);
 	pipeline_list = parse_pipeline_list(command_line);
 	pipeline = pipeline_list;
@@ -64,6 +66,7 @@ static void process_command(char *command_line, char **envp)
 			command = command->next;
 		}
 		dup2(1, 0);//to return fd 0 back;
+//		dup2(data.fd_start[1], 1);//to return fd 0 back;
 		pipeline = pipeline->next;
 	}
 //	free_pipeline_list(pipeline_list);
