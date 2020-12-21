@@ -35,7 +35,7 @@ void    ft_echo(t_data *data)
     while (data->ar[i])
 	{
        	ft_write(1, data->ar[i]);
-        if (data->ar[i])
+        if (data->ar[i + 1])
             ft_write(1, " ");
         i++;
 	}
