@@ -54,6 +54,7 @@ typedef struct      s_data {
 	char 			*wr_file_name;
 	int 			wr_type_redir;
 	char 			*rd_file_name;
+	int 			redir_flag;
 }                   t_data;
 
 #endif

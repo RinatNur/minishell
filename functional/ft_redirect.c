@@ -21,7 +21,7 @@ void		ft_redirect_read(t_data *data)
 				dup2(file, 1);
 			}
 			check_command(data);
-			exit(0);
+			exit(errno);
 		}
 		else
 			waitpid(pid, &status, WUNTRACED);
@@ -40,15 +40,17 @@ void		ft_redirect_write(t_data *data)
 	{													//if >					if >>
 		argument = (data->wr_type_redir == into_file) ? O_WRONLY : (O_WRONLY | O_APPEND);
 		pid = fork();
-		if (pid != 0)
+		if (pid == 0)
 		{
 			file = open(data->wr_file_name, argument, 0666);
 			dup2(file, 1);
 			check_command(data);
-			exit(0);
+			exit(errno);
 		}
 		else
+		{
 			waitpid(pid, &status, WUNTRACED);
+		}
 	}
 }
 

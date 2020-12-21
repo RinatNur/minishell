@@ -6,15 +6,15 @@ void 	ft_pipe(t_data *data)
 	pid_t		pid;
 	int 		status = 0;
 
+//	ft_pipe_eof();
 	pipe(fd);
 	pid = fork();
 
 	if (pid == 0)
 	{
-//		ft_write(1,"");
+//		if
+//			ft_pipe_eof();
 		dup2(fd[1], 1);
-//		close(fd[0]);
-//		close(fd[1]);
 		check_command(data);
 		exit(0);
 	}

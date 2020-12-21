@@ -47,5 +47,5 @@ t_env			*ft_lstnew_env(void *key, void *value);
 int				ft_lstsize_env(t_env *lst);
 void			fill_t_redirect(t_list **list);
 void			ft_error_print(char *minishell, char *command, char *filename, char *message);
-
+void		ft_pipe_eof(void);
 #endif //MINISHELL_GIT_MY_PROCESSING_H
