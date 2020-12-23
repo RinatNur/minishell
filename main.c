@@ -5,6 +5,9 @@
 //TODO ls >a | cat -e
 //TODO ls full space in the enf of file
 //TODO free_2d_array in libft not used anyway
+//TODO Roma realize .. -> one dir back
+//TODO Roma env list clears every loop
+
 void		ft_pipe_eof(void)
 {
 	int mas[2];
@@ -15,6 +18,16 @@ void		ft_pipe_eof(void)
 //	dup2(mas[1], 1);
 //	close(mas[0]);
 	close(mas[1]);
+}
+
+void		init_data(t_data *data, t_list **command, t_command **com)
+{
+	*com = ((t_command *)((*command)->content));
+	data->redirect_list = (*com)->redirect_list;
+
+//	process_envs(((*com)->command_with_arguments), data);
+
+	data->ar = (*com)->command_with_arguments;
 }
 
 static void process_command(char *command_line, char **envp)
@@ -44,6 +57,7 @@ static void process_command(char *command_line, char **envp)
 		command = command_list;
 		while (command != NULL)
 		{
+//			init_data(&data, &command, &com);
 			com = ((t_command *)(command->content));
 			data.redirect_list = com->redirect_list;
 
@@ -57,16 +71,14 @@ static void process_command(char *command_line, char **envp)
 			else if (data.redirect_list && command->next)
 			{
 				ft_check_redirects(&data);
-//				dup2(data.fd_start[1], 1);
-				command = command->next;
-				com = ((t_command *)(command->content));
-				data.redirect_list = com->redirect_list;
-
-				process_envs((com->command_with_arguments), &data);
-
-				data.ar = com->command_with_arguments;
-				check_command(&data);//TODO remove after tests
-//				ft_pipe(&data);
+				if (data.redir_pipe_flag)
+				{
+					command = command->next;
+					init_data(&data, &command, &com);
+					check_command(&data);//TODO remove after tests
+				}
+				else
+					ft_pipe(&data);
 			}
 			else
 			{
@@ -77,7 +89,6 @@ static void process_command(char *command_line, char **envp)
 			command = command->next;
 		}
 		dup2(1, 0);//to return fd 0 back;
-//		dup2(data.fd_start[1], 1);//to return fd 0 back;
 		pipeline = pipeline->next;
 	}
 //	free_pipeline_list(pipeline_list);

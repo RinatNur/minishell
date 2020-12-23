@@ -6,8 +6,12 @@ int		ft_check_redirects(t_data *data)
 	DIR    *check_if_dir;
 	data->wr_file_name = NULL;
 	data->rd_file_name = NULL;
+	data->redir_pipe_flag = 0;
+	data->redir_flag = 0;
+	t_list 	*flag_list;
 //	data->wr_type_redir = -1;
 
+	flag_list = data->redirect_list;
 	if (!data->redirect_list)
 		return (1);
 	while (data->redirect_list)
@@ -47,7 +51,10 @@ int		ft_check_redirects(t_data *data)
 		data->redirect_list = data->redirect_list->next;
 	}
 	close(file);
-	ft_redirect_read_pipe(data);//TODO add 2 functions read;
+	if (flag_list && data->rd_file_name)
+		ft_redirect_read_pipe(data);//TODO add 2 functions read;
+	else
+		ft_redirect_read(data);//TODO add 2 functions read;
 	ft_redirect_write(data);
 	data->redir_flag = 1;
 	return (0);

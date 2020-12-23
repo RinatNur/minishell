@@ -38,6 +38,7 @@ void    ft_export(t_data *data)
 
 	i = 1;
 	flag = 0;
+	ft_lstadd_back_env(&data->env_list, ft_lstnew_env("OLDPWD", NULL));
     if (!data->ar[1])//if array is empty print all env_sort_list
     {
         sort_env.ph = copy_list(data->env_list);

@@ -8,6 +8,7 @@ void		ft_redirect_read_pipe(t_data *data)
 	int 		argument;
 	int 		fd[2];
 
+	data->redir_pipe_flag = 1;
 	if (data->rd_file_name)
 	{													//if >					if >>
 		pipe(fd);
