@@ -4,7 +4,7 @@
 //TODO grep make < a | cat -e
 //TODO ls >a | cat -e
 //TODO ls full space in the enf of file
-//
+//TODO free_2d_array in libft not used anyway
 void		ft_pipe_eof(void)
 {
 	int mas[2];
@@ -57,13 +57,21 @@ static void process_command(char *command_line, char **envp)
 			else if (data.redirect_list && command->next)
 			{
 				ft_check_redirects(&data);
-				ft_pipe(&data);
+//				dup2(data.fd_start[1], 1);
+				command = command->next;
+				com = ((t_command *)(command->content));
+				data.redirect_list = com->redirect_list;
+
+				process_envs((com->command_with_arguments), &data);
+
+				data.ar = com->command_with_arguments;
+				check_command(&data);//TODO remove after tests
+//				ft_pipe(&data);
 			}
 			else
 			{
-				if (data.redir_flag) {
+				if (data.redir_flag)
 					ft_pipe_eof();
-				}
 				check_command(&data);
 			}
 			command = command->next;

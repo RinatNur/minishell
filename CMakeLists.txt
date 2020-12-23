@@ -16,11 +16,11 @@ add_executable(rinat_minishell
         libft/ft_isdigit.c
         libft/ft_isprint.c
         libft/ft_itoa.c
-#        libft/ft_lstadd_back.c
-#        libft/ft_lstadd_front.c
-#        libft/ft_lstlast.c
-#        libft/ft_lstnew.c
-#        libft/ft_lstsize.c
+        #        libft/ft_lstadd_back.c
+        #        libft/ft_lstadd_front.c
+        #        libft/ft_lstlast.c
+        #        libft/ft_lstnew.c
+        #        libft/ft_lstsize.c
         libft/ft_memccpy.c
         libft/ft_memchr.c
         libft/ft_memcmp.c
@@ -67,7 +67,7 @@ add_executable(rinat_minishell
         functional/ft_redirect.c
         functional/ft_check_redirects.c
         functional/processing.h
-#        functional/start.c
+        #        functional/start.c
         main.c
         minishell.h
         parser/parse.h

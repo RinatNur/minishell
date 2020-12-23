@@ -47,11 +47,8 @@ int		ft_check_redirects(t_data *data)
 		data->redirect_list = data->redirect_list->next;
 	}
 	close(file);
-	ft_redirect_read(data);
+	ft_redirect_read_pipe(data);//TODO add 2 functions read;
 	ft_redirect_write(data);
 	data->redir_flag = 1;
-//	ft_p	ipe_eof();
-//	write(0, "", 0);
-//	dup2(1, 0);
 	return (0);
 }
