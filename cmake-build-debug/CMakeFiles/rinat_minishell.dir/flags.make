@@ -6,5 +6,5 @@ C_FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacO
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/wrudy/Desktop/minishell-rinat-minishell/. -I/Users/wrudy/Desktop/minishell-rinat-minishell/libft 
+C_INCLUDES = -I/Users/jheat/rinat_minishell/. -I/Users/jheat/rinat_minishell/libft 
 
