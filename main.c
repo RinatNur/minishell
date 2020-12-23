@@ -1,12 +1,10 @@
 #include "parser/parse.h"
 #include "functional/processing.h"
 
-//TODO grep make < a | cat -e
-//TODO ls >a | cat -e
-//TODO ls full space in the enf of file
 //TODO free_2d_array in libft not used anyway
 //TODO Roma realize .. -> one dir back
 //TODO Roma env list clears every loop
+
 
 void		ft_pipe_eof(void)
 {
@@ -15,8 +13,6 @@ void		ft_pipe_eof(void)
 	pipe(mas);
 	write(mas[1], "", 0);
 	dup2(mas[0], 0);
-//	dup2(mas[1], 1);
-//	close(mas[0]);
 	close(mas[1]);
 }
 
@@ -52,16 +48,14 @@ static void process_command(char *command_line, char **envp)
 	pipeline = pipeline_list;
 	while (pipeline != NULL)
 	{
-//		printf("\n======================== new pipeline ========================\n\n");
 		command_list = pipeline->content;
 		command = command_list;
 		while (command != NULL)
 		{
-//			init_data(&data, &command, &com);
 			com = ((t_command *)(command->content));
 			data.redirect_list = com->redirect_list;
 
-			process_envs((com->command_with_arguments), &data);
+//			process_envs((com->command_with_arguments), &data);
 
 			data.ar = com->command_with_arguments;
 			if (data.redirect_list && !command->next)

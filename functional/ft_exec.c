@@ -9,16 +9,16 @@ void        check_command(t_data *data)
 		return;
     if (!ft_strncmp("pwd", com, 4) || !ft_strncmp("PWD", com, 4))
         ft_pwd();
-    else if (!ft_strncmp("echo", com, 5) || !ft_strncmp("ECHO", com, 5))
-        ft_echo(data);
-    else if (!ft_strncmp("cd", com, 3) || !ft_strncmp("CD", com, 3))
-        ft_cd(data);
-    else if (!ft_strncmp("export", com, 7))
-        ft_export(data);
-    else if (!ft_strncmp("unset", com, 6))
-        ft_unset(data);
-    else if (!ft_strncmp("env", com, 4))
-        ft_env(data);
+//    else if (!ft_strncmp("echo", com, 5) || !ft_strncmp("ECHO", com, 5))
+//        ft_echo(data);
+//    else if (!ft_strncmp("cd", com, 3) || !ft_strncmp("CD", com, 3))
+//        ft_cd(data);
+//    else if (!ft_strncmp("export", com, 7))
+//        ft_export(data);
+//    else if (!ft_strncmp("unset", com, 6))
+//        ft_unset(data);
+//    else if (!ft_strncmp("env", com, 4))
+//        ft_env(data);
     else if (!ft_strncmp("exit", com, 5))
         ft_exit(data);
     else
@@ -70,10 +70,11 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
     }
     else
     {
-        int     wait_status;
+//        int     status;
         int 	test;
-		wait(&wait_status);
-//		test = WEXITSTATUS(wait_status);
+
+		waitpid(pid, &status, WUNTRACED);
+		test = WEXITSTATUS(status);
 		int i = 0;
 //		char *str = strerror(test);
 //		while (i < 200)
@@ -82,19 +83,19 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 //			i++;
 //		}
 //		int i = 0;
-//            int status_code = WEXITSTATUS(wait_status);
-//        if (WIFEXITED(wait_status))
-//        {
-            int status_code = WEXITSTATUS(wait_status);
-//            if (status_code == 0)
-//                ft_write(1, "sucess");
-//            else
-//			{
+//            int status_code = WEXITSTATUS(status);
+        if (WIFEXITED(status))
+        {
+            int status_code = WEXITSTATUS(status);
+            if (status_code == 0)
+                ft_write(1, "sucess\n");
+            else
+			{
 //            	ft_write(2, "sdfgfdg");
-//                printf("failure with the status code %d\n", status_code);
+                printf("failure with the status code %d\n", status_code);
 
-//			}
-//        }
+			}
+        }
     }
     return (0);
 }

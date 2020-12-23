@@ -23,7 +23,7 @@ int		ft_check_redirects(t_data *data)
 				ft_error_print(MSHELL, NULL, REDIR->filename, "Is a directory");
 				return (1);
 			}
-			if ((file = open(REDIR->filename, O_WRONLY | O_CREAT | O_TRUNC, 0666)) == -1)
+			if ((file = open(REDIR->filename, O_WRONLY | O_CREAT, 0666)) == -1)
 			{
 				ft_error_print(MSHELL, NULL, REDIR->filename, "Permission denied");
 				close(file);
