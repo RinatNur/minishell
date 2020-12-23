@@ -4,7 +4,7 @@
 //TODO grep make < a | cat -e
 //TODO ls >a | cat -e
 //TODO ls full space in the enf of file
-//
+//TODO check ft_redirect_read
 void		ft_pipe_eof(void)
 {
 	int mas[2];
