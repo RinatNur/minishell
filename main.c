@@ -4,7 +4,7 @@
 //TODO grep make < a | cat -e
 //TODO ls >a | cat -e
 //TODO ls full space in the enf of file
-//TODO check ft_redirect_read
+//
 void		ft_pipe_eof(void)
 {
 	int mas[2];
@@ -46,6 +46,9 @@ static void process_command(char *command_line, char **envp)
 		{
 			com = ((t_command *)(command->content));
 			data.redirect_list = com->redirect_list;
+
+			process_envs((com->command_with_arguments), &data);
+
 			data.ar = com->command_with_arguments;
 			if (data.redirect_list && !command->next)
 				ft_check_redirects(&data);

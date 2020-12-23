@@ -91,4 +91,8 @@ add_executable(rinat_minishell
         parser/command.c
         utils/clear_empty_list.c
         utils/empty_str.c
-        minishell.h)
+        minishell.h
+        utils/ft_strjoin.c
+        utils/ft_strldup.c
+        utils/strjoin_straight.c
+        utils/parse_env.c process_envs.c)

@@ -58,4 +58,6 @@ typedef struct      s_data {
 	int 			fd_start[2];
 }                   t_data;
 
+void process_envs(char **command_with_args, t_data *data);
+
 #endif
