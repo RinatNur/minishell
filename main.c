@@ -4,7 +4,7 @@
 //TODO free_2d_array in libft not used anyway
 //TODO Roma realize .. -> one dir back
 //TODO Roma env list clears every loop
-
+//TODO Roma export:  arguments
 
 void		ft_pipe_eof(void)
 {
@@ -21,29 +21,26 @@ void		init_data(t_data *data, t_list **command, t_command **com)
 	*com = ((t_command *)((*command)->content));
 	data->redirect_list = (*com)->redirect_list;
 
-//	process_envs(((*com)->command_with_arguments), data);
+	process_envs(((*com)->command_with_arguments), data);
 
 	data->ar = (*com)->command_with_arguments;
 }
 
-static void process_command(char *command_line, char **envp)
+static void process_command(t_data *data, char *command_line)
 {
-	t_data data;
 	t_list *pipeline_list;
 	t_list *pipeline;
 	t_list *command_list;
 	t_list *command;
 	t_list *redirect;
-
 	t_command *com;
 	t_redirect *redir;
 	int i;
 
 	g_err = 0;
-	data.redir_flag = 0;
-	data.fd_start[0] = dup(0);
-	data.fd_start[1] = dup(1);
-	make_env_list(&data, (const char **)envp);
+	data->redir_flag = 0;
+	data->fd_start[0] = dup(0);
+	data->fd_start[1] = dup(1);
 	pipeline_list = parse_pipeline_list(command_line);
 	pipeline = pipeline_list;
 	while (pipeline != NULL)
@@ -53,32 +50,32 @@ static void process_command(char *command_line, char **envp)
 		while (command != NULL)
 		{
 			com = ((t_command *)(command->content));
-			data.redirect_list = com->redirect_list;
+			data->redirect_list = com->redirect_list;
 
-//			process_envs((com->command_with_arguments), &data);
+			process_envs((com->command_with_arguments), data);
 
-			data.ar = com->command_with_arguments;
-			if (data.redirect_list && !command->next)
-				ft_check_redirects(&data);
-			else if (!data.redirect_list && command->next)
-				ft_pipe(&data);
-			else if (data.redirect_list && command->next)
+			data->ar = com->command_with_arguments;
+			if (data->redirect_list && !command->next)
+				ft_check_redirects(data);
+			else if (!data->redirect_list && command->next)
+				ft_pipe(data);
+			else if (data->redirect_list && command->next)
 			{
-				ft_check_redirects(&data);
-				if (data.redir_pipe_flag)
+				ft_check_redirects(data);
+				if (data->redir_pipe_flag)
 				{
 					command = command->next;
-					init_data(&data, &command, &com);
-					check_command(&data);//TODO remove after tests
+					init_data(data, &command, &com);
+					check_command(data);
 				}
 				else
-					ft_pipe(&data);
+					ft_pipe(data);
 			}
 			else
 			{
-				if (data.redir_flag)
+				if (data->redir_flag)
 					ft_pipe_eof();
-				check_command(&data);
+				check_command(data);
 			}
 			command = command->next;
 		}
@@ -87,7 +84,7 @@ static void process_command(char *command_line, char **envp)
 	}
 //	free_pipeline_list(pipeline_list);
 }
-void loop(char **envp)
+void loop(t_data *data)
 {
 	char *line;
 	int flag;
@@ -96,12 +93,15 @@ void loop(char **envp)
 	{
 		write(1, "minishell #> ", 13);
 		flag = get_next_line(0, &line);
-		process_command(line, envp);
+		process_command(data, line);
 //		free(line);
 	}
 }
 int main(int ac, char **av, char **envp)
 {
-	loop(envp);
+	t_data		data;
+
+	make_env_list(&data, (const char **)envp);
+	loop(&data);
 	return 0;
 }
