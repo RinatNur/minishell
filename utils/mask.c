@@ -15,8 +15,6 @@ char mask_elem(unsigned char *flag, char symbol, char quote)
 		return quote;
 }
 
-#include "stdio.h"
-
 char	*get_mask(char *line)
 {
 	int				i;
@@ -43,7 +41,5 @@ char	*get_mask(char *line)
 		i++;
 	}
 	result[i] = 0;
-	printf("%s\n", line);
-	printf("%s\n", result);
 	return result;
 }
