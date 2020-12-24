@@ -68,11 +68,13 @@ void process_command(char *command_line)
 void loop()
 {
 	char *line;
+	int error;
 
-	while (1)
+	error = 1;
+	while (error > 0)
 	{
 		write(1, "minishell #> ", 13);
-		get_next_line(0, &line);
+		error = get_next_line(0, &line);
 		process_command(line);
 		free(line);
 	}

@@ -7,13 +7,15 @@ char mask_elem(unsigned char *flag, char symbol, char quote)
 	{
 		*flag = ~(*flag);
 		if (*flag == 1)
-			return quote;
+			return '0';
 	}
 	if (*flag == 1)
 		return '0';
 	else
 		return quote;
 }
+
+#include "stdio.h"
 
 char	*get_mask(char *line)
 {
@@ -30,10 +32,18 @@ char	*get_mask(char *line)
 	while (line[i] != '\0')
 	{
 		if (flag == 1 && (line[i] == '\'' || line[i] == '\"'))
+		{
 			quote = line[i];
+			result[i] = '0';
+			flag = ~flag;
+			i++;
+			continue;
+		}
 		result[i] = mask_elem(&flag, line[i], quote);
 		i++;
 	}
 	result[i] = 0;
+	printf("%s\n", line);
+	printf("%s\n", result);
 	return result;
 }
