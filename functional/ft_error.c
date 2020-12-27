@@ -31,7 +31,7 @@ void 		ft_error_print(char *minishell, char *command, char *filename, char *mess
 void    ft_error(char *str, int code)
 {
     ft_write (2, str);
-    write (2, "\n", 1);
+    ft_write (2, "\n");
     exit (code);
 }
 
