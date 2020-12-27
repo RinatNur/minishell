@@ -5,17 +5,20 @@ char *clear_quotes(char *str)
 {
 	char *mask;
 	char *result;
-	char *tmp1;
 	char **tmp2;
+	int i;
 
 	mask = get_mask(str);
+	i = 0;
+	while (mask[i] != '\0')
+	{
+		if (str[i] == '\'' && mask[i] == '0')
+			str[i] = '\"';
+		i++;
+	}
 	tmp2 = u_split(str, '\"', mask);
-	tmp1 = arr_strjoin(tmp2);
-	//free_2d_array(tmp2); FIXME
-
-	tmp2 = u_split(tmp1, '\'', mask);
-	free(tmp1);
 	result = arr_strjoin(tmp2);
+	//free_2d_array(tmp2); FIXME
 	return (result);
 }
 

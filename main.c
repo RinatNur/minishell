@@ -90,8 +90,8 @@ void loop(t_data *data)
 	flag = 1;
 	while (flag > 0)
 	{
-		ft_write(1, ft_itoa(g_code));
-		ft_write(1, "\n");
+		//ft_write(1, ft_itoa(g_code));
+		//ft_write(1, "\n");
 		write(1, "minishell #> ", 13);
 		flag = get_next_line(0, &line);
 		process_command(data, line);
