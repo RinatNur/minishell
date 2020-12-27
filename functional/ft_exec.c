@@ -7,11 +7,11 @@ void        check_command(t_data *data)
 	com = data->ar[0];
 	if (!com)
 		return;
-    if (!ft_strncmp("pwd", com, 4))
+    if (!ft_strncmp("pwd", com, 4) || !ft_strncmp("PWD", com, 4))
         ft_pwd();
     else if (!ft_strncmp("echo", com, 5) || !ft_strncmp("ECHO", com, 5))
         ft_echo(data);
-    else if (!ft_strncmp("cd", com, 3))
+    else if (!ft_strncmp("cd", com, 3) || !ft_strncmp("CD", com, 3))
         ft_cd(data);
     else if (!ft_strncmp("export", com, 7))
         ft_export(data);
@@ -42,9 +42,29 @@ char 	**list_to_mas_ref(t_data *data)
 	return (env);
 }
 
+int     status_return(int status)
+{
+	if (WIFSIGNALED(status))
+	{
+		if (WTERMSIG(status) == 2)
+		{
+			ft_write(1, "\n");
+			return (130);
+		}
+		if (WTERMSIG(status) == 3)
+		{
+			ft_write(1, "Quit: 3\n");
+			return (131);
+		}
+		if (WTERMSIG(status) == 15)
+			return (143);
+	}
+	return (WEXITSTATUS(status));
+}
+
 int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 {
-    int     err;
+    int     err = 0;
     pid_t 	pid;
     char 	**env;
     int 	status;
@@ -52,30 +72,20 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
     env = list_to_mas_ref(data);
     pid = fork();
     if (pid == -1)
-        return (1);
+		ft_error_stderr(strerror(errno), 15);
     if(pid == 0)
     {
-//    	write(1, "hello", 5);
-        err = execve(ft_find_path(data, data->ar[0]), data->ar, env);
-        if (err == -1)
-        {
-            printf("FAILURE\n");
-            return (err);
-        }
-
-    }
+		if(!(err = execve(ft_find_path(data, data->ar[0]), data->ar, env)))
+		{
+//			ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
+//			g_code = 127;
+			exit(WEXITSTATUS(err));
+		}
+	}
     else
     {
-//        int     wait_status = 0;
-		waitpid(pid, NULL, 0);
-//        if (WIFEXITED(wait_status))
-//        {
-//            int status_code = WEXITSTATUS(wait_status);
-//            if (status_code == 0)
-//                printf("sucess");
-//            else
-//                printf("failure with the status code %d\n", status_code);
-//        }
-     }
+		waitpid(pid, &status, WUNTRACED);
+		g_code = status_return(status);
+    }
     return (0);
 }

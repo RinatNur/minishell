@@ -79,7 +79,7 @@ int					ft_strlen_pars(const char *str);
 char				*ft_strdup_pars(const char *s);
 char				**ft_split_mask(char const *s, char c, const char *mask);
 char				*get_mask(char *line);
-void				free_2d_array(void **array);
+//void				free_2d_array(void **array);
 void				empty_lst_clear(t_list **lst);
 char				*empty_str(char c, int len);
 

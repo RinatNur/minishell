@@ -10,14 +10,14 @@ static t_list *parse_pipeline(char *pipeline_line)
 
 	command_list = NULL;
 	mask = get_mask(pipeline_line);
-	command_array = ft_split_mask(pipeline_line, '|', mask);
+	command_array = u_split(pipeline_line, '|', mask);
 	i = 0;
 	while (command_array[i] != NULL)
 	{
 		ft_lstadd_back(&command_list, ft_lstnew(parse_command(command_array[i])));
 		i++;
 	}
-	free_2d_array((void **)command_array);
+	//free_2d_array((void **)command_array);
 	free(mask);
 	return (command_list);
 }
@@ -45,18 +45,18 @@ t_list	*parse_pipeline_list(char *command_line)
 	char	*mask;
 
 	mask = get_mask(command_line);
-	pipeline_lines = ft_split_mask(command_line, ';', mask);
+	pipeline_lines = u_split(command_line, ';', mask);
 
 	pipeline_list = NULL;
 	fill_pipeline_list(&pipeline_list, pipeline_lines);
 
-	free_2d_array((void **)pipeline_lines);
+	//free_2d_array((void **)pipeline_lines);
 	free(mask);
 
 	return (pipeline_list);
 }
 
-void		free_pipeline_list(t_list *pipeline_list)
+void		free_pipeline_list(t_list *pipeline_list) //FIXME
 {
 	t_list *pipeline;
 	t_list *command_list;

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.17)
-project(minishell_git_my C)
+project(minishell C)
 
 set(CMAKE_C_STANDARD 11)
 
@@ -16,11 +16,11 @@ add_executable(rinat_minishell
         libft/ft_isdigit.c
         libft/ft_isprint.c
         libft/ft_itoa.c
-#        libft/ft_lstadd_back.c
-#        libft/ft_lstadd_front.c
-#        libft/ft_lstlast.c
-#        libft/ft_lstnew.c
-#        libft/ft_lstsize.c
+        #        libft/ft_lstadd_back.c
+        #        libft/ft_lstadd_front.c
+        #        libft/ft_lstlast.c
+        #        libft/ft_lstnew.c
+        #        libft/ft_lstsize.c
         libft/ft_memccpy.c
         libft/ft_memchr.c
         libft/ft_memcmp.c
@@ -50,7 +50,6 @@ add_executable(rinat_minishell
         functional/ft_env.c
         functional/ft_error.c
         functional/ft_pwd.c
-#        functional/start.c
         functional/utils.c
         functional/ft_find_path.c
         functional/lists_func.c
@@ -68,10 +67,9 @@ add_executable(rinat_minishell
         functional/ft_redirect.c
         functional/ft_check_redirects.c
         functional/processing.h
+        #        functional/start.c
+        main.c
         minishell.h
-        main.c
-        parser
-        main.c
         parser/parse.h
         utils/ft_strlen.c
         utils/ft_lstadd_back.c
@@ -84,6 +82,8 @@ add_executable(rinat_minishell
         utils/ft_lstsize.c
         utils/utils.h
         utils/ft_strdup.c
+        gnl/get_next_line.c
+        gnl/get_next_line_utils.c
         parser/parse.c
         utils/ft_split.c
         parser/parse_command.c
@@ -91,4 +91,10 @@ add_executable(rinat_minishell
         parser/command.c
         utils/clear_empty_list.c
         utils/empty_str.c
-        minishell.h)
+        minishell.h
+        utils/ft_strjoin.c
+        utils/ft_strldup.c
+        utils/strjoin_straight.c
+        utils/process_export.c
+        utils/find_char.c
+        utils/parse_env.c process_envs.c)
