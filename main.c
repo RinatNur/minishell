@@ -36,7 +36,6 @@ static void process_command(t_data *data, char *command_line)
 	t_redirect *redir;
 	int i;
 
-//	g_code = 0;
 	data->redir_flag = 0;
 	data->fd_start[0] = dup(0);
 	data->fd_start[1] = dup(1);
