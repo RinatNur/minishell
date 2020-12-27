@@ -5,6 +5,7 @@
 #ifndef MINISHELL_UTILS_H
 #define MINISHELL_UTILS_H
 #include "stdlib.h"
+#include "unistd.h"
 
 typedef struct		s_list
 {
@@ -29,6 +30,8 @@ char				*get_mask(char *line);
 void				free_2d_array(void **array);
 void				empty_lst_clear(t_list **lst);
 char				*empty_str(char c, int len);
+int					find_char(const char *str, char c);
+char				**process_export(char *export_arg);
 
 
 #endif //MINISHELL_UTILS_H

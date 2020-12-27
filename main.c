@@ -69,13 +69,22 @@ void loop()
 {
 	char *line;
 	int error;
+	int i;
+	char **test;
 
 	error = 1;
 	while (error > 0)
 	{
 		write(1, "minishell #> ", 13);
 		error = get_next_line(0, &line);
-		process_command(line);
+		//process_command(line);
+		i = 0;
+		test = process_export(line);
+		while (test[i] != NULL)
+		{
+			printf("%s\n", test[i]);
+			i++;
+		}
 		free(line);
 	}
 }
