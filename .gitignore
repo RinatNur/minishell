@@ -1,0 +1,9 @@
+start
+*.o
+.idea
+.DS_Store
+.vscode
+a.out
+/cmake-build-debug/
+parser
+utils
