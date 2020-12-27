@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_pars.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/01 19:10:54 by wrudy             #+#    #+#             */
-/*   Updated: 2020/05/28 03:56:40 by wrudy            ###   ########.fr       */
+/*   Created: 2020/05/23 12:20:15 by jheat             #+#    #+#             */
+/*   Updated: 2020/05/23 13:06:23 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen_pars(const char *str)
-{
-	int i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+void		*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*res;
+
+	res = malloc(nmemb * size);
+	if (res == NULL)
+		return (NULL);
+	ft_bzero(res, nmemb * size);
+	return (res);
 }

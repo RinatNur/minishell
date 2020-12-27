@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_mask.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -59,7 +59,7 @@ void 			free_2d_array(void **array)
 	free(array);
 }
 
-char			**ft_split(char const *s, char c, const char *mask)
+char			**ft_split_mask(char const *s, char c, const char *mask)
 {
 	char	**arr;
 	size_t	i;

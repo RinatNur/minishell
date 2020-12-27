@@ -7,7 +7,7 @@ char mask_elem(unsigned char *flag, char symbol, char quote)
 	{
 		*flag = ~(*flag);
 		if (*flag == 1)
-			return '0';
+			return quote;
 	}
 	if (*flag == 1)
 		return '0';
@@ -22,7 +22,7 @@ char	*get_mask(char *line)
 	unsigned char	flag;
 	char 			quote;
 
-	if (!(result = malloc(sizeof(char) * ft_strlen(line) + 1)))
+	if (!(result = malloc(sizeof(char) * ft_strlen_pars(line) + 1)))
 		exit(EXIT_FAILURE);
 	i = 0;
 	flag = 1;
@@ -30,13 +30,7 @@ char	*get_mask(char *line)
 	while (line[i] != '\0')
 	{
 		if (flag == 1 && (line[i] == '\'' || line[i] == '\"'))
-		{
 			quote = line[i];
-			result[i] = '0';
-			flag = ~flag;
-			i++;
-			continue;
-		}
 		result[i] = mask_elem(&flag, line[i], quote);
 		i++;
 	}

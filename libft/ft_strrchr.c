@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_pars.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/01 19:10:54 by wrudy             #+#    #+#             */
-/*   Updated: 2020/05/28 03:56:40 by wrudy            ###   ########.fr       */
+/*   Created: 2020/05/24 00:12:50 by jheat             #+#    #+#             */
+/*   Updated: 2020/05/27 11:01:40 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen_pars(const char *str)
-{
-	int i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+char		*ft_strrchr(const char *s, int c)
+{
+	int		i;
+	int		len;
+
+	len = ft_strlen(s);
+	i = len;
+	while (i >= 0)
+	{
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i--;
+	}
+	return (NULL);
 }

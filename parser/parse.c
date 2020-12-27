@@ -10,7 +10,7 @@ static t_list *parse_pipeline(char *pipeline_line)
 
 	command_list = NULL;
 	mask = get_mask(pipeline_line);
-	command_array = ft_split(pipeline_line, '|', mask);
+	command_array = ft_split_mask(pipeline_line, '|', mask);
 	i = 0;
 	while (command_array[i] != NULL)
 	{
@@ -45,7 +45,7 @@ t_list	*parse_pipeline_list(char *command_line)
 	char	*mask;
 
 	mask = get_mask(command_line);
-	pipeline_lines = ft_split(command_line, ';', mask);
+	pipeline_lines = ft_split_mask(command_line, ';', mask);
 
 	pipeline_list = NULL;
 	fill_pipeline_list(&pipeline_list, pipeline_lines);

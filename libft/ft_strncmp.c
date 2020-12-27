@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_pars.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/01 19:10:54 by wrudy             #+#    #+#             */
-/*   Updated: 2020/05/28 03:56:40 by wrudy            ###   ########.fr       */
+/*   Created: 2020/05/24 00:25:32 by jheat             #+#    #+#             */
+/*   Updated: 2020/05/27 10:54:57 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen_pars(const char *str)
+#include "libft.h"
+
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int i;
+	size_t		i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
-	return (i);
+	}
+	return (0);
 }

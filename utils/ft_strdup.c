@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strdup_pars.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -26,11 +26,11 @@ static char	*ft_strcpy(char *dest, const char *src)
 	return (dest);
 }
 
-char		*ft_strdup(const char *s)
+char		*ft_strdup_pars(const char *s)
 {
 	char *duplicate;
 
-	if ((duplicate = malloc((ft_strlen(s) + 1) * sizeof(char))) == NULL)
+	if ((duplicate = malloc((ft_strlen_pars(s) + 1) * sizeof(char))) == NULL)
 		exit(EXIT_FAILURE);
 	ft_strcpy(duplicate, s);
 	return (duplicate);

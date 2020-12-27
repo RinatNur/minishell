@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_pars.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/01 19:10:54 by wrudy             #+#    #+#             */
-/*   Updated: 2020/05/28 03:56:40 by wrudy            ###   ########.fr       */
+/*   Created: 2020/05/23 12:21:15 by jheat             #+#    #+#             */
+/*   Updated: 2020/05/26 23:49:15 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen_pars(const char *str)
+#include "libft.h"
+
+void		*ft_memset(void *s, int c, size_t n)
 {
-	int i;
+	int		i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (n--)
+	{
+		*((unsigned char *)s + i) = (unsigned char)c;
 		i++;
-	return (i);
+	}
+	return (s);
 }

@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_pars.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/01 19:10:54 by wrudy             #+#    #+#             */
-/*   Updated: 2020/05/28 03:56:40 by wrudy            ###   ########.fr       */
+/*   Created: 2020/06/08 13:35:24 by jheat             #+#    #+#             */
+/*   Updated: 2020/10/20 18:47:34 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen_pars(const char *str)
-{
-	int i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+void		ft_lstadd_front(t_env **lst, t_env *new)
+{
+	if (lst && new)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
 }

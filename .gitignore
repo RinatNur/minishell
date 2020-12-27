@@ -5,7 +5,3 @@ start
 .vscode
 a.out
 cmake-build-debug
-main.c
-test_check_list.txt
-CMakeLists.txt
-/cmake-build-debug/
