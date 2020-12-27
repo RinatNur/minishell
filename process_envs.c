@@ -40,6 +40,8 @@ void process_envs(char **command_with_args, t_data *data)
 			if (tmp2[j][0] == '$')
 			{
 				tmp1 = get_value_from_env(data, tmp2[j] + 1);
+				if (tmp1 == NULL)
+					tmp1 = ft_strdup("");
 				free(tmp2[j]);
 				tmp2[j] = tmp1;
 			}

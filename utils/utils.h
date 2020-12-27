@@ -28,6 +28,8 @@ char				*get_mask(char *line);
 void				free_2d_array(char **array);
 void				empty_lst_clear(t_list **lst);
 char				*empty_str(char c, int len);
+char				**process_export(char **export_arg);
+int					find_char(const char *str, char c);
 
 char **parse_env(char *arg);
 

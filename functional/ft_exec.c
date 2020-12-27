@@ -72,19 +72,20 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
     env = list_to_mas_ref(data);
     pid = fork();
     if (pid == -1)
-        return (1);
+		ft_error_stderr(strerror(errno), 15);
     if(pid == 0)
     {
 		if(!(err = execve(ft_find_path(data, data->ar[0]), data->ar, env)))
 		{
+//			ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
+//			g_code = 127;
 			exit(WEXITSTATUS(err));
 		}
-    } else if (pid < 0) {
-		ft_error_stderr(strerror(errno), 15);
-	} else if (pid > 0)
+	}
+    else
     {
 		waitpid(pid, &status, WUNTRACED);
-    	g_err = status_return(status);
+		g_code = status_return(status);
     }
     return (0);
 }

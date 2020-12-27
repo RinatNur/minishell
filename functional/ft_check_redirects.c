@@ -41,7 +41,7 @@ int		ft_check_redirects(t_data *data)
 			}
 			if ((file = open(REDIR->filename, O_RDONLY, 0666)) == -1)
 			{
-				(errno == 2) ? ft_error_print(MSHELL, NULL, REDIR->filename, "No such file or directory")
+				(errno == 2) ? ft_error_print(MSHELL, NULL, REDIR->filename, ERR1)
 					: ft_error_print(MSHELL, NULL, REDIR->filename, "Permission denied");
 				close(file);
 				return (1);

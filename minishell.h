@@ -1,7 +1,6 @@
 #ifndef MINISHELL_H
 #define MINISHELL_H
 
-
 # include "gnl/get_next_line.h"
 # include <stdlib.h>
 # include <string.h>
@@ -14,7 +13,7 @@
 # include <fcntl.h>
 # include <dirent.h>
 
-int 					g_err;
+int 					g_code;
 
 typedef struct			s_list {
 	void                *content;

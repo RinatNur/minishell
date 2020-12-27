@@ -4,9 +4,11 @@
 #include "../libft/libft.h"
 #include "../minishell.h"
 
-#define ERR1 No such file or directory
+
 # define MSHELL "-minishell"
 # define REDIR ((t_redirect *)(data->redirect_list->content))
+# define ERR1 "No such file or directory"
+# define ERR2 "command not found"
 
 typedef struct            s_sort_env {
 	t_env              *ph;
@@ -36,7 +38,7 @@ t_env			*copy_list(t_env *list);
 void			ft_unset(t_data *data);
 t_env			*cut_list(t_data *data, char *ar);
 void			ft_cd(t_data *data);
-void			ft_exit();
+void			ft_exit(t_data *data);
 char			**list_to_mas_ref(t_data *data);
 void			ft_pipe(t_data *data);
 void			ft_redirect_write(t_data *data);

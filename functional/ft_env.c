@@ -7,7 +7,7 @@ void    ft_env(t_data *data)
 
 	if (data->ar[1] != NULL)
 	{
-		ft_error_print(MSHELL, data->ar[0], data->ar[1], "No such file or directory");
+		ft_error_print(MSHELL, data->ar[0], data->ar[1], ERR1);
 		return;
 	}
     while (env)

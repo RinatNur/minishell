@@ -3,8 +3,6 @@
 
 //TODO free_2d_array in libft not used anyway
 //TODO Roma realize .. -> one dir back
-//TODO Roma env list clears every loop
-//TODO Roma export:  arguments
 //TODO Roma
 
 void		ft_pipe_eof(void)
@@ -38,7 +36,7 @@ static void process_command(t_data *data, char *command_line)
 	t_redirect *redir;
 	int i;
 
-	g_err = 0;
+//	g_code = 0;
 	data->redir_flag = 0;
 	data->fd_start[0] = dup(0);
 	data->fd_start[1] = dup(1);
@@ -92,6 +90,8 @@ void loop(t_data *data)
 	flag = 1;
 	while (flag > 0)
 	{
+		ft_write(1, ft_itoa(g_code));
+		ft_write(1, "\n");
 		write(1, "minishell #> ", 13);
 		flag = get_next_line(0, &line);
 		process_command(data, line);
@@ -102,7 +102,8 @@ int main(int ac, char **av, char **envp)
 {
 	t_data		data;
 
+//	g_code = 0;
 	make_env_list(&data, (const char **)envp);
 	loop(&data);
-	return 0;
+	return (g_code);
 }
