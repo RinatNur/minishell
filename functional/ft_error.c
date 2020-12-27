@@ -27,3 +27,9 @@ void    ft_error(char *str, int code)
     write (1, "\n", 1);
     exit (code);
 }
+
+void 	ft_error_stderr(char *str, int code)
+{
+	ft_putendl_fd(str, 2);
+	exit(code);
+}

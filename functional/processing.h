@@ -26,6 +26,7 @@ char            **env_copy(t_data *data, const char **envp);
 int				ft_exec(t_data *data);
 void            check_command(t_data *data);
 void            ft_error(char *str, int code);
+void			ft_error_stderr(char *str, int code);
 ssize_t         ft_write(int fd, const void *buf);
 void            ft_echo(t_data *data);
 char            *get_value_from_env(t_data *data, char *key);

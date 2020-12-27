@@ -5,6 +5,7 @@
 //TODO Roma realize .. -> one dir back
 //TODO Roma env list clears every loop
 //TODO Roma export:  arguments
+//TODO Roma
 
 void		ft_pipe_eof(void)
 {

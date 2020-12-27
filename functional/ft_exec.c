@@ -42,9 +42,29 @@ char 	**list_to_mas_ref(t_data *data)
 	return (env);
 }
 
+int     status_return(int status)
+{
+	if (WIFSIGNALED(status))
+	{
+		if (WTERMSIG(status) == 2)
+		{
+			ft_write(1, "\n");
+			return (130);
+		}
+		if (WTERMSIG(status) == 3)
+		{
+			ft_write(1, "Quit: 3\n");
+			return (131);
+		}
+		if (WTERMSIG(status) == 15)
+			return (143);
+	}
+	return (WEXITSTATUS(status));
+}
+
 int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 {
-    int     err;
+    int     err = 0;
     pid_t 	pid;
     char 	**env;
     int 	status;
@@ -55,47 +75,16 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
         return (1);
     if(pid == 0)
     {
-//    	write(1, "hello", 5);
-        err = execve(ft_find_path(data, data->ar[0]), data->ar, env);
-
-//        g_err = errno;
-        if (err == -1)
-        	exit(WEXITSTATUS(err));
-//        {
-//            ft_write(1, "EXECVE return -1");
-//            ft_write(1, "\n");
-//			return (errno);
-//        }
-
-    }
-    else
+		if(!(err = execve(ft_find_path(data, data->ar[0]), data->ar, env)))
+		{
+			exit(WEXITSTATUS(err));
+		}
+    } else if (pid < 0) {
+		ft_error_stderr(strerror(errno), 15);
+	} else if (pid > 0)
     {
-//        int     status;
-        int 	test;
-
 		waitpid(pid, &status, WUNTRACED);
-		test = WEXITSTATUS(status);
-		int i = 0;
-//		char *str = strerror(test);
-//		while (i < 200)
-//		{
-//			ft_error_print(MSHELL, ft_itoa(i), NULL, str );
-//			i++;
-//		}
-//		int i = 0;
-//            int status_code = WEXITSTATUS(status);
-//        if (WIFEXITED(status))
-//        {
-//            int status_code = WEXITSTATUS(status);
-//            if (status_code == 0)
-//                ft_write(1, "sucess\n");
-//            else
-//			{
-//            	ft_write(2, "sdfgfdg");
-//                printf("failure with the status code %d\n", status_code);
-//
-//			}
-//        }
+    	g_err = status_return(status);
     }
     return (0);
 }

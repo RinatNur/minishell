@@ -32,5 +32,6 @@ char    *ft_find_path(t_data *data, char *command)
         else
             i++;
     }
+	(!flag) ? ft_error_print(MSHELL, command, NULL, "command not found") : 0;
     return (path);
 }
