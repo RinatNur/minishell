@@ -3,45 +3,49 @@
 ls -la | "/bin/cat" -e 
 echo $PWD dfvdf asdfasd
 echo "asdfasd   $PWD     asdfasd "
-echo ' asdfasd $PWD dffasdfa ' 
-exit
-exit 100
-exit fasdfasdf
+echo ' asdfasd $PWD dffasdfa '
+
+TODO exit
+TODO exit 100
+TODO exit fasdfasdf
+
 /bin/ls ; echo $?
 /bin/ls | cat -e ; echo $?
 /bin/ls asdfasdf ; echo $?
-"bin/ls dsfasdfasdf" ; echo $?
+"bin/ls dsfasdfasdf" ; echo $?                   FIXME не выводит ошибку и выдает неверный код ошибки
 ls "-la" | 'cat' -e 
 echo "asdfasd ' asdfas ' '$PWD' ; ; ; " 'asdfasd " asdfas " "$PWD" ; ; ; '
-env
-env sdfsadfasdfa
-export a=b
-env
-export b
-env
-export c=$PWD; echo $c 
-unset a b c ; export ; env
-cd .. ; pwd ; echo $OLDPWD ; echo $PWD;
-pwd
-pwd | cat -e | cat -e
-ls ; unset PATH ; echo $PATH ; ls ; echo $?
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki ; echo $PATH
-export>a|grep>b<a USER
+
+TODO env
+TODO env sdfsadfasdfa
+TODO export a=b
+TODO env
+TODO export b
+TODO env
+TODO export c=$PWD; echo $c
+TODO unset a b c ; export ; env
+TODO cd .. ; pwd ; echo $OLDPWD ; echo $PWD;
+TODO pwd
+TODO pwd | cat -e | cat -e
+TODO ls ; unset PATH ; echo $PATH ; ls ; echo $?
+TODO export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki ; echo $PATH
+TODO export>a|grep>b<a USER
+
 Dfasdfasdfasdfasdfasasd ; echo $?
-export>">"|grep>"|"<">" USER
+export>">"|grep>"|"<">" USER  FIXME убирать кавычки из файлов, используемых редиректами
 ls > a > b -la
 > a ls > b -la
-ls > a ; chmod 111 a ; ls > a | cat -e
-cat < a | cat -e
+ls > a ; chmod 111 a ; ls > a | cat -e FIXME после редиректа пайп не должен сработать
+cat < a | cat -e FIXME серьезно зависает после ошибки с пустым файлом
 chmod 777 a
 ls > a > b | cat -e
-ls >
-> a
-> a > b
-ls > |
-ls > a | ls > b ; cat < a ; cat < b
+ls > FIXME почему ошибка permission denied?
+> a  FIXME сегается
+> a > b FIXME сегается
+ls > |  FIXME почему ошибка permission denied?
+ls > a | ls > b ; cat < a ; cat < b FIXME ничего не выводит, хотя должно
 export a ; export b= ; echo $a ; echo $b;
-ps | grep grep
+ps | grep grep FIXME не работает
 echo "''"
 echo '""'
 echo "$PWD"
@@ -50,6 +54,6 @@ echo " $PWD ;;;;; ; "
 echo '"$PWD"'
 cd .. ; echo $OLDPWD ; echo $PWD ; cd .. ; echo $OLDPWD ; echo $PWD
 ;; 
-> > asdfas
+> > asdfas FIXME сегается
 ls |
 ctrl + d ; echo $?

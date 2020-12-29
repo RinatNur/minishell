@@ -94,7 +94,7 @@ add_executable(rinat_minishell
         minishell.h
         utils/ft_strjoin.c
         utils/ft_strldup.c
-        utils/strjoin_straight.c
+        utils/arr_strjoin.c
         utils/process_export.c
         utils/find_char.c
         utils/parse_env.c process_envs.c)

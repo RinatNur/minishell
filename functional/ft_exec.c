@@ -1,4 +1,5 @@
 #include "processing.h"
+#include "../utils/utils.h"
 
 void        check_command(t_data *data)
 {
@@ -75,7 +76,7 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 		ft_error_stderr(strerror(errno), 15);
     if(pid == 0)
     {
-    	if (data->ar[0][0] == '/')
+    	if ((find_char(data->ar[0], '/')) >= 0)
 		{
 			if(!(err = execve(data->ar[0], data->ar, env)))
 			{
@@ -102,3 +103,6 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
     }
     return (0);
 }
+
+//FIXME env
+//FIXME unset PATH works incorrect

@@ -22,7 +22,7 @@ char **process_export_arg(char *export_arg)
 		{
 			export_arg[equal_char_index] = '\0';
 			result[0] = u_strdup(export_arg);
-			result[1] = u_strdup("0");
+			result[1] = u_strdup("\0");
 			result[2] = NULL;
 		}
 		else

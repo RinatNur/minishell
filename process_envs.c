@@ -13,11 +13,11 @@ char *clear_quotes(char *str)
 	i = 0;
 	while (mask[i] != '\0')
 	{
-		if (str[i] == '\'' && mask[i] == '0')
-			str[i] = '\"';
+		if ((str[i] == '\'' || str[i] == '\"') && mask[i] == '0')
+			str[i] = -100; //костыль, конечно, но вряд ли в шеле будут использовать символы с отрицательным значением
 		i++;
 	}
-	tmp2 = u_split(str, '\"', mask);
+	tmp2 = u_split(str, -100, mask);
 	result = arr_strjoin(tmp2);
 	//free_2d_array(tmp2); FIXME
 	return (result);
