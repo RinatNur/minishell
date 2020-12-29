@@ -20,7 +20,7 @@ void		init_data(t_data *data, t_list **command, t_command **com)
 	*com = ((t_command *)((*command)->content));
 	data->redirect_list = (*com)->redirect_list;
 
-	process_envs(((*com)->command_with_arguments), data);
+	process_command_envs(((*com)->command_with_arguments), data);
 
 	data->ar = (*com)->command_with_arguments;
 }
@@ -31,12 +31,8 @@ static void process_command(t_data *data, char *command_line)
 	t_list *pipeline;
 	t_list *command_list;
 	t_list *command;
-	t_list *redirect;
 	t_command *com;
-	t_redirect *redir;
-	int i;
 
-//	g_code = 0;
 	data->redir_flag = 0;
 	data->fd_start[0] = dup(0);
 	data->fd_start[1] = dup(1);
@@ -51,7 +47,8 @@ static void process_command(t_data *data, char *command_line)
 			com = ((t_command *)(command->content));
 			data->redirect_list = com->redirect_list;
 
-			process_envs((com->command_with_arguments), data);
+			process_command_envs(com->command_with_arguments, data);
+			process_redirect_envs(com->redirect_list, data);
 
 			data->ar = com->command_with_arguments;
 			if (data->redirect_list && !command->next)
