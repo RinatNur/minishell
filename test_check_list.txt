@@ -32,7 +32,7 @@ TODO export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki ;
 TODO export>a|grep>b<a USER
 
 Dfasdfasdfasdfasdfasasd ; echo $?
-export>">"|grep>"|"<">" USER  FIXME убирать кавычки из файлов, используемых редиректами
+export>">"|grep>"|"<">" USER
 ls > a > b -la
 > a ls > b -la
 ls > a ; chmod 111 a ; ls > a | cat -e FIXME после редиректа пайп не должен сработать
