@@ -12,7 +12,7 @@ static int get_filename(const char *command, const char *mask, char **filename)
 	i = 1;
 	while (command[i] == ' ')
 		i++;
-	if (find_char("><|;()", command[i])) //FIXME добавить невалидных символов (если есть)
+	if (find_char("><|;()", command[i]) != -1) //FIXME добавить невалидных символов (если есть)
 		ft_error("Parse error", 1);
 	len = 0;
 	while ((command[i + len] != ' ' || mask[i + len] != '0') && command[i + len] != '\0'
