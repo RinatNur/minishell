@@ -1,5 +1,6 @@
 
 #include "parse.h"
+#include "../functional/processing.h"
 
 static int get_filename(const char *command, const char *mask, char **filename)
 {
@@ -11,6 +12,8 @@ static int get_filename(const char *command, const char *mask, char **filename)
 	i = 1;
 	while (command[i] == ' ')
 		i++;
+	if (find_char("><|;()", command[i])) //FIXME добавить невалидных символов (если есть)
+		ft_error("Parse error", 1);
 	len = 0;
 	while ((command[i + len] != ' ' || mask[i + len] != '0') && command[i + len] != '\0'
 		   && !(command[i + len] == '>' && mask[i + len] == '0') && !(command[i + len] == '<' && mask[i + len] == '0'))
@@ -74,6 +77,7 @@ static t_list		*parse_redirects(char **command)
 	}
 	free(*command);
 	free(quote_mask);
+	//printf("%s\n", clear_command);
 	*command = clear_command;
 	return (result);
 }

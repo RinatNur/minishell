@@ -40,8 +40,8 @@ cat < a | cat -e FIXME серьезно зависает после ошибки
 chmod 777 a
 ls > a > b | cat -e
 ls > FIXME почему ошибка permission denied?
-> a  FIXME сегается
-> a > b FIXME сегается
+> a
+> a > b
 ls > |  FIXME почему ошибка permission denied?
 ls > a | ls > b ; cat < a ; cat < b FIXME ничего не выводит, хотя должно
 export a ; export b= ; echo $a ; echo $b;
@@ -54,6 +54,6 @@ echo " $PWD ;;;;; ; "
 echo '"$PWD"'
 cd .. ; echo $OLDPWD ; echo $PWD ; cd .. ; echo $OLDPWD ; echo $PWD
 ;; 
-> > asdfas FIXME сегается
+> > asdfas
 ls |
 ctrl + d ; echo $?

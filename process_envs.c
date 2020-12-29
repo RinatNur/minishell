@@ -53,6 +53,8 @@ void process_command_envs(char **command_with_args, t_data *data)
 	int i;
 	char *tmp1;
 
+	if (command_with_args[0] == NULL)
+		return;
 	tmp1 = command_with_args[0];
 	command_with_args[0] = clear_quotes(command_with_args[0]);
 	free(tmp1);
