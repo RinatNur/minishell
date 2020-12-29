@@ -4,6 +4,7 @@
 //TODO free_2d_array in libft not used anyway
 //TODO Roma realize .. -> one dir back
 //TODO Roma
+//FIXME RINAT OLDPWD every time add to env list
 
 void		ft_pipe_eof(void)
 {

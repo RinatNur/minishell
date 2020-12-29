@@ -26,6 +26,7 @@ void 		ft_error_print(char *minishell, char *command, char *filename, char *mess
 	ft_write(2, message);
 	ft_write(2, "\n");
 	get_g_code(message);
+	exit(g_code);
 }
 
 void    ft_error(char *str, int code)
