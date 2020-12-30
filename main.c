@@ -1,10 +1,10 @@
 #include "parser/parse.h"
 #include "functional/processing.h"
 
-//TODO free_2d_array in libft not used anyway
-//TODO Roma realize .. -> one dir back
 //TODO Roma
+//TODO Roma realize .. -> one dir back
 //FIXME Roma >c
+//TODO Rinat
 //FIXME RINAT OLDPWD every time add to env list
 //FIXME unset
 
@@ -82,9 +82,8 @@ static void process_command(t_data *data, char *command_line)
 			}
 			command = command->next;
 		}
-		dup2(1, 0);//to return fd 0 back;
-//		dup2(data->fd_start[0], 0);//to return fd 0 back;
-//		dup2(data->fd_start[1], 1);//to return fd 0 back;
+		dup2(data->fd_start[0], 0);//to return fd 0 back;
+		dup2(data->fd_start[1], 1);//to return fd 0 back;
 		pipeline = pipeline->next;
 	}
 //	free_pipeline_list(pipeline_list);
