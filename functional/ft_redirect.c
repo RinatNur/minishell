@@ -13,6 +13,8 @@ void		ft_redirect_read_pipe(t_data *data)
 	{													//if >					if >>
 		pipe(fd);
 		pid = fork();
+		if (pid == -1)
+			ft_error_stderr(strerror(errno), 15);
 		if (pid == 0)
 		{
 			file = open(data->rd_file_name, O_RDONLY, 0666);

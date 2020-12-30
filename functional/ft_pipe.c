@@ -8,7 +8,8 @@ void 	ft_pipe(t_data *data)
 
 	pipe(fd);
 	pid = fork();
-
+	if (pid == -1)
+		ft_error_stderr(strerror(errno), 15);
 	if (pid == 0)
 	{
 		dup2(fd[1], 1);

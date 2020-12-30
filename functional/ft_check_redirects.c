@@ -44,6 +44,7 @@ int		ft_check_redirects(t_data *data)
 				(errno == 2) ? ft_error_print(MSHELL, NULL, REDIR->filename, ERR1)
 					: ft_error_print(MSHELL, NULL, REDIR->filename, "Permission denied");
 				close(file);
+				data->redir_pipe_flag = 1;//to enter in ft_pipe_eof in main.c
 				return (1);
 			}
 			data->rd_file_name = REDIR->filename;
@@ -52,9 +53,9 @@ int		ft_check_redirects(t_data *data)
 	}
 	close(file);
 	if (flag_list && data->rd_file_name)
-		ft_redirect_read_pipe(data);//TODO add 2 functions read;
+		ft_redirect_read_pipe(data);
 	else
-		ft_redirect_read(data);//TODO add 2 functions read;
+		ft_redirect_read(data);
 	ft_redirect_write(data);
 	data->redir_flag = 1;
 	return (0);

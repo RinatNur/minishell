@@ -4,7 +4,9 @@
 //TODO free_2d_array in libft not used anyway
 //TODO Roma realize .. -> one dir back
 //TODO Roma
+//FIXME Roma >c
 //FIXME RINAT OLDPWD every time add to env list
+//FIXME unset
 
 void		ft_pipe_eof(void)
 {
@@ -38,12 +40,14 @@ static void process_command(t_data *data, char *command_line)
 	int i;
 
 	data->redir_flag = 0;
+	data->redir_pipe_flag = 0;
 	data->fd_start[0] = dup(0);
 	data->fd_start[1] = dup(1);
 	pipeline_list = parse_pipeline_list(command_line);
 	pipeline = pipeline_list;
 	while (pipeline != NULL)
 	{
+
 		command_list = pipeline->content;
 		command = command_list;
 		while (command != NULL)
@@ -61,7 +65,7 @@ static void process_command(t_data *data, char *command_line)
 			else if (data->redirect_list && command->next)
 			{
 				ft_check_redirects(data);
-				if (data->redir_pipe_flag)
+				if (data->redir_pipe_flag && data->redir_flag)
 				{
 					command = command->next;
 					init_data(data, &command, &com);
@@ -72,13 +76,15 @@ static void process_command(t_data *data, char *command_line)
 			}
 			else
 			{
-				if (data->redir_flag)
+				if (data->redir_pipe_flag || data->redir_flag)
 					ft_pipe_eof();
 				check_command(data);
 			}
 			command = command->next;
 		}
 		dup2(1, 0);//to return fd 0 back;
+//		dup2(data->fd_start[0], 0);//to return fd 0 back;
+//		dup2(data->fd_start[1], 1);//to return fd 0 back;
 		pipeline = pipeline->next;
 	}
 //	free_pipeline_list(pipeline_list);
