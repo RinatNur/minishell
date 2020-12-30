@@ -89,9 +89,7 @@ void		ft_redirect_write(t_data *data)
 			exit(errno);
 		}
 		else
-		{
 			waitpid(pid, &status, WUNTRACED);
-		}
 	}
 }
 

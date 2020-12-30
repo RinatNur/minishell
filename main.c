@@ -55,7 +55,8 @@ static void process_command(t_data *data, char *command_line)
 			com = ((t_command *)(command->content));
 			data->redirect_list = com->redirect_list;
 
-			process_envs((com->command_with_arguments), data);
+			process_command_envs(com->command_with_arguments, data);
+			process_redirect_envs(com->redirect_list, data);
 
 			data->ar = com->command_with_arguments;
 			if (data->redirect_list && !command->next)
