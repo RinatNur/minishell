@@ -3,7 +3,6 @@
 
 //TODO Roma
 //TODO Roma realize .. -> one dir back
-//FIXME Roma >c
 //TODO Rinat
 //FIXME RINAT OLDPWD every time add to env list
 //FIXME unset
@@ -23,7 +22,8 @@ void		init_data(t_data *data, t_list **command, t_command **com)
 	*com = ((t_command *)((*command)->content));
 	data->redirect_list = (*com)->redirect_list;
 
-	process_envs(((*com)->command_with_arguments), data);
+	process_command_envs((*com)->command_with_arguments, data);
+	process_redirect_envs((*com)->redirect_list, data);
 
 	data->ar = (*com)->command_with_arguments;
 }
@@ -84,7 +84,7 @@ static void process_command(t_data *data, char *command_line)
 			command = command->next;
 		}
 		dup2(data->fd_start[0], 0);//to return fd 0 back;
-		dup2(data->fd_start[1], 1);//to return fd 0 back;
+		dup2(data->fd_start[1], 1);//to return fd 1 back;
 		pipeline = pipeline->next;
 	}
 //	free_pipeline_list(pipeline_list);

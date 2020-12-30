@@ -1,6 +1,7 @@
 #include "parser/parse.h"
 #include "functional/processing.h"
 #include "libft/libft.h"
+#include "minishell.h"
 
 char *clear_quotes(char *str)
 {

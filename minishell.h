@@ -58,6 +58,7 @@ typedef struct      s_data {
 	int 			fd_start[2];
 }                   t_data;
 
-void process_envs(char **command_with_args, t_data *data);
+void process_command_envs(char **command_with_args, t_data *data);
+void process_redirect_envs(t_list *redirect_list, t_data *data);
 
 #endif

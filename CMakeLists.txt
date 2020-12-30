@@ -97,4 +97,5 @@ add_executable(rinat_minishell
         utils/arr_strjoin.c
         utils/process_export.c
         utils/find_char.c
-        utils/parse_env.c process_envs.c)
+        utils/parse_env.c
+        process_envs.c)

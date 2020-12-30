@@ -1,4 +1,5 @@
 #include "processing.h"
+#include "../utils/utils.h"
 
 void        check_command(t_data *data)
 {
