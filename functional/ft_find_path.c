@@ -32,10 +32,7 @@ char    *ft_find_path(t_data *data, char *command)
         else
             i++;
     }
-
 	if (!flag)
-	{
 		ft_error_print(MSHELL, command, NULL, ERR2);
-	}
-    return (path);
+	return (path);
 }

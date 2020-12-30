@@ -2,7 +2,6 @@
 
 void    ft_env(t_data *data)
 {
-    int i = 0;
     t_env      *env = data->env_list;
 
 	if (data->ar[1] != NULL)
@@ -22,6 +21,5 @@ void    ft_env(t_data *data)
             write(1, "\n", 1);
         env = env->next;
     }
-    ft_write(1, "\n");
 }
 

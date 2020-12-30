@@ -38,6 +38,7 @@ void        make_env_list(t_data *data, const char **env)
         free(env_split);
         i++;
     }
+	ft_lstadd_back_env(&list, ft_lstnew_env("OLDPWD", NULL));
     data->env_list = list;
 }
 

@@ -1,6 +1,6 @@
 #include "processing.h"
 
-int		ft_check_redirects(t_data *data)
+int		ft_check_redirects(t_data *data, t_list *command)
 {
 	int 	file;
 	DIR    *check_if_dir;
@@ -55,7 +55,7 @@ int		ft_check_redirects(t_data *data)
 		data->redirect_list = data->redirect_list->next;
 	}
 	close(file);
-	if (flag_list && data->rd_file_name)
+	if (command->next && data->rd_file_name)
 		ft_redirect_read_pipe(data);
 	else
 		ft_redirect_read(data);

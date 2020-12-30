@@ -6,6 +6,7 @@
 //TODO Rinat
 //FIXME RINAT OLDPWD every time add to env list
 //FIXME unset
+//TODO g_code - nulling after cycle
 
 void		ft_pipe_eof(void)
 {
@@ -45,6 +46,7 @@ static void process_command(t_data *data, char *command_line)
 	data->fd_start[1] = dup(1);
 	pipeline_list = parse_pipeline_list(command_line);
 	pipeline = pipeline_list;
+
 	while (pipeline != NULL)
 	{
 
@@ -60,12 +62,12 @@ static void process_command(t_data *data, char *command_line)
 
 			data->ar = com->command_with_arguments;
 			if (data->redirect_list && !command->next)
-				ft_check_redirects(data);
+				ft_check_redirects(data, command);
 			else if (!data->redirect_list && command->next)
 				ft_pipe(data);
 			else if (data->redirect_list && command->next)
 			{
-				ft_check_redirects(data);
+				ft_check_redirects(data, command);
 				if (data->redir_pipe_flag && data->redir_flag)
 				{
 					command = command->next;
@@ -83,8 +85,10 @@ static void process_command(t_data *data, char *command_line)
 			}
 			command = command->next;
 		}
-		dup2(data->fd_start[0], 0);//to return fd 0 back;
-		dup2(data->fd_start[1], 1);//to return fd 1 back;
+		dup2(1, 0);//to return fd 0 back;
+
+//		dup2(data->fd_start[0], 0);//to return fd 0 back;
+//		dup2(data->fd_start[1], 1);//to return fd 1 back;
 		pipeline = pipeline->next;
 	}
 //	free_pipeline_list(pipeline_list);
@@ -98,6 +102,7 @@ void loop(t_data *data)
 	{
 		ft_write(1, ft_itoa(g_code));
 		ft_write(1, "\n");
+		g_code = 0;
 		write(1, "minishell #> ", 13);
 		flag = get_next_line(0, &line);
 		process_command(data, line);

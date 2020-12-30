@@ -80,8 +80,8 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 		{
 			if(!(err = execve(data->ar[0], data->ar, env)))
 			{
-//			ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
-//			g_code = 127;
+				ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
+				g_code = 127;
 				exit(WEXITSTATUS(err));
 			}
 		}
@@ -89,12 +89,11 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 		{
 			if(!(err = execve(ft_find_path(data, data->ar[0]), data->ar, env)))
 			{
-//			ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
-//			g_code = 127;
+				ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
+				g_code = 127;
 				exit(WEXITSTATUS(err));
 			}
 		}
-
 	}
     else
     {
