@@ -2,11 +2,12 @@
 #include "functional/processing.h"
 
 //TODO Roma
-//TODO Roma realize .. -> one dir back
+//TODO realize .. -> one dir back
+//FIXME process_export_arg exit(1) must be changed;
+
 //TODO Rinat
-//FIXME RINAT OLDPWD every time add to env list
-//FIXME unset
 //TODO g_code - nulling after cycle
+//TODO exit | echo hello minishell write "exit"
 
 void		ft_pipe_eof(void)
 {
@@ -85,10 +86,10 @@ static void process_command(t_data *data, char *command_line)
 			}
 			command = command->next;
 		}
-		dup2(1, 0);//to return fd 0 back;
+//		dup2(1, 0);//to return fd 0 back;
 
-//		dup2(data->fd_start[0], 0);//to return fd 0 back;
-//		dup2(data->fd_start[1], 1);//to return fd 1 back;
+		dup2(data->fd_start[0], 0);//to return fd 0 back;
+		dup2(data->fd_start[1], 1);//to return fd 1 back;
 		pipeline = pipeline->next;
 	}
 //	free_pipeline_list(pipeline_list);
@@ -100,8 +101,8 @@ void loop(t_data *data)
 	flag = 1;
 	while (flag > 0)
 	{
-		ft_write(1, ft_itoa(g_code));
-		ft_write(1, "\n");
+//		ft_write(1, ft_itoa(g_code));
+//		ft_write(1, "\n");
 		g_code = 0;
 		write(1, "minishell #> ", 13);
 		flag = get_next_line(0, &line);

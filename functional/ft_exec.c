@@ -97,8 +97,8 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 	}
     else
     {
-		waitpid(pid, &status, WUNTRACED);
 		g_code = status_return(status);
+		waitpid(pid, &status, WUNTRACED);
     }
     return (0);
 }
