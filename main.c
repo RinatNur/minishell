@@ -4,6 +4,7 @@
 //TODO Roma
 //TODO realize .. -> one dir back
 //FIXME process_export_arg exit(1) must be changed;
+//TODO add function, which find ".." path
 
 //TODO Rinat
 //TODO g_code - nulling after cycle
@@ -114,7 +115,6 @@ int main(int ac, char **av, char **envp)
 {
 	t_data		data;
 
-//	g_code = 0;
 	make_env_list(&data, (const char **)envp);
 	loop(&data);
 	return (g_code);
