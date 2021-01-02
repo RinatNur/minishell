@@ -10,16 +10,14 @@ char 	*get_pwd()
 }
 void    ft_cd(t_data *data)
 {
-	//TODO check "CD dffdgs" with execve
-    t_env      *list;
-	t_env      *list2;
-    char            *tmp;
-    int             flag = 0;
-    int 			err;
-    char 			*err_text;
-	char 			*test;
+    t_env		*list;
+	t_env		*list2;
+    char		*tmp;
+	char		*pwd_tmp = NULL;
+    int			flag = 0;
 
-    list = data->env_list;
+
+	list = data->env_list;
     list2 = data->env_list;
     if (!ft_strncmp("CD", data->ar[0], 3))
     	return;
@@ -39,9 +37,9 @@ void    ft_cd(t_data *data)
     {
         if ((!ft_strncmp("PWD", list->key, 4)))
         {
-        	(!(ft_strncmp("..", list->value, 3))) ? (list->value = (void *)get_pwd()) : 0;//change ".." to valid path
+			(ft_strncmp("..", list->value, 3)) ? (pwd_tmp = get_pwd()) : 0;// if data.ar[1] = ".." find valid path
 			tmp = list->value;
-            list->value = data->ar[1];
+			list->value = pwd_tmp ? pwd_tmp : data->ar[1];// if data.ar[1] = ".." change it to valid path
             while(list2)
 			{
 				if ((!ft_strncmp("OLDPWD", list2->key, 7)))

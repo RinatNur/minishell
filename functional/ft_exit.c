@@ -8,8 +8,9 @@ unsigned long long	ft_atoi_u_long_long(const char *str, int *is_valid, int *is_s
 	unsigned long long tmp;
 
 	i = 0;
-	sign = 1;
 	res = 0;
+	(str[i] == '-' || str[i] == '+') ? i++ : 0;
+	sign = (str[i - 1] == '-') ? -1 : 1;
 	while (str[i])
 	{
 		if (ft_isdigit(str[i]))
