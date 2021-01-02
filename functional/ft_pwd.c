@@ -7,7 +7,10 @@ void        *ft_pwd()
     dir = NULL;
     dir = getcwd(dir, 0);
     if (!dir)
-        ft_error("pwd is not found", 4);
+	{
+    	g_code = errno;
+        ft_error_print(MSHELL, "pwd", NULL, strerror(errno));
+	}
     ft_write(1, dir);
     write(1, "\n", 1);
 }
