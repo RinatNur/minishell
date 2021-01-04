@@ -39,8 +39,8 @@ void    ft_export(t_data *data)
 
 	i = 1;
 	flag = 0;
-	data->ar = process_export(data->ar);
-	ft_lstadd_back_env(&data->env_list, ft_lstnew_env("OLDPWD", NULL));
+	if(!(data->ar = process_export(data->ar)))
+		return ;
     if (!data->ar[1])//if array is empty print all env_sort_list
     {
         sort_env.ph = copy_list(data->env_list);
@@ -62,7 +62,7 @@ void    ft_export(t_data *data)
     }
     else
     {
-    	sort_l = data->env_list;
+    	sort_l = data->env_list;//TODO may be it is not nesessary
         while (data->ar[i])
         {
         	if ((i % 2) != 0 && (!ft_strncmp("0", data->ar[i], 1))) //if odd value of arr = 0 -> key = NULL

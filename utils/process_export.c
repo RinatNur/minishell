@@ -1,6 +1,7 @@
 
 #include "utils.h"
 
+//FIXME exit(1) must be changed;
 char **process_export_arg(char *export_arg)
 {
 	char **result;

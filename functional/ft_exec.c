@@ -65,7 +65,7 @@ int     status_return(int status)
 
 int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 {
-    int     err = 0;
+    int     err;
     pid_t 	pid;
     char 	**env;
     int 	status;
@@ -80,8 +80,8 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 		{
 			if(!(err = execve(data->ar[0], data->ar, env)))
 			{
-//			ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
-//			g_code = 127;
+				ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
+				g_code = 127;
 				exit(WEXITSTATUS(err));
 			}
 		}
@@ -89,20 +89,16 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 		{
 			if(!(err = execve(ft_find_path(data, data->ar[0]), data->ar, env)))
 			{
-//			ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
-//			g_code = 127;
+				ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
+				g_code = 127;
 				exit(WEXITSTATUS(err));
 			}
 		}
-
 	}
     else
     {
-		waitpid(pid, &status, WUNTRACED);
 		g_code = status_return(status);
+		waitpid(pid, &status, WUNTRACED);
     }
     return (0);
 }
-
-//FIXME env
-//FIXME unset PATH works incorrect

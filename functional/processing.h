@@ -44,7 +44,7 @@ void			ft_pipe(t_data *data);
 void			ft_redirect_write(t_data *data);
 void			ft_redirect_read(t_data *data);
 void			ft_redirect_read(t_data *data);
-int 			ft_check_redirects(t_data *data);
+int 			ft_check_redirects(t_data *data, t_list *command);
 void			ft_lstadd_back_env(t_env **lst, t_env *new);
 t_env			*ft_lstnew_env(void *key, void *value);
 int				ft_lstsize_env(t_env *lst);

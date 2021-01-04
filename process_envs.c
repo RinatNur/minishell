@@ -1,6 +1,7 @@
 #include "parser/parse.h"
 #include "functional/processing.h"
 #include "libft/libft.h"
+#include "minishell.h"
 
 char *clear_quotes(char *str)
 {
@@ -14,7 +15,7 @@ char *clear_quotes(char *str)
 	while (mask[i] != '\0')
 	{
 		if ((str[i] == '\'' || str[i] == '\"') && mask[i] == '0')
-			str[i] = -100; //костыль, конечно, но вряд ли в шеле будут использовать символы с отрицательным значением
+			str[i] = -100;
 		i++;
 	}
 	tmp2 = u_split(str, -100, mask);
@@ -36,6 +37,8 @@ char *replace_env(char *str, t_data *data)
 		{
 			if (parsed_str[i][1] == '?')
 				env_value = ft_itoa(g_code);
+			else if (ft_isdigit(parsed_str[i][1]))
+			    env_value = get_value_from_env(data, parsed_str[i] + 2);
 			else
 				env_value = get_value_from_env(data, parsed_str[i] + 1);
 			if (env_value == NULL)
