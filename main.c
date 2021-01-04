@@ -7,6 +7,7 @@
 //TODO Rinat
 //TODO g_code - nulling after cycle
 //TODO exit | echo hello minishell write "exit"
+//TODO ls asrgasgarg ; echo $? ; echo $?
 
 void		ft_pipe_eof(void)
 {
@@ -46,7 +47,6 @@ static void process_command(t_data *data, char *command_line)
 
 	while (pipeline != NULL)
 	{
-
 		command_list = pipeline->content;
 		command = command_list;
 		while (command != NULL)
@@ -95,7 +95,6 @@ void loop(t_data *data)
 	{
 //		ft_write(1, ft_itoa(g_code));
 //		ft_write(1, "\n");
-		g_code = 0;
 		write(1, "minishell #> ", 13);
 		flag = get_next_line(0, &line);
 		process_command(data, line);
@@ -107,6 +106,7 @@ int main(int ac, char **av, char **envp)
 {
 	t_data		data;
 
+	g_code = 0;
 	make_env_list(&data, (const char **)envp);
 //	signal(SIGINT, ft_sig);
 //	signal(SIGQUIT, ft_sig);

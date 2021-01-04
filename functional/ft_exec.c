@@ -3,8 +3,12 @@
 
 void        check_command(t_data *data)
 {
+	static int	count = 0;
 	char 	*com;
 
+	if (count)
+		g_code = 0;
+	count++;
 	com = data->ar[0];
 	if (!com)
 		return;
@@ -63,6 +67,19 @@ int     status_return(int status)
 	return (WEXITSTATUS(status));
 }
 
+void	handle_parent_signal(int signal)
+{
+	if (signal == SIGINT)
+	{
+		write(0, "\b\b  \b\b", 6);
+		write(0, "\n", 1);
+		write(0, "minishell ->", ft_strlen("minishell ->"));
+		g_code = 1;
+	}
+	else
+		write(0, "\b\b  \b\b", 6);
+}
+
 int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 {
     int     err;
@@ -78,22 +95,29 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
     {
     	if ((find_char(data->ar[0], '/')) >= 0)
 		{
-			err = execve(data->ar[0], data->ar, env);
-			ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
+			status = execve(data->ar[0], data->ar, env);
+			ft_error_print(MSHELL, data->ar[0], NULL, ERR2);
 			g_code = 127;
-			exit(WEXITSTATUS(err));
+			exit(WEXITSTATUS(status));
 		}
     	else
 		{
-			err = execve(ft_find_path(data, data->ar[0]), data->ar, env);
-			ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
+			status = execve(ft_find_path(data, data->ar[0]), data->ar, env);
+			ft_error_print(MSHELL, data->ar[0], NULL, ERR2);
 			g_code = 127;
-			exit(WEXITSTATUS(err));
+			exit(WEXITSTATUS(status));
 		}
 	}
     else
     {
+//		signal(SIGQUIT, SIG_IGN);
+//		signal(SIGINT, SIG_IGN);
 		waitpid(pid, &status, WUNTRACED);
+//		signal(SIGQUIT, handle_parent_signal);
+//		signal(SIGINT, handle_parent_signal);
+//		waitpid(pid, &status, WUNTRACED);
+//		int tmp1 = WIFEXITED(status);
+//		int tmp = WEXITSTATUS(status);
 		g_code = status_return(status);
     }
     return (0);
