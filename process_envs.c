@@ -20,6 +20,8 @@ char *clear_quotes(char *str)
 	}
 	tmp2 = u_split(str, -100, mask);
 	result = arr_strjoin(tmp2);
+	if (result == NULL)
+	    result = ft_strdup("");
 	return (result);
 }
 
