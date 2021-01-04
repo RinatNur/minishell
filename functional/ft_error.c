@@ -1,8 +1,11 @@
 #include "processing.h"
 
-void 		get_g_code(char *message)
+void 		get_g_code(char *message, char *command)
 {
 	if (!(ft_strncmp(ERR2, message, (ft_strlen(message) + 1))))
+		g_code = 127;
+	else if (!(ft_strncmp("env", command, 4))
+		&& !(ft_strncmp(ERR1, message, (ft_strlen(message) + 1))))
 		g_code = 127;
 	else if (!(ft_strncmp(ERR1, message, (ft_strlen(message) + 1))))
 		g_code = 1;
@@ -27,7 +30,7 @@ void 		ft_error_print(char *minishell, char *command, char *filename, char *mess
 	}
 	ft_write(2, message);
 	ft_write(2, "\n");
-	get_g_code(message);
+	get_g_code(message, command);
 //	exit(g_code);
 }
 
