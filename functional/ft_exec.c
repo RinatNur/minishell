@@ -78,27 +78,23 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
     {
     	if ((find_char(data->ar[0], '/')) >= 0)
 		{
-			if(!(err = execve(data->ar[0], data->ar, env)))
-			{
-				ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
-				g_code = 127;
-				exit(WEXITSTATUS(err));
-			}
+			err = execve(data->ar[0], data->ar, env);
+			ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
+			g_code = 127;
+			exit(WEXITSTATUS(err));
 		}
     	else
 		{
-			if(!(err = execve(ft_find_path(data, data->ar[0]), data->ar, env)))
-			{
-				ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
-				g_code = 127;
-				exit(WEXITSTATUS(err));
-			}
+			err = execve(ft_find_path(data, data->ar[0]), data->ar, env);
+			ft_error_print(MSHELL, data->ar[0], NULL, "ERR2");
+			g_code = 127;
+			exit(WEXITSTATUS(err));
 		}
 	}
     else
     {
-		g_code = status_return(status);
 		waitpid(pid, &status, WUNTRACED);
+		g_code = status_return(status);
     }
     return (0);
 }
