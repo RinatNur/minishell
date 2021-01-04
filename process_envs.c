@@ -1,7 +1,6 @@
 #include "parser/parse.h"
 #include "functional/processing.h"
-#include "libft/libft.h"
-#include "minishell.h"
+
 
 char *clear_quotes(char *str)
 {
@@ -58,13 +57,13 @@ void process_command_envs(char **command_with_args, t_data *data)
 	int i;
 	char *tmp1;
 
-	if (command_with_args[0] == NULL)
-		return;
-	tmp1 = command_with_args[0];
-	command_with_args[0] = clear_quotes(command_with_args[0]);
-	free(tmp1);
+	//if (command_with_args[0] == NULL)
+	//	return;
+	//tmp1 = command_with_args[0];
+	//command_with_args[0] = clear_quotes(command_with_args[0]);
+	//free(tmp1);
 
-	i = 1;
+	i = 0;
 	while (command_with_args[i] != NULL)
 	{
 		tmp1 = replace_env(command_with_args[i], data);
