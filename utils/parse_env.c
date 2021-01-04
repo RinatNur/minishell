@@ -38,7 +38,7 @@ char *env_mask(char *arg)
 			i++;
 			continue;
 		}
-		if (flag == 1 && (arg[i] == ' ' || arg[i] == '\"' || arg[i] == '\''))
+		if (flag == 1 && (arg[i] == ' ' || arg[i] == '\"' || arg[i] == '\'' || arg[i] == '='))
 			flag = 0;
 		if (flag == 1)
 			env_mask[i] = 'e';

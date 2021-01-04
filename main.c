@@ -35,10 +35,7 @@ static void process_command(t_data *data, char *command_line)
 	t_list *pipeline;
 	t_list *command_list;
 	t_list *command;
-	t_list *redirect;
 	t_command *com;
-	t_redirect *redir;
-	int i;
 
 	data->redir_flag = 0;
 	data->redir_pipe_flag = 0;
@@ -56,7 +53,6 @@ static void process_command(t_data *data, char *command_line)
 		{
 			com = ((t_command *)(command->content));
 			data->redirect_list = com->redirect_list;
-
 			process_command_envs(com->command_with_arguments, data);
 			process_redirect_envs(com->redirect_list, data);
 
@@ -85,13 +81,10 @@ static void process_command(t_data *data, char *command_line)
 			}
 			command = command->next;
 		}
-//		dup2(1, 0);//to return fd 0 back;
-
 		dup2(data->fd_start[0], 0);//to return fd 0 back;
 		dup2(data->fd_start[1], 1);//to return fd 1 back;
 		pipeline = pipeline->next;
 	}
-//	free_pipeline_list(pipeline_list);
 }
 void loop(t_data *data)
 {
@@ -106,7 +99,6 @@ void loop(t_data *data)
 		write(1, "minishell #> ", 13);
 		flag = get_next_line(0, &line);
 		process_command(data, line);
-//		free(line);
 	}
 }
 int main(int ac, char **av, char **envp)

@@ -77,7 +77,6 @@ static t_list		*parse_redirects(char **command)
 	}
 	free(*command);
 	free(quote_mask);
-	//printf("%s\n", clear_command);
 	*command = clear_command;
 	return (result);
 }
