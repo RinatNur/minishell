@@ -20,13 +20,13 @@ int		ft_check_redirects(t_data *data, t_list *command)
 		{
 			if ((check_if_dir = opendir(REDIR->filename)))
 			{
-				ft_error_print(MSHELL, NULL, REDIR->filename, "Is a directory");
+				ft_error_print(MSHELL, REDIR->filename, NULL, ERR3);
 				data->redir_flag = 1;
 				return (1);
 			}
 			if ((file = open(REDIR->filename, O_WRONLY | O_CREAT, 0666)) == -1)
 			{
-				ft_error_print(MSHELL, NULL, REDIR->filename, "Permission denied");
+				ft_error_print(MSHELL, REDIR->filename, NULL, ERR5);
 				data->redir_flag = 1;
 				close(file);
 				return (1);
@@ -38,15 +38,14 @@ int		ft_check_redirects(t_data *data, t_list *command)
 		{
 			if ((check_if_dir = opendir(REDIR->filename)))
 			{
-				ft_error_print(NULL,data->ar[0], "stdin", "Is a directory");
+				ft_error_print(NULL,data->ar[0], "stdin", ERR3);
 				data->redir_flag = 1;
 				return (1);
 			}
 			if ((file = open(REDIR->filename, O_RDONLY, 0666)) == -1)
 			{
 				(errno == 2) ? ft_error_print(MSHELL, NULL, REDIR->filename, ERR1)
-					: ft_error_print(MSHELL, NULL, REDIR->filename, "Permission denied");
-				g_code = 1;
+					: ft_error_print(MSHELL, REDIR->filename,  NULL, ERR5);
 				close(file);
 				data->redir_pipe_flag = 1;//to enter in ft_pipe_eof in main.c
 				return (1);

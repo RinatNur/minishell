@@ -9,6 +9,10 @@
 # define REDIR ((t_redirect *)(data->redirect_list->content))
 # define ERR1 "No such file or directory"
 # define ERR2 "command not found"
+# define ERR3 "Is a directory"
+# define ERR4 "Not a directory"
+# define ERR5 "Permission denied"
+# define ERR6 "too many arguments"
 
 typedef struct            s_sort_env {
 	t_env              *ph;

@@ -6,8 +6,8 @@ void        check_command(t_data *data)
 	static int	count = 0;
 	char 	*com;
 
-	if (count || (data->redir_flag || data->redir_pipe_flag))
-		g_code = 0;
+//	if (count || (data->redir_flag || data->redir_pipe_flag))
+	g_code = 0;
 	count++;
 	com = data->ar[0];
 	if (!com)
@@ -97,14 +97,12 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
 		{
 			status = execve(data->ar[0], data->ar, env);
 			ft_error_print(MSHELL, data->ar[0], NULL, ERR2);
-			g_code = 127;
 			exit(WEXITSTATUS(status));
 		}
     	else
 		{
 			status = execve(ft_find_path(data, data->ar[0]), data->ar, env);
 			ft_error_print(MSHELL, data->ar[0], NULL, ERR2);
-			g_code = 127;
 			exit(WEXITSTATUS(status));
 		}
 	}

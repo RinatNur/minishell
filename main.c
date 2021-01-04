@@ -5,6 +5,7 @@
 //FIXME process_export_arg exit(1) must be changed;
 
 //TODO Rinat
+//TODO exit code 126;
 
 void		ft_pipe_eof(void)
 {

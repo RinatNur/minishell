@@ -44,9 +44,9 @@ unsigned long long	ft_atoi_u_long_long(const char *str, int *is_valid, int *is_s
 
 void 	exit_with_dif_code(t_data *data, unsigned char code, char *str, ssize_t is_exit)
 {
-	g_code = code;
 	ft_error("exit", g_code);
 	(str) ? ft_error_print(MSHELL, data->ar[0], data->ar[1], str) : 0;
+	g_code = code;
 	(is_exit) ? exit(g_code) : 0;
 }
 
@@ -72,7 +72,7 @@ void 	ft_exit(t_data *data)
 	if (i > 1)
 	{
 		exit_with_dif_code(data, 1, NULL, 0);
-		ft_error_print(MSHELL, data->ar[0], NULL, "too many arguments");
+		ft_error_print(MSHELL, data->ar[0], NULL, ERR6);
 		return ;
 	}
 	exit_with_dif_code(data, err_u, NULL, 1);
