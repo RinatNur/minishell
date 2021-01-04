@@ -46,6 +46,7 @@ int		ft_check_redirects(t_data *data, t_list *command)
 			{
 				(errno == 2) ? ft_error_print(MSHELL, NULL, REDIR->filename, ERR1)
 					: ft_error_print(MSHELL, NULL, REDIR->filename, "Permission denied");
+				g_code = 1;
 				close(file);
 				data->redir_pipe_flag = 1;//to enter in ft_pipe_eof in main.c
 				return (1);

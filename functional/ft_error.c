@@ -4,6 +4,8 @@ void 		get_g_code(char *message)
 {
 	if (!(ft_strncmp(ERR2, message, (ft_strlen(message) + 1))))
 		g_code = 127;
+	else if (!(ft_strncmp(ERR1, message, (ft_strlen(message) + 1))))
+		g_code = 1;
 }
 
 void 		ft_error_print(char *minishell, char *command, char *filename, char *message)

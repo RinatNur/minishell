@@ -6,7 +6,7 @@ void        check_command(t_data *data)
 	static int	count = 0;
 	char 	*com;
 
-	if (count)
+	if (count || (data->redir_flag || data->redir_pipe_flag))
 		g_code = 0;
 	count++;
 	com = data->ar[0];

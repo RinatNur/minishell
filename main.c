@@ -5,9 +5,6 @@
 //FIXME process_export_arg exit(1) must be changed;
 
 //TODO Rinat
-//TODO g_code - nulling after cycle
-//TODO exit | echo hello minishell write "exit"
-//TODO ls asrgasgarg ; echo $? ; echo $?
 
 void		ft_pipe_eof(void)
 {
