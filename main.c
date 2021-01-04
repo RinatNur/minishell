@@ -101,11 +101,16 @@ void loop(t_data *data)
 		process_command(data, line);
 	}
 }
+
+
 int main(int ac, char **av, char **envp)
 {
 	t_data		data;
 
 	make_env_list(&data, (const char **)envp);
+//	signal(SIGINT, ft_sig);
+//	signal(SIGQUIT, ft_sig);
+//	signal(SIGTERM, ft_sig);
 	loop(&data);
 	return (g_code);
 }
