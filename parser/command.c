@@ -9,6 +9,7 @@ t_command			*command_constructor(char **command_with_arguments, t_list *redirect
 		exit(EXIT_FAILURE);
 	result->command_with_arguments = command_with_arguments;
 	result->redirect_list = redirect_list;
+	result->parse_error = NULL;
 	return (result);
 }
 

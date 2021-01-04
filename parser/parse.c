@@ -49,7 +49,7 @@ t_list	*parse_pipeline_list(char *command_line)
 	pipeline_list = NULL;
 	fill_pipeline_list(&pipeline_list, pipeline_lines);
 
-	//free_2d_array((void **)pipeline_lines);
+	free_2d_array(pipeline_lines);
 	free(mask);
 
 	return (pipeline_list);

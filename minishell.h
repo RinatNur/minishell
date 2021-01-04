@@ -37,6 +37,7 @@ typedef struct		s_command
 {
 	char			**command_with_arguments;
 	t_list			*redirect_list;
+	char            *parse_error;
 }					t_command;
 
 typedef struct			s_env {
