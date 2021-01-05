@@ -50,6 +50,12 @@ static void process_command(t_data *data, char *command_line)
 		while (command != NULL)
 		{
 			com = ((t_command *)(command->content));
+			if (com->parse_error != NULL)
+            {
+                ft_error(com->parse_error, 2);
+                command = command->next;
+                continue;
+            }
 			data->redirect_list = com->redirect_list;
 			process_command_envs(com->command_with_arguments, data);
 			process_redirect_envs(com->redirect_list, data);

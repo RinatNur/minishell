@@ -46,6 +46,7 @@ void    ft_error(char *str, int code)
 {
     ft_write (2, str);
     ft_write (2, "\n");
+    g_code = code;
 //    exit (code);
 }
 
