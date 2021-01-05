@@ -14,6 +14,7 @@
 # include <dirent.h>
 
 int 					g_code;
+char 					*g_buf;
 
 typedef struct			s_list {
 	void                *content;

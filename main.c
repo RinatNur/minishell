@@ -17,6 +17,21 @@ void		ft_pipe_eof(void)
 	close(mas[1]);
 }
 
+void	ft_sig(int sig)
+{
+	if (sig == SIGINT)
+	{
+		ft_write(1, "\b\b  \b\b");
+//		g_buf[0] = '\0';// if add seg fault with ^C on first iteration
+		ft_write(1, "\nminishell #> ");
+		g_code = 1;
+	}
+	else
+	{
+		ft_write(1, "\b\b  \b\b");
+	}
+}
+
 void		init_data(t_data *data, t_list **command, t_command **com)
 {
 	*com = ((t_command *)((*command)->content));
@@ -92,16 +107,21 @@ static void process_command(t_data *data, char *command_line)
 }
 void loop(t_data *data)
 {
-	char *line;
 	int flag;
 	flag = 1;
 	while (flag > 0)
 	{
-//		ft_write(1, ft_itoa(g_code));
-//		ft_write(1, "\n");
 		write(1, "minishell #> ", 13);
-		flag = get_next_line(0, &line);
-		process_command(data, line);
+		if (!(flag = get_next_line(0, &g_buf)))
+		{
+			ft_write(1, " exit\n");
+			exit(0);
+		}
+		if (g_buf)
+			process_command(data, g_buf);
+		signal(SIGINT, ft_sig);
+		signal(SIGQUIT, ft_sig);
+		signal(SIGTERM, ft_sig);
 	}
 }
 
@@ -111,10 +131,11 @@ int main(int ac, char **av, char **envp)
 	t_data		data;
 
 	g_code = 0;
+	g_buf = NULL;
 	make_env_list(&data, (const char **)envp);
-//	signal(SIGINT, ft_sig);
-//	signal(SIGQUIT, ft_sig);
-//	signal(SIGTERM, ft_sig);
+	signal(SIGINT, ft_sig);
+	signal(SIGQUIT, ft_sig);
+	signal(SIGTERM, ft_sig);
 	loop(&data);
 	return (g_code);
 }

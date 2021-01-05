@@ -49,6 +49,9 @@ char 	**list_to_mas_ref(t_data *data)
 
 int     status_return(int status)
 {
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGTERM, SIG_IGN);
 	if (WIFSIGNALED(status))
 	{
 		if (WTERMSIG(status) == 2)
@@ -62,25 +65,15 @@ int     status_return(int status)
 			return (131);
 		}
 		if (WTERMSIG(status) == 15)
+		{
+			ft_write(2, "Terminated: 15\n");
 			return (143);
+		}
 	}
 	return (WEXITSTATUS(status));
 }
 
-void	handle_parent_signal(int signal)
-{
-	if (signal == SIGINT)
-	{
-		write(0, "\b\b  \b\b", 6);
-		write(0, "\n", 1);
-		write(0, "minishell ->", ft_strlen("minishell ->"));
-		g_code = 1;
-	}
-	else
-		write(0, "\b\b  \b\b", 6);
-}
-
-int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
+int    ft_exec(t_data *data)
 {
     int     err;
     pid_t 	pid;
@@ -95,27 +88,26 @@ int    ft_exec(t_data *data)//, char *pat, char **arr, char **env)
     {
     	if ((find_char(data->ar[0], '/')) >= 0)
 		{
+			signal(SIGINT, SIG_DFL);
+			signal(SIGQUIT, SIG_DFL);
+			signal(SIGTERM, SIG_DFL);
 			status = execve(data->ar[0], data->ar, env);
-			ft_error_print(MSHELL, data->ar[0], NULL, ERR2);
 			exit(WEXITSTATUS(status));
 		}
     	else
 		{
+			signal(SIGINT, SIG_DFL);
+			signal(SIGQUIT, SIG_DFL);
+			signal(SIGTERM, SIG_DFL);
 			status = execve(ft_find_path(data, data->ar[0]), data->ar, env);
-			ft_error_print(MSHELL, data->ar[0], NULL, ERR2);
 			exit(WEXITSTATUS(status));
 		}
 	}
     else
     {
-//		signal(SIGQUIT, SIG_IGN);
-//		signal(SIGINT, SIG_IGN);
+		signal(SIGQUIT, SIG_IGN);
+		signal(SIGINT, SIG_IGN);
 		waitpid(pid, &status, WUNTRACED);
-//		signal(SIGQUIT, handle_parent_signal);
-//		signal(SIGINT, handle_parent_signal);
-//		waitpid(pid, &status, WUNTRACED);
-//		int tmp1 = WIFEXITED(status);
-//		int tmp = WEXITSTATUS(status);
 		g_code = status_return(status);
     }
     return (0);
