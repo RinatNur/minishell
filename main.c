@@ -17,7 +17,7 @@ void		ft_pipe_eof(void)
 	close(mas[1]);
 }
 
-void	ft_sig(int sig)
+void	handler_signals(int sig)
 {
 	if (sig == SIGINT)
 	{
@@ -119,9 +119,9 @@ void loop(t_data *data)
 		}
 		if (g_buf)
 			process_command(data, g_buf);
-		signal(SIGINT, ft_sig);
-		signal(SIGQUIT, ft_sig);
-		signal(SIGTERM, ft_sig);
+		signal(SIGINT, handler_signals);
+		signal(SIGQUIT, handler_signals);
+		signal(SIGTERM, handler_signals);
 	}
 }
 
@@ -133,9 +133,9 @@ int main(int ac, char **av, char **envp)
 	g_code = 0;
 	g_buf = NULL;
 	make_env_list(&data, (const char **)envp);
-	signal(SIGINT, ft_sig);
-	signal(SIGQUIT, ft_sig);
-	signal(SIGTERM, ft_sig);
+	signal(SIGINT, handler_signals);
+	signal(SIGQUIT, handler_signals);
+	signal(SIGTERM, handler_signals);
 	loop(&data);
 	return (g_code);
 }
