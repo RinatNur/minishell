@@ -1,7 +1,6 @@
 
 #include "utils.h"
 
-//FIXME exit(1) must be changed;
 char **process_export_arg(char *export_arg)
 {
 	char **result;
@@ -14,8 +13,8 @@ char **process_export_arg(char *export_arg)
 	mask = get_mask(export_arg);
 	if ((equal_char_index > 1 && mask[equal_char_index] != '0') || equal_char_index == 0)
 	{
-		write(2, "export: Not a valid identifier", 30);
-		exit(1);
+		write(2, "export: Not a valid identifier\n", 31);
+		return NULL;
 	}
 	if (equal_char_index != -1)
 	{
@@ -49,14 +48,12 @@ char **process_export_arg(char *export_arg)
 	free(mask);
 	return (result);
 }
-
 char **process_export(char **export_with_arguments)
 {
 	int i;
 	char **result;
 	char **tmp;
 	int j;
-
 	i = 0;
 	while (export_with_arguments[i] != NULL)
 		i++;
@@ -73,6 +70,11 @@ char **process_export(char **export_with_arguments)
 	while (export_with_arguments[j] != NULL)
 	{
 		tmp = process_export_arg(export_with_arguments[j]);
+		if (tmp == NULL)
+		{
+			j++;
+			continue;
+		}
 		result[i] = u_strdup(tmp[0]);
 		result[i + 1] = u_strdup(tmp[1]);
 		//FIXME free tmp;
