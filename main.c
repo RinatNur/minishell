@@ -6,6 +6,7 @@
 
 //TODO Rinat
 //TODO exit code 126;
+//TODO error 255
 
 void		ft_pipe_eof(void)
 {

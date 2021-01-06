@@ -10,6 +10,7 @@
 # define ERR1 "No such file or directory"
 # define ERR2 "command not found"
 # define ERR3 "Is a directory"
+# define ERR31 "is a directory"
 # define ERR4 "Not a directory"
 # define ERR5 "Permission denied"
 # define ERR6 "too many arguments"

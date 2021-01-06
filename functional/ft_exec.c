@@ -73,13 +73,46 @@ int     status_return(int status)
 	return (WEXITSTATUS(status));
 }
 
+int		check_exec_launch(char *args)
+{
+	struct stat		buf;
+
+	stat(args, &buf);
+	if (buf.st_mode & S_IFREG)
+	{
+		if (!(buf.st_mode & S_IXUSR))
+		{
+			ft_error_print(MSHELL, args, NULL, ERR5);
+			g_code = 126;
+			return (0);
+		}
+	}
+	else if (S_ISDIR(buf.st_mode))
+	{
+		ft_error_print(MSHELL, args, NULL, ERR31);
+		g_code = 126;
+		return (0);
+	}
+	else if (args[0] == '/' && (!(buf.st_mode & S_IFREG)))
+	{
+		ft_error_print(MSHELL, args, NULL, ERR1);
+		g_code = 127;
+		return (0);
+	}
+	return (1);
+}
+
+
 int    ft_exec(t_data *data)
 {
-    int     err;
     pid_t 	pid;
     char 	**env;
     int 	status;
+    int     err = 0;
 
+    status = 0;
+	if (!check_exec_launch(data->ar[0]))
+		return (g_code);
     env = list_to_mas_ref(data);
     pid = fork();
     if (pid == -1)
@@ -91,8 +124,9 @@ int    ft_exec(t_data *data)
 			signal(SIGINT, SIG_DFL);
 			signal(SIGQUIT, SIG_DFL);
 			signal(SIGTERM, SIG_DFL);
-			status = execve(data->ar[0], data->ar, env);
-			exit(WEXITSTATUS(status));
+			err = execve(data->ar[0], data->ar, env);
+//			ft_error_print(MSHELL, data->ar[0] , NULL, ERR2);
+			exit(WEXITSTATUS(err));
 		}
     	else
 		{
@@ -100,7 +134,7 @@ int    ft_exec(t_data *data)
 			signal(SIGQUIT, SIG_DFL);
 			signal(SIGTERM, SIG_DFL);
 			status = execve(ft_find_path(data, data->ar[0]), data->ar, env);
-			exit(WEXITSTATUS(status));
+			exit(WEXITSTATUS(g_code));
 		}
 	}
     else
