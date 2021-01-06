@@ -39,10 +39,10 @@ void    ft_export(t_data *data)
 
 	i = 1;
 	flag = 0;
-	if(!(data->ar = process_export(data->ar)))
-		return ;
     if (!data->ar[1])//if array is empty print all env_sort_list
     {
+        if(!(data->ar = process_export(data->ar)))
+            return ;
         sort_env.ph = copy_list(data->env_list);
         sort_l = sort_env_list(&sort_env);
         while(sort_l)
@@ -62,6 +62,8 @@ void    ft_export(t_data *data)
     }
     else
     {
+        if(!(data->ar = process_export(data->ar)))
+            return ;
     	sort_l = data->env_list;//TODO may be it is not nesessary
         while (data->ar[i])
         {
