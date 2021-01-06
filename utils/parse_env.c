@@ -92,7 +92,7 @@ char **parse_env(char *arg)
 			count++;
 		i++;
 	}
-	if (!(result = malloc((sizeof(char *) * count) + 1)))
+	if (!(result = malloc(sizeof(char *) * (count + 1))))
 		exit(0);
 	int len;
 	int j;
