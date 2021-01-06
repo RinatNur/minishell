@@ -30,9 +30,9 @@ void 		ft_error_print(char *minishell, char *command, char *filename, char *mess
 
 void    ft_error(char *str, int code)
 {
-    ft_write (2, str);
-    ft_write (2, "\n");
-    g_code = code;
+	ft_write (2, str);
+	ft_write (2, "\n");
+	g_code = code;
 }
 
 void 	ft_error_stderr(char *str, int code)

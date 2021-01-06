@@ -104,26 +104,26 @@ int		check_exec(char *args)
 
 void    ft_exec(t_data *data)
 {
-    pid_t 	pid;
-    char 	**env;
-    int 	status;
-    char	*path;
+	pid_t 	pid;
+	char 	**env;
+	int 	status;
+	char	*path;
 
 	status = 0;
 	if (!check_exec(data->ar[0]))
 		return ;
-    env = list_to_mas_ref(data);
-    if ((pid = fork()) == -1)
+	env = list_to_mas_ref(data);
+	if ((pid = fork()) == -1)
 		ft_error_stderr(strerror(errno), 15);
-    if(pid == 0)
-    {
-    	signal(SIGINT, SIG_DFL);
+	if(pid == 0)
+	{
+		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
 		signal(SIGTERM, SIG_DFL);
 		path = ((find_char(data->ar[0], '/')) >= 0)
-				? data->ar[0] : (ft_find_path(data, data->ar[0]));
+			   ? data->ar[0] : (ft_find_path(data, data->ar[0]));
 		execve(path, data->ar, env);
-		exit(WEXITSTATUS(g_code));
+		exit(g_code);
 	}
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, SIG_IGN);

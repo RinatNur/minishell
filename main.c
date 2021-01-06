@@ -2,7 +2,7 @@
 #include "functional/processing.h"
 
 //TODO Roma
-//
+//FIXME process_export_arg exit(1) must be changed;
 
 //TODO Rinat
 //TODO exit code 126;
@@ -106,7 +106,6 @@ static void process_command(t_data *data, char *command_line)
 		pipeline = pipeline->next;
 	}
 }
-
 void loop(t_data *data)
 {
 	int flag;
