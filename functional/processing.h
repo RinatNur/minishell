@@ -30,7 +30,7 @@ void            print_list(t_env *list);
 
 void            make_env_list(t_data *data, const char **env);
 char            **env_copy(t_data *data, const char **envp);
-int				ft_exec(t_data *data);
+void			ft_exec(t_data *data);
 void            check_command(t_data *data);
 void            ft_error(char *str, int code);
 void			ft_error_stderr(char *str, int code);

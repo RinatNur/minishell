@@ -6,7 +6,6 @@ void        check_command(t_data *data)
 	static int	count = 0;
 	char 	*com;
 
-//	if (count || (data->redir_flag || data->redir_pipe_flag))
 	g_code = 0;
 	count++;
 	com = data->ar[0];
@@ -73,7 +72,7 @@ int     status_return(int status)
 	return (WEXITSTATUS(status));
 }
 
-int		check_exec_launch(char *args)
+int		check_exec(char *args)
 {
 	struct stat		buf;
 
@@ -103,46 +102,31 @@ int		check_exec_launch(char *args)
 }
 
 
-int    ft_exec(t_data *data)
+void    ft_exec(t_data *data)
 {
     pid_t 	pid;
     char 	**env;
     int 	status;
-    int     err = 0;
+    char	*path;
 
-    status = 0;
-	if (!check_exec_launch(data->ar[0]))
-		return (g_code);
+	status = 0;
+	if (!check_exec(data->ar[0]))
+		return ;
     env = list_to_mas_ref(data);
-    pid = fork();
-    if (pid == -1)
+    if ((pid = fork()) == -1)
 		ft_error_stderr(strerror(errno), 15);
     if(pid == 0)
     {
-    	if ((find_char(data->ar[0], '/')) >= 0)
-		{
-			signal(SIGINT, SIG_DFL);
-			signal(SIGQUIT, SIG_DFL);
-			signal(SIGTERM, SIG_DFL);
-			err = execve(data->ar[0], data->ar, env);
-//			ft_error_print(MSHELL, data->ar[0] , NULL, ERR2);
-			exit(WEXITSTATUS(err));
-		}
-    	else
-		{
-			signal(SIGINT, SIG_DFL);
-			signal(SIGQUIT, SIG_DFL);
-			signal(SIGTERM, SIG_DFL);
-			status = execve(ft_find_path(data, data->ar[0]), data->ar, env);
-			exit(WEXITSTATUS(g_code));
-		}
+    	signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
+		signal(SIGTERM, SIG_DFL);
+		path = ((find_char(data->ar[0], '/')) >= 0)
+				? data->ar[0] : (ft_find_path(data, data->ar[0]));
+		execve(path, data->ar, env);
+		exit(WEXITSTATUS(g_code));
 	}
-    else
-    {
-		signal(SIGQUIT, SIG_IGN);
-		signal(SIGINT, SIG_IGN);
-		waitpid(pid, &status, WUNTRACED);
-		g_code = status_return(status);
-    }
-    return (0);
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, SIG_IGN);
+	waitpid(pid, &status, WUNTRACED);
+	g_code = status_return(status);
 }
