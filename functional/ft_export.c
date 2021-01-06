@@ -62,6 +62,8 @@ void    ft_export(t_data *data)
     }
     else
     {
+		if(!(data->ar = process_export(data->ar)))
+			return ;
     	sort_l = data->env_list;//TODO may be it is not nesessary
         while (data->ar[i])
         {
