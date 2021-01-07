@@ -50,6 +50,8 @@ void 			free_2d_array(char **array)
 {
 	int i;
 
+	if (array == NULL)
+        return ;
 	i = 0;
 	while (array[i] != NULL)
 	{
