@@ -10,8 +10,10 @@ static t_command	*parse_clear_command(char *clear_command, t_list *redirects, t_
 	mask = get_mask(clear_command);
 	command_with_args = u_split(clear_command, ' ', mask);
 	free(mask);
-	result = command_constructor(command_with_args, redirects);
-	return (result);
+	cmd->command_with_arguments = command_with_args;
+	cmd->redirect_list = redirects;
+	//result = command_constructor(command_with_args, redirects);
+	return (cmd);
 }
 
 t_command			*parse_command(const char *command_str)

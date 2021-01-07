@@ -105,6 +105,7 @@ static void process_command(t_data *data, char *command_line)
 		dup2(data->fd_start[1], 1);//to return fd 1 back;
 		pipeline = pipeline->next;
 	}
+	free_pipeline_list(pipeline_list);
 }
 void loop(t_data *data)
 {
