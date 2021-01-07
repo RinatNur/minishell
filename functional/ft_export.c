@@ -36,11 +36,10 @@ void    ft_export(t_data *data)
     t_env		*sort_l;
     int         i;
     int 		flag;
+    char        **tmp;
 
 	i = 1;
 	flag = 0;
-	if(!(data->ar = process_export(data->ar)))
-		return ;
     if (!data->ar[1])//if array is empty print all env_sort_list
     {
         sort_env.ph = copy_list(data->env_list);
@@ -62,30 +61,32 @@ void    ft_export(t_data *data)
     }
     else
     {
-		if(!(data->ar = process_export(data->ar)))
-			return ;
+        tmp = process_export(data->ar);
     	sort_l = data->env_list;//TODO may be it is not nesessary
-        while (data->ar[i])
+        while (tmp[i])
         {
-        	if ((i % 2) != 0 && (!ft_strncmp("0", data->ar[i], 1))) //if odd value of arr = 0 -> key = NULL
-				ft_lstadd_back_env(&data->env_list, ft_lstnew_env(data->ar[i + 1], NULL));
+        	if ((i % 2) != 0 && (!ft_strncmp("0", tmp[i], 1))) //if odd value of arr = 0 -> key = NULL
+				ft_lstadd_back_env(&data->env_list, ft_lstnew_env(tmp[i + 1], NULL));
         	else
 			{
         		while(sort_l)
         		{
-        			if (!ft_strncmp(data->ar[i], sort_l->key, (ft_strlen(data->ar[i]) + 1)))
+        			if (!ft_strncmp(tmp[i], sort_l->key, (ft_strlen(tmp[i]) + 1)))
         			{
-        				sort_l->key = data->ar[i];
-        				sort_l->value = data->ar[i + 1];
+        				sort_l->key = tmp[i];
+        				sort_l->value = tmp[i + 1];
         				flag++;
         				break ;
         			}
         			sort_l = sort_l->next;
         		}
         		if (!flag)
-					ft_lstadd_back_env(&data->env_list, ft_lstnew_env(data->ar[i], data->ar[i + 1]));
+					ft_lstadd_back_env(&data->env_list, ft_lstnew_env(tmp[i], tmp[i + 1]));
 			}
             i += 2;
         }
+        free_2d_array(tmp);
     }
 }
+
+//export a; export a=; export a=b
