@@ -73,15 +73,15 @@ void    ft_export(t_data *data)
         		{
         			if (!ft_strncmp(tmp[i], sort_l->key, (ft_strlen(tmp[i]) + 1)))
         			{
-        				sort_l->key = tmp[i];
-        				sort_l->value = tmp[i + 1];
+        				sort_l->key = ft_strdup(tmp[i]);
+        				sort_l->value = ft_strdup(tmp[i + 1]);
         				flag++;
         				break ;
         			}
         			sort_l = sort_l->next;
         		}
         		if (!flag)
-					ft_lstadd_back_env(&data->env_list, ft_lstnew_env(tmp[i], tmp[i + 1]));
+					ft_lstadd_back_env(&data->env_list, ft_lstnew_env(ft_strdup(tmp[i]), ft_strdup(tmp[i + 1])));
 			}
             i += 2;
         }
