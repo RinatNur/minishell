@@ -36,6 +36,6 @@ void        make_env_list(t_data *data, const char **env)
 //    free(env_split[0]);
 //    free(env_split[1]);
 //    free(env_split);
-//    print_list(data->env_list);
+    print_list(data->env_list);
 }
 

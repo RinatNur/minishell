@@ -140,6 +140,6 @@ int main(int ac, char **av, char **envp)
 	signal(SIGQUIT, handler_signals);
 	signal(SIGTERM, handler_signals);
 	loop(&data);
-	free_env_list(data.env_list);
+//	free_env_list(data.env_list);
 	return (g_code);
 }

@@ -79,6 +79,7 @@ int		check_exec(char *args)
 {
 	struct stat		buf;
 
+	buf.st_mode = 0;
 	stat(args, &buf);
 	if (buf.st_mode & S_IFREG)
 	{
