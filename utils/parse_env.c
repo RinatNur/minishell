@@ -105,6 +105,7 @@ char **parse_env(char *arg)
 		j++;
 		i = i + len;
 	}
+	free(mask);
 	result[j] = NULL;
 	return (result);
 }

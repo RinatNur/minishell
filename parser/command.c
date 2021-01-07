@@ -15,15 +15,7 @@ t_command			*command_constructor(char **command_with_arguments, t_list *redirect
 
 void 				command_destructor(t_command *command)
 {
-	int i;
-
-	i = 0;
-	while (command->command_with_arguments[i] != NULL)
-	{
-		free(command->command_with_arguments[i]);
-		i++;
-	}
-	free(command->command_with_arguments);
+	free_2d_array(command->command_with_arguments);
 	ft_lstclear(&(command->redirect_list), (void (*)(void *))redirect_destructor);
 	free(command);
 }

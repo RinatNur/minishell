@@ -18,6 +18,7 @@ static t_list *parse_pipeline(char *pipeline_line)
 		i++;
 	}
 	free(mask);
+	free_2d_array(command_array);
 	return (command_list);
 }
 
