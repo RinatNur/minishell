@@ -6,14 +6,13 @@ void 	free_env_list(t_env *list)
 		list = list->prev;
 	while (list)
 	{
-		free(list->key);
-		list->key = NULL;
-		free(list->value);
-		list->value = NULL;
+	    if (list->key != NULL)
+		    free(list->key);
+        if (list->value != NULL)
+		    free(list->value);
 		list = list->next;
 	}
 	free(list);
-	list = NULL;
 }
 
 void        make_env_list(t_data *data, const char **env)
@@ -27,7 +26,8 @@ void        make_env_list(t_data *data, const char **env)
     while (env[i])
     {
         env_split = ft_split(env[i], '=');
-		ft_lstadd_back_env(&list, ft_lstnew_env(env_split[0], env_split[1]));
+		ft_lstadd_back_env(&list, ft_lstnew_env(ft_strdup(env_split[0]), ft_strdup(env_split[1])));
+		free_arr(env_split);
         i++;
 //        free_arr(env_split);
     }
