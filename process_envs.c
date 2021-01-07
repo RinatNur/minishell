@@ -20,6 +20,7 @@ char *clear_quotes(char *str)
 	tmp2 = u_split(str, -100, mask);
 	free(mask);
 	result = arr_strjoin(tmp2);
+	free_2d_array(tmp2);
 	if (result == NULL)
 	    result = ft_strdup("");
 	return (result);
@@ -65,7 +66,9 @@ void process_command_envs(char **command_with_args, t_data *data)
 	while (command_with_args[i] != NULL)
 	{
 		tmp1 = replace_env(command_with_args[i], data);
+		free(command_with_args[i]);
 		command_with_args[i] = clear_quotes(tmp1);
+		free(tmp1);
 		i++;
 	}
 }

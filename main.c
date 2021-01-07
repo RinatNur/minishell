@@ -124,6 +124,7 @@ void loop(t_data *data)
 		signal(SIGINT, handler_signals);
 		signal(SIGQUIT, handler_signals);
 		signal(SIGTERM, handler_signals);
+		free(g_buf);
 	}
 }
 
