@@ -2,19 +2,18 @@
 
 void    ft_echo(t_data *data)
 {
-    int     i, j;
+    int     i;
+    int 	j;
     int     flag;
 
     i = 1;
-//    i = (!ft_strncmp(data->ar[1], "-n", (ft_strlen(data->ar[1]) + 1))) ? 2 : 1;
-//    flag = (i == 1) ? 0 : 1;
+    flag = 0;
     while (data->ar[i])
     {
 		j = 0;
 		if (data->ar[i][j] == '-')
 		{
 			j++;
-			flag = 0;
 			while (data->ar[i][j] != '\0')
 			{
 				if (data->ar[i][j] == 'n')

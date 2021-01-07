@@ -57,5 +57,7 @@ void			fill_t_redirect(t_list **list);
 void			ft_error_print(char *minishell, char *command, char *filename, char *message);
 void			ft_pipe_eof(void);
 void			ft_redirect_read_pipe(t_data *data);
+void			free_arr(char **arr);
+void			free_env_list(t_env *list);
 
 #endif

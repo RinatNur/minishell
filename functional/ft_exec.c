@@ -34,14 +34,17 @@ char 	**list_to_mas_ref(t_data *data)
 	t_env		*list;
 	char 			**env;
 	int 			i = 0;
+	char 			*tmp;
 
 	list = data->env_list;
 	env = malloc(sizeof(char *) * (ft_lstsize_env(list) + 1));
 	while (list)
 	{
-		env[i] = ft_strjoin(list->key, ft_strjoin("=", list->value));
+		tmp = ft_strjoin("=", list->value);
+		env[i] = ft_strjoin(list->key, tmp);
 		i++;
 		list = list->next;
+		free(tmp);
 	}
 	return (env);
 }
@@ -110,6 +113,7 @@ void    ft_exec(t_data *data)
 	char	*path;
 
 	status = 0;
+
 	if (!check_exec(data->ar[0]))
 		return ;
 	env = list_to_mas_ref(data);
@@ -129,4 +133,5 @@ void    ft_exec(t_data *data)
 	signal(SIGINT, SIG_IGN);
 	waitpid(pid, &status, WUNTRACED);
 	g_code = status_return(status);
+	free_arr(env);
 }
