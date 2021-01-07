@@ -2,10 +2,11 @@
 #include "functional/processing.h"
 
 //TODO Roma
-//
+//FIXME process_export_arg exit(1) must be changed;
 
 //TODO Rinat
 //TODO exit code 126;
+//TODO error 255
 
 void		ft_pipe_eof(void)
 {
@@ -106,7 +107,6 @@ static void process_command(t_data *data, char *command_line)
 	}
 	free_pipeline_list(pipeline_list);
 }
-
 void loop(t_data *data)
 {
 	int flag;
@@ -140,5 +140,6 @@ int main(int ac, char **av, char **envp)
 	signal(SIGQUIT, handler_signals);
 	signal(SIGTERM, handler_signals);
 	loop(&data);
+	free_env_list(data.env_list);
 	return (g_code);
 }

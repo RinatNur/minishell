@@ -48,14 +48,12 @@ char **process_export_arg(char *export_arg)
 	free(mask);
 	return (result);
 }
-
 char **process_export(char **export_with_arguments)
 {
 	int i;
 	char **result;
 	char **tmp;
 	int j;
-
 	i = 0;
 	while (export_with_arguments[i] != NULL)
 		i++;
@@ -73,10 +71,10 @@ char **process_export(char **export_with_arguments)
 	{
 		tmp = process_export_arg(export_with_arguments[j]);
 		if (tmp == NULL)
-        {
-		    j++;
-            continue;
-        }
+		{
+			j++;
+			continue;
+		}
 		result[i] = u_strdup(tmp[0]);
 		result[i + 1] = u_strdup(tmp[1]);
 		//FIXME free tmp;
