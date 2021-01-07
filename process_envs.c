@@ -42,11 +42,11 @@ char *replace_env(char *str, t_data *data)
 			if (parsed_str[i][1] == '?')
 				env_value = ft_itoa(g_code);
 			else if (ft_isdigit(parsed_str[i][1]))
-			    env_value = get_value_from_env(data, parsed_str[i] + 2);
+			    env_value = u_strdup(get_value_from_env(data, parsed_str[i] + 2));
 			else
-				env_value = get_value_from_env(data, parsed_str[i] + 1);
+				env_value = u_strdup(get_value_from_env(data, parsed_str[i] + 1));
 			if (env_value == NULL)
-				env_value = ft_strdup("");
+				env_value = u_strdup("");
 			free(parsed_str[i]);
 			parsed_str[i] = env_value;
 		}
