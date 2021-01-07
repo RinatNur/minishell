@@ -11,7 +11,7 @@ char *arr_strjoin(char **line)
 	char *tmp;
 
 	i = 1;
-	result = line[0];
+	result = u_strdup(line[0]);
 	while (line[i] != NULL)
 	{
 		tmp = u_strjoin(result, line[i]);

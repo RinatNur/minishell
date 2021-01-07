@@ -18,6 +18,7 @@ char *clear_quotes(char *str)
 		i++;
 	}
 	tmp2 = u_split(str, -100, mask);
+	free(mask);
 	result = arr_strjoin(tmp2);
 	if (result == NULL)
 	    result = ft_strdup("");
@@ -28,6 +29,7 @@ char *replace_env(char *str, t_data *data)
 {
 	char **parsed_str;
 	char *env_value;
+	char *result;
 	int i;
 
 	i = 0;
@@ -49,7 +51,9 @@ char *replace_env(char *str, t_data *data)
 		}
 		i++;
 	}
-	return arr_strjoin(parsed_str);
+	result = arr_strjoin(parsed_str);
+	free_2d_array(parsed_str);
+	return result;
 }
 
 void process_command_envs(char **command_with_args, t_data *data)
