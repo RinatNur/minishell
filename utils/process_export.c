@@ -80,6 +80,7 @@ char **process_export(char **export_with_arguments)
 		result[i] = u_strdup(tmp[0]);
 		result[i + 1] = u_strdup(tmp[1]);
 		//FIXME free tmp;
+		free_2d_array(tmp);
 		i = i + 2;
 		j++;
 	}
