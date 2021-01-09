@@ -19,10 +19,10 @@ static int get_filename(const char *command, const char *mask, char **filename, 
         if (command[i] != '\0')
         {
             token[0] = command[i];
-            cmd->parse_error = ft_strjoin("Syntax error near unexpected token: ", token);
+            cmd->parse_error = ft_strjoin("Syntax error near unexpected token (after redirect): ", token);
         }
         else
-            cmd->parse_error = ft_strjoin("Syntax error near unexpected token: ", "'end of command'");
+            cmd->parse_error = ft_strjoin("Syntax error near unexpected token (after redirect): ", "'end of command'");
         return (0);
     }
     len = 0;

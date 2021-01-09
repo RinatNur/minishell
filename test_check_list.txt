@@ -31,15 +31,15 @@ TODO ls ; unset PATH ; echo $PATH ; ls ; echo $?
 TODO export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki ; echo $PATH
 TODO export>a|grep>b<a USER
 
-Dfasdfasdfasdfasdfasasd ; echo $?
+Dfasdfasdfasdfasdfasasd ; echo $? FIXME leak
 export>">"|grep>"|"<">" USER
 ls > a > b -la
 > a ls > b -la
 ls > a ; chmod 111 a ; ls > a | cat -e FIXME после редиректа пайп не должен сработать
-cat < a | cat -e FIXME серьезно зависает после ошибки с пустым файлом
+cat < a | cat -e FIXME !!!сега
 chmod 777 a
 ls > a > b | cat -e
-ls > FIXME почему ошибка permission denied?
+ls >
 > a
 > a > b
 ls > |  FIXME почему ошибка permission denied?
@@ -52,7 +52,7 @@ echo "$PWD"
 echo "'$PWD'"
 echo " $PWD ;;;;; ; "
 echo '"$PWD"'
-cd .. ; echo $OLDPWD ; echo $PWD ; cd .. ; echo $OLDPWD ; echo $PWD
+cd .. ; echo $OLDPWD ; echo $PWD ; cd .. ; echo $OLDPWD ; echo $PWD FIXME leak
 ;; 
 > > asdfas
 ls |
