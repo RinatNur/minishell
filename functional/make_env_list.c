@@ -11,7 +11,10 @@ void        make_env_list(t_data *data, const char **env)
     while (env[i])
     {
         env_split = ft_split(env[i], '=');
-		ft_lstadd_back_env(&list, ft_lstnew_env(ft_strdup(env_split[0]), ft_strdup(env_split[1])));
+        if (env_split[1] == NULL)
+            ft_lstadd_back_env(&list, ft_lstnew_env(ft_strdup(env_split[0]), NULL));
+        else
+		    ft_lstadd_back_env(&list, ft_lstnew_env(ft_strdup(env_split[0]), ft_strdup(env_split[1])));
 		free_arr(env_split);
         i++;
     }
