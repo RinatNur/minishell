@@ -1,5 +1,6 @@
 
 #include "parse.h"
+#include "functional/processing.h"
 
 static t_list *parse_pipeline(char *pipeline_line)
 {
@@ -38,15 +39,54 @@ static void	fill_pipeline_list(t_list **pipeline_list, char **pipeline_lines)
 	}
 }
 
+int      is_empty(const char *str)
+{
+    int i;
+
+    i = 0;
+    while (str[i] != '\0')
+    {
+        if (str[i] != ' ')
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
 t_list	*parse_pipeline_list(char *command_line)
 {
 	t_list	*pipeline_list;
 	char	**pipeline_lines;
 	char	*mask;
+	int     i;
+
 
 	mask = get_mask(command_line);
+	i = 0;
+	while (command_line[i] != '\0')
+    {
+	    if ((command_line[i] == ';' && command_line[i + 1] == ';') &&
+                (mask[i] == '0' && mask[i + 1] == '0'))
+        {
+	        ft_error("Syntax error near unexpected token: ;;", 2);
+	        free(mask);
+            return (NULL);
+        }
+	    i++;
+    }
 	pipeline_lines = u_split(command_line, ';', mask);
-
+	i = 0;
+	while (pipeline_lines[i] != NULL)
+    {
+	    if (is_empty(pipeline_lines[i]) && pipeline_lines[i + 1] != NULL)
+        {
+            ft_error("Syntax error near unexpected token: ;", 2);
+            free_2d_array(pipeline_lines);
+            free(mask);
+            return (NULL);
+        }
+	    i++;
+    }
 	pipeline_list = NULL;
 	fill_pipeline_list(&pipeline_list, pipeline_lines);
 
