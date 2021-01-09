@@ -7,7 +7,10 @@ t_env      *copy_list(t_env *list)
     tmp = NULL;
     while (list)
     {
-		ft_lstadd_back_env(&tmp, ft_lstnew_env(ft_strdup(list->key), ft_strdup(list->value)));
+    	if(list->value == NULL)
+			ft_lstadd_back_env(&tmp, ft_lstnew_env(ft_strdup(list->key), NULL));
+    	else
+			ft_lstadd_back_env(&tmp, ft_lstnew_env(ft_strdup(list->key), ft_strdup(list->value)));
         list = list->next;
     }
     return (tmp);

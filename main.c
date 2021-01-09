@@ -23,7 +23,6 @@ void	handler_signals(int sig)
 	if (sig == SIGINT)
 	{
 		ft_write(1, "\b\b  \b\b");
-//		g_buf[0] = '\0';// if add seg fault with ^C on first iteration
 		ft_write(1, "\nminishell #> ");
 		g_code = 1;
 	}
@@ -105,7 +104,7 @@ static void process_command(t_data *data, char *command_line)
 		dup2(data->fd_start[1], 1);//to return fd 1 back;
 		pipeline = pipeline->next;
 	}
-//	free_pipeline_list(pipeline_list);
+	free_pipeline_list(pipeline_list);
 }
 void loop(t_data *data)
 {
@@ -124,7 +123,7 @@ void loop(t_data *data)
 		signal(SIGINT, handler_signals);
 		signal(SIGQUIT, handler_signals);
 		signal(SIGTERM, handler_signals);
-//		free(g_buf);
+		free(g_buf);
 	}
 }
 

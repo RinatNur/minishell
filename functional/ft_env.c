@@ -2,8 +2,9 @@
 
 void    ft_env(t_data *data)
 {
-    t_env      *env = data->env_list;
+    t_env      *env;
 
+    env = data->env_list;
 	if (data->ar[1] != NULL)
 	{
 		ft_error_print(MSHELL, data->ar[0], data->ar[1], ERR1);
