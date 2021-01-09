@@ -26,6 +26,7 @@ t_command			*parse_command(const char *command_str)
 	redirect_list = parse_redirects(&clear_command_str, command);
     if (command->parse_error != NULL)
     {
+        command->redirect_list = redirect_list;
         free(clear_command_str);
         return (command);
     }
