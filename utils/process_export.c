@@ -14,6 +14,8 @@ char **process_export_arg(char *export_arg)
 	if ((equal_char_index > 1 && mask[equal_char_index] != '0') || equal_char_index == 0)
 	{
 		write(2, "export: Not a valid identifier\n", 31);
+		free(mask);
+		free(result);
 		return NULL;
 	}
 	if (equal_char_index != -1)
