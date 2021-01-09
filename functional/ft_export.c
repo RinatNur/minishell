@@ -39,10 +39,9 @@ void    ft_export(t_data *data)
     char        **tmp;
 
 	i = 1;
-	flag = 0;
     if (!data->ar[1])//if array is empty print all env_sort_list
     {
-        sort_env.ph = copy_list(data->env_list);
+        sort_env.ph = data->env_list;
         sort_l = sort_env_list(&sort_env);
         while(sort_l)
         {
@@ -55,38 +54,51 @@ void    ft_export(t_data *data)
                 ft_write(1, "\"");
             }
             sort_l = sort_l->next;
-//            if (sort_l)TODO ask if it nesessary \n at the end of output
-                ft_write(1, "\n");
+			ft_write(1, "\n");
         }
     }
     else
     {
         tmp = process_export(data->ar);
-    	sort_l = data->env_list;//TODO may be it is not nesessary
         while (tmp[i])
         {
-        	if ((i % 2) != 0 && (!ft_strncmp("0", tmp[i], 1))) //if odd value of arr = 0 -> key = NULL
-				ft_lstadd_back_env(&data->env_list, ft_lstnew_env(tmp[i + 1], NULL));
+    		flag = 0;
+			sort_l = data->env_list;
+        	if ((i % 2) != 0 && (!ft_strncmp("0", tmp[i], 1)))//if odd value of arr = 0 -> key = NULL
+			{
+        		i++;
+				while(sort_l)
+				{
+					if (!ft_strncmp(tmp[i], sort_l->key, (ft_strlen(tmp[i]) + 1)))
+					{
+						flag++;
+						break ;
+					}
+					sort_l = sort_l->next;
+				}
+				if (!flag)
+					ft_lstadd_back_env(&data->env_list, ft_lstnew_env(ft_strdup(tmp[i]), NULL));
+				i++;
+			}
         	else
 			{
-        		while(sort_l)
-        		{
-        			if (!ft_strncmp(tmp[i], sort_l->key, (ft_strlen(tmp[i]) + 1)))
-        			{
-        				sort_l->key = ft_strdup(tmp[i]);
-        				sort_l->value = ft_strdup(tmp[i + 1]);
-        				flag++;
-        				break ;
-        			}
-        			sort_l = sort_l->next;
-        		}
-        		if (!flag)
+				while (sort_l)
+				{
+					if (!ft_strncmp(tmp[i], sort_l->key, (ft_strlen(tmp[i]) + 1)))
+					{
+						sort_l->value = ft_strdup(tmp[i + 1]);
+						flag++;
+						break;
+					}
+					sort_l = sort_l->next;
+				}
+				if (!flag)
 					ft_lstadd_back_env(&data->env_list, ft_lstnew_env(ft_strdup(tmp[i]), ft_strdup(tmp[i + 1])));
+				i += 2;
 			}
-            i += 2;
-        }
-        free_2d_array(tmp);
-    }
+		}
+		free_2d_array(tmp);
+	}
 }
 
 //export a; export a=; export a=b
