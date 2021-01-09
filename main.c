@@ -105,7 +105,7 @@ static void process_command(t_data *data, char *command_line)
 		dup2(data->fd_start[1], 1);//to return fd 1 back;
 		pipeline = pipeline->next;
 	}
-	free_pipeline_list(pipeline_list);
+//	free_pipeline_list(pipeline_list);
 }
 void loop(t_data *data)
 {
@@ -124,7 +124,7 @@ void loop(t_data *data)
 		signal(SIGINT, handler_signals);
 		signal(SIGQUIT, handler_signals);
 		signal(SIGTERM, handler_signals);
-		free(g_buf);
+//		free(g_buf);
 	}
 }
 
@@ -140,6 +140,5 @@ int main(int ac, char **av, char **envp)
 	signal(SIGQUIT, handler_signals);
 	signal(SIGTERM, handler_signals);
 	loop(&data);
-//	free_env_list(data.env_list);
 	return (g_code);
 }

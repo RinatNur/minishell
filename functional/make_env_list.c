@@ -10,6 +10,8 @@ void        make_env_list(t_data *data, const char **env)
 	while (env[i])
 	{
 		env_split = ft_split(env[i], '=');
+		if (!ft_strncmp("OLDPWD", env_split[0], 7))
+			env_split[1] = NULL;
 		if (env_split[1] == NULL)
 			ft_lstadd_back_env(&list, ft_lstnew_env(ft_strdup(env_split[0]), NULL));
 		else
@@ -17,7 +19,6 @@ void        make_env_list(t_data *data, const char **env)
 		free_arr(env_split);
 		i++;
 	}
-	ft_lstadd_back_env(&list, ft_lstnew_env("OLDPWD", NULL));
 	data->env_list = list;
 }
 

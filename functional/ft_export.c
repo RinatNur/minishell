@@ -64,7 +64,7 @@ void    ft_export(t_data *data)
         while (tmp[i])
         {
     		flag = 0;
-//			sort_l = data->env_list;
+			sort_l = tmp_env;
         	if ((i % 2) != 0 && (!ft_strncmp("0", tmp[i], 1)))//if odd value of arr = 0 -> key = NULL
 			{
         		i++;
@@ -78,7 +78,7 @@ void    ft_export(t_data *data)
 					sort_l = sort_l->next;
 				}
 				if (!flag)
-					ft_lstadd_back_env(&sort_l, ft_lstnew_env(ft_strdup(tmp[i]), NULL));
+					ft_lstadd_back_env(&tmp_env, ft_lstnew_env(ft_strdup(tmp[i]), NULL));
 				i++;
 			}
         	else
@@ -94,13 +94,13 @@ void    ft_export(t_data *data)
 					sort_l = sort_l->next;
 				}
 				if (!flag)
-					ft_lstadd_back_env(&sort_l, ft_lstnew_env(ft_strdup(tmp[i]), ft_strdup(tmp[i + 1])));
+					ft_lstadd_back_env(&tmp_env, ft_lstnew_env(ft_strdup(tmp[i]), ft_strdup(tmp[i + 1])));
 				i += 2;
 			}
 		}
 		free_2d_array(tmp);
 	}
-    data->env_list = sort_l;
+    data->env_list = tmp_env;
 }
 
 //export a; export a=; export a=b
