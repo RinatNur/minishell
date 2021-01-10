@@ -16,17 +16,17 @@ TODO exit fasdfasdf
 ls "-la" | 'cat' -e 
 echo "asdfasd ' asdfas ' '$PWD' ; ; ; " 'asdfasd " asdfas " "$PWD" ; ; ; '
 
-TODO env
-TODO env sdfsadfasdfa
-TODO export a=b
-TODO env
-TODO export b
-TODO env
-TODO export c=$PWD; echo $c
-TODO unset a b c ; export ; env
-TODO cd .. ; pwd ; echo $OLDPWD ; echo $PWD;
-TODO pwd
-TODO pwd | cat -e | cat -e
+env
+env sdfsadfasdfa
+export a=b
+env
+export b
+env
+export c=$PWD; echo $c
+unset a b c ; export ; env FIXME
+cd .. ; pwd ; echo $OLDPWD ; echo $PWD;
+pwd
+pwd | cat -e | cat -e
 TODO ls ; unset PATH ; echo $PATH ; ls ; echo $?
 TODO export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki ; echo $PATH
 TODO export>a|grep>b<a USER
@@ -35,15 +35,15 @@ Dfasdfasdfasdfasdfasasd ; echo $? FIXME leak
 export>">"|grep>"|"<">" USER
 ls > a > b -la
 > a ls > b -la
-ls > a ; chmod 111 a ; ls > a | cat -e FIXME после редиректа пайп не должен сработать
-cat < a | cat -e FIXME !!!сега
+ls > a ; chmod 111 a ; ls > a | cat -e
+cat < a | cat -e
 chmod 777 a
 ls > a > b | cat -e
 ls >
 > a
 > a > b
-ls > |  FIXME почему ошибка permission denied?
-ls > a | ls > b ; cat < a ; cat < b FIXME ничего не выводит, хотя должно
+ls > |
+ls > a | ls > b ; cat < a ; cat < b
 export a ; export b= ; echo $a ; echo $b;
 ps | grep grep FIXME не работает
 echo "''"
@@ -57,3 +57,6 @@ cd .. ; echo $OLDPWD ; echo $PWD ; cd .. ; echo $OLDPWD ; echo $PWD FIXME leak
 > > asdfas
 ls |
 ctrl + d ; echo $?
+
+
+echo $a$b$c$PWD$OLd

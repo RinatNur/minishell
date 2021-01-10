@@ -2,8 +2,8 @@
 
 char *empty_str(char c, int len)
 {
-	char *result;
-	int i;
+	char	*result;
+	int		i;
 
 	if (!(result = malloc(sizeof(char) * len + 1)))
 		exit(EXIT_FAILURE);

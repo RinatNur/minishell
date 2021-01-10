@@ -6,11 +6,13 @@
 
 char *arr_strjoin(char **line)
 {
-	int i;
-	char *result;
-	char *tmp;
+	int		i;
+	char	*result;
+	char	*tmp;
 
 	i = 1;
+	if (line[0] == NULL)
+		return (u_strdup(""));
 	result = u_strdup(line[0]);
 	while (line[i] != NULL)
 	{
