@@ -9,23 +9,25 @@ unsigned long long	ft_atoi_u_long_long(const char *str, int *is_valid, int *is_s
 
 	i = 0;
 	res = 0;
+	sign = (str[i] == '-') ? -1 : 1;
 	(str[i] == '-' || str[i] == '+') ? i++ : 0;
-	sign = (str[i - 1] == '-') ? -1 : 1;
+
 	while (str[i])
 	{
 		if (ft_isdigit(str[i]))
 		{
 			while (ft_isdigit(str[i]))
 			{
-				res = res * 10 + str[i++] - '0';
+				res = res * 10 + str[i] - '0';
 				tmp = res;
 				if ((res > 9223372036854775807) && ((tmp * (-1)) != (-9223372036854775807 - 1) || sign > 0))
 				{
 					*is_valid = 0;
 					return (0);
 				}
+				i++;
 			}
-			if (str[i + 1] == '\0')
+			if (i == ft_strlen(str))
 				return (res == 0 ? 0 : (res * sign));
 			else
 			{
