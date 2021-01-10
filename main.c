@@ -16,6 +16,7 @@ void		ft_pipe_eof(void)
 	write(mas[1], "", 0);
 	dup2(mas[0], 0);
 	close(mas[1]);
+//	close(mas[0]);
 }
 
 void	handler_signals(int sig)
@@ -27,9 +28,7 @@ void	handler_signals(int sig)
 		g_code = 1;
 	}
 	else
-	{
 		ft_write(1, "\b\b  \b\b");
-	}
 }
 
 void		init_data(t_data *data, t_list **command, t_command **com)
@@ -82,7 +81,11 @@ static void process_command(t_data *data, char *command_line)
 				ft_pipe(data);
 			else if (data->redirect_list && command->next)
 			{
-				ft_check_redirects(data, command);
+				if ((ft_check_redirects(data, command)) == 1)
+				{
+					command = command->next;
+					continue;
+				}
 				if (data->redir_pipe_flag && data->redir_flag)
 				{
 					command = command->next;
