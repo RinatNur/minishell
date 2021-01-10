@@ -38,5 +38,7 @@ char    *ft_find_path(t_data *data, char *command)
 	if (!flag)
 		ft_error_print(MSHELL, command, NULL, ERR2);
 	free_arr(path_arr);
-	return (path);
+	if (path)
+		return (path);
+	return ("");
 }

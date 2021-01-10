@@ -1,4 +1,5 @@
 #include "processing.h"
+#include "./utils/utils.h"
 
 void        check_command(t_data *data)
 {
@@ -35,8 +36,9 @@ char 	**list_to_mas_ref(t_data *data)
 	int 			i = 0;
 	char 			*tmp;
 
+	env = NULL;
 	list = data->env_list;
-	env = malloc(sizeof(char *) * (ft_lstsize_env(list) + 1));
+	env = malloc(sizeof(char *) * ft_lstsize_env(list));
 	while (list)
 	{
 		tmp = ft_strjoin("=", list->value);
@@ -119,7 +121,7 @@ void    ft_exec(t_data *data)
 	env = list_to_mas_ref(data);
 	if ((pid = fork()) == -1)
 		ft_error_stderr(strerror(errno), 15);
-	if(pid == 0)
+	if(pid == 0)//TODO ==
 	{
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
