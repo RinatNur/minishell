@@ -134,8 +134,12 @@ void    ft_exec(t_data *data)
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
 		signal(SIGTERM, SIG_DFL);
-		path = ((!ft_strncmp("/", data->ar[0], 1)))
-			   ? data->ar[0] : (ft_find_path(data, data->ar[0]));
+		if ((!(ft_strncmp("/", get_value_from_env(data, "PWD"), 2))
+			&& (find_char(data->ar[0], '/')) >= 0)
+			|| (!ft_strncmp("/", data->ar[0], 1)))
+			path = data->ar[0];
+		else
+			ft_find_path(data, data->ar[0]);
 		execve(path, data->ar, env);
 		exit(g_code);
 	}
