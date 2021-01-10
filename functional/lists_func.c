@@ -69,6 +69,8 @@ t_env      *cut_list(t_data *data, char *ar)
             list->next = NULL;
         }
     data->env_list = list;
+    while (data->env_list->prev)
+       	data->env_list = data->env_list->prev;
     return (data->env_list);
 }
 
