@@ -2,30 +2,30 @@
 
 void 		ft_error_print(char *minishell, char *command, char *filename, char *message)
 {
-	if (minishell)
-	{
-		ft_write(2, minishell);
-		ft_write(2, ": ");
-	}
-	if (command)
-	{
-		ft_write(2, command);
-		ft_write(2, ": ");
-	}
-	if (filename)
-	{
-		ft_write(2, filename);
-		ft_write(2, ": ");
-	}
-	ft_write(2, message);
-	ft_write(2, "\n");
-	if (ERR2 !=NULL && message != NULL && !(ft_strncmp(ERR2, message, (ft_strlen(message) + 1))))
-		g_code = 127;
-	else if (command != NULL && !(ft_strncmp("env", command, 4))
-			 && !(ft_strncmp(ERR1, message, (ft_strlen(ERR1) + 1))))
-		g_code = 127;
-	else
-		g_code = 1;
+    if (minishell)
+    {
+        ft_write(2, minishell);
+        ft_write(2, ": ");
+    }
+    if (command)
+    {
+        ft_write(2, command);
+        ft_write(2, ": ");
+    }
+    if (filename)
+    {
+        ft_write(2, filename);
+        ft_write(2, ": ");
+    }
+    ft_write(2, message);
+    ft_write(2, "\n");
+    if (ERR2 !=NULL && message != NULL && !(ft_strncmp(ERR2, message, (ft_strlen(message) + 1))))
+        g_code = 127;
+    else if (command != NULL && !(ft_strncmp("env", command, 4))
+             && !(ft_strncmp(ERR1, message, (ft_strlen(ERR1) + 1))))
+        g_code = 127;
+    else
+        g_code = 1;
 }
 
 void    ft_error(char *str, int code)
