@@ -33,14 +33,22 @@ char 	**list_to_mas_ref(t_data *data)
 {
 	t_env		*list;
 	char 			**env;
-	int 			i = 0;
+	int 			i;
+	size_t 			len;
 	char 			*tmp;
 
+	i = 0;
 	env = NULL;
 	list = data->env_list;
-	env = malloc(sizeof(char *) * ft_lstsize_env(list));
+	len = ft_lstsize_env(list) + 1;
+	if (!(env = (char **)malloc(sizeof(char *) * len)))
+		ft_error_stderr("malloc: memory not allocated", errno);
+	env[len - 1] = NULL;
 	while (list)
 	{
+		len = (list->value != NULL) ? (int)((ft_strlen(list->key) + ft_strlen(list->value) + 2)) : (ft_strlen(list->key) + 2);
+		if (!(env[i] = (char *)malloc(sizeof(char) * len)))
+			ft_error_stderr("malloc: memory not allocated", errno);
 		tmp = ft_strjoin("=", list->value);
 		env[i] = ft_strjoin(list->key, tmp);
 		i++;
