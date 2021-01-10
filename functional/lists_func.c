@@ -2,46 +2,65 @@
 
 t_env      *copy_list(t_env *list)
 {
-    t_env      *tmp;
-
+    t_env		*tmp;
+	t_env		*new_tmp;
     tmp = NULL;
     while (list)
     {
+    	new_tmp = NULL;
     	if(list->value == NULL)
-			ft_lstadd_back_env(&tmp, ft_lstnew_env(ft_strdup(list->key), NULL));
-    	else
+    	{
+//			new_tmp = ft_lstnew_env(ft_strdup(list->key), NULL);
+			ft_lstadd_back_env(&tmp,ft_lstnew_env(ft_strdup(list->key), NULL));
+		} else
+		{
+//			new_tmp = ft_lstnew_env(ft_strdup(list->key), ft_strdup(list->value));
 			ft_lstadd_back_env(&tmp, ft_lstnew_env(ft_strdup(list->key), ft_strdup(list->value)));
-        list = list->next;
-    }
-    return (tmp);
+		}
+		list = list->next;
+//    	if (list)
+//    	{
+//			free(new_tmp->key);
+//			free(new_tmp->value);
+//			free(new_tmp);
+//		}
+	}
+//    if (new_tmp)
+//    {
+//		free(new_tmp->key);
+//		free(new_tmp->value);
+//		free(new_tmp);
+//	}
+//    print_list(tmp);
+	return (tmp);
 }
 
 t_env      *cut_list(t_data *data, char *ar)
 {
-    t_env      *list;
-    t_env      *tmp;
+	t_env      *list;
+	t_env      *tmp;
 
-    list = data->env_list;
-    size_t len = ft_strlen(ar) + 1;
-    while (list->next)
-    {
-        if (!ft_strncmp(ar, list->key, len))
-        {
-            if (list->prev == NULL)
-            {
-                list = list->next;
-                list->prev = NULL;
-            }
-            else if (list->next != NULL)
-            {
-                tmp = list->prev;
-                list = list->next;
-                list->prev = tmp;
-                tmp->next = list;
+	list = data->env_list;
+	size_t len = ft_strlen(ar) + 1;
+	while (list->next)
+	{
+		if (!ft_strncmp(ar, list->key, len))
+		{
+			if (list->prev == NULL)
+			{
+				list = list->next;
+				list->prev = NULL;
+			}
+			else if (list->next != NULL)
+			{
+				tmp = list->prev;
+				list = list->next;
+				list->prev = tmp;
+				tmp->next = list;
 				break ;
-            }
-        }
-        list = list->next;
+			}
+		}
+		list = list->next;
     }
     if (!ft_strncmp(ar, list->key, len))
         if (list->next == NULL)
@@ -50,6 +69,8 @@ t_env      *cut_list(t_data *data, char *ar)
             list->next = NULL;
         }
     data->env_list = list;
+    while (data->env_list->prev)
+       	data->env_list = data->env_list->prev;
     return (data->env_list);
 }
 

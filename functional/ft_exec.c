@@ -1,5 +1,5 @@
 #include "processing.h"
-#include "../utils/utils.h"
+#include "./utils/utils.h"
 
 void        check_command(t_data *data)
 {
@@ -33,13 +33,22 @@ char 	**list_to_mas_ref(t_data *data)
 {
 	t_env		*list;
 	char 			**env;
-	int 			i = 0;
+	int 			i;
+	size_t 			len;
 	char 			*tmp;
 
+	i = 0;
+	env = NULL;
 	list = data->env_list;
-	env = malloc(sizeof(char *) * (ft_lstsize_env(list) + 1));
+	len = ft_lstsize_env(list) + 1;
+	if (!(env = (char **)malloc(sizeof(char *) * len)))
+		ft_error_stderr("malloc: memory not allocated", errno);
+	env[len - 1] = NULL;
 	while (list)
 	{
+		len = (list->value != NULL) ? (int)((ft_strlen(list->key) + ft_strlen(list->value) + 2)) : (ft_strlen(list->key) + 2);
+		if (!(env[i] = (char *)malloc(sizeof(char) * len)))
+			ft_error_stderr("malloc: memory not allocated", errno);
 		tmp = ft_strjoin("=", list->value);
 		env[i] = ft_strjoin(list->key, tmp);
 		i++;
@@ -75,7 +84,7 @@ int     status_return(int status)
 	return (WEXITSTATUS(status));
 }
 
-int		check_exec(char *args)
+int		check_exec(t_data *data, char *args)
 {
 	struct stat		buf;
 
@@ -115,21 +124,23 @@ void    ft_exec(t_data *data)
 
 	status = 0;
 
-	if (!check_exec(data->ar[0]))
+	if (!check_exec(data,data->ar[0]))
 		return ;
 	env = list_to_mas_ref(data);
 	if ((pid = fork()) == -1)
 		ft_error_stderr(strerror(errno), 15);
-	if(pid == 0)
+	if(pid == 0)//TODO ==
 	{
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
 		signal(SIGTERM, SIG_DFL);
-		path = ((find_char(data->ar[0], '/')) >= 0)
-			   ? data->ar[0] : (ft_find_path(data, data->ar[0]));
+		if ((!(ft_strncmp("/", get_value_from_env(data, "PWD"), 2))
+			&& (find_char(data->ar[0], '/')) >= 0)
+			|| (!ft_strncmp("/", data->ar[0], 1)))
+			path = data->ar[0];
+		else
+			ft_find_path(data, data->ar[0]);
 		execve(path, data->ar, env);
-		ft_error_print(MSHELL, data->ar[0], NULL, ERR1);
-		g_code = 127;
 		exit(g_code);
 	}
 	signal(SIGQUIT, SIG_IGN);

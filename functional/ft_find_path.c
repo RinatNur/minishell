@@ -2,13 +2,14 @@
 
 char    *ft_find_path(t_data *data, char *command)
 {
-    char    *path = NULL;
+    char    *path;
     DIR     *dir;
     struct  dirent  *tmp;
     char    **path_arr;
     int     i = 0;
     int     flag = 0;
 
+	path = NULL;
 	!(path_arr = ft_split(get_value_from_env(data, "PATH"), ':')) ? ft_error_print(MSHELL, data->ar[0], NULL, ERR5) : 0;
 	if (!path_arr)
 		return (NULL);
@@ -33,12 +34,11 @@ char    *ft_find_path(t_data *data, char *command)
         }
         else
             i++;
-//        free(dir);
-//        if(tmp)
-//        	free(tmp);
     }
 	if (!flag)
 		ft_error_print(MSHELL, command, NULL, ERR2);
 	free_arr(path_arr);
+	if (!path)
+		path = "";
 	return (path);
 }
