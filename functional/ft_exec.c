@@ -128,6 +128,8 @@ void    ft_exec(t_data *data)
 		path = ((find_char(data->ar[0], '/')) >= 0)
 			   ? data->ar[0] : (ft_find_path(data, data->ar[0]));
 		execve(path, data->ar, env);
+		ft_error_print(MSHELL, data->ar[0], NULL, ERR1);
+		g_code = 127;
 		exit(g_code);
 	}
 	signal(SIGQUIT, SIG_IGN);
