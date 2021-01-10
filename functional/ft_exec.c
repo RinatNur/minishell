@@ -127,7 +127,6 @@ void    ft_exec(t_data *data)
 		path = ((!ft_strncmp("/", data->ar[0], 1)))
 			   ? data->ar[0] : (ft_find_path(data, data->ar[0]));
 		execve(path, data->ar, env);
-		g_code = 127;
 		exit(g_code);
 	}
 	signal(SIGQUIT, SIG_IGN);
