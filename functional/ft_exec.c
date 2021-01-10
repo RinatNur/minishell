@@ -1,5 +1,4 @@
 #include "processing.h"
-#include "../utils/utils.h"
 
 void        check_command(t_data *data)
 {
@@ -75,7 +74,7 @@ int     status_return(int status)
 	return (WEXITSTATUS(status));
 }
 
-int		check_exec(char *args)
+int		check_exec(t_data *data, char *args)
 {
 	struct stat		buf;
 
@@ -115,7 +114,7 @@ void    ft_exec(t_data *data)
 
 	status = 0;
 
-	if (!check_exec(data->ar[0]))
+	if (!check_exec(data,data->ar[0]))
 		return ;
 	env = list_to_mas_ref(data);
 	if ((pid = fork()) == -1)
@@ -125,10 +124,9 @@ void    ft_exec(t_data *data)
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
 		signal(SIGTERM, SIG_DFL);
-		path = ((find_char(data->ar[0], '/')) >= 0)
+		path = ((!ft_strncmp("/", data->ar[0], 1)))
 			   ? data->ar[0] : (ft_find_path(data, data->ar[0]));
 		execve(path, data->ar, env);
-		ft_error_print(MSHELL, data->ar[0], NULL, ERR1);
 		g_code = 127;
 		exit(g_code);
 	}
