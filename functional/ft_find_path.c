@@ -33,6 +33,9 @@ char    *ft_find_path(t_data *data, char *command)
         }
         else
             i++;
+//        free(dir);
+//        if(tmp)
+//        	free(tmp);
     }
 	if (!flag)
 		ft_error_print(MSHELL, command, NULL, ERR2);

@@ -19,9 +19,9 @@ void 		ft_error_print(char *minishell, char *command, char *filename, char *mess
 	}
 	ft_write(2, message);
 	ft_write(2, "\n");
-	if (!(ft_strncmp(ERR2, message, (ft_strlen(message) + 1))))
+	if (ERR2 !=NULL && message != NULL && !(ft_strncmp(ERR2, message, (ft_strlen(message) + 1))))
 		g_code = 127;
-	else if (!(ft_strncmp("env", command, 4))
+	else if (command != NULL && !(ft_strncmp("env", command, 4))
 			 && !(ft_strncmp(ERR1, message, (ft_strlen(ERR1) + 1))))
 		g_code = 127;
 	else
