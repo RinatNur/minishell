@@ -2,11 +2,10 @@
 #include "functional/processing.h"
 
 //TODO Roma
-//FIXME process_export_arg exit(1) must be changed;
+//FIXME unset PATH; echo $PATH
+//FIXME ;       ;
 
 //TODO Rinat
-//TODO exit code 126;
-//TODO error 255
 
 void		ft_pipe_eof(void)
 {

@@ -9,7 +9,6 @@ void    ft_unset(t_data *data)
     list = data->env_list;
     while(data->ar[i])
 	{
-    	ft_write(1, data->ar[i]);
     	len = ft_strlen(data->ar[i]) + 1;
 		while (list)
 		{

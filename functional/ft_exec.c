@@ -139,7 +139,7 @@ void    ft_exec(t_data *data)
 			|| (!ft_strncmp("/", data->ar[0], 1)))
 			path = data->ar[0];
 		else
-			ft_find_path(data, data->ar[0]);
+			path = ft_find_path(data, data->ar[0]);
 		execve(path, data->ar, env);
 		exit(g_code);
 	}
