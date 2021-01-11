@@ -10,6 +10,7 @@ char    *ft_find_path(t_data *data, char *command)
     int     flag = 0;
 
 	path = NULL;
+	dir = NULL;
 	!(path_arr = ft_split(get_value_from_env(data, "PATH"), ':')) ? ft_error_print(MSHELL, data->ar[0], NULL, ERR5) : 0;
 	if (!path_arr)
 		return (NULL);
@@ -29,11 +30,17 @@ char    *ft_find_path(t_data *data, char *command)
 
             }
             if (flag == 1)
-                break ;
-            i++;
+            {
+				if(dir)
+					free(dir);
+				break;
+			}
+			i++;
         }
         else
             i++;
+    	if(dir)
+    		free(dir);
     }
 	if (!flag)
 		ft_error_print(MSHELL, command, NULL, ERR2);

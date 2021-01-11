@@ -66,13 +66,9 @@ char 	**list_to_mas_ref(t_data *data)
 		}
 		else
 			env[i] = ft_strdup(list->key);
-
-		ft_write(1, env[i]);
-		ft_write(1,"\n");
 		i++;
 		list = list->next;
 	}
-//	print_arr(env);
 	return (env);
 }
 
