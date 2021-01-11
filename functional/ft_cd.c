@@ -22,11 +22,20 @@ void    ft_cd(t_data *data)
     if (!ft_strncmp("CD", data->ar[0], 3))
     	return;
     if (!data->ar[1])
-    	data->ar[1] = get_value_from_env(data, "HOME");
+	{
+    	free(data->ar[0]);
+    	free(data->ar);
+    	if (!(data->ar = malloc(sizeof(char *) * 3)))
+			exit(EXIT_FAILURE);
+		data->ar[0] = ft_strdup("cd");
+		data->ar[1] = get_value_from_env(data, "HOME");
+		data->ar[2] = NULL;
+	}
     if (data->ar[1])
     {
     	if ((!ft_strncmp("-", data->ar[1], 2)))
     	{
+    		free(data->ar[1]);
 			data->ar[1] = get_value_from_env(data, "OLDPWD");
 			ft_write(1, data->ar[1]);
 			ft_write(1, "\n");

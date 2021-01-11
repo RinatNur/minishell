@@ -11,5 +11,5 @@ char    *get_value_from_env(t_data *data, char *key)
             return (list->value);
 		list = list->next;
     }
-    return (0);
+    return (ft_strdup(""));
 }
