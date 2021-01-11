@@ -41,6 +41,29 @@ void		init_data(t_data *data, t_list **command, t_command **com)
 	data->ar = (*com)->command_with_arguments;
 }
 
+static char **arr_dup(char **arr)
+{
+	char **result;
+	int i;
+
+	i = 0;
+	if (arr == NULL)
+		return (NULL);
+	while (arr[i] != NULL)
+		i++;
+	if (!(result = malloc(sizeof(char *) * (i + 1))))
+		exit(EXIT_FAILURE);
+	i = 0;
+	while (arr[i] != NULL)
+	{
+		result[i] = ft_strdup(arr[i]);
+		i++;
+	}
+	result[i] = NULL;
+	return (result);
+}
+
+
 static void process_command(t_data *data, char *command_line)
 {
 	t_list *pipeline_list;
@@ -73,7 +96,7 @@ static void process_command(t_data *data, char *command_line)
 			process_command_envs(com->command_with_arguments, data);
 			process_redirect_envs(com->redirect_list, data);
 
-			data->ar = com->command_with_arguments;
+			data->ar = arr_dup(com->command_with_arguments); //дубликат
 			if (data->redirect_list && !command->next)
 				ft_check_redirects(data, command);
 			else if (!data->redirect_list && command->next)
@@ -100,6 +123,7 @@ static void process_command(t_data *data, char *command_line)
 					ft_pipe_eof();
 				check_command(data);
 			}
+			free_2d_array(data->ar); //освобождение дубликата
 			command = command->next;
 		}
 		dup2(data->fd_start[0], 0);//to return fd 0 back;

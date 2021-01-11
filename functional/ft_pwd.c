@@ -13,4 +13,5 @@ void        *ft_pwd()
 	}
     ft_write(1, dir);
     write(1, "\n", 1);
+	free(dir);
 }

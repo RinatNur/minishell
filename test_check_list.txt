@@ -5,7 +5,7 @@ echo $PWD dfvdf asdfasd
 echo "asdfasd   $PWD     asdfasd "
 echo ' asdfasd $PWD dffasdfa '
 exit
-exit 100 FIXME
+exit 100
 exit fasdfasdf
 /bin/ls ; echo $?
 /bin/ls | cat -e ; echo $?
