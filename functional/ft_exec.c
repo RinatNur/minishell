@@ -1,6 +1,17 @@
 #include "processing.h"
 #include "./utils/utils.h"
 
+void 		print_arr(char **env)
+{
+	int i;
+	i = 0;
+	while (env[i] != NULL)
+	{
+		printf("%s\n", env[i]);
+		i++;
+	}
+}
+
 void        check_command(t_data *data)
 {
 	static int	count = 0;
@@ -39,6 +50,7 @@ char 	**list_to_mas_ref(t_data *data)
 
 	i = 0;
 	env = NULL;
+	tmp = NULL;
 	list = data->env_list;
 	len = ft_lstsize_env(list) + 1;
 	if (!(env = (char **)malloc(sizeof(char *) * len)))
@@ -46,15 +58,21 @@ char 	**list_to_mas_ref(t_data *data)
 	env[len - 1] = NULL;
 	while (list)
 	{
-		len = (list->value != NULL) ? (int)((ft_strlen(list->key) + ft_strlen(list->value) + 2)) : (ft_strlen(list->key) + 2);
-		if (!(env[i] = (char *)malloc(sizeof(char) * len)))
-			ft_error_stderr("malloc: memory not allocated", errno);
-		tmp = ft_strjoin("=", list->value);
-		env[i] = ft_strjoin(list->key, tmp);
+		if (list->value)
+		{
+			tmp = ft_strjoin("=", list->value);
+			env[i] = ft_strjoin(list->key, tmp);
+			free(tmp);
+		}
+		else
+			env[i] = ft_strdup(list->key);
+
+		ft_write(1, env[i]);
+		ft_write(1,"\n");
 		i++;
 		list = list->next;
-		free(tmp);
 	}
+//	print_arr(env);
 	return (env);
 }
 

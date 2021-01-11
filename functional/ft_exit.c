@@ -74,7 +74,7 @@ void 	ft_exit(t_data *data)
 	is_valid = 1;
 	is_str = 0;
 	i = 0;
-	free_env_list(data->env_list);//FIXME test
+//	free_env_list(data->env_list);//FIXME test
 	while (data->ar[i + 1])
 		i++;
 	if (i == 0)
