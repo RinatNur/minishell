@@ -1,5 +1,7 @@
+
 #include "utils.h"
-char mask_elem(unsigned char *flag, char symbol, char quote)
+
+char	mask_elem(unsigned char *flag, char symbol, char quote)
 {
 	if (symbol == quote)
 	{
@@ -12,7 +14,8 @@ char mask_elem(unsigned char *flag, char symbol, char quote)
 	else
 		return quote;
 }
-char   *get_mask(char *line)
+
+char	*get_mask(char *line)
 {
 	int             i;
 	char         *result;

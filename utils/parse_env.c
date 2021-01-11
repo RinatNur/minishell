@@ -69,14 +69,11 @@ int mask_elem_len(const char *mask)
 	return (i);
 }
 
-char **parse_env(char *arg)
+int env_count(const char *arg, const char *mask)
 {
-	char *mask;
-	int 	i;
-	int 	count;
-	char **result;
+	int i;
+	int count;
 
-	mask = env_mask(arg);
 	i = 0;
 	count = 0;
 	while (arg[i] != '\0')
@@ -92,6 +89,18 @@ char **parse_env(char *arg)
 			count++;
 		i++;
 	}
+	return (count);
+}
+
+char **parse_env(char *arg)
+{
+	char *mask;
+	int 	i;
+	int 	count;
+	char **result;
+
+	mask = env_mask(arg);
+	count = env_count(arg, mask);
 	if (!(result = malloc(sizeof(char *) * (count + 1))))
 		exit(0);
 	int len;

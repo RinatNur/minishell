@@ -20,7 +20,7 @@ static size_t	ft_strlcpy(char *dest, const char *src, size_t l)
 	return (u_strlen(src));
 }
 
-char		*u_strldup(const char *s, size_t l)
+char			*u_strldup(const char *s, size_t l)
 {
 	char *duplicate;
 
