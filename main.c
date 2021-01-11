@@ -126,6 +126,7 @@ void loop(t_data *data)
 		signal(SIGQUIT, handler_signals);
 		signal(SIGTERM, handler_signals);
 		free(g_buf);
+		free_env_list(data->env_list);//FIXME test
 	}
 }
 

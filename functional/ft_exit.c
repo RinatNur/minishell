@@ -52,6 +52,18 @@ void 	exit_with_dif_code(t_data *data, unsigned char code, char *str, ssize_t is
 	(is_exit) ? exit(g_code) : 0;
 }
 
+void			free_env_list(t_env *list)
+{
+	while (list)
+	{
+		free(list->key);
+		if(list->value != NULL)
+			free(list->value);
+		list = list->next;
+	}
+	free(list);
+}
+
 void 	ft_exit(t_data *data)
 {
 	int 	i;
@@ -62,7 +74,7 @@ void 	ft_exit(t_data *data)
 	is_valid = 1;
 	is_str = 0;
 	i = 0;
-
+	free_env_list(data->env_list);//FIXME test
 	while (data->ar[i + 1])
 		i++;
 	if (i == 0)
