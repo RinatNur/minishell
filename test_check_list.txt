@@ -1,5 +1,5 @@
 /bin/ls
-/bin/ls -la
+/bin/ls -la     //FIXME invalid free
 ls -la | "/bin/cat" -e 
 echo $PWD dfvdf asdfasd
 echo "asdfasd   $PWD     asdfasd "
@@ -27,7 +27,7 @@ pwd | cat -e | cat -e
 ls ; unset PATH ; echo $PATH ; ls ; echo $? FIXME unset
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki ; echo $PATH
 export>a|grep>b<a USER
-Dfasdfasdfasdfasdfasasd ; echo $? FIXME выводит две ошибки: command not found и no such file ; есть утечка
+Dfasdfasdfasdfasdfasasd ; echo $?
 export>">"|grep>"|"<">" USER
 ls > a > b -la
 > a ls > b -la

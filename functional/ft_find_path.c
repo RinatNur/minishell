@@ -13,9 +13,16 @@ char    *ft_find_path(t_data *data, char *command)
 	tmp_str = NULL;
 	path = NULL;
 	dir = NULL;
-	!(path_arr = ft_split(get_value_from_env(data, "PATH"), ':')) ? ft_error_print(MSHELL, data->ar[0], NULL, ERR5) : 0;
-	if (!path_arr)
-		return (NULL);
+	path_arr = ft_split(get_value_from_env(data, "PATH"), ':');
+	if (!path_arr[0])
+	{
+		ft_error_print(MSHELL, data->ar[0], NULL, ERR5);
+		path = ft_strdup("");
+		return (path);
+	}
+//	!(path_arr = ft_split(get_value_from_env(data, "PATH"), ':')) ? ft_error_print(MSHELL, data->ar[0], NULL, ERR5) : 0;
+//	if (!path_arr)
+//		return (NULL);
     while (path_arr[i])
     {
         dir = opendir(path_arr[i]);
