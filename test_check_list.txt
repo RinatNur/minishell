@@ -10,8 +10,6 @@ echo ' asdfasd $PWD dffasdfa '
 "bin/ls dsfasdfasdf" ; echo $?
 ls "-la" | 'cat' -e
 echo "asdfasd ' asdfas ' '$PWD' ; ; ; " 'asdfasd " asdfas " "$PWD" ; ; ; '
-
-
 env
 env sdfsadfasdfa
 export a b; unset a b
@@ -21,7 +19,6 @@ export b
 env
 export c=$PWD; echo $c
 unset a b c ; export ; env
-
 cd .. ; pwd ; echo $OLDPWD ; echo $PWD;
 pwd
 pwd | cat -e | cat -e
@@ -50,7 +47,7 @@ echo "$PWD"
 echo "'$PWD'"
 echo " $PWD ;;;;; ; "
 echo '"$PWD"'
-cd .. ; echo $OLDPWD ; echo $PWD ; cd .. ; echo $OLDPWD ; echo $PWD FIXME leak
+cd .. ; echo $OLDPWD ; echo $PWD ; cd .. ; echo $OLDPWD ; echo $PWD
 ;;
 ;       ; FIXME не выводит ошибку
 ; FIXME не выводит ошибку
@@ -171,8 +168,10 @@ cd ..
 cd ..
 cd ..
 cd .
+
 ls
 pwd
+
 cd desktop
 cd /bin
 exit

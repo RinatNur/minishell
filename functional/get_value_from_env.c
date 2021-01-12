@@ -8,7 +8,7 @@ char    *get_value_from_env(t_data *data, char *key)
     while (list)
     {
         if (!ft_strncmp(list->key, key, (ft_strlen(list->key) + 1)))
-            return (list->value);
+            return (list->value); // FIXME должна возвращать замаллоченное значение
 		list = list->next;
     }
     return (ft_strdup(""));
