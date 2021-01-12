@@ -167,6 +167,5 @@ void    ft_exec(t_data *data)
 	signal(SIGINT, SIG_IGN);
 	waitpid(pid, &status, WUNTRACED);
 	g_code = status_return(status);
-	free(path);
 	free_arr(env);
 }
