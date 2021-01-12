@@ -12,7 +12,7 @@
 
 #include "processing.h"
 
-char		*get_pwd()
+char				*get_pwd(void)
 {
 	char *dir;
 
@@ -21,48 +21,43 @@ char		*get_pwd()
 	return (dir);
 }
 
-void		ft_cd(t_data *data)
+static void			chdir_to_home(t_data *data)
 {
-    t_env		*list;
-	t_env		*list2;
-    char		*tmp;
-	char		*pwd_tmp = NULL;
-    int			flag = 0;
+	free(data->ar[0]);
+	free(data->ar);
+	if (!(data->ar = malloc(sizeof(char *) * 3)))
+		exit(EXIT_FAILURE);
+	data->ar[0] = ft_strdup("cd");
+	data->ar[1] = get_value_from_env(data, "HOME");
+	data->ar[2] = NULL;
+}
 
-
-	list = data->env_list;
-    list2 = data->env_list;
-    if (!ft_strncmp("CD", data->ar[0], 3))
-    	return;
-    if (!data->ar[1])
+static void			print_value_oldpwd(t_data *data)
+{
+	if ((!ft_strncmp("-", data->ar[1], 2)))
 	{
-    	free(data->ar[0]);
-    	free(data->ar);
-    	if (!(data->ar = malloc(sizeof(char *) * 3)))
-			exit(EXIT_FAILURE);
-		data->ar[0] = ft_strdup("cd");
-		data->ar[1] = get_value_from_env(data, "HOME");
-		data->ar[2] = NULL;
+		free(data->ar[1]);
+		data->ar[1] = get_value_from_env(data, "OLDPWD");
+		ft_write(1, data->ar[1]);
+		ft_write(1, "\n");
 	}
-    if (data->ar[1])
-    {
-    	if ((!ft_strncmp("-", data->ar[1], 2)))
-    	{
-    		free(data->ar[1]);
-			data->ar[1] = get_value_from_env(data, "OLDPWD");
-			ft_write(1, data->ar[1]);
-			ft_write(1, "\n");
-		}
-		(chdir(data->ar[1]) == -1) ? ft_error_print(MSHELL, data->ar[0], data->ar[1], strerror(errno)) : 0;
-	}
+}
+
+static void			change_val_pwd_and_oldpwd(t_data *data,
+									t_env *list, t_env *list2, char *pwd_tmp)
+{
+	char		*tmp;
+	int			flag;
+
+	flag = 0;
 	while (list)
-    {
-        if ((!ft_strncmp("PWD", list->key, 4)))
-        {
-			(ft_strncmp("..", list->value, 3)) ? (pwd_tmp = get_pwd()) : 0;// if data.ar[1] = ".." find valid path
+	{
+		if ((!ft_strncmp("PWD", list->key, 4)))
+		{
+			(ft_strncmp("..", list->value, 3)) ? (pwd_tmp = get_pwd()) : 0;
 			tmp = list->value;
-			list->value = pwd_tmp ? pwd_tmp : data->ar[1];// if data.ar[1] = ".." change it to valid path
-            while(list2)
+			list->value = pwd_tmp ? pwd_tmp : data->ar[1];
+			while (list2)
 			{
 				if ((!ft_strncmp("OLDPWD", list2->key, 7)))
 				{
@@ -72,7 +67,27 @@ void		ft_cd(t_data *data)
 				}
 				list2 = list2->next;
 			}
-        }
-        list = list->next;
-    }
+		}
+		list = list->next;
+	}
+}
+
+void				ft_cd(t_data *data)
+{
+	t_env		*list;
+	t_env		*list2;
+	char		*pwd_tmp;
+
+	pwd_tmp = NULL;
+	list = data->env_list;
+	list2 = data->env_list;
+	if (!ft_strncmp("CD", data->ar[0], 3))
+		return ;
+	if (!data->ar[1])
+		chdir_to_home(data);
+	if (data->ar[1])
+		print_value_oldpwd(data);
+	if (chdir(data->ar[1]) == -1)
+		ft_error_print(MSHELL, data->ar[0], data->ar[1], strerror(errno));
+	change_val_pwd_and_oldpwd(data, list, list2, pwd_tmp);
 }
