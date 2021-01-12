@@ -143,7 +143,7 @@ void    ft_exec(t_data *data)
 	if ((!(ft_strncmp("/", get_value_from_env(data, "PWD"), 2))
 	&& (find_char(data->ar[0], '/')) >= 0)
 	|| (!ft_strncmp("/", data->ar[0], 1)))
-		path = data->ar[0];
+		path = ft_strdup(data->ar[0]);
 	else
 		path = ft_find_path(data, data->ar[0]);
 	if(!(ft_strncmp("", path, 1)))
@@ -167,6 +167,5 @@ void    ft_exec(t_data *data)
 	signal(SIGINT, SIG_IGN);
 	waitpid(pid, &status, WUNTRACED);
 	g_code = status_return(status);
-	free(path);
 	free_arr(env);
 }

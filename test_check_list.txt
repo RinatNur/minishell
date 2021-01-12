@@ -1,6 +1,6 @@
 /bin/ls
-/bin/ls -la     //FIXME invalid free
-ls -la | "/bin/cat" -e 
+/bin/ls -la
+ls -la | "/bin/cat" -e
 echo $PWD dfvdf asdfasd
 echo "asdfasd   $PWD     asdfasd "
 echo ' asdfasd $PWD dffasdfa '
@@ -11,7 +11,7 @@ exit fasdfasdf
 /bin/ls | cat -e ; echo $?
 /bin/ls asdfasdf ; echo $?
 "bin/ls dsfasdfasdf" ; echo $?
-ls "-la" | 'cat' -e 
+ls "-la" | 'cat' -e
 echo "asdfasd ' asdfas ' '$PWD' ; ; ; " 'asdfasd " asdfas " "$PWD" ; ; ; '
 env
 env sdfsadfasdfa
@@ -27,7 +27,7 @@ pwd | cat -e | cat -e
 ls ; unset PATH ; echo $PATH ; ls ; echo $? FIXME unset
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki ; echo $PATH
 export>a|grep>b<a USER
-Dfasdfasdfasdfasdfasasd ; echo $?
+Dfasdfasdfasdfasdfasasd ; echo $? FIXME выводит две ошибки: command not found и no such file ; есть утечка
 export>">"|grep>"|"<">" USER
 ls > a > b -la
 > a ls > b -la
@@ -57,7 +57,7 @@ ls | FIXME ???? в оригинале появляется мультилайн,
 ctrl + d ; echo $?
 
 
-
+cd; ls; echo
 
 
 ;;
