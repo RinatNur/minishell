@@ -161,3 +161,18 @@ exit -9854679547698675497885948
 exit
 exit 100
 exit fasdfasdf
+
+
+
+
+
+
+cd ..
+cd ..
+cd ..
+cd .
+ls
+pwd
+cd desktop
+cd /bin
+exit
