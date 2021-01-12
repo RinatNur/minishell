@@ -32,7 +32,6 @@ char    *ft_find_path(t_data *data, char *command)
                     flag = 1;
                     break ;
                 }
-
             }
             if (flag == 1)
             {
