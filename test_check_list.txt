@@ -1,20 +1,18 @@
 /bin/ls
-/bin/ls -la     //FIXME invalid free
-ls -la | "/bin/cat" -e 
+/bin/ls -la
+ls -la | "/bin/cat" -e
 echo $PWD dfvdf asdfasd
 echo "asdfasd   $PWD     asdfasd "
 echo ' asdfasd $PWD dffasdfa '
-exit
-exit 100
-exit fasdfasdf
 /bin/ls ; echo $?
 /bin/ls | cat -e ; echo $?
 /bin/ls asdfasdf ; echo $?
 "bin/ls dsfasdfasdf" ; echo $?
-ls "-la" | 'cat' -e 
+ls "-la" | 'cat' -e
 echo "asdfasd ' asdfas ' '$PWD' ; ; ; " 'asdfasd " asdfas " "$PWD" ; ; ; '
 env
 env sdfsadfasdfa
+export a b; unset a b
 export a=b
 env
 export b
@@ -24,7 +22,9 @@ unset a b c ; export ; env
 cd .. ; pwd ; echo $OLDPWD ; echo $PWD;
 pwd
 pwd | cat -e | cat -e
-ls ; unset PATH ; echo $PATH ; ls ; echo $? FIXME unset
+
+
+ls ; unset PATH ; echo $PATH ; ls ; echo $?
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki ; echo $PATH
 export>a|grep>b<a USER
 Dfasdfasdfasdfasdfasasd ; echo $?
@@ -41,14 +41,13 @@ ls >
 ls > |
 ls > a | ls > b ; cat < a ; cat < b
 export a ; export b= ; echo $a ; echo $b;
-ps | grep grep FIXME не работает
 echo "''"
 echo '""'
 echo "$PWD"
 echo "'$PWD'"
 echo " $PWD ;;;;; ; "
 echo '"$PWD"'
-cd .. ; echo $OLDPWD ; echo $PWD ; cd .. ; echo $OLDPWD ; echo $PWD FIXME leak
+cd .. ; echo $OLDPWD ; echo $PWD ; cd .. ; echo $OLDPWD ; echo $PWD
 ;;
 ;       ; FIXME не выводит ошибку
 ; FIXME не выводит ошибку
@@ -57,7 +56,7 @@ ls | FIXME ???? в оригинале появляется мультилайн,
 ctrl + d ; echo $?
 
 
-
+cd; ls; echo
 
 
 ;;
@@ -153,5 +152,26 @@ echo
 echo hello '\' ';' "   '\' \" " \" "$PWD\\\"\~\;"\; >> t1 \' \ \ \\
 echo hello '\' ';' "   '\' \" " \" "$PWD\\\"\~\;"\; >> t1 \' \ \ \\; cat t1
 \ls\ ;
+
 exit 9854679547698675497885947
 exit -9854679547698675497885948
+exit
+exit 100
+exit fasdfasdf
+
+
+
+
+
+
+cd ..
+cd ..
+cd ..
+cd .
+
+ls
+pwd
+
+cd desktop
+cd /bin
+exit

@@ -43,10 +43,23 @@ static void			print_value_oldpwd(t_data *data)
 	}
 }
 
+static void			set_current_path(char *path, t_env *list, char *arg)
+{
+	if (path)
+	{
+		free(list->value);
+		list->value = path;
+	}
+	else
+	{
+		free(list->value);
+		list->value = ft_strdup(arg);
+	}
+}
+
 static void			change_val_pwd_and_oldpwd(t_data *data,
 									t_env *list, t_env *list2, char *pwd_tmp)
 {
-	char		*tmp;
 	int			flag;
 
 	flag = 0;
@@ -55,18 +68,18 @@ static void			change_val_pwd_and_oldpwd(t_data *data,
 		if ((!ft_strncmp("PWD", list->key, 4)))
 		{
 			(ft_strncmp("..", list->value, 3)) ? (pwd_tmp = get_pwd()) : 0;
-			tmp = list->value;
-			list->value = pwd_tmp ? pwd_tmp : data->ar[1];
 			while (list2)
 			{
 				if ((!ft_strncmp("OLDPWD", list2->key, 7)))
 				{
-					list2->value = tmp;
+					free(list2->value);
+					list2->value = ft_strdup(list->value);
 					flag++;
 					break ;
 				}
 				list2 = list2->next;
 			}
+			set_current_path(pwd_tmp, list, data->ar[1]);
 		}
 		list = list->next;
 	}

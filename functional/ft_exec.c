@@ -168,4 +168,5 @@ void    ft_exec(t_data *data)
 	waitpid(pid, &status, WUNTRACED);
 	g_code = status_return(status);
 	free_arr(env);
+	free(path);
 }
