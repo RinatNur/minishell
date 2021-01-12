@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheat <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/12 16:10:46 by jheat             #+#    #+#             */
+/*   Updated: 2021/01/12 16:11:00 by jheat            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "processing.h"
 
-char 	*get_pwd()
+char		*get_pwd()
 {
 	char *dir;
 
@@ -8,7 +20,8 @@ char 	*get_pwd()
 	dir = getcwd(dir, 0);
 	return (dir);
 }
-void    ft_cd(t_data *data)
+
+void		ft_cd(t_data *data)
 {
     t_env		*list;
 	t_env		*list2;
@@ -63,4 +76,3 @@ void    ft_cd(t_data *data)
         list = list->next;
     }
 }
-
