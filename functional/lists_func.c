@@ -29,13 +29,23 @@ t_env      *cut_list(t_data *data, char *ar)
 		{
 			if (list->prev == NULL)
 			{
+				tmp = list;
 				list = list->next;
+				free_env_content(tmp);
+				free(tmp);
+
 				list->prev = NULL;
 			}
 			else if (list->next != NULL)
 			{
 				tmp = list->prev;
+
+
 				list = list->next;
+
+				free_env_content(list->prev);
+				free(list->prev);
+
 				list->prev = tmp;
 				tmp->next = list;
 				break ;
@@ -46,7 +56,12 @@ t_env      *cut_list(t_data *data, char *ar)
     if (!ft_strncmp(ar, list->key, len))
         if (list->next == NULL)
         {
+
+        	tmp = list;
             list = list->prev;
+			free_env_content(tmp);
+            free(tmp);
+
             list->next = NULL;
         }
     data->env_list = list;

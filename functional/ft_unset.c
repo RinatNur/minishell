@@ -15,6 +15,7 @@ void    ft_unset(t_data *data)
 			if (!(ft_strncmp(data->ar[i], list->key, len)))
 			{
 				cut_list(data, data->ar[i]);
+				list = data->env_list;
 				break;
 			}
 			list = list->next;
