@@ -1,9 +1,19 @@
-#include "processing.h"
-int 	check_is_PATH(t_env *list)
-{
-	int 	i;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheat <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/12 18:29:53 by jheat             #+#    #+#             */
+/*   Updated: 2021/01/12 18:30:02 by jheat            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-	i = 0;
+#include "processing.h"
+
+static int			check_is_path(t_env *list)
+{
 	while (list->prev)
 		list = list->prev;
 	while (list)
@@ -15,27 +25,26 @@ int 	check_is_PATH(t_env *list)
 	return (0);
 }
 
-void    ft_env(t_data *data)
+void				ft_env(t_data *data)
 {
-    t_env      *env;
+	t_env		*env;
 
-    env = data->env_list;
-	if (data->ar[1] != NULL || !(check_is_PATH(data->env_list)))
+	env = data->env_list;
+	if (data->ar[1] != NULL || !(check_is_path(data->env_list)))
 	{
 		ft_error_print(MSHELL, data->ar[0], data->ar[1], ERR1);
-		return;
+		return ;
 	}
-    while (env)
-    {
-        if(env->value)
-        {
-            ft_write(1, env->key);
-            ft_write(1, "=");
-            ft_write(1, env->value);
-        }
-        if (env->value)
-            ft_write(1, "\n");
-        env = env->next;
-    }
+	while (env)
+	{
+		if (env->value)
+		{
+			ft_write(1, env->key);
+			ft_write(1, "=");
+			ft_write(1, env->value);
+		}
+		if (env->value)
+			ft_write(1, "\n");
+		env = env->next;
+	}
 }
-
