@@ -8,7 +8,9 @@ char    *ft_find_path(t_data *data, char *command)
     char    **path_arr;
     int     i = 0;
     int     flag = 0;
+	char	*tmp_str;
 
+	tmp_str = NULL;
 	path = NULL;
 	dir = NULL;
 	!(path_arr = ft_split(get_value_from_env(data, "PATH"), ':')) ? ft_error_print(MSHELL, data->ar[0], NULL, ERR5) : 0;
@@ -23,7 +25,10 @@ char    *ft_find_path(t_data *data, char *command)
             {
                 if (!ft_strncmp(command, tmp->d_name, (ft_strlen(command) + 1)))
                 {
-                    path = ft_strjoin(ft_strjoin(path_arr[i], "/"), command);
+                	tmp_str = ft_strjoin(path_arr[i], "/");
+                    path = ft_strjoin(tmp_str, command);
+                    if(tmp_str)
+                    	free(tmp_str);
                     flag = 1;
                     break ;
                 }
@@ -31,21 +36,22 @@ char    *ft_find_path(t_data *data, char *command)
             }
             if (flag == 1)
             {
-				if(dir)
-					free(dir);
+				if (dir)
+					(closedir(dir)) ? exit(32) : 0;
 				break;
 			}
 			i++;
         }
         else
             i++;
-    	if(dir)
-    		free(dir);
+        if (dir)
+        	(closedir(dir)) ? exit(32) : 0;
     }
+
 	if (!flag)
 		ft_error_print(MSHELL, command, NULL, ERR2);
 	free_arr(path_arr);
 	if (!path)
-		path = "";
+		path = ft_strdup("");
 	return (path);
 }

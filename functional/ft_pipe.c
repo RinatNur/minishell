@@ -13,6 +13,8 @@ void 	ft_pipe(t_data *data)
 	if (pid == 0)
 	{
 		dup2(fd[1], 1);
+		close(fd[0]);
+		close(fd[1]);
 		check_command(data);
 		exit(errno);
 	}
