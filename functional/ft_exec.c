@@ -140,20 +140,26 @@ void    ft_exec(t_data *data)
 
 	if (!check_exec(data,data->ar[0]))
 		return ;
+	if ((!(ft_strncmp("/", get_value_from_env(data, "PWD"), 2))
+	&& (find_char(data->ar[0], '/')) >= 0)
+	|| (!ft_strncmp("/", data->ar[0], 1)))
+		path = ft_strdup(data->ar[0]);
+	else
+		path = ft_find_path(data, data->ar[0]);
+	if(!(ft_strncmp("", path, 1)))
+	{
+		free(path);
+		return;
+	}
 	env = list_to_mas_ref(data);
-	if ((pid = fork()) == -1)
+	pid = fork();
+	if (pid == -1)
 		ft_error_stderr(strerror(errno), 15);
 	if(pid == 0)//TODO ==
 	{
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
 		signal(SIGTERM, SIG_DFL);
-		if ((!(ft_strncmp("/", get_value_from_env(data, "PWD"), 2))
-			&& (find_char(data->ar[0], '/')) >= 0)
-			|| (!ft_strncmp("/", data->ar[0], 1)))
-			path = data->ar[0];
-		else
-			path = ft_find_path(data, data->ar[0]);
 		execve(path, data->ar, env);
 		exit(g_code);
 	}
@@ -161,5 +167,6 @@ void    ft_exec(t_data *data)
 	signal(SIGINT, SIG_IGN);
 	waitpid(pid, &status, WUNTRACED);
 	g_code = status_return(status);
+	free(path);
 	free_arr(env);
 }
