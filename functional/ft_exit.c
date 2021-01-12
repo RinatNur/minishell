@@ -54,12 +54,16 @@ void 	exit_with_dif_code(t_data *data, unsigned char code, char *str, ssize_t is
 
 void			free_env_list(t_env *list)
 {
+	t_env *tmp;
+
 	while (list)
 	{
 		free(list->key);
 		if(list->value != NULL)
 			free(list->value);
+		tmp = list;
 		list = list->next;
+		free(tmp);
 	}
 	free(list);
 }

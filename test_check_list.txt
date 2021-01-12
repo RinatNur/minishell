@@ -4,15 +4,16 @@ ls -la | "/bin/cat" -e
 echo $PWD dfvdf asdfasd
 echo "asdfasd   $PWD     asdfasd "
 echo ' asdfasd $PWD dffasdfa '
-exit
-exit 100
-exit fasdfasdf
+
+
+
 /bin/ls ; echo $?
 /bin/ls | cat -e ; echo $?
 /bin/ls asdfasdf ; echo $?
 "bin/ls dsfasdfasdf" ; echo $?
 ls "-la" | 'cat' -e
 echo "asdfasd ' asdfas ' '$PWD' ; ; ; " 'asdfasd " asdfas " "$PWD" ; ; ; '
+
 env
 env sdfsadfasdfa
 export a=b
@@ -24,6 +25,7 @@ unset a b c ; export ; env
 cd .. ; pwd ; echo $OLDPWD ; echo $PWD;
 pwd
 pwd | cat -e | cat -e
+
 ls ; unset PATH ; echo $PATH ; ls ; echo $? FIXME unset
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki ; echo $PATH
 export>a|grep>b<a USER
@@ -153,5 +155,9 @@ echo
 echo hello '\' ';' "   '\' \" " \" "$PWD\\\"\~\;"\; >> t1 \' \ \ \\
 echo hello '\' ';' "   '\' \" " \" "$PWD\\\"\~\;"\; >> t1 \' \ \ \\; cat t1
 \ls\ ;
+
 exit 9854679547698675497885947
 exit -9854679547698675497885948
+exit
+exit 100
+exit fasdfasdf

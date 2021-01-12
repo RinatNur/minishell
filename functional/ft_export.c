@@ -38,8 +38,6 @@ void    ft_export(t_data *data)
     int 		flag;
     char        **tmp;
 
-//    tmp_env = NULL;
-//    tmp_env = data->env_list;
 	i = 1;
     if (!data->ar[1])//if array is empty print all env_sort_list
     {
@@ -59,7 +57,10 @@ void    ft_export(t_data *data)
             sort_l = sort_l->next;
 			ft_write(1, "\n");
         }
+		free_env_list(sort_env.ph);
     }
+
+
     else
     {
         tmp = process_export(data->ar);
@@ -91,7 +92,6 @@ void    ft_export(t_data *data)
 					{
 						sort_l->value = ft_strdup(tmp[i + 1]);
 						flag++;
-//						break;
 					}
 					sort_l = sort_l->next;
 				}

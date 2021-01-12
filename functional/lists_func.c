@@ -3,35 +3,16 @@
 t_env      *copy_list(t_env *list)
 {
     t_env		*tmp;
-	t_env		*new_tmp;
+
     tmp = NULL;
     while (list)
     {
-    	new_tmp = NULL;
     	if(list->value == NULL)
-    	{
-//			new_tmp = ft_lstnew_env(ft_strdup(list->key), NULL);
 			ft_lstadd_back_env(&tmp,ft_lstnew_env(ft_strdup(list->key), NULL));
-		} else
-		{
-//			new_tmp = ft_lstnew_env(ft_strdup(list->key), ft_strdup(list->value));
+    	else
 			ft_lstadd_back_env(&tmp, ft_lstnew_env(ft_strdup(list->key), ft_strdup(list->value)));
-		}
 		list = list->next;
-//    	if (list)
-//    	{
-//			free(new_tmp->key);
-//			free(new_tmp->value);
-//			free(new_tmp);
-//		}
 	}
-//    if (new_tmp)
-//    {
-//		free(new_tmp->key);
-//		free(new_tmp->value);
-//		free(new_tmp);
-//	}
-//    print_list(tmp);
 	return (tmp);
 }
 
