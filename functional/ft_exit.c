@@ -1,40 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheat <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/12 19:36:16 by jheat             #+#    #+#             */
+/*   Updated: 2021/01/12 19:36:19 by jheat            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "processing.h"
 
-unsigned long long	ft_atoi_u_long_long(const char *str, int *is_valid, int *is_str)
+static int				from_char_to_int(const char *str, int *i,
+								int *is_valid, int sign)
 {
-	int		i;
-	int		sign;
 	unsigned long long res;
 	unsigned long long tmp;
 
-	i = 0;
 	res = 0;
+	while (ft_isdigit(str[*i]))
+	{
+		res = res * 10 + str[*i] - '0';
+		tmp = res;
+		if ((res > 9223372036854775807) && ((tmp * (-1))
+			!= (-9223372036854775807 - 1) || sign > 0))
+		{
+			*is_valid = 0;
+			return (0);
+		}
+		(*i)++;
+	}
+	if (*i == ft_strlen(str))
+		return (res == 0 ? 0 : (res * sign));
+	else
+	{
+		*is_valid = 0;
+		return (0);
+	}
+}
+
+unsigned long long		ft_atoi_u_long_long(const char *str,
+										int *is_valid, int *is_str)
+{
+	int		i;
+	int		sign;
+
+	i = 0;
 	sign = (str[i] == '-') ? -1 : 1;
 	(str[i] == '-' || str[i] == '+') ? i++ : 0;
-
 	while (str[i])
 	{
 		if (ft_isdigit(str[i]))
-		{
-			while (ft_isdigit(str[i]))
-			{
-				res = res * 10 + str[i] - '0';
-				tmp = res;
-				if ((res > 9223372036854775807) && ((tmp * (-1)) != (-9223372036854775807 - 1) || sign > 0))
-				{
-					*is_valid = 0;
-					return (0);
-				}
-				i++;
-			}
-			if (i == ft_strlen(str))
-				return (res == 0 ? 0 : (res * sign));
-			else
-			{
-				*is_valid = 0;
-				return (0);
-			}
-		}
+			return (from_char_to_int(str, &i, is_valid, sign));
 		else
 		{
 			*is_str = 1;
@@ -44,7 +62,8 @@ unsigned long long	ft_atoi_u_long_long(const char *str, int *is_valid, int *is_s
 	return (0);
 }
 
-void 	exit_with_dif_code(t_data *data, unsigned char code, char *str, ssize_t is_exit)
+void					exit_with_dif_code(t_data *data, unsigned char code,
+							char *str, ssize_t is_exit)
 {
 	ft_error("exit", g_code);
 	(str) ? ft_error_print(MSHELL, data->ar[0], data->ar[1], str) : 0;
@@ -52,12 +71,12 @@ void 	exit_with_dif_code(t_data *data, unsigned char code, char *str, ssize_t is
 	(is_exit) ? exit(g_code) : 0;
 }
 
-void 	ft_exit(t_data *data)
+void					ft_exit(t_data *data)
 {
-	int 	i;
-	unsigned char	err_u;
-	int 	is_valid;
-	int		is_str;
+	unsigned char		err_u;
+	int					i;
+	int					is_valid;
+	int					is_str;
 
 	is_valid = 1;
 	is_str = 0;
