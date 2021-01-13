@@ -14,11 +14,12 @@ char    *ft_find_path(t_data *data, char *command)
 	path = NULL;
 	dir = NULL;
 	path_arr = ft_split(get_value_from_env(data, "PATH"), ':');
-	if (!path_arr[0])
+	if (!path_arr || !path_arr[0])
 	{
 		ft_error_print(MSHELL, data->ar[0], NULL, ERR5);
 		path = ft_strdup("");
-		free_arr(path_arr);
+		if (path_arr)
+			free_arr(path_arr);
 		return (path);
 	}
     while (path_arr[i])

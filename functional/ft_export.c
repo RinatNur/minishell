@@ -90,6 +90,7 @@ void    ft_export(t_data *data)
 				{
 					if (!ft_strncmp(tmp[i], sort_l->key, (ft_strlen(tmp[i]) + 1)))
 					{
+						free(sort_l->value);
 						sort_l->value = ft_strdup(tmp[i + 1]);
 						flag++;
 					}

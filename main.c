@@ -106,6 +106,7 @@ static void process_command(t_data *data, char *command_line)
 				if ((ft_check_redirects(data, command)) == 1)
 				{
 					command = command->next;
+					free_2d_array(data->ar);
 					continue;
 				}
 				if (data->redir_pipe_flag && data->redir_flag)
