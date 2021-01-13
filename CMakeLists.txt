@@ -46,6 +46,7 @@ add_executable(rinat_minishell
         functional/ft_redirect.c
         functional/ft_check_redirects.c
         functional/processing.h
+        functional/free_utils.c
         main.c
         minishell.h
         parser/parse.h
