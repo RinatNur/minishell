@@ -113,6 +113,9 @@ echo $?
 export PATH=/bin  ; ls
 echo $?
 exit 1234;  // чтобы вернуть PATH
+
+
+
 echo $PWD; unset PWD
 echo $PWD; export PWD=/ ; echo $PWD;
 pwd; echo $PWD
