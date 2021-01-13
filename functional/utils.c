@@ -45,14 +45,25 @@ int		ft_lstsize_env(t_env *lst)
 	return (n);
 }
 
-void 	free_arr(char **arr)
+ssize_t     ft_write(int fd, const void *buf)
 {
-	int i = 0;
+	int     len;
+	int     ret;
+	len = ft_strlen(buf);
+	((ret = write(fd, buf, len)) == -1) ? ft_error("Error in function write", 3) : 0;
+	return (ret);
+}
 
-	while (arr[i])
+char    *get_value_from_env(t_data *data, char *key)
+{
+	t_env		*list;
+
+	list = data->env_list;
+	while (list)
 	{
-		free(arr[i]);
-		i++;
+		if (!ft_strncmp(list->key, key, (ft_strlen(list->key) + 1)))
+			return (list->value); // FIXME должна возвращать замаллоченное значение
+		list = list->next;
 	}
-	free(arr);
+	return (NULL);
 }

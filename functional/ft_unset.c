@@ -16,23 +16,23 @@ void		ft_unset(t_data *data)
 {
 	size_t		len;
 	t_env		*list;
-	int			i = 1;
+	int			i;
 
-    list = data->env_list;
-    while(data->ar[i])
+	i = 1;
+	list = data->env_list;
+	while (data->ar[i])
 	{
-    	len = ft_strlen(data->ar[i]) + 1;
+		len = ft_strlen(data->ar[i]) + 1;
 		while (list)
 		{
 			if (!(ft_strncmp(data->ar[i], list->key, len)))
 			{
 				cut_list(data, data->ar[i]);
 				list = data->env_list;
-				break;
+				break ;
 			}
 			list = list->next;
 		}
 		i++;
 	}
-
 }

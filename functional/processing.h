@@ -9,6 +9,8 @@
 # define LSTADD ft_lstadd_back_env
 # define LSTNEW ft_lstnew_env
 # define DUP ft_strdup
+# define QKEY data->q->key
+# define PKEY data->p->key
 # define REDIR ((t_redirect *)(data->redirect_list->content))
 # define ERR1 "No such file or directory"
 # define ERR2 "command not found"
@@ -29,10 +31,7 @@ typedef struct            s_sort_env {
 void            ft_pwd();
 void            ft_env(t_data *data);
 char            *ft_find_path(t_data *data, char *command);
-void            print_list(t_env *list);
-
 void            make_env_list(t_data *data, const char **env);
-char            **env_copy(t_data *data, const char **envp);
 void			ft_exec(t_data *data);
 void            check_command(t_data *data);
 void            ft_error(char *str, int code);
@@ -56,7 +55,6 @@ int 			ft_check_redirects(t_data *data, t_list *command);
 void			ft_lstadd_back_env(t_env **lst, t_env *new);
 t_env			*ft_lstnew_env(void *key, void *value);
 int				ft_lstsize_env(t_env *lst);
-void			fill_t_redirect(t_list **list);
 void			ft_error_print(char *minishell, char *command, char *filename, char *message);
 void			ft_pipe_eof(void);
 void			ft_redirect_read_pipe(t_data *data);
