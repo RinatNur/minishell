@@ -4,6 +4,27 @@
 
 #include "utils.h"
 
+void set_mask_symbol(int *flag, char *env_mask, const char *arg, int *i)
+{
+	*flag = 1;
+	env_mask[(*i)] = '$';
+	if (arg[(*i) + 1] == '$')
+	{
+		*flag = 0;
+		env_mask[(*i) + 1] = '!';
+		(*i) = (*i) + 2;
+		return ;
+	}
+	if (arg[(*i) + 1] == '?')
+	{
+		*flag = 0;
+		env_mask[(*i) + 1] = '?';
+		(*i) = (*i) + 2;
+		return ;
+	}
+	(*i)++;
+}
+
 char *env_mask(char *arg)
 {
 	char *env_mask;
@@ -19,23 +40,7 @@ char *env_mask(char *arg)
 	{
 		if (arg[i] == '$' && (quote_mask[i] == '0' || quote_mask[i] == '\"'))
 		{
-			flag = 1;
-			env_mask[i] = '$';
-			if (arg[i + 1] == '$')
-			{
-				flag = 0;
-				env_mask[i + 1] = '!';
-				i = i + 2;
-				continue;
-			}
-			if (arg[i + 1] == '?')
-			{
-				flag = 0;
-				env_mask[i + 1] = '?';
-				i = i + 2;
-				continue;
-			}
-			i++;
+			set_mask_symbol(&flag, env_mask, arg, &i);
 			continue;
 		}
 		if (flag == 1 && (arg[i] == ' ' || arg[i] == '\"' || arg[i] == '\'' || arg[i] == '='))

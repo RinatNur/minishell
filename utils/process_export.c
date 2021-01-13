@@ -1,5 +1,6 @@
 #include "libft.h"
 #include "utils.h"
+#include "functional/processing.h"
 
 char **process_export_arg(char *export_arg)
 {
@@ -15,14 +16,14 @@ char **process_export_arg(char *export_arg)
 	mask = get_mask(export_arg);
 	if (ft_isdigit(export_arg[0]))
 	{
-		write(2, "export: Not a valid identifier\n", 31);
+		ft_error_print(MSHELL, "export", NULL, "not a valid identifier");
 		free(mask);
 		free(result);
 		return NULL;
 	}
 	if (equal_char_index == 0)
 	{
-		write(2, "export: Not a valid identifier\n", 31);
+		ft_error_print(MSHELL, "export", NULL, "not a valid identifier");
 		free(mask);
 		free(result);
 		return NULL;
@@ -64,7 +65,7 @@ char **process_export_arg(char *export_arg)
 	{
 		if ((!ft_isalpha(export_arg[i])) && !ft_isdigit(export_arg[i]))
 		{
-			write(2, "export: Not a valid identifier\n", 31);
+			ft_error_print(MSHELL, "export", NULL, "not a valid identifier");
 			free_2d_array(result);
 			return NULL;
 		}

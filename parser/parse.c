@@ -65,7 +65,7 @@ int		find_unexpected_token1(char *str)
 		if ((str[i] == '|' && str[i + 1] == '|') &&
 			(mask[i] == '0' && mask[i + 1] == '0'))
 		{
-			ft_error("Syntax error near unexpected token: |", 2);
+			ft_error("-minishell: syntax error near unexpected token: |", 2);
 			free(mask);
 			return (1);
 		}
@@ -87,7 +87,7 @@ int		find_unexpected_token2(char *str)
 		if ((str[i] == ';' && str[i + 1] == ';') &&
 			(mask[i] == '0' && mask[i + 1] == '0'))
 		{
-			ft_error("Syntax error near unexpected token: ;", 2);
+			ft_error("-minishell: syntax error near unexpected token: ;", 2);
 			free(mask);
 			return (1);
 		}
@@ -106,7 +106,7 @@ int		find_unexpected_token3(char **pipeline_lines)
 	{
 		if (is_empty(pipeline_lines[i]) && pipeline_lines[i + 1] != NULL)
 		{
-			ft_error("Syntax error near unexpected token: ;", 2);
+			ft_error("-minishell: syntax error near unexpected token: ;", 2);
 			return (1);
 		}
 		i++;
