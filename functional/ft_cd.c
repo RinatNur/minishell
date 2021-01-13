@@ -28,7 +28,7 @@ static void			chdir_to_home(t_data *data)
 	if (!(data->ar = malloc(sizeof(char *) * 3)))
 		exit(EXIT_FAILURE);
 	data->ar[0] = ft_strdup("cd");
-	data->ar[1] = get_value_from_env(data, "HOME");
+	data->ar[1] = ft_strdup(get_value_from_env(data, "HOME"));
 	data->ar[2] = NULL;
 }
 

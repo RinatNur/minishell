@@ -15,7 +15,6 @@ void		ft_pipe_eof(void)
 	write(mas[1], "", 0);
 	dup2(mas[0], 0);
 	close(mas[1]);
-//	close(mas[0]);
 }
 
 void	handler_signals(int sig)
@@ -133,6 +132,7 @@ static void process_command(t_data *data, char *command_line)
 	}
 	free_pipeline_list(pipeline_list);
 }
+
 void loop(t_data *data)
 {
 	int flag;
@@ -151,7 +151,6 @@ void loop(t_data *data)
 		signal(SIGQUIT, handler_signals);
 		signal(SIGTERM, handler_signals);
 		free(g_buf);
-//		free_env_list(data->env_list);//FIXME test
 	}
 }
 

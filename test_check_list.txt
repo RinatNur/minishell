@@ -25,7 +25,6 @@ pwd | cat -e | cat -e
 ls ; unset PATH ; echo $PATH ; ls ; echo $?
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki ; echo $PATH
 Dfasdfasdfasdfasdfasasd ; echo $?
-
 export>a|grep>b<a USER
 export>">"|grep>"|"<">" USER
 ls > a > b -la
@@ -39,7 +38,6 @@ ls >
 > a > b
 ls > |
 ls > a | ls > b ; cat < a ; cat < b
-
 export a ; export b= ; echo $a ; echo $b;
 echo "''"
 echo '""'
@@ -49,13 +47,7 @@ echo " $PWD ;;;;; ; "
 echo '"$PWD"'
 cd .. ; echo $OLDPWD ; echo $PWD ; cd .. ; echo $OLDPWD ; echo $PWD
 ;;
-;       ; FIXME не выводит ошибку
-; FIXME не выводит ошибку
 > > asdfas
-ls | FIXME ???? в оригинале появляется мультилайн, у нас отрабатывает
-ctrl + d ; echo $?
-
-
 cd; ls; echo
 
 
@@ -175,3 +167,6 @@ pwd
 cd desktop
 cd /bin
 exit
+;       ; FIXME не выводит ошибку
+; FIXME не выводит ошибку
+ls | FIXME ???? в оригинале появляется мультилайн, у нас отрабатывает
