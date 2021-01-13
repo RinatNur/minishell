@@ -78,4 +78,4 @@ add_executable(rinat_minishell
         utils/process_export.c
         utils/find_char.c
         utils/parse_env.c
-        process_envs.c parser/parse_redirects.c functional/free_utils.c)
+        process_envs.c parser/parse_redirects.c)

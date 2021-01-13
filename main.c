@@ -132,7 +132,6 @@ static void process_command(t_data *data, char *command_line)
 	}
 	free_pipeline_list(pipeline_list);
 }
-
 void loop(t_data *data)
 {
 	int flag;
