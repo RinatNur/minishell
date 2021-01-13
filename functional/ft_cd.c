@@ -32,15 +32,24 @@ static void			chdir_to_home(t_data *data)
 	data->ar[2] = NULL;
 }
 
-static void			print_value_oldpwd(t_data *data)
+static int			print_value_oldpwd(t_data *data)
 {
 	if ((!ft_strncmp("-", data->ar[1], 2)))
 	{
 		free(data->ar[1]);
 		data->ar[1] = get_value_from_env(data, "OLDPWD");
-		ft_write(1, data->ar[1]);
-		ft_write(1, "\n");
+		if(data->ar[1])
+		{
+			ft_write(1, data->ar[1]);
+			ft_write(1, "\n");
+		}
+		else
+		{
+			ft_error_print(MSHELL, data->ar[0], NULL, "OLDPWD not set");
+			return (1);
+		}
 	}
+	return (0);
 }
 
 static void			set_current_path(char *path, t_env *list, char *arg)
@@ -58,7 +67,7 @@ static void			set_current_path(char *path, t_env *list, char *arg)
 }
 
 static void			change_val_pwd_and_oldpwd(t_data *data,
-									t_env *list, t_env *list2, char *pwd_tmp)
+												 t_env *list, t_env *list2, char *pwd_tmp)
 {
 	int			flag;
 
@@ -99,7 +108,8 @@ void				ft_cd(t_data *data)
 	if (!data->ar[1])
 		chdir_to_home(data);
 	if (data->ar[1])
-		print_value_oldpwd(data);
+		if ((print_value_oldpwd(data)) == 1)
+			return ;
 	if (chdir(data->ar[1]) == -1)
 		ft_error_print(MSHELL, data->ar[0], data->ar[1], strerror(errno));
 	change_val_pwd_and_oldpwd(data, list, list2, pwd_tmp);
