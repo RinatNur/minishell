@@ -1,61 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_exec.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheat <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/13 20:55:06 by jheat             #+#    #+#             */
+/*   Updated: 2021/01/13 20:55:09 by jheat            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "processing.h"
 #include "./utils/utils.h"
 
-void 		print_arr(char **env)
+void		check_command(t_data *data)
 {
-	int i;
-	i = 0;
-	while (env[i] != NULL)
-	{
-		printf("%s\n", env[i]);
-		i++;
-	}
-}
-
-void        check_command(t_data *data)
-{
-	static int	count = 0;
-	char 	*com;
+	static int		count = 0;
+	char			*com;
 
 	g_code = 0;
 	count++;
 	com = data->ar[0];
 	if (!com)
-		return;
-    if (!ft_strncmp("pwd", com, 4) || !ft_strncmp("PWD", com, 4))
-        ft_pwd();
-    else if (!ft_strncmp("echo", com, 5) || !ft_strncmp("ECHO", com, 5))
-        ft_echo(data);
-    else if (!ft_strncmp("cd", com, 3) || !ft_strncmp("CD", com, 3))
-        ft_cd(data);
-    else if (!ft_strncmp("export", com, 7))
-        ft_export(data);
-    else if (!ft_strncmp("unset", com, 6))
-        ft_unset(data);
-    else if (!ft_strncmp("env", com, 4))
-        ft_env(data);
-    else if (!ft_strncmp("exit", com, 5))
-        ft_exit(data);
-    else
-        ft_exec(data);
+		return ;
+	if (!ft_strncmp("pwd", com, 4) || !ft_strncmp("PWD", com, 4))
+		ft_pwd();
+	else if (!ft_strncmp("echo", com, 5) || !ft_strncmp("ECHO", com, 5))
+		ft_echo(data);
+	else if (!ft_strncmp("cd", com, 3) || !ft_strncmp("CD", com, 3))
+		ft_cd(data);
+	else if (!ft_strncmp("export", com, 7))
+		ft_export(data);
+	else if (!ft_strncmp("unset", com, 6))
+		ft_unset(data);
+	else if (!ft_strncmp("env", com, 4))
+		ft_env(data);
+	else if (!ft_strncmp("exit", com, 5))
+		ft_exit(data);
+	else
+		ft_exec(data);
 }
 
-char 	**list_to_mas_ref(t_data *data)
+char		**list_to_mas_ref(t_data *data)
 {
 	t_env		*list;
-	char 			**env;
-	int 			i;
-	size_t 			len;
-	char 			*tmp;
+	char		**env;
+	int			i;
+	char		*tmp;
 
 	i = 0;
-	env = NULL;
-	tmp = NULL;
 	list = data->env_list;
-	len = ft_lstsize_env(list) + 1;
-	if (!(env = (char **)malloc(sizeof(char *) * len)))
+	if (!(env = (char **)malloc(sizeof(char *) * (ft_lstsize_env(list) + 1))))
 		ft_error_stderr("malloc: memory not allocated", errno);
-	env[len - 1] = NULL;
+	env[ft_lstsize_env(list)] = NULL;
 	while (list)
 	{
 		if (list->value)
@@ -72,7 +69,7 @@ char 	**list_to_mas_ref(t_data *data)
 	return (env);
 }
 
-int     status_return(int status)
+int			status_return(int status)
 {
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
@@ -98,12 +95,11 @@ int     status_return(int status)
 	return (WEXITSTATUS(status));
 }
 
-int		check_exec(t_data *data, char *args)
+int			check_exec(t_data *data, char *args)
 {
 	struct stat		buf;
 
-	buf.st_mode = 0;
-	stat(args, &buf);
+	(stat(args, &buf)) ? buf.st_mode = 0 : 0;
 	if (buf.st_mode & S_IFREG)
 	{
 		if (!(buf.st_mode & S_IXUSR))
@@ -128,8 +124,7 @@ int		check_exec(t_data *data, char *args)
 	return (1);
 }
 
-
-void    ft_exec(t_data *data)
+void		ft_exec(t_data *data)
 {
 	pid_t 	pid;
 	char 	**env;
@@ -161,7 +156,7 @@ void    ft_exec(t_data *data)
 	pid = fork();
 	if (pid == -1)
 		ft_error_stderr(strerror(errno), 15);
-	if(pid == 0)//TODO ==
+	if(pid == 0)
 	{
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
