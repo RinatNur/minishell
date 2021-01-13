@@ -1,10 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   make_env_list.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheat <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/13 20:46:44 by jheat             #+#    #+#             */
+/*   Updated: 2021/01/13 20:46:45 by jheat            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "processing.h"
 
-void        make_env_list(t_data *data, const char **env)
+void		make_env_list(t_data *data, const char **env)
 {
-	t_env      *list;
-	char    **env_split;
-	int     i = 0;
+	t_env		*list;
+	char		**env_split;
+	int			i;
+
+	i = 0;
 	env_split = NULL;
 	list = NULL;
 	while (env[i])
@@ -17,12 +31,11 @@ void        make_env_list(t_data *data, const char **env)
 			env_split[1] = NULL;
 		}
 		if (env_split[1] == NULL)
-			ft_lstadd_back_env(&list, ft_lstnew_env(ft_strdup(env_split[0]), NULL));
+			LSTADD(&list, LSTNEW(DUP(env_split[0]), NULL));
 		else
-			ft_lstadd_back_env(&list, ft_lstnew_env(ft_strdup(env_split[0]), ft_strdup(env_split[1])));
+			LSTADD(&list, LSTNEW(DUP(env_split[0]), DUP(env_split[1])));
 		free_arr(env_split);
 		i++;
 	}
 	data->env_list = list;
 }
-
