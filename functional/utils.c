@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheat <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/13 20:51:10 by jheat             #+#    #+#             */
+/*   Updated: 2021/01/13 20:51:12 by jheat            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "processing.h"
 
 void		ft_lstadd_back_env(t_env **lst, t_env *new)
 {
-	t_env        *last;
+	t_env		*last;
 
 	last = *lst;
 	if (!last)
@@ -19,7 +31,7 @@ void		ft_lstadd_back_env(t_env **lst, t_env *new)
 
 t_env		*ft_lstnew_env(void *key, void *value)
 {
-	t_env    *new_el;
+	t_env		*new_el;
 
 	if ((new_el = malloc(sizeof(t_env))))
 	{
@@ -32,7 +44,7 @@ t_env		*ft_lstnew_env(void *key, void *value)
 	return (NULL);
 }
 
-int		ft_lstsize_env(t_env *lst)
+int			ft_lstsize_env(t_env *lst)
 {
 	int		n;
 
@@ -45,16 +57,18 @@ int		ft_lstsize_env(t_env *lst)
 	return (n);
 }
 
-ssize_t     ft_write(int fd, const void *buf)
+ssize_t		ft_write(int fd, const void *buf)
 {
-	int     len;
-	int     ret;
+	int		len;
+	int		ret;
+
 	len = ft_strlen(buf);
-	((ret = write(fd, buf, len)) == -1) ? ft_error("Error in function write", 3) : 0;
+	((ret = write(fd, buf, len)) == -1)
+					? ft_error("Error in function write", 3) : 0;
 	return (ret);
 }
 
-char    *get_value_from_env(t_data *data, char *key)
+char		*get_value_from_env(t_data *data, char *key)
 {
 	t_env		*list;
 
@@ -62,7 +76,7 @@ char    *get_value_from_env(t_data *data, char *key)
 	while (list)
 	{
 		if (!ft_strncmp(list->key, key, (ft_strlen(list->key) + 1)))
-			return (list->value); // FIXME должна возвращать замаллоченное значение
+			return (list->value);
 		list = list->next;
 	}
 	return (NULL);
