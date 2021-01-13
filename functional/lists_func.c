@@ -1,5 +1,34 @@
 #include "processing.h"
 
+t_env		*sort_env_list(t_sort_env *data)
+{
+	data->out = NULL;
+	while (data->ph)
+	{
+		data->q = data->ph;
+		data->ph = data->ph->next;
+		data->p = data->out;
+		data->pr = NULL;
+		while (data->p && (ft_strncmp(data->p->key, data->q->key, (ft_strlen(data->q->key) + 1))) < 0)
+		{
+			data->pr = data->p;
+			data->p = data->p->next;
+		}
+		if (data->pr == NULL)
+		{
+			data->q->next = data->out;
+			data->out = data->q;
+		}
+		else
+		{
+			data->q->next = data->p;
+			data->pr->next = data->q;
+		}
+	}
+	data->ph = data->out;
+	return (data->ph);
+}
+
 t_env      *copy_list(t_env *list)
 {
     t_env		*tmp;

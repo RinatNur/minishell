@@ -6,6 +6,9 @@
 
 
 # define MSHELL "-minishell"
+# define LSTADD ft_lstadd_back_env
+# define LSTNEW ft_lstnew_env
+# define DUP ft_strdup
 # define REDIR ((t_redirect *)(data->redirect_list->content))
 # define ERR1 "No such file or directory"
 # define ERR2 "command not found"
