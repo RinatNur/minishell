@@ -65,7 +65,7 @@ ls; ;
 ls||
 ls | |
 echo $PWD
-echo $321 FIXME
+echo $321
 export 123
 echo $fdsgbkldmbklfdsmklfmd
 echo str1"'str2'"
