@@ -36,6 +36,7 @@ ls > a > b | cat -e
 ls >
 > a
 > a > b
+ls < a | ls
 ls > |
 ls > a | ls > b ; cat < a ; cat < b
 export a ; export b= ; echo $a ; echo $b;
@@ -65,7 +66,7 @@ ls||
 ls | |
 echo $PWD
 echo $321 FIXME
-export 123 FIXME invalid identifier
+export 123
 echo $fdsgbkldmbklfdsmklfmd
 echo str1"'str2'"
 echo str1"'$str2'"
@@ -83,7 +84,7 @@ echo '"""""""""",         wtf     :""'
 echo hello                       happy                               man
 export = ; echo $? FIXME неверный код ошибки
 echo $?
-export str1 2str = _3str str4=str5 FIXME  `2str': not a valid identifier
+export str1 2str = _3str str4=str5
  'e'"x"p'o'r't'
  "'e'"x"p'o'r't'"
 ec"ho" $str1 $str4

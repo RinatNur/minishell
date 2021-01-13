@@ -89,3 +89,6 @@ char			**u_split(char const *s, char c, const char *mask)
 	arr[i] = NULL;
 	return (arr);
 }
+
+
+//ls < a | ls
