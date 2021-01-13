@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_unset.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheat <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/13 19:16:48 by jheat             #+#    #+#             */
+/*   Updated: 2021/01/13 19:16:50 by jheat            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "processing.h"
 
-void    ft_unset(t_data *data)
+void		ft_unset(t_data *data)
 {
-    t_env      *list;
-    int             i = 1;
-    size_t          len;
+	size_t		len;
+	t_env		*list;
+	int			i = 1;
 
     list = data->env_list;
     while(data->ar[i])
@@ -24,4 +36,3 @@ void    ft_unset(t_data *data)
 	}
 
 }
-

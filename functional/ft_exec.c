@@ -141,7 +141,10 @@ void    ft_exec(t_data *data)
 	pwd = getcwd(pwd, 0);
 	status = 0;
 	if (!check_exec(data,data->ar[0]))
-		return ;
+	{
+		free(pwd);
+		return;
+	}
 	if ((!(ft_strncmp("/", pwd, 2))
 	&& (find_char(data->ar[0], '/')) >= 0)
 	|| (!ft_strncmp("/", data->ar[0], 1)))
