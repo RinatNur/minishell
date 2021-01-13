@@ -12,6 +12,19 @@
 
 #include "processing.h"
 
+void			free_arr(char **arr)
+{
+	int i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
+
 void			free_env_content(t_env *list)
 {
 	free(list->key);

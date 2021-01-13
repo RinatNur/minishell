@@ -37,9 +37,7 @@ add_executable(rinat_minishell
         functional/lists_func.c
         functional/make_env_list.c
         functional/ft_exec.c
-        functional/ft_write.c
         functional/ft_echo.c
-        functional/get_value_from_env.c
         functional/ft_export.c
         functional/ft_unset.c
         functional/ft_cd.c
