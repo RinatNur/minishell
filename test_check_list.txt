@@ -82,7 +82,7 @@ echo """""""""",         wtf     :""
 echo """""""""",         wtf     :""
 echo '"""""""""",         wtf     :""'
 echo hello                       happy                               man
-export = ; echo $? FIXME неверный код ошибки
+export = ; echo $?
 echo $?
 export str1 2str = _3str str4=str5
  'e'"x"p'o'r't'
