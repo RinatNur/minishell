@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pipe.c                                          :+:      :+:    :+:   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jheat <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/13 18:29:08 by jheat             #+#    #+#             */
-/*   Updated: 2021/01/13 18:29:11 by jheat            ###   ########.fr       */
+/*   Created: 2021/01/13 17:14:02 by jheat             #+#    #+#             */
+/*   Updated: 2021/01/13 17:14:04 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "processing.h"
 
-void		ft_pipe(t_data *data)
+void			free_env_content(t_env *list)
 {
-	pid_t		pid;
-	int			fd[2];
-	int			status;
+	free(list->key);
+	if (list->value != NULL)
+		free(list->value);
+}
 
-	status = 0;
-	pipe(fd);
-	pid = fork();
-	if (pid == -1)
-		ft_error_stderr(strerror(errno), 15);
-	if (pid == 0)
+void			free_env_list(t_env *list)
+{
+	t_env *tmp;
+
+	while (list)
 	{
-		dup2(fd[1], 1);
-		close(fd[0]);
-		close(fd[1]);
-		check_command(data);
-		exit(errno);
+		free_env_content(list);
+		tmp = list;
+		list = list->next;
+		free(tmp);
 	}
-	else
-	{
-		dup2(fd[0], 0);
-		close(fd[1]);
-		close(fd[0]);
-		waitpid(pid, &status, WUNTRACED);
-	}
+	free(list);
 }

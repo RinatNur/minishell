@@ -1,108 +1,109 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_export.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheat <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/13 16:57:50 by jheat             #+#    #+#             */
+/*   Updated: 2021/01/13 16:57:55 by jheat            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "processing.h"
 #include "./utils/utils.h"
 
-t_env		*sort_env_list(t_sort_env *data)
+static void		print_env_list(t_data *data, t_env *sort_l)
 {
-    data->out = NULL;
-    while (data->ph)
-    {
-        data->q = data->ph;
-        data->ph = data->ph->next;
-        data->p = data->out;
-        data->pr = NULL;
-        while (data->p && (ft_strncmp(data->p->key, data->q->key, (ft_strlen(data->q->key) + 1))) < 0)
-        {
-            data->pr = data->p;
-            data->p = data->p->next;
-        }
-        if (data->pr == NULL)
-        {
-            data->q->next = data->out;
-            data->out = data->q;
-        }
-        else
-        {
-            data->q->next = data->p;
-            data->pr->next = data->q;
-        }
-    }
-    data->ph = data->out;
-    return (data->ph);
+	t_sort_env		sort_env;
+
+	sort_env.ph = copy_list(data->env_list);
+	sort_l = sort_env_list(&sort_env);
+	while (sort_l)
+	{
+		ft_write(1, "declare -x ");
+		ft_write(1, sort_l->key);
+		if (sort_l->value)
+		{
+			ft_write(1, "=\"");
+			ft_write(1, sort_l->value);
+			ft_write(1, "\"");
+		}
+		sort_l = sort_l->next;
+		ft_write(1, "\n");
+	}
+	free_env_list(sort_env.ph);
 }
 
-void    ft_export(t_data *data)
+static int		check_is_key_in_env_list(t_data *data, t_env *sort_l,
+										char *tmp, int *flag)
 {
-    t_sort_env  sort_env;
-    t_env		*sort_l;
-    int         i;
-    int 		flag;
-    char        **tmp;
-
-	i = 1;
-    if (!data->ar[1])//if array is empty print all env_sort_list
-    {
-        sort_env.ph = copy_list(data->env_list);
-        sort_l = sort_env_list(&sort_env);
-
-		while(sort_l)
-        {
-            ft_write(1, "declare -x ");
-            ft_write(1, sort_l->key);
-            if (sort_l->value)
-            {
-                ft_write(1, "=\"");
-                ft_write(1, sort_l->value);
-                ft_write(1, "\"");
-            }
-            sort_l = sort_l->next;
-			ft_write(1, "\n");
-        }
-		free_env_list(sort_env.ph);
-    }
-
-
-    else
-    {
-        tmp = process_export(data->ar);
-        while (tmp[i])
-        {
-    		flag = 0;
-			sort_l = data->env_list;
-        	if ((i % 2) != 0 && (!ft_strncmp("0", tmp[i], 1)))//if odd value of arr = 0 -> key = NULL
-			{
-        		i++;
-				while(sort_l)
-				{
-					if (!ft_strncmp(tmp[i], sort_l->key, (ft_strlen(tmp[i]) + 1)))
-					{
-						flag++;
-						break ;
-					}
-					sort_l = sort_l->next;
-				}
-				if (!flag)
-					ft_lstadd_back_env(&data->env_list, ft_lstnew_env(ft_strdup(tmp[i]), NULL));
-				i++;
-			}
-        	else
-			{
-				while (sort_l)
-				{
-					if (!ft_strncmp(tmp[i], sort_l->key, (ft_strlen(tmp[i]) + 1)))
-					{
-						free(sort_l->value);
-						sort_l->value = ft_strdup(tmp[i + 1]);
-						flag++;
-					}
-					sort_l = sort_l->next;
-				}
-				if (!flag)
-					ft_lstadd_back_env(&data->env_list, ft_lstnew_env(ft_strdup(tmp[i]), ft_strdup(tmp[i + 1])));
-				i += 2;
-			}
+	while (sort_l)
+	{
+		if (!ft_strncmp(tmp, sort_l->key, (ft_strlen(tmp) + 1)))
+		{
+			(*flag)++;
+			return (1);
 		}
-		free_2d_array(tmp);
+		sort_l = sort_l->next;
+	}
+	return (0);
+}
+
+static void		change_data_in_env_value(t_env *sort_l,
+											char **tmp, const int i, int *flag)
+{
+	while (sort_l)
+	{
+		if (!ft_strncmp(tmp[i], sort_l->key, (ft_strlen(tmp[i]) + 1)))
+		{
+			free(sort_l->value);
+			sort_l->value = ft_strdup(tmp[i + 1]);
+			(*flag)++;
+		}
+		sort_l = sort_l->next;
 	}
 }
 
-//export a; export a=; export a=b
+static void		add_env_in_env_list(t_data *data, t_env *sort_l, char **tmp)
+{
+	int		i;
+	int		flag;
+
+	i = 1;
+	while (tmp[i])
+	{
+		flag = 0;
+		sort_l = data->env_list;
+		if ((i % 2) != 0 && (!ft_strncmp("0", tmp[i], 1)))
+		{
+			i++;
+			if ((check_is_key_in_env_list(data, sort_l, tmp[i], &flag)) == 1)
+				break ;
+			if (!flag)
+				LSTADD(&data->env_list, LSTNEW(DUP(tmp[i]), NULL));
+			i++;
+		}
+		else
+		{
+			change_data_in_env_value(sort_l, tmp, i, &flag);
+			if (!flag)
+				LSTADD(&data->env_list, LSTNEW(DUP(tmp[i]), DUP(tmp[i + 1])));
+			i += 2;
+		}
+	}
+}
+
+void			ft_export(t_data *data)
+{
+	t_env		*sort_l;
+	char		**tmp;
+
+	tmp = process_export(data->ar);
+	sort_l = NULL;
+	if (!data->ar[1])
+		print_env_list(data, sort_l);
+	else
+		add_env_in_env_list(data, sort_l, tmp);
+	free_2d_array(tmp);
+}
