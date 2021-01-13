@@ -1,4 +1,4 @@
-
+#include "libft.h"
 #include "utils.h"
 
 char **process_export_arg(char *export_arg)
@@ -7,17 +7,27 @@ char **process_export_arg(char *export_arg)
 	int       equal_char_index;
 	int i;
 	char *mask;
+
+
 	if (!(result = malloc(sizeof(char *) * 3)))
 		exit(EXIT_FAILURE);
 	equal_char_index = find_char(export_arg, '=');
 	mask = get_mask(export_arg);
-	if ((equal_char_index > 1 && mask[equal_char_index] != '0') || equal_char_index == 0)
+	if (ft_isdigit(export_arg[0]))
 	{
 		write(2, "export: Not a valid identifier\n", 31);
 		free(mask);
 		free(result);
 		return NULL;
 	}
+	if (equal_char_index == 0)
+	{
+		write(2, "export: Not a valid identifier\n", 31);
+		free(mask);
+		free(result);
+		return NULL;
+	}
+
 	if (equal_char_index != -1)
 	{
 		if (export_arg[equal_char_index + 1] == '\0')
@@ -48,6 +58,19 @@ char **process_export_arg(char *export_arg)
 		result[2] = NULL;
 	}
 	free(mask);
+
+	i = 0;
+	while (result[0][i] != '\0')
+	{
+		if ((!ft_isalpha(export_arg[i])) && !ft_isdigit(export_arg[i]))
+		{
+			write(2, "export: Not a valid identifier\n", 31);
+			free_2d_array(result);
+			return NULL;
+		}
+		i++;
+	}
+
 	return (result);
 }
 char **process_export(char **export_with_arguments)

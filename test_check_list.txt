@@ -54,16 +54,15 @@ cd; ls; echo
 
 
 ;;
-; FIXME
-| FIXME
-|| FIXME
-;@@; FIXME
-| | FIXME
+;
+|
+||
+| |
 ls;;
 ls; ;
 ;;
-ls|| FIXME
-ls | | FIXME
+ls||
+ls | |
 echo $PWD
 echo $321 FIXME
 export 123 FIXME invalid identifier
