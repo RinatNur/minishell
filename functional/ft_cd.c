@@ -34,12 +34,15 @@ static void			chdir_to_home(t_data *data)
 
 static int			print_value_oldpwd(t_data *data)
 {
+	char *oldpwd;
+
 	if ((!ft_strncmp("-", data->ar[1], 2)))
 	{
-		free(data->ar[1]);
-		data->ar[1] = get_value_from_env(data, "OLDPWD");
-		if(data->ar[1])
+		oldpwd = get_value_from_env(data, "OLDPWD");
+		if (oldpwd)
 		{
+			free(data->ar[1]);
+			data->ar[1] = ft_strdup(oldpwd);
 			ft_write(1, data->ar[1]);
 			ft_write(1, "\n");
 		}
