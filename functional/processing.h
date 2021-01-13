@@ -26,7 +26,7 @@ typedef struct            s_sort_env {
 	t_env              *q;
 }                         t_sort_env;
 
-void            *ft_pwd();
+void            ft_pwd();
 void            ft_env(t_data *data);
 char            *ft_find_path(t_data *data, char *command);
 void            print_list(t_env *list);
