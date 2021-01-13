@@ -15,7 +15,6 @@ void		ft_pipe_eof(void)
 	write(mas[1], "", 0);
 	dup2(mas[0], 0);
 	close(mas[1]);
-//	close(mas[0]);
 }
 
 void	handler_signals(int sig)
@@ -30,16 +29,7 @@ void	handler_signals(int sig)
 		ft_write(1, "\b\b  \b\b");
 }
 
-void		init_data(t_data *data, t_list **command, t_command **com)
-{
-	*com = ((t_command *)((*command)->content));
-	data->redirect_list = (*com)->redirect_list;
 
-	process_command_envs((*com)->command_with_arguments, data);
-	process_redirect_envs((*com)->redirect_list, data);
-
-	data->ar = (*com)->command_with_arguments;
-}
 
 static char **arr_dup(char **arr)
 {
@@ -63,6 +53,16 @@ static char **arr_dup(char **arr)
 	return (result);
 }
 
+void		init_data(t_data *data, t_list **command, t_command **com)
+{
+	*com = ((t_command *)((*command)->content));
+	data->redirect_list = (*com)->redirect_list;
+
+	process_command_envs((*com)->command_with_arguments, data);
+	process_redirect_envs((*com)->redirect_list, data);
+
+	data->ar = arr_dup((*com)->command_with_arguments);
+}
 
 static void process_command(t_data *data, char *command_line)
 {
@@ -97,6 +97,8 @@ static void process_command(t_data *data, char *command_line)
 			process_redirect_envs(com->redirect_list, data);
 
 			data->ar = arr_dup(com->command_with_arguments); //дубликат
+
+
 			if (data->redirect_list && !command->next)
 				ft_check_redirects(data, command);
 			else if (!data->redirect_list && command->next)
@@ -112,6 +114,7 @@ static void process_command(t_data *data, char *command_line)
 				if (data->redir_pipe_flag && data->redir_flag)
 				{
 					command = command->next;
+					free_2d_array(data->ar);
 					init_data(data, &command, &com);
 					check_command(data);
 				}
@@ -124,6 +127,7 @@ static void process_command(t_data *data, char *command_line)
 					ft_pipe_eof();
 				check_command(data);
 			}
+
 			free_2d_array(data->ar); //освобождение дубликата
 			command = command->next;
 		}
@@ -151,7 +155,6 @@ void loop(t_data *data)
 		signal(SIGQUIT, handler_signals);
 		signal(SIGTERM, handler_signals);
 		free(g_buf);
-//		free_env_list(data->env_list);//FIXME test
 	}
 }
 

@@ -25,7 +25,6 @@ pwd | cat -e | cat -e
 ls ; unset PATH ; echo $PATH ; ls ; echo $?
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki ; echo $PATH
 Dfasdfasdfasdfasdfasasd ; echo $?
-
 export>a|grep>b<a USER
 export>">"|grep>"|"<">" USER
 ls > a > b -la
@@ -37,9 +36,9 @@ ls > a > b | cat -e
 ls >
 > a
 > a > b
+ls < a | ls
 ls > |
 ls > a | ls > b ; cat < a ; cat < b
-
 export a ; export b= ; echo $a ; echo $b;
 echo "''"
 echo '""'
@@ -49,30 +48,25 @@ echo " $PWD ;;;;; ; "
 echo '"$PWD"'
 cd .. ; echo $OLDPWD ; echo $PWD ; cd .. ; echo $OLDPWD ; echo $PWD
 ;;
-;       ; FIXME не выводит ошибку
-; FIXME не выводит ошибку
 > > asdfas
-ls | FIXME ???? в оригинале появляется мультилайн, у нас отрабатывает
-ctrl + d ; echo $?
-
-
 cd; ls; echo
 
 
+
+
 ;;
-; FIXME
-| FIXME
-|| FIXME
-;@@; FIXME
-| | FIXME
+;
+|
+||
+| |
 ls;;
 ls; ;
 ;;
-ls|| FIXME
-ls | | FIXME
+ls||
+ls | |
 echo $PWD
 echo $321 FIXME
-export 123 FIXME invalid identifier
+export 123
 echo $fdsgbkldmbklfdsmklfmd
 echo str1"'str2'"
 echo str1"'$str2'"
@@ -90,7 +84,7 @@ echo '"""""""""",         wtf     :""'
 echo hello                       happy                               man
 export = ; echo $? FIXME неверный код ошибки
 echo $?
-export str1 2str = _3str str4=str5 FIXME  `2str': not a valid identifier
+export str1 2str = _3str str4=str5
  'e'"x"p'o'r't'
  "'e'"x"p'o'r't'"
 ec"ho" $str1 $str4
@@ -119,6 +113,9 @@ echo $?
 export PATH=/bin  ; ls
 echo $?
 exit 1234;  // чтобы вернуть PATH
+
+
+
 echo $PWD; unset PWD
 echo $PWD; export PWD=/ ; echo $PWD;
 pwd; echo $PWD
@@ -175,3 +172,6 @@ pwd
 cd desktop
 cd /bin
 exit
+;       ; FIXME не выводит ошибку
+; FIXME не выводит ошибку
+ls | FIXME ???? в оригинале появляется мультилайн, у нас отрабатывает

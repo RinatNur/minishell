@@ -135,17 +135,20 @@ void    ft_exec(t_data *data)
 	char 	**env;
 	int 	status;
 	char	*path;
+	char	*pwd;
 
+	pwd = NULL;
+	pwd = getcwd(pwd, 0);
 	status = 0;
-
 	if (!check_exec(data,data->ar[0]))
 		return ;
-	if ((!(ft_strncmp("/", get_value_from_env(data, "PWD"), 2))
+	if ((!(ft_strncmp("/", pwd, 2))
 	&& (find_char(data->ar[0], '/')) >= 0)
 	|| (!ft_strncmp("/", data->ar[0], 1)))
 		path = ft_strdup(data->ar[0]);
 	else
 		path = ft_find_path(data, data->ar[0]);
+	free(pwd);
 	if(!(ft_strncmp("", path, 1)))
 	{
 		free(path);

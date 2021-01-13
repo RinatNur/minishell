@@ -29,5 +29,6 @@ char				*empty_str(char c, int len);
 char				**process_export(char **export_arg);
 int					find_char(const char *str, char c);
 char                **parse_env(char *arg);
+int					ft_isalpha(int c);
 
 #endif //MINISHELL_UTILS_H
