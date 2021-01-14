@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "utils.h"
 
 static size_t	ft_strlcpy(char *dest, const char *src, size_t l)

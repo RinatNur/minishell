@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   u_split.c                                         :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrudy <wrudy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wrudy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/24 14:58:22 by wrudy             #+#    #+#             */
-/*   Updated: 2020/12/12 19:08:14 by wrudy            ###   ########.fr       */
+/*   Created: 2021/01/14 18:50:22 by wrudy             #+#    #+#             */
+/*   Updated: 2021/01/14 18:50:29 by wrudy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-static size_t	ft_countwords(char const *s, char c, const char *mask)
+static size_t	countwords(char const *s, char c, const char *mask)
 {
 	size_t	count;
 	size_t	i;
@@ -46,12 +46,12 @@ static size_t	ft_len(char const *s, char c, const char *mask)
 	return (len);
 }
 
-void 			free_2d_array(char **array)
+void			free_2d_array(char **array)
 {
 	int i;
 
 	if (array == NULL)
-        return ;
+		return ;
 	i = 0;
 	while (array[i] != NULL)
 	{
@@ -72,11 +72,11 @@ char			**u_split(char const *s, char c, const char *mask)
 	k = 0;
 	if (s == NULL)
 		return (0);
-	if (!(arr = (char**)malloc(sizeof(char*) * (ft_countwords(s, c, mask) + 1))))
+	if (!(arr = (char**)malloc(sizeof(char*) * (countwords(s, c, mask) + 1))))
 		exit(EXIT_FAILURE);
-	while (i < ft_countwords(s, c, mask))
+	while (i < countwords(s, c, mask))
 	{
-		if (!(arr[i] = (char*)malloc(sizeof(char) * (ft_len(s + k, c, mask + k) + 1))))
+		if (!(arr[i] = (char*)malloc((ft_len(s + k, c, mask + k) + 1))))
 			exit(EXIT_FAILURE);
 		j = 0;
 		while (s[k] == c && mask[k] == '0')
@@ -89,6 +89,3 @@ char			**u_split(char const *s, char c, const char *mask)
 	arr[i] = NULL;
 	return (arr);
 }
-
-
-//ls < a | ls

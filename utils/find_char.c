@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "utils.h"
 
-int find_char(const char *str, char c)
+int	find_char(const char *str, char c)
 {
 	int i;
 
@@ -21,11 +20,11 @@ int find_char(const char *str, char c)
 	while (str[i] != '\0')
 	{
 		if (str[i] == c)
-			break;
+			break ;
 		i++;
 	}
 	if (str[i] == '\0')
-		return -1;
+		return (-1);
 	else
-		return i;
+		return (i);
 }

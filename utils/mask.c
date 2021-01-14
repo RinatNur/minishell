@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "utils.h"
 
 char	mask_elem(unsigned char *flag, char symbol, char quote)
@@ -19,20 +18,21 @@ char	mask_elem(unsigned char *flag, char symbol, char quote)
 	{
 		*flag = ~(*flag);
 		if (*flag == 1)
-			return '0';
+			return ('0');
 	}
 	if (*flag == 1)
-		return '0';
+		return ('0');
 	else
-		return quote;
+		return (quote);
 }
 
 char	*get_mask(char *line)
 {
-	int	i;
-	char		*result;
+	int				i;
+	char			*result;
 	unsigned char	flag;
-	char	quote;
+	char			quote;
+
 	if (!(result = malloc(sizeof(char) * u_strlen(line) + 1)))
 		exit(EXIT_FAILURE);
 	i = 0;
@@ -46,11 +46,11 @@ char	*get_mask(char *line)
 			result[i] = '0';
 			flag = ~flag;
 			i++;
-			continue;
+			continue ;
 		}
 		result[i] = mask_elem(&flag, line[i], quote);
 		i++;
 	}
 	result[i] = 0;
-	return result;
+	return (result);
 }

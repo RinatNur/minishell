@@ -10,11 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "utils.h"
 
-void set_mask_symbol(int *flag, char *env_mask, const char *arg, int *i)
+void	set_mask_symbol(int *flag, char *env_mask, const char *arg, int *i)
 {
 	*flag = 1;
 	env_mask[(*i)] = '$';
@@ -35,12 +33,12 @@ void set_mask_symbol(int *flag, char *env_mask, const char *arg, int *i)
 	(*i)++;
 }
 
-char *env_mask(char *arg)
+char	*env_mask(char *arg)
 {
-	char *env_mask;
-	char *quote_mask;
-	int i;
-	int flag;
+	char	*env_mask;
+	char	*quote_mask;
+	int		i;
+	int		flag;
 
 	i = 0;
 	flag = 0;
@@ -51,9 +49,10 @@ char *env_mask(char *arg)
 		if (arg[i] == '$' && (quote_mask[i] == '0' || quote_mask[i] == '\"'))
 		{
 			set_mask_symbol(&flag, env_mask, arg, &i);
-			continue;
+			continue ;
 		}
-		if (flag == 1 && (arg[i] == ' ' || arg[i] == '\"' || arg[i] == '\'' || arg[i] == '='))
+		if (flag == 1 && (arg[i] == ' ' ||
+		arg[i] == '\"' || arg[i] == '\'' || arg[i] == '='))
 			flag = 0;
 		if (flag == 1)
 			env_mask[i] = 'e';
@@ -63,7 +62,7 @@ char *env_mask(char *arg)
 	return (env_mask);
 }
 
-int mask_elem_len(const char *mask)
+int		mask_elem_len(const char *mask)
 {
 	int i;
 
@@ -84,7 +83,7 @@ int mask_elem_len(const char *mask)
 	return (i);
 }
 
-int env_count(const char *arg, const char *mask)
+int		env_count(const char *arg, const char *mask)
 {
 	int i;
 	int count;
@@ -107,27 +106,25 @@ int env_count(const char *arg, const char *mask)
 	return (count);
 }
 
-char **parse_env(char *arg)
+char	**parse_env(char *arg)
 {
-	char *mask;
-	int 	i;
-	int 	count;
-	char **result;
+	char	*mask;
+	int		i;
+	int		j;
+	char	**result;
 
 	mask = env_mask(arg);
-	count = env_count(arg, mask);
-	if (!(result = malloc(sizeof(char *) * (count + 1))))
+	j = env_count(arg, mask);
+	if (!(result = malloc(sizeof(char *) * (j + 1))))
 		exit(0);
-	int len;
-	int j;
 	i = 0;
 	j = 0;
 	while (arg[i] != '\0')
 	{
-		len = mask_elem_len(mask + i);
-		result[j] = u_strldup(arg + i, len);
+		mask_elem_len(mask + i);
+		result[j] = u_strldup(arg + i, mask_elem_len(mask + i));
 		j++;
-		i = i + len;
+		i = i + mask_elem_len(mask + i);
 	}
 	free(mask);
 	result[j] = NULL;

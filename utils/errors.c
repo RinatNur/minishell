@@ -13,14 +13,14 @@
 #include "utils.h"
 #include "functional/processing.h"
 
-void *exit_error1(char **str2)
+void	*exit_error1(char **str2)
 {
 	ft_error_print(MSHELL, "export", NULL, "not a valid identifier");
 	free(str2);
-	return NULL;
+	return (NULL);
 }
 
-char **exit_error2(char **result, char *export_arg)
+char	**exit_error2(char **result, char *export_arg)
 {
 	int i;
 

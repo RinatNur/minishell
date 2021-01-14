@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "utils.h"
 
-char *arr_strjoin(char **line)
+char	*arr_strjoin(char **line)
 {
 	int		i;
 	char	*result;
