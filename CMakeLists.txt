@@ -10,7 +10,6 @@ include_directories(.)
 include_directories(libft)
 
 add_executable(rinat_minishell
-        libft/ft_atoi.c
         libft/ft_isdigit.c
         libft/ft_itoa.c
         #        libft/ft_lstadd_back.c
@@ -55,7 +54,6 @@ add_executable(rinat_minishell
         utils/ft_lstadd_front.c
         utils/ft_lstclear.c
         utils/ft_lstdelone.c
-        utils/ft_lstiter.c
         utils/ft_lstlast.c
         utils/ft_lstnew.c
         utils/ft_lstsize.c

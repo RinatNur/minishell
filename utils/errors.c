@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "utils.h"
-#include "functional/processing.h"
+#include "../functional/processing.h"
 
 void	*exit_error1(char **str2)
 {

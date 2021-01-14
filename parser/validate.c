@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "functional/processing.h"
+#include "../functional/processing.h"
 #include "parse.h"
 
 int		is_empty(const char *str)

@@ -25,12 +25,12 @@ SRC_FUNC =  check_command.c free_utils.c ft_cd.c ft_check_redirects.c\
 
 SRC_GNL =   get_next_line.c get_next_line_utils.c
 
-SRC_PARS =  command.c parse.c parse_command.c parse_redirects.c
+SRC_PARS =  command.c parse.c parse_command.c parse_redirects.c validate.c
 
 SRC =   $(addprefix $(FUNC)/,$(SRC_FUNC))\
         $(addprefix $(GNl)/,$(SRC_GNL))\
         $(addprefix $(PARS)/,$(SRC_PARS))\
-        main.c process_envs.c
+        main.c process_envs.c utils_main.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))
 

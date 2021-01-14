@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft/libft.h"
 #include "utils.h"
 
 void	env_with_value(char ***result, const char *exp_arg, int equal_char_i)

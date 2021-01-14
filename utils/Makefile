@@ -13,10 +13,10 @@
 NAME = utils.a
 
 LIST  =	    arr_strjoin.c clear_empty_list.c empty_str.c find_char.c\
-            ft_isalpha.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c\
-            ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstnew.c ft_lstsize.c\
+            ft_isalpha.c ft_lstadd_back.c ft_lstclear.c\
+            ft_lstdelone.c ft_lstlast.c ft_lstnew.c\
             ft_split.c ft_strdup.c ft_strjoin.c ft_strldup.c ft_strlen.c\
-            mask.c parse_env.c process_export.c
+            mask.c parse_env.c process_export.c errors.c
 
 OBJ = $(patsubst %.c,%.o,$(LIST))
 

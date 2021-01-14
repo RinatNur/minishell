@@ -20,7 +20,6 @@ void					*ft_memcpy(void *dest, const void *src, size_t n);
 size_t					ft_strlen(const char *s);
 size_t					ft_strlcpy(char *dst, const char *src, size_t size);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
-int						ft_atoi(const char *nptr);
 int						ft_isdigit(int c);
 char					*ft_strdup(const char *s);
 char					*ft_strjoin(char const *s1, char const *s2);
