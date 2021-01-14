@@ -24,14 +24,14 @@ static int				from_char_to_int(const char *str, int *i,
 		res = res * 10 + str[*i] - '0';
 		tmp = res;
 		if ((res > 9223372036854775807) && ((tmp * (-1))
-			!= (-9223372036854775807 - 1) || sign > 0))
+			!= (unsigned long long)(-9223372036854775807 - 1) || sign > 0))
 		{
 			*is_valid = 0;
 			return (0);
 		}
 		(*i)++;
 	}
-	if (*i == ft_strlen(str))
+	if (*i == (int)ft_strlen(str))
 		return (res == 0 ? 0 : (res * sign));
 	else
 	{

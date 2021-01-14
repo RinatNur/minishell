@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "parse.h"
-#include "functional/processing.h"
+#include "../functional/processing.h"
 
 static t_list	*parse_pipeline(char *pipeline_line)
 {
