@@ -12,26 +12,25 @@
 
 #include "libft.h"
 #include "utils.h"
-#include "functional/processing.h"
 
-void env_with_value(char ***result, const char *export_arg, int equal_char_index)
+void	env_with_value(char ***result, const char *exp_arg, int equal_char_i)
 {
-	char *mask;
-	int i;
+	char	*mask;
+	int		i;
 
 	free(*result);
-	mask = empty_str('0', u_strlen(export_arg));
-	i = equal_char_index + 1;
+	mask = empty_str('0', u_strlen(exp_arg));
+	i = equal_char_i + 1;
 	while (mask[i] != '\0')
 	{
 		mask[i] = '1';
 		i++;
 	}
-	*result = u_split(export_arg, '=', mask);
+	*result = u_split(exp_arg, '=', mask);
 	free(mask);
 }
 
-void env_without_value(char **result, char *export_arg, int equal_char_index)
+void	env_without_value(char **result, char *export_arg, int equal_char_index)
 {
 	export_arg[equal_char_index] = '\0';
 	result[0] = u_strdup(export_arg);
@@ -39,10 +38,10 @@ void env_without_value(char **result, char *export_arg, int equal_char_index)
 	result[2] = NULL;
 }
 
-char **process_export_arg(char *export_arg)
+char	**process_export_arg(char *export_arg)
 {
-	char **result;
-	int	equal_char_index;
+	char	**result;
+	int		equal_char_index;
 
 	if (!(result = malloc(sizeof(char *) * 3)))
 		exit(EXIT_FAILURE);
@@ -67,11 +66,11 @@ char **process_export_arg(char *export_arg)
 	return (exit_error2(result, export_arg));
 }
 
-void set_export_arg(char **export_with_arguments, char **result)
+void	set_export_arg(char **export_with_arguments, char **result)
 {
-	int i;
-	int j;
-	char **tmp;
+	int		i;
+	int		j;
+	char	**tmp;
 
 	i = 1;
 	j = 1;
@@ -92,10 +91,10 @@ void set_export_arg(char **export_with_arguments, char **result)
 	result[i] = NULL;
 }
 
-char **process_export(char **export_with_arguments)
+char	**process_export(char **export_with_arguments)
 {
-	int i;
-	char **result;
+	int		i;
+	char	**result;
 
 	i = 0;
 	while (export_with_arguments[i] != NULL)

@@ -12,7 +12,7 @@
 
 #include "utils.h"
 
-char *empty_str(char c, int len)
+char	*empty_str(char c, int len)
 {
 	char	*result;
 	int		i;
