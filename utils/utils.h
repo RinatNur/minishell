@@ -30,5 +30,7 @@ char				**process_export(char **export_arg);
 int					find_char(const char *str, char c);
 char				**parse_env(char *arg);
 int					ft_isalpha(int c);
+char				**exit_error2(char **result, char *export_arg);
+void				*exit_error1(char **str2);
 
 #endif //MINISHELL_UTILS_H

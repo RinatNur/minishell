@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   empty_str.c                                        :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrudy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/14 17:33:39 by wrudy             #+#    #+#             */
-/*   Updated: 2021/01/14 17:33:41 by wrudy            ###   ########.fr       */
+/*   Created: 2021/01/14 17:42:37 by wrudy             #+#    #+#             */
+/*   Updated: 2021/01/14 17:42:39 by wrudy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+#include "functional/processing.h"
 
-char *empty_str(char c, int len)
+void *exit_error1(char **str2)
 {
-	char	*result;
-	int		i;
+	ft_error_print(MSHELL, "export", NULL, "not a valid identifier");
+	free(str2);
+	return NULL;
+}
 
-	if (!(result = malloc(sizeof(char) * len + 1)))
-		exit(EXIT_FAILURE);
+char **exit_error2(char **result, char *export_arg)
+{
+	int i;
+
 	i = 0;
-	while (i < len)
+	while (result[0][i] != '\0')
 	{
-		result[i] = c;
+		if ((!ft_isalpha(export_arg[i])) && !ft_isdigit(export_arg[i]))
+		{
+			ft_error_print(MSHELL, "export", NULL, "not a valid identifier");
+			free_2d_array(result);
+			return (NULL);
+		}
 		i++;
 	}
-	result[i] = 0;
 	return (result);
 }
