@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_env.c                                   :+:      :+:    :+:   */
+/*   ft_lstadd_back_env.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,7 +14,7 @@
 
 void		ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list        *last;
+	t_list		*last;
 
 	last = *lst;
 	if (!last)

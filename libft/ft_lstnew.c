@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_env.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,7 +14,7 @@
 
 t_list		*ft_lstnew(void *content)
 {
-	t_list    *new_el;
+	t_list		*new_el;
 
 	if ((new_el = malloc(sizeof(t_list))))
 	{
