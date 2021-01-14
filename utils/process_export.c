@@ -55,7 +55,7 @@ void env_without_value(char **result, char *export_arg, int equal_char_index)
 char **process_export_arg(char *export_arg)
 {
 	char **result;
-	int       equal_char_index;
+	int	equal_char_index;
 
 	if (!(result = malloc(sizeof(char *) * 3)))
 		exit(EXIT_FAILURE);

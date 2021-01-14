@@ -24,12 +24,12 @@ t_command			*parse_command(const char *command_str)
 
 	command = command_constructor(NULL, NULL);
 	redirect_list = parse_redirects(&clear_command_str, command);
-    if (command->parse_error != NULL)
-    {
-        command->redirect_list = redirect_list;
-        free(clear_command_str);
-        return (command);
-    }
+	if (command->parse_error != NULL)
+	{
+		command->redirect_list = redirect_list;
+		free(clear_command_str);
+		return (command);
+	}
 	parse_clear_command(clear_command_str, redirect_list, command);
 
 	free(clear_command_str);

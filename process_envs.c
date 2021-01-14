@@ -22,7 +22,7 @@ char *clear_quotes(char *str)
 	result = arr_strjoin(tmp2);
 	free_2d_array(tmp2);
 	if (result == NULL)
-	    result = ft_strdup("");
+		result = ft_strdup("");
 	return (result);
 }
 

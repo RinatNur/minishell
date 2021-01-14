@@ -17,10 +17,10 @@ char	mask_elem(unsigned char *flag, char symbol, char quote)
 
 char	*get_mask(char *line)
 {
-	int             i;
-	char         *result;
-	unsigned char  flag;
-	char         quote;
+	int	i;
+	char		*result;
+	unsigned char	flag;
+	char	quote;
 	if (!(result = malloc(sizeof(char) * u_strlen(line) + 1)))
 		exit(EXIT_FAILURE);
 	i = 0;
