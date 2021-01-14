@@ -111,3 +111,31 @@ t_env		*cut_list(t_data *data, char *ar)
 		list = list->prev;
 	return ((data->env_list = list));
 }
+
+char		**list_to_mas_ref(t_data *data)
+{
+	t_env		*list;
+	char		**env;
+	int			i;
+	char		*tmp;
+
+	i = 0;
+	list = data->env_list;
+	if (!(env = (char **)malloc(sizeof(char *) * (ft_lstsize_env(list) + 1))))
+		ft_error_stderr("malloc: memory not allocated", errno);
+	env[ft_lstsize_env(list)] = NULL;
+	while (list)
+	{
+		if (list->value)
+		{
+			tmp = ft_strjoin("=", list->value);
+			env[i] = ft_strjoin(list->key, tmp);
+			free(tmp);
+		}
+		else
+			env[i] = ft_strdup(list->key);
+		i++;
+		list = list->next;
+	}
+	return (env);
+}

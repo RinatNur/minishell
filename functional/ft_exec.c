@@ -13,62 +13,6 @@
 #include "processing.h"
 #include "./utils/utils.h"
 
-void		check_command(t_data *data)
-{
-	static int		count = 0;
-	char			*com;
-
-	g_code = 0;
-	count++;
-	com = data->ar[0];
-	if (!com)
-		return ;
-	if (!ft_strncmp("pwd", com, 4) || !ft_strncmp("PWD", com, 4))
-		ft_pwd();
-	else if (!ft_strncmp("echo", com, 5) || !ft_strncmp("ECHO", com, 5))
-		ft_echo(data);
-	else if (!ft_strncmp("cd", com, 3) || !ft_strncmp("CD", com, 3))
-		ft_cd(data);
-	else if (!ft_strncmp("export", com, 7))
-		ft_export(data);
-	else if (!ft_strncmp("unset", com, 6))
-		ft_unset(data);
-	else if (!ft_strncmp("env", com, 4))
-		ft_env(data);
-	else if (!ft_strncmp("exit", com, 5))
-		ft_exit(data);
-	else
-		ft_exec(data);
-}
-
-char		**list_to_mas_ref(t_data *data)
-{
-	t_env		*list;
-	char		**env;
-	int			i;
-	char		*tmp;
-
-	i = 0;
-	list = data->env_list;
-	if (!(env = (char **)malloc(sizeof(char *) * (ft_lstsize_env(list) + 1))))
-		ft_error_stderr("malloc: memory not allocated", errno);
-	env[ft_lstsize_env(list)] = NULL;
-	while (list)
-	{
-		if (list->value)
-		{
-			tmp = ft_strjoin("=", list->value);
-			env[i] = ft_strjoin(list->key, tmp);
-			free(tmp);
-		}
-		else
-			env[i] = ft_strdup(list->key);
-		i++;
-		list = list->next;
-	}
-	return (env);
-}
-
 int			status_return(int status)
 {
 	signal(SIGINT, SIG_IGN);
@@ -124,6 +68,19 @@ int			check_exec(t_data *data, char *args)
 	return (1);
 }
 
+static void 		parent_process_exec(char **env, char *path, int status, pid_t pid)
+{
+	if (pid > 0)
+	{
+		signal(SIGQUIT, SIG_IGN);
+		signal(SIGINT, SIG_IGN);
+		waitpid(pid, &status, WUNTRACED);
+		g_code = status_return(status);
+		free_arr(env);
+		free(path);
+	}
+}
+
 void		ft_exec(t_data *data)
 {
 	pid_t 	pid;
@@ -164,10 +121,5 @@ void		ft_exec(t_data *data)
 		execve(path, data->ar, env);
 		exit(g_code);
 	}
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, SIG_IGN);
-	waitpid(pid, &status, WUNTRACED);
-	g_code = status_return(status);
-	free_arr(env);
-	free(path);
+	parent_process_exec(env, path, status, pid);
 }
