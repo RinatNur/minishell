@@ -12,7 +12,7 @@
 
 #include "utils.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*lstnew(void *content)
 {
 	t_list	*new_elem;
 

@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "parse.h"
 #include "functional/processing.h"
 
-static t_list *parse_pipeline(char *pipeline_line)
+static t_list	*parse_pipeline(char *pipeline_line)
 {
 	t_list		*command_list;
-	char 		*mask;
+	char		*mask;
 	char		**command_array;
 	int			i;
 
@@ -27,7 +26,8 @@ static t_list *parse_pipeline(char *pipeline_line)
 	i = 0;
 	while (command_array[i] != NULL)
 	{
-		ft_lstadd_back(&command_list, ft_lstnew(parse_command(command_array[i])));
+		addback(&command_list,
+				lstnew(parse_command(command_array[i])));
 		i++;
 	}
 	free(mask);
@@ -35,9 +35,9 @@ static t_list *parse_pipeline(char *pipeline_line)
 	return (command_list);
 }
 
-static void	fill_pipeline_list(t_list **pipeline_list, char **pipeline_lines)
+static void		fill_pipeline_list(t_list **pipeln_list, char **pipeline_lines)
 {
-	int 	i;
+	int		i;
 	t_list	*pipeline;
 	t_list	*command_list;
 
@@ -45,22 +45,17 @@ static void	fill_pipeline_list(t_list **pipeline_list, char **pipeline_lines)
 	while (pipeline_lines[i] != NULL)
 	{
 		command_list = parse_pipeline(pipeline_lines[i]);
-		pipeline = ft_lstnew(command_list);
-		ft_lstadd_back(pipeline_list, pipeline);
+		pipeline = lstnew(command_list);
+		addback(pipeln_list, pipeline);
 		i++;
 	}
 }
 
-
-
-
-
-t_list	*parse_pipeline_list(char *command_line)
+t_list			*parse_pipeline_list(char *command_line)
 {
 	t_list	*pipeline_list;
 	char	**pipeline_lines;
 	char	*mask;
-
 
 	mask = get_mask(command_line);
 	pipeline_lines = u_split(command_line, ';', mask);
@@ -72,14 +67,12 @@ t_list	*parse_pipeline_list(char *command_line)
 	}
 	pipeline_list = NULL;
 	fill_pipeline_list(&pipeline_list, pipeline_lines);
-
 	free_2d_array(pipeline_lines);
 	free(mask);
-
 	return (pipeline_list);
 }
 
-void		free_pipeline_list(t_list *pipeline_list) //FIXME
+void			free_pipeline_list(t_list *pipeline_list)
 {
 	t_list *pipeline;
 	t_list *command_list;

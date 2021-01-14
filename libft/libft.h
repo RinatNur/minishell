@@ -29,7 +29,7 @@ char					*ft_itoa(int n);
 void					ft_putchar_fd(char c, int fd);
 void					ft_putendl_fd(char *s, int fd);
 void					ft_putnbr_fd(int n, int fd);
-void					ft_lstadd_back(t_list **lst, t_list *new);
-t_list					*ft_lstnew(void *content);
+void					addback(t_list **lst, t_list *new);
+t_list					*lstnew(void *content);
 
 #endif

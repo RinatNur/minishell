@@ -29,8 +29,8 @@ int		is_empty(const char *str)
 
 int		find_unexpected_token1(char *str)
 {
-	int i;
-	char *mask;
+	int		i;
+	char	*mask;
 
 	i = 0;
 	mask = get_mask(str);
@@ -51,8 +51,8 @@ int		find_unexpected_token1(char *str)
 
 int		find_unexpected_token2(char *str)
 {
-	int i;
-	char *mask;
+	int		i;
+	char	*mask;
 
 	i = 0;
 	mask = get_mask(str);
