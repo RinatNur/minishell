@@ -13,7 +13,35 @@
 #include "processing.h"
 #include "./utils/utils.h"
 
-int			status_return(int status)
+char			**list_to_mas_ref(t_data *data)
+{
+	t_env		*list;
+	char		**env;
+	int			i;
+	char		*tmp;
+
+	i = 0;
+	list = data->env_list;
+	if (!(env = (char **)malloc(sizeof(char *) * (ft_lstsize_env(list) + 1))))
+		ft_error_stderr("malloc: memory not allocated", errno);
+	env[ft_lstsize_env(list)] = NULL;
+	while (list)
+	{
+		if (list->value)
+		{
+			tmp = ft_strjoin("=", list->value);
+			env[i] = ft_strjoin(list->key, tmp);
+			free(tmp);
+		}
+		else
+			env[i] = ft_strdup(list->key);
+		i++;
+		list = list->next;
+	}
+	return (env);
+}
+
+int				status_return(int status)
 {
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
@@ -39,7 +67,7 @@ int			status_return(int status)
 	return (WEXITSTATUS(status));
 }
 
-int			check_exec(t_data *data, char *args)
+int				check_exec(t_data *data, char *args)
 {
 	struct stat		buf;
 
@@ -68,9 +96,24 @@ int			check_exec(t_data *data, char *args)
 	return (1);
 }
 
-static void 		parent_process_exec(char **env, char *path, int status, pid_t pid)
+static void		fork_processes(t_data *data, char **env, char *path)
 {
-	if (pid > 0)
+	pid_t		pid;
+	int			status;
+
+	status = 0;
+	pid = fork();
+	if (pid == -1)
+		ft_error_stderr(strerror(errno), 15);
+	if (pid == 0)
+	{
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
+		signal(SIGTERM, SIG_DFL);
+		execve(path, data->ar, env);
+		exit(g_code);
+	}
+	else
 	{
 		signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, SIG_IGN);
@@ -81,21 +124,18 @@ static void 		parent_process_exec(char **env, char *path, int status, pid_t pid)
 	}
 }
 
-void		ft_exec(t_data *data)
+void			ft_exec(t_data *data)
 {
-	pid_t 	pid;
-	char 	**env;
-	int 	status;
-	char	*path;
-	char	*pwd;
+	char		**env;
+	char		*path;
+	char		*pwd;
 
 	pwd = NULL;
 	pwd = getcwd(pwd, 0);
-	status = 0;
-	if (!check_exec(data,data->ar[0]))
+	if (!check_exec(data, data->ar[0]))
 	{
 		free(pwd);
-		return;
+		return ;
 	}
 	if ((!(ft_strncmp("/", pwd, 2))
 	&& (find_char(data->ar[0], '/')) >= 0)
@@ -104,22 +144,11 @@ void		ft_exec(t_data *data)
 	else
 		path = ft_find_path(data, data->ar[0]);
 	free(pwd);
-	if(!(ft_strncmp("", path, 1)))
+	if (!(ft_strncmp("", path, 1)))
 	{
 		free(path);
-		return;
+		return ;
 	}
 	env = list_to_mas_ref(data);
-	pid = fork();
-	if (pid == -1)
-		ft_error_stderr(strerror(errno), 15);
-	if(pid == 0)
-	{
-		signal(SIGINT, SIG_DFL);
-		signal(SIGQUIT, SIG_DFL);
-		signal(SIGTERM, SIG_DFL);
-		execve(path, data->ar, env);
-		exit(g_code);
-	}
-	parent_process_exec(env, path, status, pid);
+	fork_processes(data, env, path);
 }

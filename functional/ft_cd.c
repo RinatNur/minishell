@@ -12,15 +12,6 @@
 
 #include "processing.h"
 
-char				*get_pwd(void)
-{
-	char *dir;
-
-	dir = NULL;
-	dir = getcwd(dir, 0);
-	return (dir);
-}
-
 static void			chdir_to_home(t_data *data)
 {
 	free(data->ar[0]);
@@ -70,7 +61,7 @@ static void			set_current_path(char *path, t_env *list, char *arg)
 }
 
 static void			change_val_pwd_and_oldpwd(t_data *data,
-												 t_env *list, t_env *list2, char *pwd_tmp)
+								t_env *list, t_env *list2, char *pwd_tmp)
 {
 	int			flag;
 

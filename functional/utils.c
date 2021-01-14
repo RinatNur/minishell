@@ -81,3 +81,12 @@ char		*get_value_from_env(t_data *data, char *key)
 	}
 	return (NULL);
 }
+
+char				*get_pwd(void)
+{
+	char *dir;
+
+	dir = NULL;
+	dir = getcwd(dir, 0);
+	return (dir);
+}

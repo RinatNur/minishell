@@ -61,5 +61,6 @@ void			ft_redirect_read_pipe(t_data *data);
 void			free_arr(char **arr);
 void			free_env_list(t_env *list);
 void			free_env_content(t_env *list);
+char			*get_pwd(void);
 
 #endif
