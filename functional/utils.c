@@ -44,19 +44,6 @@ t_env		*ft_lstnew_env(void *key, void *value)
 	return (NULL);
 }
 
-int			ft_lstsize_env(t_env *lst)
-{
-	int		n;
-
-	n = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		n++;
-	}
-	return (n);
-}
-
 ssize_t		ft_write(int fd, const void *buf)
 {
 	int		len;
@@ -82,7 +69,7 @@ char		*get_value_from_env(t_data *data, char *key)
 	return (NULL);
 }
 
-char				*get_pwd(void)
+char		*get_pwd(void)
 {
 	char *dir;
 

@@ -12,7 +12,20 @@
 
 #include "processing.h"
 
-t_env		*sort_env_list(t_sort_env *data)
+int					ft_lstsize_env(t_env *lst)
+{
+	int		n;
+
+	n = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		n++;
+	}
+	return (n);
+}
+
+t_env				*sort_env_list(t_sort_env *data)
 {
 	data->out = NULL;
 	while (data->ph)
@@ -41,7 +54,7 @@ t_env		*sort_env_list(t_sort_env *data)
 	return (data->ph);
 }
 
-t_env		*copy_list(t_env *list)
+t_env				*copy_list(t_env *list)
 {
 	t_env		*tmp;
 
@@ -58,7 +71,7 @@ t_env		*copy_list(t_env *list)
 	return (tmp);
 }
 
-int			cut_list_if_it_not_last(t_env **list)
+static int			cut_list_if_it_not_last(t_env **list)
 {
 	t_env *tmp;
 
@@ -83,7 +96,7 @@ int			cut_list_if_it_not_last(t_env **list)
 	}
 }
 
-t_env		*cut_list(t_data *data, char *ar)
+t_env				*cut_list(t_data *data, char *ar)
 {
 	t_env		*list;
 	t_env		*tmp;
