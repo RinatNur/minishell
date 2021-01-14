@@ -13,13 +13,12 @@
 #include "parser/parse.h"
 #include "functional/processing.h"
 
-
-char *clear_quotes(char *str)
+char	*clear_quotes(char *str)
 {
-	char *mask;
-	char *result;
-	char **tmp2;
-	int i;
+	char	*mask;
+	char	*result;
+	char	**tmp2;
+	int		i;
 
 	mask = get_mask(str);
 	i = 0;
@@ -38,7 +37,7 @@ char *clear_quotes(char *str)
 	return (result);
 }
 
-void set_env_value(char **env_value, int i, char **parsed_str, t_data *data)
+void	set_env_value(char **env_value, int i, char **parsed_str, t_data *data)
 {
 	if (parsed_str[i][1] == '?')
 		*env_value = ft_itoa(g_code);
@@ -53,12 +52,12 @@ void set_env_value(char **env_value, int i, char **parsed_str, t_data *data)
 	}
 }
 
-char *replace_env(char *str, t_data *data)
+char	*replace_env(char *str, t_data *data)
 {
-	char **parsed_str;
-	char *env_value;
-	char *result;
-	int i;
+	char	**parsed_str;
+	char	*env_value;
+	char	*result;
+	int		i;
 
 	i = 0;
 	parsed_str = parse_env(str);
@@ -74,13 +73,13 @@ char *replace_env(char *str, t_data *data)
 	}
 	result = arr_strjoin(parsed_str);
 	free_2d_array(parsed_str);
-	return result;
+	return (result);
 }
 
-void process_command_envs(char **command_with_args, t_data *data)
+void	process_command_envs(char **command_with_args, t_data *data)
 {
-	int i;
-	char *tmp1;
+	int		i;
+	char	*tmp1;
 
 	i = 0;
 	while (command_with_args[i] != NULL)
@@ -93,10 +92,10 @@ void process_command_envs(char **command_with_args, t_data *data)
 	}
 }
 
-void process_redirect_envs(t_list *redirect_list, t_data *data)
+void	process_redirect_envs(t_list *redirect_list, t_data *data)
 {
-	t_redirect *redirect;
-	char *tmp;
+	t_redirect	*redirect;
+	char		*tmp;
 
 	while (redirect_list != NULL)
 	{
@@ -108,4 +107,3 @@ void process_redirect_envs(t_list *redirect_list, t_data *data)
 		redirect_list = redirect_list->next;
 	}
 }
-
