@@ -68,6 +68,10 @@ int					ft_lstsize_env(t_env *lst);
 void				ft_error_print(char *minishell, char *command,
 									char *filename, char *message);
 void				ft_pipe_eof(void);
+void				handler_signals(int sig);
+int					init_data_ar(t_data *data, t_list **command,
+								t_command **com);
+void				init_data_main(t_data *data);
 void				ft_redirect_read_pipe(t_data *data);
 void				free_arr(char **arr);
 void				free_env_list(t_env *list);

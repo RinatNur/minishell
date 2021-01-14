@@ -79,4 +79,4 @@ add_executable(rinat_minishell
         utils/find_char.c
         utils/parse_env.c
         process_envs.c
-        utils/ft_isalpha.c functional/check_command.c)
+        utils/ft_isalpha.c functional/check_command.c utils_main.c)
