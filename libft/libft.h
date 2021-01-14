@@ -14,7 +14,7 @@
 # define LIBFT_H
 # define INT_MIN -2147483648
 
-# include "minishell.h"
+# include "../minishell.h"
 
 void					*ft_memcpy(void *dest, const void *src, size_t n);
 size_t					ft_strlen(const char *s);

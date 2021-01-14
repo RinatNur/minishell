@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "processing.h"
-#include "./utils/utils.h"
+#include "../utils/utils.h"
 
 char			**list_to_mas_ref(t_data *data)
 {
@@ -67,7 +67,7 @@ int				status_return(int status)
 	return (WEXITSTATUS(status));
 }
 
-int				check_exec(t_data *data, char *args)
+int				check_exec(char *args)
 {
 	struct stat		buf;
 
@@ -132,7 +132,7 @@ void			ft_exec(t_data *data)
 
 	pwd = NULL;
 	pwd = getcwd(pwd, 0);
-	if (!check_exec(data, data->ar[0]))
+	if (!check_exec(data->ar[0]))
 	{
 		free(pwd);
 		return ;

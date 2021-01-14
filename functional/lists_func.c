@@ -82,7 +82,6 @@ static int			cut_list_if_it_not_last(t_env **list)
 		free_env_content(tmp);
 		free(tmp);
 		(*list)->prev = NULL;
-		return (0);
 	}
 	else if ((*list)->next != NULL)
 	{
@@ -94,6 +93,7 @@ static int			cut_list_if_it_not_last(t_env **list)
 		tmp->next = *list;
 		return (1);
 	}
+	return (0);
 }
 
 t_env				*cut_list(t_data *data, char *ar)

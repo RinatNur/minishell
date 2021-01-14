@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "processing.h"
-#include "./utils/utils.h"
+#include "../utils/utils.h"
 
 static void		print_env_list(t_data *data, t_env *sort_l)
 {
@@ -35,8 +35,7 @@ static void		print_env_list(t_data *data, t_env *sort_l)
 	free_env_list(sort_env.ph);
 }
 
-static int		check_is_key_in_env_list(t_data *data, t_env *sort_l,
-										char *tmp, int *flag)
+static int		check_is_key_in_env_list(t_env *sort_l, char *tmp, int *flag)
 {
 	while (sort_l)
 	{
@@ -78,7 +77,7 @@ static void		add_env_in_env_list(t_data *data, t_env *sort_l, char **tmp)
 		if ((i % 2) != 0 && (!ft_strncmp("0", tmp[i], 1)))
 		{
 			i++;
-			if ((check_is_key_in_env_list(data, sort_l, tmp[i], &flag)) == 1)
+			if ((check_is_key_in_env_list(sort_l, tmp[i], &flag)) == 1)
 				break ;
 			if (!flag)
 				LSTADD(&data->env_list, LSTNEW(DUP(tmp[i]), NULL));

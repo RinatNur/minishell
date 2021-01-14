@@ -5,7 +5,7 @@
 #ifndef MINISHELL_UTILS_H
 #define MINISHELL_UTILS_H
 #include "stdlib.h"
-#include "minishell.h"
+#include "../minishell.h"
 
 
 t_list				*ft_lstnew(void *content);

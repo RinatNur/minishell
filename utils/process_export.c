@@ -1,6 +1,6 @@
-#include "libft.h"
+#include "../libft/libft.h"
 #include "utils.h"
-#include "functional/processing.h"
+#include "../functional/processing.h"
 
 char **process_export_arg(char *export_arg)
 {

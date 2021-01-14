@@ -63,11 +63,12 @@ add_executable(rinat_minishell
         utils/ft_strdup.c
         gnl/get_next_line.c
         gnl/get_next_line_utils.c
-        parser/parse.c
         utils/ft_split.c
-        parser/parse_command.c
         utils/mask.c
+        parser/parse_command.c
+        parser/parse.c
         parser/command.c
+        parser/parse_redirects.c
         utils/clear_empty_list.c
         utils/empty_str.c
         minishell.h
@@ -78,5 +79,4 @@ add_executable(rinat_minishell
         utils/find_char.c
         utils/parse_env.c
         process_envs.c
-        parser/parse_redirects.c
         utils/ft_isalpha.c functional/check_command.c)
