@@ -39,18 +39,18 @@ static void	fill_pipeline_list(t_list **pipeline_list, char **pipeline_lines)
 	}
 }
 
-int      is_empty(const char *str)
+int		is_empty(const char *str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (str[i] != '\0')
-    {
-        if (str[i] != ' ')
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int		find_unexpected_token1(char *str)

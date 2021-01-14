@@ -17,7 +17,7 @@ void 				command_destructor(t_command *command)
 {
 	free_2d_array(command->command_with_arguments);
 	if (command->parse_error != NULL)
-	    free(command->parse_error);
+		free(command->parse_error);
 	ft_lstclear(&(command->redirect_list), (void (*)(void *))redirect_destructor);
 	free(command);
 }

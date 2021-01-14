@@ -26,6 +26,21 @@ char *clear_quotes(char *str)
 	return (result);
 }
 
+void set_env_value(char **env_value, int i, char **parsed_str, t_data *data)
+{
+	if (parsed_str[i][1] == '?')
+		*env_value = ft_itoa(g_code);
+	else if (ft_isdigit(parsed_str[i][1]))
+		*env_value = ft_strdup(parsed_str[i] + 2);
+	else
+	{
+		if (!(*env_value = get_value_from_env(data, parsed_str[i] + 1)))
+			*env_value = u_strdup("");
+		else
+			*env_value = u_strdup(*env_value);
+	}
+}
+
 char *replace_env(char *str, t_data *data)
 {
 	char **parsed_str;
@@ -39,17 +54,7 @@ char *replace_env(char *str, t_data *data)
 	{
 		if (parsed_str[i][0] == '$')
 		{
-			if (parsed_str[i][1] == '?')
-				env_value = ft_itoa(g_code);
-			else if (ft_isdigit(parsed_str[i][1]))
-				env_value = ft_strdup(parsed_str[i] + 2);
-			else
-			{
-				if (!(env_value = get_value_from_env(data, parsed_str[i] + 1)))
-					env_value = u_strdup("");
-				else
-					env_value = u_strdup(env_value);
-			}
+			set_env_value(&env_value, i, parsed_str, data);
 			free(parsed_str[i]);
 			parsed_str[i] = env_value;
 		}
