@@ -24,7 +24,7 @@ pwd
 pwd | cat -e | cat -e
 ls ; unset PATH ; echo $PATH ; ls ; echo $?
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki ; echo $PATH
-Dfasdfasdfasdfasdfasasd ; echo $?
+Dfasdfasdfasdfasdfasasd ; echo $?exit
 export>a|grep>b<a USER
 export>">"|grep>"|"<">" USER
 ls > a > b -la

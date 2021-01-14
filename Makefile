@@ -12,31 +12,25 @@
 
 NAME = minishell
 
-SRC =   main.c process_envs.c\
-        functional/check_command.c\
-        functional/free_utils.c\
-        functional/ft_cd.c\
-        functional/ft_check_redirects.c\
-        functional/ft_echo.c\
-        functional/ft_env.c\
-        functional/ft_error.c\
-        functional/ft_exec.c\
-        functional/ft_exit.c\
-        functional/ft_export.c\
-        functional/ft_find_path.c\
-        functional/ft_pipe.c\
-        functional/ft_pwd.c\
-        functional/ft_redirect.c\
-        functional/ft_unset.c\
-        functional/lists_func.c\
-        functional/make_env_list.c\
-        functional/utils.c\
-        gnl/get_next_line.c\
-        gnl/get_next_line_utils.c\
-        parser/command.c\
-        parser/parse.c\
-        parser/parse_command.c\
-        parser/parse_redirects.c
+FUNC = functional
+
+GNl = gnl
+
+PARS = parser
+
+SRC_FUNC =  check_command.c free_utils.c ft_cd.c ft_check_redirects.c\
+            ft_echo.c ft_env.c ft_error.c ft_exec.c ft_exit.c ft_export.c\
+            ft_find_path.c ft_pipe.c ft_pwd.c ft_redirect.c ft_unset.c\
+            lists_func.c make_env_list.c utils.c
+
+SRC_GNL =   get_next_line.c get_next_line_utils.c
+
+SRC_PARS =  command.c parse.c parse_command.c parse_redirects.c
+
+SRC =   $(addprefix $(FUNC)/,$(SRC_FUNC))\
+        $(addprefix $(GNl)/,$(SRC_GNL))\
+        $(addprefix $(PARS)/,$(SRC_PARS))\
+        main.c process_envs.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))
 
@@ -53,8 +47,6 @@ $(NAME): $(OBJ)
 	@cp libft/libft.a ./
 	@cp utils/utils.a ./
 	@gcc $(FLAGS) libft.a utils.a $(SRC) -o $(NAME)
-
-bonus: all
 
 %.o: %.c $(HEADER)
 	gcc $(FLAGS) -c $< -o $@

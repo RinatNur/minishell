@@ -1,6 +1,6 @@
 
 #include "parse.h"
-#include "libft.h"
+#include "../libft/libft.h"
 
 int error(t_command *cmd, const char *command, char **filename, int i)
 {

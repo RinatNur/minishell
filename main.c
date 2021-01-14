@@ -173,6 +173,8 @@ int main(int ac, char **av, char **envp)
 {
 	t_data		data;
 
+	if (ac && av)
+	{}
 	g_code = 0;
 	g_buf = NULL;
 	make_env_list(&data, (const char **)envp);

@@ -15,7 +15,7 @@ NAME = libft.a
 LIST  =	    ft_memcpy.c ft_strlen.c ft_strlcpy.c ft_strncmp.c ft_atoi.c\
             ft_isdigit.c ft_strdup.c ft_strjoin.c ft_split.c ft_itoa.c\
 			ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-			ft_lstadd_back_env.c ft_lstnew_env.c
+			ft_lstadd_back.c ft_lstnew.c
 
 OBJ = $(patsubst %.c,%.o,$(LIST))
 
